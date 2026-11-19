@@ -1,0 +1,16 @@
+const assert = require('node:assert/strict');
+const {route} = require('./dist/router.js');
+const nodes = {a:[40,-3], b:[40,-2.999], c:[40,-2.998], d:[40,-2.997]};
+const adj = {a:[{to:'b',d:80}], b:[{to:'a',d:80},{to:'c',d:80}], c:[{to:'b',d:80},{to:'d',d:80}], d:[{to:'c',d:80}]};
+const bank = (address,detour) => ({address,lat:40,lon:-3,detour});
+assert.equal(route(adj,nodes,{},'a','d',100), null);
+const one=route(adj,nodes,{b:[bank('Desvío',5)]},'a','c',100);
+assert(one && one.stops.length===1 && Math.round(one.distance)===170 && Math.round(one.maxWithoutRest)===85);
+const two=route(adj,nodes,{b:[bank('Uno',5)],c:[bank('Dos',5)]},'a','d',100);
+assert(two && two.stops.length===2 && Math.round(two.distance)===260);
+assert.equal(route(adj,nodes,{b:[bank('Lejos',25)]},'a','c',100),null);
+assert.equal(route(adj,nodes,{},'a','b',100,15,10),null);
+const before=route(adj,nodes,{b:[bank('Uno',0)]},'a','d',100);
+const after=route(adj,nodes,{b:[bank('Uno',0)],c:[bank('Simulado',0)]},'a','d',100);
+assert.equal(before,null);assert(after && after.stops.length===2);
+console.log('Rutas verificadas: sin bancos, desvío, dos descansos, límite y simulación.');

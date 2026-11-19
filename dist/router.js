@@ -1,0 +1,17 @@
+/* Graph and routing logic, reusable in Node and in the browser. */
+(function(root){
+ const R=6371000, rad=Math.PI/180;
+ function distance(a,b){const dlat=(b[0]-a[0])*rad,dlon=(b[1]-a[1])*rad,p1=a[0]*rad,p2=b[0]*rad;return 2*R*Math.asin(Math.sqrt(Math.sin(dlat/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dlon/2)**2));}
+ function nearest(point,nodes){let best=null,dist=Infinity;for(const [id,p] of Object.entries(nodes)){const d=distance(point,p);if(d<dist){dist=d;best=id}}return {id:best,distance:dist};}
+ function makeGraph(data){const adj={};for(const id of Object.keys(data.nodes))adj[id]=[];for(const way of data.ways){for(let i=1;i<way.ids.length;i++){let a=way.ids[i-1],b=way.ids[i];if(!adj[a]||!adj[b]||a===b)continue;let d=distance(data.nodes[a],data.nodes[b]);adj[a].push({to:b,d,name:way.name});adj[b].push({to:a,d,name:way.name})}}return adj;}
+ class Heap{constructor(){this.a=[]}push(item){let a=this.a;a.push(item);let i=a.length-1;while(i>0){let p=(i-1)>>1;if(a[p].cost<=item.cost)break;a[i]=a[p];i=p}a[i]=item}pop(){let a=this.a,first=a[0],last=a.pop();if(a.length){let i=0;while(i*2+1<a.length){let c=i*2+1;if(c+1<a.length&&a[c+1].cost<a[c].cost)c++;if(a[c].cost>=last.cost)break;a[i]=a[c];i=c}a[i]=last}return first}get size(){return this.a.length}}
+ function attachBanks(banks,nodes){const byNode={};for(const bank of banks){let n=nearest([bank.lat,bank.lon],nodes);if(n.distance>35)continue;(byNode[n.id] ||= []).push({...bank,detour:n.distance})}return byNode;}
+ function route(adj,nodes,banks,start,end,limit,startOffset=0,endOffset=0){const bounded=Number.isFinite(limit),step=5,heap=new Heap(),best=new Map(),parents=new Map();const key=(n,u)=>n+'|'+u;let initial=bounded?Math.ceil(startOffset/step):0;if(bounded&&initial*step>limit)return null;let first=key(start,initial);best.set(first,startOffset);heap.push({node:start,units:initial,cost:startOffset});let final=null;
+ while(heap.size){const cur=heap.pop(),k=key(cur.node,cur.units);if(cur.cost!==best.get(k))continue;if(cur.node===end&&(!bounded||cur.units*step+endOffset<=limit)){final=k;break}
+ function push(node,units,cost,action){let nk=key(node,units);if(cost+1e-8<(best.get(nk)??Infinity)){best.set(nk,cost);parents.set(nk,{previous:k,action});heap.push({node,units,cost})}}
+ for(const e of adj[cur.node]||[]){let u=bounded?cur.units+Math.ceil(e.d/step):0;if(!bounded||u*step<=limit)push(e.to,u,cur.cost+e.d,{type:'walk',from:cur.node,to:e.to,d:e.d,name:e.name})}
+ if(bounded&&cur.units>0)for(const bank of banks[cur.node]||[]){let u=Math.ceil(bank.detour/step);if((cur.units+u)*step<=limit&&u<cur.units)push(cur.node,u,cur.cost+2*bank.detour,{type:'rest',node:cur.node,bank,d:bank.detour})}
+ }
+ if(!final)return null;let actions=[],cursor=final;while(cursor!==first){let p=parents.get(cursor);actions.push(p.action);cursor=p.previous}actions.reverse();let coords=[nodes[start]],walked=startOffset,max=0,stops=[],length=startOffset;for(const a of actions){if(a.type==='walk'){coords.push(nodes[a.to]);walked+=a.d;length+=a.d}else{coords.push([a.bank.lat,a.bank.lon],nodes[a.node]);walked+=a.d;length+=2*a.d;max=Math.max(max,walked);walked=a.d;stops.push(a.bank)}}walked+=endOffset;length+=endOffset;max=Math.max(max,walked);return {distance:length,maxWithoutRest:max,stops,coords};}
+ const api={distance,nearest,makeGraph,attachBanks,route};if(typeof module!=='undefined')module.exports=api;root.RouteEngine=api;
+})(typeof window!=='undefined'?window:globalThis);
