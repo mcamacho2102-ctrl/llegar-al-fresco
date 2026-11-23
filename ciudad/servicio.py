@@ -721,8 +721,19 @@ TOO_FAR_WALK_M = 4000  # o más de 4 km andando (p. ej. hay que rodear una autov
 def dentro(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90)):
     """¿Está el punto dentro del área que cubre la aplicación (Madrid capital)? Y, si lo
     está, ¿hay una calle o camino de la red a menos de MAX_CONNECT m para empezar?"""
-    inside = -4 <= lon <= -3 and 40 <= lat <= 41 and app.state.city.inside(lon, lat)
-    return {"dentro": inside, "red": inside and app.state.city.locate(lon, lat) is not None}
+    city = app.state.city
+    inside = -4 <= lon <= -3 and 40 <= lat <= 41 and city.inside(lon, lat)
+    out = {"dentro": inside, "red": inside and city.locate(lon, lat) is not None}
+    if inside and not out["red"]:
+        # Hay portales a los que el mapa peatonal no llega del todo (p. ej. naves de un
+        # polígono): se propone el punto del camino más cercano si está a ≤ CALLE_CERCA_M.
+        dock = city.locate(lon, lat, reach=CALLE_CERCA_M)
+        if dock is not None:
+            out["calle"] = {"coordinates": coordinates(dock.xy), "distanceM": round(float(dock.offset))}
+    return out
+
+
+CALLE_CERCA_M = 300
 
 
 @app.get("/api/cerca")

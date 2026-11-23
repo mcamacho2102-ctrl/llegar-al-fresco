@@ -181,7 +181,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     const q = new URLSearchParams({
       o: origin.coordinates.map((v) => v.toFixed(6)).join(","),
       d: destination.coordinates.map((v) => v.toFixed(6)).join(","),
-      on: origin.label === "Mi ubicación" ? "Salida" : origin.label,
+      on: origin.label.startsWith("Mi ubicación") ? "Salida" : origin.label,
       dn: destination.label,
       l: limit === null ? "0" : String(limit),
     });
@@ -275,9 +275,18 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       );
       const coords: Position = [p.coords.longitude, p.coords.latitude];
       try {
-        const { dentro, red } = await api<{ dentro: boolean; red?: boolean }>(
-          `/api/dentro?lon=${coords[0]}&lat=${coords[1]}`,
-        );
+        const { dentro, red, calle } = await api<{
+          dentro: boolean;
+          red?: boolean;
+          calle?: { coordinates: Position; distanceM: number };
+        }>(`/api/dentro?lon=${coords[0]}&lat=${coords[1]}`);
+        if (dentro && red === false && calle) {
+          setMessage(
+            `El camino a pie más cercano está a unos ${fmt(Math.round(calle.distanceM / 10) * 10)} m de donde estás: saldremos desde allí.`,
+          );
+          setOrigin(mapPlace(calle.coordinates, "Mi ubicación (camino más cercano)"));
+          return;
+        }
         if (!dentro) {
           setMessage("");
           setError(
