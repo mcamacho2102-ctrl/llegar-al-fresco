@@ -22,6 +22,10 @@ Reproducir: `.venv/bin/python -m ciudad.impacto --todos --n 150 --limite 200 --s
    - `no_hay_alternativa`: no existe dentro de lo explorado.
    - Se excluyen `sin_ruta` (punto a más de 150 m de la red principal conectada, sobre todo urbanizaciones nuevas de Vicálvaro aún sin calles en OSM: 48 casos) e `inconcluso` (búsqueda agotada: 0 casos). Los extremos solo se enganchan a la red principal conectada, nunca a un patio o recinto aislado.
 
+## Margen de error
+
+Con 3.102 trayectos evaluables, el intervalo de confianza al 95 % (aproximación binomial) es de **±1,1 puntos** para el 88,1 % y de **±1,7 puntos** para el 60,5 %. La muestra está estratificada por distrito (150 portales por distrito, no proporcional a la población), así que el total da el mismo peso a cada distrito; la versión ponderada por mayores, por distrito, figura en la tabla.
+
 ## Sensibilidad al límite
 
 | Límite sin descanso | No se cumple por el camino directo | Se arregla con rodeo | Sin alternativa |
