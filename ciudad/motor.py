@@ -2,6 +2,7 @@
 
 from collections import defaultdict
 import csv
+import difflib
 from functools import lru_cache
 from heapq import heappop, heappush
 import itertools
@@ -406,19 +407,49 @@ class Madrid:
         )
 
     def search(self, query):
-        aliases = {
-            "c": "calle",
-            "av": "avenida",
-            "avda": "avenida",
-            "pza": "plaza",
-            "pso": "paseo",
-            "gta": "glorieta",
-        }
-        ignore = {"de", "del", "la", "las", "el", "los", "madrid"}
+        found = self._search(query)
+        if found:
+            return found
+        words = normal(query).split()
+        kinds = [w for w in words if SEARCH_ALIASES.get(w, w) in STREET_KINDS]
+        if kinds:  # «calle Rosales» cuando es «paseo»: se prueba sin el tipo de vía
+            found = self._search(" ".join(w for w in words if w not in kinds))
+            if found:
+                return found
+        # Erratas («Ibrara 3», «Casa Motnero 8»): calles con nombre muy parecido.
+        number = next((w for w in reversed(words) if w.isdigit()), "")
+        core = " ".join(
+            w for w in words
+            if not w.isdigit() and w not in SEARCH_IGNORE and SEARCH_ALIASES.get(w, w) not in STREET_KINDS
+        )
+        if len(core) < 4:
+            return []
+        out = []
+        cores = self.street_cores()
+        for name in difflib.get_close_matches(core, list(cores), n=3, cutoff=0.78):
+            for street in cores[name]:  # «Calle del Barrial» y «Camino del Barrial»
+                out += self._search(f"{street} {number}".strip())
+        return out[:12]
+
+    @lru_cache(maxsize=1)
+    def street_cores(self):
+        """Nombre «esencial» de cada calle (sin tipo de vía ni artículos) → nombres completos."""
+        with self.db_connect() as conn:
+            streets = [r[0] for r in conn.execute(
+                "SELECT DISTINCT substr(label, 1, instr(label, ',') - 1) FROM portals WHERE instr(label, ',') > 0"
+            )]
+        cores = {}
+        for street in streets:
+            words = normal(street).split()
+            core = " ".join(w for w in words if w not in SEARCH_IGNORE and w not in STREET_KINDS)
+            cores.setdefault(core, []).append(street)
+        return cores
+
+    def _search(self, query):
         words = [
-            aliases.get(t, t)
+            SEARCH_ALIASES.get(t, t)
             for t in normal(query).split()
-            if t not in ignore
+            if t not in SEARCH_IGNORE
             and not (len(t) == 5 and t.startswith("28") and t.isdigit())
         ][:12]
         terms = [t for t in words if t.isalnum()]
@@ -427,35 +458,40 @@ class Madrid:
         if len(terms) > 1 and terms[-1].isdigit() and len(terms[-1]) > 1:
             terms[-1] = str(int(terms[-1]))
         exact_number = any(t.isdigit() for t in terms)
+
+        def score(label):
+            """Palabras buscadas que aparecen enteras en el nombre (no en el distrito)."""
+            return sum(t in label.split() for t in terms)
+
+        def matches(label):
+            # Cada palabra debe empezar una palabra del nombre: «aro» no casa con «Álvaro».
+            split = label.split()
+            return all(
+                t in split if t.isdigit() else any(w.startswith(t) for w in split) for t in terms
+            )
+
         match = " ".join(f'"{t}"' if t.isdigit() else f'"{t}"*' for t in terms)
         with self.db_connect() as conn:
             rows = conn.execute(
                 """SELECT id,label,district,x,y FROM search JOIN portals ON portals.id=search.rowid
-                                WHERE search MATCH ? ORDER BY bm25(search), length(label) LIMIT 12""",
+                                WHERE search MATCH ? ORDER BY bm25(search), length(label) LIMIT 1500""",
                 (match,),
             ).fetchall()
-        places = (
-            [
-                row
-                for _, row in sorted(
+        places = []
+        if not exact_number or self.number_in_places(terms):
+            ranked = [
+                (
                     (
-                        (
-                            (
-                                -sum(t in label.split() for t in terms),
-                                not label.startswith(terms[0]),
-                                not str(row["source"]).startswith("Comunidad de Madrid"),
-                            ),
-                            row,
-                        )
-                        for row, label in self.places_index
-                        if all(t in label for t in terms)
+                        -score(label),
+                        not label.startswith(terms[0]),
+                        not str(row["source"]).startswith("Comunidad de Madrid"),
                     ),
-                    key=lambda item: item[0],
+                    row,
                 )
-            ][:5]
-            if not exact_number or self.number_in_places(terms)
-            else []
-        )
+                for row, label in self.places_index
+                if matches(label)
+            ]
+            places = sorted(ranked, key=lambda item: item[0])[:5]
         if exact_number:
             requested = next(t for t in reversed(terms) if t.isdigit())
             rows = [
@@ -463,17 +499,55 @@ class Madrid:
                 for r in rows
                 if requested in normal(r["label"].partition(",")[2]).split()
             ]
-        return [self.poi_output(row) for row in places] + [
-            {
-                "id": "p" + str(r["id"]),
-                "label": r["label"],
-                "district": r["district"],
-                "kind": "address",
-                "coordinates": coordinates((r["x"], r["y"])),
-                "source": "Callejero municipal de Madrid · octubre 2026",
-            }
+        # El nombre de la calle manda sobre el distrito («Arganzuela 4» es la calle, no
+        # cualquier portal del distrito de Arganzuela).
+        rows = sorted(rows, key=lambda r: (-score(normal(r["label"])), len(r["label"])))[:12]
+        addresses = [
+            (
+                (-score(normal(r["label"])), 0),
+                {
+                    "id": "p" + str(r["id"]),
+                    "label": r["label"],
+                    "district": r["district"],
+                    "kind": "address",
+                    "coordinates": coordinates((r["x"], r["y"])),
+                    "source": "Callejero municipal de Madrid · octubre 2026",
+                },
+            )
             for r in rows
         ]
+        # Gana lo que más palabras completas comparte con la búsqueda. Si empatan, el lugar
+        # cuyo nombre las contiene («12 de Octubre») y si no, la dirección.
+        def by_name(row):
+            """Las palabras están en el nombre del lugar, no solo en su dirección («Consulta
+            médica · Calle Puerta del Sol 4» no gana a la dirección «Puerta del Sol»)."""
+            name = normal(row["label"].split(" · ")[0].split(" — ")[0]).split()
+            words = [t for t in terms if not t.isdigit()]
+            numbers = [t for t in terms if t.isdigit()]
+            return any(t in name for t in words) and all(n in name for n in numbers)
+
+        named = [((key[0], 0 if by_name(row) else 2), self.poi_output(row)) for key, row in places]
+        addresses = [((key[0], 1), item) for key, item in addresses]
+        merged = sorted(named + addresses, key=lambda item: item[0])
+        return [item for _, item in merged]
+
+
+SEARCH_ALIASES = {
+    "c": "calle", "cl": "calle", "cll": "calle", "call": "calle",
+    "av": "avenida", "avd": "avenida", "avda": "avenida", "avad": "avenida",
+    "pza": "plaza", "pz": "plaza", "pl": "plaza", "plz": "plaza", "plza": "plaza",
+    "pso": "paseo", "ps": "paseo", "po": "paseo",
+    "gta": "glorieta", "glta": "glorieta",
+    "ctra": "carretera", "cra": "carretera", "crta": "carretera",
+    "cmno": "camino", "cno": "camino",
+    "trva": "travesia", "trv": "travesia",
+    "rda": "ronda", "cjon": "callejon", "cta": "cuesta", "pje": "pasaje", "psje": "pasaje",
+}
+SEARCH_IGNORE = {"de", "del", "la", "las", "el", "los", "madrid"}
+STREET_KINDS = {
+    "calle", "avenida", "plaza", "paseo", "glorieta", "carretera", "camino", "travesia",
+    "ronda", "callejon", "cuesta", "pasaje", "costanilla", "plazuela", "autovia",
+}
 
 
 class Trip:

@@ -68,12 +68,38 @@ export default function Map({
         zoom: 12.9,
         // Teselas vectoriales gratuitas de OpenFreeMap (datos © OpenStreetMap).
         style: "https://tiles.openfreemap.org/styles/positron",
+        // Un dedo casi nunca queda quieto al tocar: con la tolerancia por defecto (3 px)
+        // el toque se tomaba como arrastre y el punto no se marcaba.
+        clickTolerance: placing ? 14 : 6,
       });
       map.current = m;
       m.addControl(new NavigationControl({ showCompass: false }), "top-right");
-      m.on("click", (event) =>
-        click.current([event.lngLat.lng, event.lngLat.lat]),
-      );
+      // Al marcar un punto, un toque en el que el dedo se desliza un poco (pulso, prisa)
+      // el navegador ya no lo convierte en clic: se reconoce aquí el toque corto.
+      let touch: { x: number; y: number; at: number; lngLat: maplibregl.LngLat } | null = null;
+      let touchPicked = 0;
+      m.on("touchstart", (event) => {
+        touch =
+          placingRef.current && event.originalEvent.touches.length === 1
+            ? { x: event.point.x, y: event.point.y, at: Date.now(), lngLat: event.lngLat }
+            : null;
+      });
+      m.on("touchend", (event) => {
+        const start = touch;
+        touch = null;
+        if (!start || !placingRef.current || event.originalEvent.touches.length > 0) return;
+        const end = event.originalEvent.changedTouches[0];
+        const rect = m.getCanvas().getBoundingClientRect();
+        const moved = Math.hypot(end.clientX - rect.left - start.x, end.clientY - rect.top - start.y);
+        if (moved < 25 && Date.now() - start.at < 700) {
+          touchPicked = Date.now();
+          click.current([start.lngLat.lng, start.lngLat.lat]);
+        }
+      });
+      m.on("click", (event) => {
+        if (Date.now() - touchPicked < 1000) return; // ya marcado por el toque
+        click.current([event.lngLat.lng, event.lngLat.lat]);
+      });
       m.on("load", () => {
         for (const id of ["pois", "routes", "segments", "pins"])
           m.addSource(id, { type: "geojson", data: empty() });

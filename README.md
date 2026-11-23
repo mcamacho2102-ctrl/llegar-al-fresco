@@ -10,7 +10,9 @@
 
 > En Madrid capital, en el **88,1 %** de los trayectos hasta el centro de salud más cercano hay que caminar **más de 200 m seguidos sin un banco** por el camino directo. En el **60,5 %** no existe **ninguna** ruta que permita parar cada 200 m.
 
-Son 3.102 trayectos calculados en los 21 distritos con una muestra aleatoria reproducible. El destino es el centro de salud de atención primaria más cercano según el registro de la Comunidad de Madrid, y se cuentan los 54.172 bancos municipales operativos. Con 300 m de límite, la cifra baja al 74,0 %. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
+Son 3.102 trayectos calculados en los 21 distritos con una muestra aleatoria reproducible. El destino es el centro de salud de atención primaria más cercano según el registro de la Comunidad de Madrid, y se cuentan los 54.172 bancos municipales operativos. Con 300 m de límite, la cifra baja al 74,0 %.
+
+**Por qué 200 m es un umbral prudente, no exagerado.** La guía oficial británica de accesibilidad peatonal ([*Inclusive Mobility*, Department for Transport, 2021](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1044542/inclusive-mobility-a-guide-to-best-practice-on-access-to-pedestrian-and-transport-infrastructure.pdf), §3.4 y §4.5) recomienda andar como máximo 50 m sin descansar si se usa bastón, 100 m con movilidad reducida sin bastón y 150 m en silla de ruedas, y pide **un asiento cada 50 m como máximo** en zonas peatonales de uso habitual. Según el estudio que cita, la mitad de las personas con alguna discapacidad que pueden andar no pasan de 200 m sin parar. Con 200 m la cifra se queda corta, si acaso. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
 
 En la Comunidad viven **1,34 millones de personas de 65 años o más**. Para muchas de ellas, con artrosis, EPOC, insuficiencia cardiaca o simplemente con muchos años, la pregunta no es «¿cuánto tardo?», sino **«¿dónde me puedo sentar?»**. Y en verano, «¿por dónde hay sombra?».
 
