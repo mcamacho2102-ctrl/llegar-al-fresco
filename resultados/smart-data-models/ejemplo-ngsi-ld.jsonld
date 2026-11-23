@@ -1,0 +1,80 @@
+[
+ {
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0010-Nueva-Edad-Centro-de-Dia-Centro-de-dia-para-mayores-de-Marti",
+  "type": "PointOfInterest",
+  "name": "Nueva Edad, Centro de Dia",
+  "description": "Nueva Edad, Centro de Dia · Centro de día para mayores · de Martínez Villergas 6",
+  "category": [
+   "centro-para-mayores"
+  ],
+  "location": {
+   "type": "Point",
+   "coordinates": [
+    -3.651611,
+    40.439832
+   ]
+  },
+  "address": {
+   "addressCountry": "ES",
+   "addressRegion": "Comunidad de Madrid",
+   "addressLocality": "Madrid"
+  },
+  "source": "https://datos.comunidad.madrid/dataset/atencion_social_registro_centros",
+  "dataProvider": "Comunidad de Madrid · Registro de centros de atención social",
+  "@context": [
+   "https://raw.githubusercontent.com/smart-data-models/dataModel.PointOfInterest/master/context.jsonld"
+  ]
+ },
+ {
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0026-El-Encuentro-Hogar-o-club-de-mayores-de-Cyesa-13",
+  "type": "PointOfInterest",
+  "name": "El Encuentro",
+  "description": "El Encuentro · Hogar o club de mayores · de Cyesa 13",
+  "category": [
+   "centro-para-mayores"
+  ],
+  "location": {
+   "type": "Point",
+   "coordinates": [
+    -3.657399,
+    40.430034
+   ]
+  },
+  "address": {
+   "addressCountry": "ES",
+   "addressRegion": "Comunidad de Madrid",
+   "addressLocality": "Madrid"
+  },
+  "source": "https://datos.comunidad.madrid/dataset/atencion_social_registro_centros",
+  "dataProvider": "Comunidad de Madrid · Registro de centros de atención social",
+  "@context": [
+   "https://raw.githubusercontent.com/smart-data-models/dataModel.PointOfInterest/master/context.jsonld"
+  ]
+ },
+ {
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0074-Santa-Filipina-Residencia-de-Personas-Mayores-Residencia-de-",
+  "type": "PointOfInterest",
+  "name": "Santa Filipina, Residencia de Personas Mayores",
+  "description": "Santa Filipina, Residencia de Personas Mayores · Residencia de mayores · de Burgos 4",
+  "category": [
+   "centro-para-mayores"
+  ],
+  "location": {
+   "type": "Point",
+   "coordinates": [
+    -3.676074,
+    40.470052
+   ]
+  },
+  "address": {
+   "addressCountry": "ES",
+   "addressRegion": "Comunidad de Madrid",
+   "addressLocality": "Madrid"
+  },
+  "source": "https://datos.comunidad.madrid/dataset/atencion_social_registro_centros",
+  "dataProvider": "Comunidad de Madrid · Registro de centros de atención social",
+  "@context": [
+   "https://raw.githubusercontent.com/smart-data-models/dataModel.PointOfInterest/master/context.jsonld"
+  ]
+ }
+]

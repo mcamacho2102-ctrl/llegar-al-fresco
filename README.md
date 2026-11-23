@@ -80,7 +80,10 @@ El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. Para Fly.io 
 .venv/bin/python -m ciudad.relieve      # cotas del MDT05
 .venv/bin/python -m ciudad.municipios   # capa regional de los 179 municipios
 .venv/bin/python -m ciudad.impacto --todos --n 150   # cifra de impacto (36 s)
+.venv/bin/python -m ciudad.sdm          # destinos como Smart Data Models · PointOfInterest, validados
 ```
+
+**Interoperabilidad.** `resultados/smart-data-models/` contiene los 2.630 destinos regionales (centros para mayores, farmacias, centros de salud y bibliotecas) como entidades [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest) NGSI-LD, validadas contra el esquema oficial. El servidor MCP de `mcp/` permite que un asistente de IA use la herramienta con datos verificables.
 
 `ciudad.regional` puede ejecutarse solo, para actualizar centros para mayores y farmacias sobre una compilación existente. Los ficheros de entrada y las capas compiladas están excluidos de Git. El código trabaja en UTM ETRS89 30N y sirve coordenadas lon/lat. SQLite FTS5 indexa portales y destinos. La interfaz usa React, TypeScript, MapLibre y Vite.
 
