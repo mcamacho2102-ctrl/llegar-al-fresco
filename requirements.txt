@@ -1,0 +1,11 @@
+fastapi==0.128.8
+numpy==2.0.2
+osmium==4.3.2
+pvlib==0.13.0
+pydantic==2.13.5
+pyproj==3.6.1
+pyshp==3.1.9
+rasterio==1.4.3
+scipy==1.13.1
+shapely==2.0.7
+uvicorn==0.39.0
