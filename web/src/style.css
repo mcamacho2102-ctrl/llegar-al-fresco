@@ -1337,3 +1337,23 @@ nav .volver {
   .mas { border: 0; }
   .mas[open] summary, .mas summary { display: none; }
 }
+.otra-distancia {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-weight: 650;
+}
+.otra-distancia select {
+  min-height: 52px;
+  font-size: 1.05rem;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 2px solid #cbdacf;
+  background: #f6f9f4;
+}
+.otra-distancia select:has(option:checked:not([value=""])) {
+  border: 3px solid #1f6b52;
+  background: #e3f1e6;
+}

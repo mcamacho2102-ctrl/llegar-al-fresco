@@ -26,6 +26,7 @@ const DESTINATIONS: { kind: Kind; icon: string; label: string }[] = [
   { kind: "biblioteca", icon: "📚", label: "Biblioteca" },
 ];
 const LIMITS = [100, 150, 200, 300];
+const MORE_LIMITS = [400, 500, 600, 750, 1000, 1250, 1500, 2000];
 const LAYERS: {
   key: MapLayer;
   label: string;
@@ -337,6 +338,24 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             No necesito parar
           </button>
         </div>
+        <label className="otra-distancia">
+          Otra distancia:{" "}
+          <select
+            value={limit !== null && MORE_LIMITS.includes(limit) ? String(limit) : ""}
+            onChange={(e) => {
+              if (!e.target.value) return;
+              reset();
+              setLimit(Number(e.target.value));
+            }}
+          >
+            <option value="">Elegir…</option>
+            {MORE_LIMITS.map((value) => (
+              <option key={value} value={value}>
+                {value >= 1000 ? `${fmt(value / 1000)} km` : `${value} m`}
+              </option>
+            ))}
+          </select>
+        </label>
         <details className="cuando">
           <summary>¿Cuándo sales? {when === "now" ? "Ahora" : departure.replace("T", " a las ")}</summary>
           <div className="botones-limite">

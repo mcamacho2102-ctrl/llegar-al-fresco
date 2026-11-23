@@ -8,9 +8,9 @@
 
 ## El problema, en una cifra
 
-> En Madrid capital, en el **87,8 %** de los trayectos hasta el centro de salud más cercano hay que caminar **más de 200 m seguidos sin un banco** por el camino directo. En el **60,3 %** no existe **ninguna** ruta que permita parar cada 200 m.
+> En Madrid capital, en el **88,2 %** de los trayectos hasta el centro de salud más cercano hay que caminar **más de 200 m seguidos sin un banco** por el camino directo. En el **60,9 %** no existe **ninguna** ruta que permita parar cada 200 m.
 
-Son 2.989 trayectos calculados en los 21 distritos con una muestra aleatoria reproducible. El destino es el centro de salud de atención primaria más cercano según el registro de la Comunidad de Madrid, y se cuentan los 54.172 bancos municipales operativos. Con 300 m de límite, la cifra baja al 73,5 %. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
+Son 3.102 trayectos calculados en los 21 distritos con una muestra aleatoria reproducible. El destino es el centro de salud de atención primaria más cercano según el registro de la Comunidad de Madrid, y se cuentan los 54.172 bancos municipales operativos. Con 300 m de límite, la cifra baja al 74,0 %. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
 
 En la Comunidad viven **1,34 millones de personas de 65 años o más**. Para muchas de ellas, con artrosis, EPOC, insuficiencia cardiaca o simplemente con muchos años, la pregunta no es «¿cuánto tardo?», sino **«¿dónde me puedo sentar?»**. Y en verano, «¿por dónde hay sombra?».
 
@@ -89,9 +89,9 @@ El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. Para Fly.io 
 
 ## Demostración
 
-En **Mi recorrido**, pulsa **Cargar ejemplo** y **Comparar rutas**. La Plaza de la Virgen de la Paloma, 1 y la Biblioteca Pedro Salinas están a 238 m por la ruta corta. Con un límite de 200 m sin descanso, la alternativa con banco mide 315 m y su tramo continuo más largo es de 168,7 m. Para reproducir las condiciones históricas, elige el **1 de julio de 2025 a las 14:00**: el resultado muestra la observación regional de 33,6 °C de la estación de Majadahonda.
+En **Mi recorrido**, pulsa **Cargar ejemplo** y **Comparar rutas**. La Plaza de la Virgen de la Paloma, 1 y la Biblioteca Pedro Salinas están a 238 m por la ruta corta. Con un límite de 200 m sin descanso, la alternativa con banco mide 316 m y su tramo continuo más largo es de 168,7 m. Para reproducir las condiciones históricas, elige el **1 de julio de 2025 a las 14:00**: el resultado muestra la observación regional de 33,6 °C de la estación de Majadahonda.
 
-En **Panel municipal**, vuelve a pulsar **Cargar ejemplo** y **Comparar rutas**. El banco hipotético acorta la alternativa en 77 m, hasta 238 m, con un máximo de 157,4 m sin parar. **Evaluar zona** calcula, sobre portales muestreados, el acceso al mismo destino con y sin la actuación. **Buscar ubicaciones para bancos** propone hasta tres candidatos, ordenados por nuevas rutas compatibles, mejora de los tramos sin descanso y residentes de 65 años o más.
+En **Panel municipal**, vuelve a pulsar **Cargar ejemplo** y **Comparar rutas**. El banco hipotético acorta la alternativa en 77 m, hasta 239 m, con un máximo de 158,3 m sin parar. **Evaluar zona** calcula, sobre portales muestreados, el acceso al mismo destino con y sin la actuación. **Buscar ubicaciones para bancos** propone hasta tres candidatos, ordenados por nuevas rutas compatibles, mejora de los tramos sin descanso y residentes de 65 años o más.
 
 Para **Evitar escaleras**, busca **Calle de los Mancebos, 3 → Calle de Segovia, 16** con **Sin límite** de descanso: 297 m con escaleras y 387 m evitándolas.
 
@@ -101,7 +101,7 @@ Los aforos horarios corresponden a enero–junio de 2024 ([permanentes](https://
 
 ## Qué significa cada dato
 
-- **Direcciones y accesos.** El buscador local usa el callejero municipal y los registros regionales de centros sanitarios, centros para mayores, farmacias y bibliotecas. Si no hay resultados, CartoCiudad se consulta con una acción explícita. Los enlaces a la red se aproximan en línea recta, con un máximo de 60 m.
+- **Direcciones y accesos.** El buscador local usa el callejero municipal y los registros regionales de centros sanitarios, centros para mayores, farmacias y bibliotecas. Si no hay resultados, CartoCiudad se consulta con una acción explícita. Los enlaces a la red se aproximan en línea recta, con un máximo de 150 m, y solo a la red principal conectada (nunca a un patio o recinto aislado). Si un punto queda fuera de Madrid o lejos de cualquier calle, el mensaje lo dice.
 - **Descansos.** Los bancos operativos se conectan a caminos cartografiados a un máximo de 10 m. El desvío hasta el asiento y el regreso cuentan en la distancia. La búsqueda distingue entre un cálculo inconcluso y la ausencia de alternativa.
 - **Anchura, pendiente y cruces.** Anchura y pendiente OSM explícitas permiten filtros estrictos. La acera municipal aporta valores medios y el MDT05 estima subidas y bajadas. Se muestra qué porcentaje del recorrido tiene datos.
 - **Sombra y meteorología.** La proyección solar usa la altura de los edificios y las copas de OSM con dimensiones, en intervalos de 15 minutos. Se modela sobre terreno plano, con cobertura de arbolado limitada. AEMET aporta el pronóstico horario y la red regional, la observación histórica.

@@ -15,6 +15,8 @@ import numpy as np
 import pvlib
 import shapely
 from pyproj import Transformer
+from scipy.sparse import coo_matrix
+from scipy.sparse.csgraph import connected_components
 from scipy.spatial import cKDTree
 from shapely import LineString, Point, STRtree
 
@@ -23,7 +25,7 @@ from ciudad.preparar import VERSION, normal, number
 
 TO_METERS = Transformer.from_crs(4326, 25830, always_xy=True)
 TO_DEGREES = Transformer.from_crs(25830, 4326, always_xy=True)
-MAX_CONNECT = 60
+MAX_CONNECT = 150
 BENCH_CONNECT = 10
 MAX_CHECKS = 220000
 
@@ -92,6 +94,14 @@ class Madrid:
         self.names = json.loads((VERSION / "calles.json").read_text())
         self.boundary = shapely.from_wkb((VERSION / "limite.wkb").read_bytes())
         shapely.prepare(self.boundary)
+        # Red principal conectada: los extremos de una ruta solo se enganchan a ella,
+        # para no quedar atrapados en un patio o recinto aislado del resto de la ciudad.
+        graph = coo_matrix(
+            (np.ones(len(self.a), dtype=np.int8), (self.a, self.b)),
+            shape=(len(self.xy), len(self.xy)),
+        )
+        _, component = connected_components(graph, directed=False)
+        self.main_edge = component[self.a] == np.bincount(component).argmax()
         self.segments = shapely.linestrings(
             np.stack([self.xy[self.a], self.xy[self.b]], axis=1)
         )
@@ -194,6 +204,9 @@ class Madrid:
         fitted = a + ratio * vector
         return Dock(int(edge), ratio, float(np.linalg.norm(fitted - xy)), tuple(fitted))
 
+    def inside(self, lon, lat):
+        return bool(shapely.intersects_xy(self.boundary, *TO_METERS.transform(lon, lat)))
+
     def locate(self, lon, lat, bench=False):
         xy = np.array(TO_METERS.transform(lon, lat))
         if not shapely.intersects_xy(self.boundary, *xy):
@@ -206,6 +219,8 @@ class Madrid:
         for idx in result:
             edge = int(self.restable[idx]) if bench else int(idx)
             if self.flags[edge] & (128 | 1):
+                continue
+            if not bench and not self.main_edge[edge]:
                 continue
             dock = self.project(edge, xy)
             penalty = 0 if self.flags[edge] & 8 else 6

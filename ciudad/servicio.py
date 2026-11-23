@@ -20,7 +20,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from ciudad.fuentes import AEMET, RAW, ROOT, response
-from ciudad.motor import MAX_CHECKS, Madrid, Limits, TO_METERS, coordinates, normal
+from ciudad.motor import MAX_CHECKS, MAX_CONNECT, Madrid, Limits, TO_METERS, coordinates, normal
 from ciudad.aforos import CAMPAIGN_SOURCE, PERMANENT_SOURCE, read_footfall
 from ciudad.priorizar import SEARCH_BUDGET, compare_banks
 
@@ -149,7 +149,7 @@ class Improvement(Place):
 
 class Preferences(BaseModel):
     pace: float = Field(default=1, ge=0.4, le=1.7)
-    rest: Optional[int] = Field(default=200, ge=30, le=1500)
+    rest: Optional[int] = Field(default=200, ge=30, le=2000)
     width: Optional[float] = Field(default=None, ge=0.7, le=5)
     slope: Optional[float] = Field(default=None, ge=1, le=30)
     avoidStairs: bool = True
@@ -264,11 +264,27 @@ def build_trip(request):
     except ValueError as e:
         raise HTTPException(422, str(e)) from e
     if trip is None:
-        raise HTTPException(
-            422,
-            "El punto elegido está fuera de Madrid capital o a más de 60 m de la red peatonal disponible.",
-        )
+        raise HTTPException(422, unreachable_message(city, request))
     return trip
+
+
+def unreachable_message(city, request):
+    """Explica cuál de los dos extremos falla y por qué."""
+    ends = (("La salida", request.origin), ("La llegada", request.destination))
+    for name, place in ends:
+        if not city.inside(place.lon, place.lat):
+            return (
+                f"{name} está fuera de Madrid capital. Por ahora la aplicación "
+                "solo cubre el municipio de Madrid."
+            )
+    for name, place in ends:
+        if city.locate(place.lon, place.lat) is None:
+            return (
+                f"{name} está a más de {MAX_CONNECT} m de cualquier calle o camino "
+                "del mapa (puede ser una urbanización muy nueva o el interior de "
+                "un recinto). Marca en el mapa un punto en la calle más cercana."
+            )
+    return "No se ha podido preparar el recorrido. Prueba con otro punto cercano."
 
 
 @lru_cache(maxsize=3)

@@ -8,8 +8,8 @@ Arganzuela,"Calle De Caceres, 19",02058,1629,336,Centro de salud · de Cáceres 
 Arganzuela,"Calle De Enrique Trompeta, 3",02047,1594,256,Centro de salud · de Cáceres 4,475,568,True,9.2,581,199.3,cumple_ya
 Arganzuela,"Calle Del Teniente Coronel Noreña, 39  A",02111,1507,183,Centro de salud · de la Antracita 2A,44,57,False,0.2,57,57.0,cumple_ya
 Arganzuela,"Calle De Tomas Breton, 21",02053,1677,499,Centro de salud · de Cáceres 4,241,437,True,7.2,,,no_hay_alternativa
-Arganzuela,"Calle De Sangarcia, 1",02090,1760,398,Centro de salud · de Toledo 180,627,,,,,,sin_ruta
-Arganzuela,"Calle De Mendez Alvaro, 30",02066,2501,549,Centro de salud · de Delicias 5,832,,,,,,sin_ruta
+Arganzuela,"Calle De Sangarcia, 1",02090,1760,398,Centro de salud · de Toledo 180,627,811,True,11.9,,,no_hay_alternativa
+Arganzuela,"Calle De Mendez Alvaro, 30",02066,2501,549,Centro de salud · de Delicias 5,832,1759,True,26.0,,,no_hay_alternativa
 Arganzuela,"Paseo De Santa Maria De La Cabeza, 88",02029,824,120,Centro de salud · del Cardenal Solís 6,258,360,True,5.1,361,181.7,cumple_ya
 Arganzuela,"Calle De San Epifanio, 5",02011,1799,321,Centro de salud · de Toledo 180,319,454,True,6.7,647,177.4,se_arregla_con_desvio
 Arganzuela,"Glorieta De Las Piramides, 6",02107,2834,430,Centro de salud · de Toledo 180,169,269,True,3.4,273,180.5,cumple_ya
@@ -37,7 +37,7 @@ Arganzuela,"Calle De La Villa De Arbancon, 1",02020,1117,300,Centro de salud · 
 Arganzuela,"Calle De La Batalla Del Salado, 46",02059,696,186,Centro de salud · de Cáceres 4,129,336,True,4.6,337,178.1,cumple_ya
 Arganzuela,"Calle De Juan De Vera, 10",02051,2043,459,Centro de salud · de Cáceres 4,480,763,True,12.4,,,no_hay_alternativa
 Arganzuela,"Calle De Bolivar, 24  E",02101,1581,151,Centro de salud · de la Antracita 2A,469,730,True,10.1,979,199.7,se_arregla_con_desvio
-Arganzuela,"Calle De Sangarcia, 8",02090,1760,398,Centro de salud · de Toledo 180,690,,,,,,sin_ruta
+Arganzuela,"Calle De Sangarcia, 8",02090,1760,398,Centro de salud · de Toledo 180,690,896,True,13.2,,,no_hay_alternativa
 Arganzuela,"Calle De Ricardo Damas, 41  A",02099,2159,151,Centro de salud · de la Antracita 2A,257,384,True,4.7,572,198.2,se_arregla_con_desvio
 Arganzuela,"Calle Del Granito, 32",02097,1131,125,Centro de salud · de Cáceres 4,623,795,True,13.2,945,192.1,se_arregla_con_desvio
 Arganzuela,"Calle Del General Palanca, 37",02061,877,149,Centro de salud · de Cáceres 4,316,442,True,7.1,447,178.9,cumple_ya
@@ -47,7 +47,7 @@ Arganzuela,"Paseo De La Virgen Del Puerto, 29",02004,1043,238,Centro de salud ·
 Arganzuela,"Calle De Segovia, 53",02001,1174,229,Centro de salud · de Linneo 3,384,636,True,9.6,745,197.5,se_arregla_con_desvio
 Arganzuela,"Calle Del Jacaranda, 4",02083,3313,268,Centro de salud · de la Ciudad de Barcelona 190,210,327,True,4.5,515,197.0,se_arregla_con_desvio
 Arganzuela,"Calle De Alejandro Ferrant, 14",02051,2043,459,Centro de salud · de Cáceres 4,396,559,True,8.7,790,192.1,se_arregla_con_desvio
-Arganzuela,"Calle De Leganes, 5",02083,3313,268,Centro de salud · de la Ciudad de Barcelona 190,496,,,,,,sin_ruta
+Arganzuela,"Calle De Leganes, 5",02083,3313,268,Centro de salud · de la Ciudad de Barcelona 190,496,1190,True,17.6,,,no_hay_alternativa
 Arganzuela,"Calle Del Labrador, 22",02027,974,343,Centro de salud · de Martín de Vargas 15,47,61,False,0.3,61,60.6,cumple_ya
 Arganzuela,"Paseo De Los Olmos, 19",02087,2132,611,Centro de salud · de los Embajadores 41,519,706,True,10.9,774,199.1,se_arregla_con_desvio
 Arganzuela,"Calle De Mendez Alvaro, 40",02106,2385,344,Centro de salud · de la Ciudad de Barcelona 190,752,1075,True,17.1,,,no_hay_alternativa
@@ -64,16 +64,16 @@ Arganzuela,"Glorieta De Las Piramides, 7",02107,2834,430,Centro de salud · de T
 Arganzuela,"Calle De Martin De Vargas, 44",02026,1286,382,Centro de salud · del Cardenal Solís 6,141,272,True,3.8,,,no_hay_alternativa
 Arganzuela,"Calle De Rafael De Riego, 12",02082,1276,212,Centro de salud · de Delicias 5,483,829,True,13.2,848,197.6,cumple_ya
 Arganzuela,"Calle Del Ferrocarril, 4  B",02065,1592,331,Centro de salud · de Delicias 5,221,309,True,4.7,310,182.8,cumple_ya
-Arganzuela,"Calle De Mendez Alvaro, 26  A",02067,1507,296,Centro de salud · de Delicias 5,733,,,,,,sin_ruta
+Arganzuela,"Calle De Mendez Alvaro, 26  A",02067,1507,296,Centro de salud · de Delicias 5,733,1404,True,22.0,,,no_hay_alternativa
 Arganzuela,"Paseo De Santa Maria De La Cabeza, 25",02079,1247,343,Centro de salud · de Delicias 5,324,425,True,6.8,437,189.2,cumple_ya
-Arganzuela,"Calle Del Parroco Eusebio Cuenca, 68",02052,1715,252,Centro de salud · de la Antracita 2A,748,,,,,,sin_ruta
+Arganzuela,"Calle Del Parroco Eusebio Cuenca, 68",02052,1715,252,Centro de salud · de la Antracita 2A,748,1582,True,24.1,,,no_hay_alternativa
 Arganzuela,"Calle Del Puerto De La Cruz Verde, 26  C",02102,1660,367,Centro de salud · de la Antracita 2A,630,1410,True,23.1,,,no_hay_alternativa
 Arganzuela,"Calle Del Puerto De La Cruz Verde, 58",02102,1660,367,Centro de salud · de la Antracita 2A,611,1334,True,21.5,,,no_hay_alternativa
 Arganzuela,"Calle De Alejandro Ferrant, 24",02051,2043,459,Centro de salud · de Cáceres 4,415,574,True,8.8,974,192.1,se_arregla_con_desvio
 Arganzuela,"Calle De Sebastian Herrera, 15",02072,1695,337,Centro de salud · de Delicias 5,312,448,True,4.6,548,191.6,se_arregla_con_desvio
 Arganzuela,"Calle De Enrique Trompeta, 9",02047,1594,256,Centro de salud · del Párroco Julio Morate 3,491,699,True,10.9,961,184.2,se_arregla_con_desvio
 Arganzuela,"Paseo De La Chopera, 2  D",02047,1594,256,Centro de salud · del Párroco Julio Morate 3,250,435,True,6.2,,,no_hay_alternativa
-Arganzuela,"Pasaje Del Ancora, 8  D",02067,1507,296,Centro de salud · de Delicias 5,556,,,,,,sin_ruta
+Arganzuela,"Pasaje Del Ancora, 8  D",02067,1507,296,Centro de salud · de Delicias 5,556,718,True,10.6,837,197.6,se_arregla_con_desvio
 Arganzuela,"Calle De Rafael De Riego, 2",02082,1276,212,Centro de salud · de la Alameda 5,530,670,True,10.9,738,193.1,se_arregla_con_desvio
 Arganzuela,"Calle De Tomas Breton, 28",02054,1175,256,Centro de salud · de Cáceres 4,246,457,True,7.3,,,no_hay_alternativa
 Arganzuela,"Calle Del Mezquite, 5  B",02098,1410,148,Centro de salud · de la Ciudad de Barcelona 190,606,1044,True,16.7,,,no_hay_alternativa
@@ -93,8 +93,8 @@ Arganzuela,"Calle De Isidoro Alvarez Alvarez, 2  A",02097,1131,125,Centro de sal
 Arganzuela,"Calle De San Epifanio, 7  A",02011,1799,321,Centro de salud · de Toledo 180,306,410,True,6.2,662,177.4,se_arregla_con_desvio
 Arganzuela,"Paseo De La Virgen Del Puerto, 57",02010,1262,279,Centro de salud · de Linneo 3,600,800,True,12.0,,,no_hay_alternativa
 Arganzuela,"Paseo De Los Pontones, 20  B",02009,1952,537,Centro de salud · de Toledo 180,551,629,True,10.2,635,189.4,cumple_ya
-Arganzuela,"Calle Del Parroco Eusebio Cuenca, 64",02052,1715,252,Centro de salud · de Cáceres 4,768,,,,,,sin_ruta
-Arganzuela,"Calle De Mejorada Del Campo, 1",02106,2385,344,Centro de salud · de la Ciudad de Barcelona 190,797,,,,,,sin_ruta
+Arganzuela,"Calle Del Parroco Eusebio Cuenca, 64",02052,1715,252,Centro de salud · de Cáceres 4,768,1254,True,20.4,,,no_hay_alternativa
+Arganzuela,"Calle De Mejorada Del Campo, 1",02106,2385,344,Centro de salud · de la Ciudad de Barcelona 190,797,1136,True,17.2,,,no_hay_alternativa
 Arganzuela,"Paseo Del Molino, 8  F",02100,1841,234,Centro de salud · de la Antracita 2A,182,282,True,4.3,292,199.7,cumple_ya
 Arganzuela,"Calle De Embajadores, 156",02041,2127,380,Centro de salud · de Cáceres 4,29,38,False,0.5,38,37.7,cumple_ya
 Arganzuela,"Calle De Guillermo De Osma, 14  B",02044,1840,386,Centro de salud · del Párroco Julio Morate 3,274,422,True,6.6,669,194.5,se_arregla_con_desvio
@@ -134,12 +134,12 @@ Arganzuela,"Plaza De Legazpi, 3",02048,1256,228,Centro de salud · de la Antraci
 Arganzuela,"Calle De Bustamante, 9",02065,1592,331,Centro de salud · de Delicias 5,355,468,True,5.0,474,182.8,cumple_ya
 Arganzuela,"Calle De Embajadores, 102",02026,1286,382,Centro de salud · del Cardenal Solís 6,220,370,True,5.6,,,no_hay_alternativa
 Arganzuela,"Calle De Melilla, 8",02016,1979,570,Centro de salud · de Toledo 180,504,608,True,9.8,717,180.5,se_arregla_con_desvio
-Arganzuela,"Calle Del Cobre, 1",02052,1715,252,Centro de salud · de Cáceres 4,644,,,,,,sin_ruta
+Arganzuela,"Calle Del Cobre, 1",02052,1715,252,Centro de salud · de Cáceres 4,644,877,True,13.8,,,no_hay_alternativa
 Arganzuela,"Calle De Las Nebulosas, 2  K",02113,1839,134,Centro de salud · de la Ciudad de Barcelona 190,900,1169,True,18.0,,,no_hay_alternativa
-Arganzuela,"Calle De Alamedilla, 10",02083,3313,268,Centro de salud · de la Ciudad de Barcelona 190,584,,,,,,sin_ruta
+Arganzuela,"Calle De Alamedilla, 10",02083,3313,268,Centro de salud · de la Ciudad de Barcelona 190,584,847,True,12.1,,,no_hay_alternativa
 Arganzuela,"Calle Del Bronce, 11",02049,1684,395,Centro de salud · de la Antracita 2A,507,561,True,7.2,1098,199.7,se_arregla_con_desvio
 Arganzuela,"Paseo De Las Acacias, 2",02020,1117,300,Centro de salud · de los Embajadores 41,146,219,True,1.9,257,180.2,se_arregla_con_desvio
-Arganzuela,"Calle De Las Nebulosas, 11",02105,1734,301,Centro de salud · de Cáceres 4,861,,,,,,sin_ruta
+Arganzuela,"Calle De Las Nebulosas, 11",02105,1734,301,Centro de salud · de Cáceres 4,861,1244,True,19.5,1482,194.4,se_arregla_con_desvio
 Arganzuela,"Ronda De Segovia, 2  L",02006,2077,625,Centro de salud · de Linneo 3,282,395,True,4.5,424,193.8,se_arregla_con_desvio
 Arganzuela,"Calle De San Anastasio, 2  A",02091,1116,331,Centro de salud · del Párroco Julio Morate 3,326,541,True,8.3,,,no_hay_alternativa
 Arganzuela,"Calle De Bernardino Obregon, 23",02071,1439,367,Centro de salud · de Delicias 5,194,280,True,3.5,367,188.6,se_arregla_con_desvio
@@ -207,7 +207,7 @@ Barajas,"Calle De La Bahia De Alcudia, 48",21025,1555,352,Centro de salud · de 
 Barajas,"Avenida De Logroño, 78",21005,2481,415,Centro de salud · de Logroño 319,549,669,True,10.8,,,no_hay_alternativa
 Barajas,"Calle De Joaquin Ibarra, 41",21002,1452,527,Centro de salud · de la Carabela 7,434,625,True,10.0,,,no_hay_alternativa
 Barajas,"Calle De Orion, 45",21019,2614,333,Centro de salud · de Logroño 319,757,991,True,15.8,,,no_hay_alternativa
-Barajas,"Calle De Las Poderosas, 24",21019,2614,333,Centro de salud · de Logroño 319,827,,,,,,sin_ruta
+Barajas,"Calle De Las Poderosas, 24",21019,2614,333,Centro de salud · de Logroño 319,827,981,True,15.1,,,no_hay_alternativa
 Barajas,"Calle De La Bahia De Santander, 68  D",21029,1618,173,Centro de salud · de Logroño 319,1097,1424,True,23.3,,,no_hay_alternativa
 Barajas,"Calle De La Bahia De Pollensa, 1",21027,2589,310,Centro de salud · de Logroño 319,985,1293,True,21.4,,,no_hay_alternativa
 Barajas,"Calle De La Playa De La Caleta, 11",21033,1405,131,Centro de salud · de Logroño 319,757,1004,True,16.5,1319,197.4,se_arregla_con_desvio
@@ -231,7 +231,7 @@ Barajas,"Calle De La Bahia De Santander, 75",21029,1618,173,Centro de salud · d
 Barajas,"Calle De Alar Del Rey, 13",21026,1613,391,Centro de salud · de Logroño 319,97,113,False,1.6,113,112.6,cumple_ya
 Barajas,"Calle De Saturno, 27  B",21020,1926,451,Centro de salud · de Logroño 319,504,619,True,9.7,,,no_hay_alternativa
 Barajas,"Calle Del Mistral, 63",21028,2046,232,Centro de salud · de Logroño 319,968,1201,True,19.4,1538,197.4,se_arregla_con_desvio
-Barajas,"Calle De Alar Del Rey, 39",21034,1400,150,Centro de salud · de Logroño 319,548,,,,,,sin_ruta
+Barajas,"Calle De Alar Del Rey, 39",21034,1400,150,Centro de salud · de Logroño 319,548,622,True,8.9,752,189.6,se_arregla_con_desvio
 Barajas,"Calle Del Huracan, 34  A",21028,2046,232,Centro de salud · de Logroño 319,1026,1371,True,22.4,,,no_hay_alternativa
 Barajas,"Calle De San Sinforiano, 10",21020,1926,451,Centro de salud · de Logroño 319,460,646,True,10.4,,,no_hay_alternativa
 Barajas,"Calle De Balmaseda, 2",21032,1914,179,Centro de salud · de Logroño 319,308,442,True,7.0,692,197.4,se_arregla_con_desvio
@@ -246,12 +246,12 @@ Barajas,"Calle De Benisoda, 33",21025,1555,352,Centro de salud · de Logroño 31
 Barajas,"Avenida De Logroño, 389",21033,1405,131,Centro de salud · de Logroño 319,988,1206,True,19.9,,,no_hay_alternativa
 Barajas,"Calle De La Bahia De Cadiz, 47",21029,1618,173,Centro de salud · de Logroño 319,1070,1433,True,23.5,,,no_hay_alternativa
 Barajas,"Calle De La Bahia De Santander, 14",21029,1618,173,Centro de salud · de Logroño 319,1155,1521,True,25.0,,,no_hay_alternativa
-Barajas,"Calle Del Siroco, 62",21028,2046,232,Centro de salud · de Logroño 319,1382,,,,,,sin_ruta
+Barajas,"Calle Del Siroco, 62",21028,2046,232,Centro de salud · de Logroño 319,1382,1798,True,28.5,,,no_hay_alternativa
 Barajas,"Calle Del Balandro, 34  A",21011,1792,408,Centro de salud · de la Carabela 7,218,336,True,5.4,,,no_hay_alternativa
 Barajas,"Calle De Ezequiel Peñalver, 15",21015,1984,298,Centro de salud · de la Carabela 7,2829,3157,True,52.4,,,no_hay_alternativa
 Barajas,"Calle De Briones, 29",21025,1555,352,Centro de salud · de Logroño 319,685,972,True,16.0,,,no_hay_alternativa
-Barajas,"Calle De Geminis, 38",21019,2614,333,Centro de salud · de Logroño 319,926,,,,,,sin_ruta
-Barajas,"Calle De Marte, 15",21018,1575,320,Centro de salud · de Logroño 319,814,,,,,,sin_ruta
+Barajas,"Calle De Geminis, 38",21019,2614,333,Centro de salud · de Logroño 319,926,1171,True,17.0,,,no_hay_alternativa
+Barajas,"Calle De Marte, 15",21018,1575,320,Centro de salud · de Logroño 319,814,1203,True,18.7,,,no_hay_alternativa
 Barajas,"Calle De La Galera, 18  B",21010,1284,412,Centro de salud · de la Carabela 7,307,386,True,6.2,,,no_hay_alternativa
 Barajas,"Calle De Anguita, 9",21018,1575,320,Centro de salud · de Logroño 319,577,715,True,11.3,,,no_hay_alternativa
 Barajas,"Calle Empedrada, 34",21018,1575,320,Centro de salud · de Logroño 319,918,,,,,,sin_ruta
@@ -275,7 +275,7 @@ Barajas,"Calle De Manuel Aguilar Muñoz, 11",21005,2481,415,Centro de salud · d
 Barajas,"Calle De Briones, 40",21025,1555,352,Centro de salud · de Logroño 319,688,921,True,14.9,,,no_hay_alternativa
 Barajas,"Calle De Aries, 15",21018,1575,320,Centro de salud · de Logroño 319,712,948,True,15.0,,,no_hay_alternativa
 Barajas,"Calle De Benisoda, 2",21025,1555,352,Centro de salud · de Logroño 319,743,1056,True,17.1,,,no_hay_alternativa
-Barajas,"Calle Del Bergantin, 35",21007,1969,467,Centro de salud · de la Carabela 7,842,,,,,,sin_ruta
+Barajas,"Calle Del Bergantin, 35",21007,1969,467,Centro de salud · de la Carabela 7,842,1136,True,17.2,,,no_hay_alternativa
 Barajas,"Calle De Acuario, 17",21020,1926,451,Centro de salud · de Logroño 319,625,776,True,12.3,,,no_hay_alternativa
 Barajas,"Calle De Aries, 4",21018,1575,320,Centro de salud · de Logroño 319,682,852,True,13.4,,,no_hay_alternativa
 Barajas,"Calle De Iberia, 1",21019,2614,333,Centro de salud · de Logroño 319,838,1143,True,18.5,,,no_hay_alternativa
@@ -289,12 +289,12 @@ Barajas,"Calle Del Ciclon, 44",21028,2046,232,Centro de salud · de Logroño 319
 Barajas,"Calle De La Bahia De Santa Pola, 32",21032,1914,179,Centro de salud · de Logroño 319,779,1032,True,16.9,,,no_hay_alternativa
 Barajas,"Calle Del Ciclon, 42  C",21028,2046,232,Centro de salud · de Logroño 319,1085,1566,True,25.7,,,no_hay_alternativa
 Barajas,"Calle Del Noray, 8",21014,2332,554,Centro de salud · de la Carabela 7,735,873,True,14.2,,,no_hay_alternativa
-Barajas,"Calle De Tintin Y Milu, 10",21005,2481,415,Centro de salud · de Logroño 319,839,,,,,,sin_ruta
+Barajas,"Calle De Tintin Y Milu, 10",21005,2481,415,Centro de salud · de Logroño 319,839,1106,True,17.2,,,no_hay_alternativa
 Barajas,"Calle De Los Pajarones, 5  A",21020,1926,451,Centro de salud · de Logroño 319,711,822,True,13.4,,,no_hay_alternativa
 Barajas,"Calle De Medina De Pomar, 20",21015,1984,298,Centro de salud · de la Carabela 7,347,736,True,11.5,,,no_hay_alternativa
 Barajas,"Calle De Benisoda, 15  A",21025,1555,352,Centro de salud · de Logroño 319,611,891,True,13.3,,,no_hay_alternativa
 Barajas,"Calle De Ayerbe, 7",21017,1495,342,Centro de salud · de Logroño 319,334,449,True,7.1,,,no_hay_alternativa
-Barajas,"Calle De Las Poderosas, 44",21019,2614,333,Centro de salud · de Logroño 319,875,,,,,,sin_ruta
+Barajas,"Calle De Las Poderosas, 44",21019,2614,333,Centro de salud · de Logroño 319,875,1139,True,17.0,,,no_hay_alternativa
 Barajas,"Calle De Turin, 8",21029,1618,173,Centro de salud · de Machupichu 58,1910,2127,True,35.1,,,no_hay_alternativa
 Barajas,"Calle De Bureta, 26",21025,1555,352,Centro de salud · de Logroño 319,517,707,True,11.5,905,197.4,se_arregla_con_desvio
 Barajas,"Calle Del Monzon, 2  C",21028,2046,232,Centro de salud · de Logroño 319,785,1028,True,16.9,1117,197.4,se_arregla_con_desvio
@@ -370,7 +370,7 @@ Carabanchel,"Calle Del Alcaudon, 6",11058,848,187,Centro de salud · Vía Carpet
 Carabanchel,"Calle De La Gaviota, 22",11112,1368,309,Centro de salud · del General Ricardos 131,462,570,True,8.3,,,no_hay_alternativa
 Carabanchel,"Calle Del Duro, 3",11198,2218,262,Centro de salud · de la Guayaba S/N,753,930,True,15.0,,,no_hay_alternativa
 Carabanchel,"Calle De Najera, 12",11101,1745,389,Centro de salud · de Nuestra Señora de Fátima 93,784,840,True,13.7,861,196.6,se_arregla_con_desvio
-Carabanchel,"Avenida De Carabanchel Alto, 21  G",11193,2568,386,Centro de salud · de la Guayaba S/N,602,,,,,,sin_ruta
+Carabanchel,"Avenida De Carabanchel Alto, 21  G",11193,2568,386,Centro de salud · de la Guayaba S/N,602,1068,True,15.1,,,no_hay_alternativa
 Carabanchel,"Calle Del Monasterio De Poblet, 6",11189,2545,177,Centro de salud · de Carabanchel Alto 150,691,1018,True,15.9,1155,190.5,se_arregla_con_desvio
 Carabanchel,"Calle De Inocencia Sanchez, 5",11152,2410,424,Centro de salud · de la Guayaba S/N,748,963,True,15.7,,,no_hay_alternativa
 Carabanchel,"Calle De Gomez De Arteche, 9",11153,1818,326,Centro de salud · de la Guayaba S/N,456,768,True,11.8,817,182.1,se_arregla_con_desvio
@@ -420,7 +420,7 @@ Carabanchel,"Calle De Nuestra Señora De La Antigua, 13",11199,1931,243,Centro d
 Carabanchel,"Calle De Antonio Moreno, 24",11175,1734,323,Centro de salud · del General Ricardos 131,546,778,True,12.6,,,no_hay_alternativa
 Carabanchel,"Calle De Antonio Lopez, 40",11012,2384,403,Centro de salud · de Toledo 180,556,808,True,13.0,952,186.7,se_arregla_con_desvio
 Carabanchel,"Calle Del Alcatraz, 29",11023,1444,266,Centro de salud · del General Ricardos 131,722,825,True,12.4,,,no_hay_alternativa
-Carabanchel,"Calle De Antonio Vicent, 5",11012,2384,403,Centro de salud · de Toledo 180,470,,,,,,sin_ruta
+Carabanchel,"Calle De Antonio Vicent, 5",11012,2384,403,Centro de salud · de Toledo 180,470,815,True,12.8,904,198.4,se_arregla_con_desvio
 Carabanchel,"Calle De La Laguna, 48",11083,1131,192,Centro de salud · Vía Carpetana 202,672,824,True,13.1,,,no_hay_alternativa
 Carabanchel,"Calle De Eugenia De Montijo, 105",11141,1395,281,Centro de salud · de Nuestra Señora de Fátima 93,361,428,True,6.3,506,196.4,se_arregla_con_desvio
 Carabanchel,"Calle Del Monseñor Oscar Romero, 33  A",11100,2248,465,Centro de salud · de Nuestra Señora de Fátima 93,668,864,True,11.6,917,185.5,se_arregla_con_desvio
@@ -439,7 +439,7 @@ Carabanchel,"Paseo De Los Castellanos, 31",11136,1318,303,Centro de salud · de 
 Carabanchel,"Calle De Sallaberry, 74",11039,2713,312,Centro de salud · del Quince de Mayo 10,590,900,True,14.3,,,no_hay_alternativa
 Carabanchel,"Calle Del General Ricardos, 212  C",11104,1208,277,Centro de salud · de la Alegría 24,499,721,True,11.5,,,no_hay_alternativa
 Carabanchel,"Calle Del Parador Del Sol, 14",11007,2291,409,Centro de salud · de Eduardo Marquina 33,292,365,True,4.7,728,198.2,se_arregla_con_desvio
-Carabanchel,"Avenida De Carabanchel Alto, 118",11155,2684,287,Centro de salud · de la Guayaba S/N,667,,,,,,sin_ruta
+Carabanchel,"Avenida De Carabanchel Alto, 118",11155,2684,287,Centro de salud · de la Guayaba S/N,667,1019,True,15.4,,,no_hay_alternativa
 Carabanchel,"Calle De Sallaberry, 46",11042,1382,228,Centro de salud · del Quince de Mayo 10,398,774,True,11.7,,,no_hay_alternativa
 Carabanchel,"Calle De Antonio Romero, 29",11201,1394,166,Centro de salud · de Abrantes 55,512,703,True,11.3,,,no_hay_alternativa
 Carabanchel,"Calle De Braganza, 19",11178,1021,175,Centro de salud · de Abrantes 55,868,979,True,15.9,,,no_hay_alternativa
@@ -496,7 +496,7 @@ Centro,"Calle De Santa Lucia, 2",01100,1246,187,Centro de salud · de la Palma 5
 Centro,"Calle Del Salitre, 45",01054,981,132,Centro de salud · de la Alameda 5,487,691,True,7.8,,,no_hay_alternativa
 Centro,"Calle De Los Tintoreros, 2",01121,1881,302,Centro de salud · de Segovia 4,362,489,True,5.9,,,no_hay_alternativa
 Centro,"Calle De Los Madrazo, 21",01072,1547,283,Centro de salud · de San Jerónimo 32,514,798,True,12.3,916,197.6,se_arregla_con_desvio
-Centro,"Calle Del Duque De Liria, 6",01108,1412,256,Consultorio de atención primaria · de la Palma 54,345,,,,,,sin_ruta
+Centro,"Calle Del Duque De Liria, 6",01108,1412,256,Consultorio de atención primaria · de la Palma 54,345,521,True,5.1,,,no_hay_alternativa
 Centro,"Calle De La Corredera Baja De San Pablo, 8",01114,1681,231,Centro de salud · de la Palma 51,388,610,True,6.3,,,no_hay_alternativa
 Centro,"Calle De Pelayo, 10",01076,1391,216,Centro de salud · de Regueros 3,83,114,False,1.1,114,113.9,cumple_ya
 Centro,"Travesia Del Conde Duque, 4",01109,1012,187,Consultorio de atención primaria · de la Palma 54,175,288,True,3.8,315,178.2,se_arregla_con_desvio
@@ -619,7 +619,7 @@ Chamartin,"Calle Del Principe De Vergara, 210",05049,1120,366,Centro de salud ·
 Chamartin,"Calle De Gabriel Lobo, 10",05012,1107,233,Centro de salud · del Príncipe de Vergara 111,475,565,True,8.8,571,182.1,cumple_ya
 Chamartin,"Calle De Manuel Benedito, 8",05074,1757,325,Centro de salud · de Potosí 7,660,879,True,13.8,,,no_hay_alternativa
 Chamartin,"Calle De Manuel Ferrero, 5  B",05086,1321,268,Centro de salud · de Núñez Morgado 4,254,417,True,4.6,,,no_hay_alternativa
-Chamartin,"Calle Del Padre Damian, 21",05067,2363,651,Centro de salud · de Potosí 7,503,,,,,,sin_ruta
+Chamartin,"Calle Del Padre Damian, 21",05067,2363,651,Centro de salud · de Potosí 7,503,701,True,10.4,988,184.4,se_arregla_con_desvio
 Chamartin,"Calle De Menendez Pidal, 24  A",05075,1928,393,Centro de salud · de Núñez Morgado 4,707,995,True,15.6,,,no_hay_alternativa
 Chamartin,"Calle De Francisco Silvela, 122",05013,815,181,Centro de salud · del Príncipe de Vergara 111,208,242,True,3.8,245,163.8,cumple_ya
 Chamartin,"Calle Del Corazon De Maria, 62",05095,1787,643,Centro de salud · de Ramos Carrión 10,276,367,True,4.7,,,no_hay_alternativa
@@ -643,7 +643,7 @@ Chamartin,"Avenida De Concha Espina, 55",05063,874,196,Centro de salud · de Pot
 Chamartin,"Calle Del Urumea, 10",05003,2033,426,Centro de salud · del Segre 27,437,592,True,9.3,949,187.4,se_arregla_con_desvio
 Chamartin,"Calle De Los Cipreses, 18",05076,2451,487,Centro de salud · de Núñez Morgado 4,262,473,True,7.1,,,no_hay_alternativa
 Chamartin,"Calle De Joaquin Bau, 2",05076,2451,487,Centro de salud · de Núñez Morgado 4,315,430,True,6.3,696,188.9,se_arregla_con_desvio
-Chamartin,"Paseo De La Habana, 187  E",05076,2451,487,Centro de salud · de Núñez Morgado 4,545,,,,,,sin_ruta
+Chamartin,"Paseo De La Habana, 187  E",05076,2451,487,Centro de salud · de Núñez Morgado 4,545,807,True,11.7,,,no_hay_alternativa
 Chamartin,"Calle De Vinaroz, 29",05044,1710,422,Centro de salud · de Pantoja 3,553,654,True,9.4,743,197.7,se_arregla_con_desvio
 Chamartin,"Calle Primera, 21",05053,2165,507,Centro de salud · de Vicente Muzas 8,617,1293,True,19.5,,,no_hay_alternativa
 Chamartin,"Calle De Oquendo, 14  B",05001,1206,331,Centro de salud · del Príncipe de Vergara 111,358,514,True,8.4,519,176.5,cumple_ya
@@ -684,7 +684,7 @@ Chamartin,"Calle De Luis Larrainza, 37",05038,1952,415,Centro de salud · de Pan
 Chamartin,"Avenida De Alfonso Xiii, 23",05038,1952,415,Centro de salud · de Pantoja 3,729,967,True,15.5,1622,194.3,se_arregla_con_desvio
 Chamartin,"Calle De Francisco Campos, 15",05012,1107,233,Centro de salud · del Príncipe de Vergara 111,584,603,True,9.9,609,178.2,cumple_ya
 Chamartin,"Calle Primera, 6",05053,2165,507,Centro de salud · de Vicente Muzas 8,576,1230,True,18.3,,,no_hay_alternativa
-Chamartin,"Calle De Santa Hortensia, 43",05036,1646,591,Centro de salud · de Ramos Carrión 10,502,,,,,,sin_ruta
+Chamartin,"Calle De Santa Hortensia, 43",05036,1646,591,Centro de salud · de Ramos Carrión 10,502,683,True,9.7,,,no_hay_alternativa
 Chamartin,"Calle De Jose Vasconcelos, 6",05094,1560,296,Centro de salud · de Núñez Morgado 4,480,971,True,15.0,,,no_hay_alternativa
 Chamartin,"Calle De Mateo Inurria, 31",05100,2263,426,Centro de salud · de Núñez Morgado 4,439,775,True,11.8,,,no_hay_alternativa
 Chamartin,"Calle De Las Calas, 22",05053,2165,507,Centro de salud · de Vicente Muzas 8,493,1210,True,17.8,,,no_hay_alternativa
@@ -741,21 +741,21 @@ Chamartin,"Calle De Nuñez Morgado, 8",05086,1321,268,Centro de salud · de Nú�
 Chamartin,"Calle De La Ligula, 26",05067,2363,651,Centro de salud · de Potosí 7,313,523,True,7.8,838,194.3,se_arregla_con_desvio
 Chamartin,"Calle De Fray Bernardino Sahagun, 16",05074,1757,325,Centro de salud · de Potosí 7,666,853,True,13.6,,,no_hay_alternativa
 Chamartin,"Avenida Del Aster, 46",05053,2165,507,Centro de salud · de Vicente Muzas 8,363,680,True,8.6,,,no_hay_alternativa
-Chamartin,"Calle Del Padre Damian, 38",05067,2363,651,Centro de salud · de Potosí 7,504,,,,,,sin_ruta
+Chamartin,"Calle Del Padre Damian, 38",05067,2363,651,Centro de salud · de Potosí 7,504,784,True,11.8,,,no_hay_alternativa
 Chamartin,"Calle Del Bidasoa, 6",05008,1627,334,Centro de salud · del Segre 27,401,440,True,6.7,750,187.4,se_arregla_con_desvio
 Chamartin,"Calle De Sanchez Pacheco, 43",05047,1632,347,Centro de salud · de Pantoja 3,271,349,True,4.3,533,193.7,se_arregla_con_desvio
 Chamartin,"Calle De Serrano, 192",05008,1627,334,Centro de salud · del Segre 27,351,434,True,5.1,513,187.4,se_arregla_con_desvio
 Chamartin,"Calle Del Leizaran, 20",05008,1627,334,Centro de salud · del Segre 27,426,462,True,7.2,756,187.4,se_arregla_con_desvio
 Chamartin,"Plaza De La Republica Del Ecuador, 6",05062,1715,488,Centro de salud · de Potosí 7,239,285,True,4.0,298,159.3,cumple_ya
-Chamartin,"Calle Del Cardenal Marcelo Spinola, 14",05085,1910,468,Centro de salud · de Núñez Morgado 4,1325,,,,,,sin_ruta
-Chamartin,"Calle De Sanchez Pacheco, 53",05046,1696,354,Centro de salud · de Pantoja 3,251,,,,,,sin_ruta
+Chamartin,"Calle Del Cardenal Marcelo Spinola, 14",05085,1910,468,Centro de salud · de Núñez Morgado 4,1325,2294,True,37.1,,,no_hay_alternativa
+Chamartin,"Calle De Sanchez Pacheco, 53",05046,1696,354,Centro de salud · de Pantoja 3,251,507,True,6.8,,,no_hay_alternativa
 Chamberi,"Calle De Rafael Calvo, 26",07083,684,196,Centro de salud · de Lagasca 122,642,907,True,13.5,,,no_hay_alternativa
 Chamberi,"Calle De Santa Engracia, 132",07107,1015,300,Centro de salud · de Espronceda 24,542,757,True,11.3,,,no_hay_alternativa
 Chamberi,"Calle De Gonzalo De Cordoba, 8",07058,1156,269,Centro de salud · de Eloy Gonzalo 24,34,42,False,0.6,42,41.6,cumple_ya
 Chamberi,"Avenida De Pablo Iglesias, 4",07118,1501,360,Centro de salud · de la Reina Victoria 21,366,494,True,5.1,502,190.7,cumple_ya
 Chamberi,"Paseo Del General Martinez Campos, 23",07087,948,195,Centro de salud · de Espronceda 24,445,748,True,11.4,,,no_hay_alternativa
 Chamberi,"Calle De Zurbano, 71",07092,1248,341,Centro de salud · de Espronceda 24,443,581,True,9.2,,,no_hay_alternativa
-Chamberi,"Calle De Guzman El Bueno, 94",07125,1029,270,Centro de salud · de Cea Bermúdez 10,530,,,,,,sin_ruta
+Chamberi,"Calle De Guzman El Bueno, 94",07125,1029,270,Centro de salud · de Cea Bermúdez 10,530,1040,True,15.8,1209,196.0,se_arregla_con_desvio
 Chamberi,"Calle De Jeronimo De La Quintana, 5",07053,1495,270,Centro de salud · de Eloy Gonzalo 24,174,270,True,2.8,271,145.5,cumple_ya
 Chamberi,"Calle De Eguilaz, 7",07073,1425,303,Centro de salud · de Eloy Gonzalo 24,373,445,True,7.3,456,199.3,cumple_ya
 Chamberi,"Calle De Bravo Murillo, 7",07036,1657,331,Centro de salud · de Eloy Gonzalo 24,298,359,True,5.3,371,188.4,cumple_ya
@@ -784,7 +784,7 @@ Chamberi,"Calle De Orfila, 8",07075,998,273,Centro de salud · de Regueros 3,680
 Chamberi,"Calle De Cea Bermudez, 40",07124,756,183,Centro de salud · de Cea Bermúdez 10,305,649,True,9.5,783,196.0,se_arregla_con_desvio
 Chamberi,"Calle De Sagasta, 29",07073,1425,303,Centro de salud · de Regueros 3,622,770,True,11.7,,,no_hay_alternativa
 Chamberi,"Calle De Gonzalo De Cordoba, 13",07058,1156,269,Centro de salud · de Eloy Gonzalo 24,23,82,False,1.1,82,81.7,cumple_ya
-Chamberi,"Calle De Joaquin Maria Lopez, 18",07024,718,183,Centro de salud · de Cea Bermúdez 10,167,,,,,,sin_ruta
+Chamberi,"Calle De Joaquin Maria Lopez, 18",07024,718,183,Centro de salud · de Cea Bermúdez 10,167,285,True,3.4,325,186.5,se_arregla_con_desvio
 Chamberi,"Calle De Las Virtudes, 17",07090,931,184,Centro de salud · de Espronceda 24,103,251,True,3.5,266,176.2,cumple_ya
 Chamberi,"Calle De Julian Romea, 24",07132,1134,394,Centro de salud · de la Reina Victoria 21,841,952,True,13.7,,,no_hay_alternativa
 Chamberi,"Avenida De La Reina Victoria, 19",07119,1330,324,Centro de salud · de la Reina Victoria 21,250,419,True,6.7,688,196.9,se_arregla_con_desvio
@@ -883,7 +883,7 @@ Chamberi,"Calle De Cristobal Bordiu, 49",07111,1241,331,Centro de salud · de Es
 Chamberi,"Calle Del Cardenal Cisneros, 40",07058,1156,269,Centro de salud · de Eloy Gonzalo 24,33,74,False,0.7,74,73.7,cumple_ya
 Chamberi,"Calle De Donoso Cortes, 65",07014,1124,312,Centro de salud · de Andrés Mellado 37,428,467,True,6.7,674,183.4,se_arregla_con_desvio
 Chamberi,"Calle De Eustaquio Rodriguez, 7",07121,1789,467,Centro de salud · de Cea Bermúdez 10,397,635,True,9.4,,,no_hay_alternativa
-Chamberi,"Calle De Viriato, 11",07062,1009,213,Centro de salud · de Eloy Gonzalo 24,420,,,,,,sin_ruta
+Chamberi,"Calle De Viriato, 11",07062,1009,213,Centro de salud · de Eloy Gonzalo 24,420,554,True,8.2,794,193.2,se_arregla_con_desvio
 Chamberi,"Calle De Maudes, 28",07115,1441,376,Centro de salud · de la Infanta Mercedes 7-9,669,789,True,12.8,,,no_hay_alternativa
 Chamberi,"Calle De Eloy Gonzalo, 29",07065,1401,281,Centro de salud · de Eloy Gonzalo 24,340,488,True,6.4,496,197.5,cumple_ya
 Chamberi,"Calle De Marques Del Riscal, 2",07078,1028,245,Centro de salud · de Lagasca 122,684,946,True,14.4,,,no_hay_alternativa
@@ -936,7 +936,7 @@ Ciudad Lineal,"Calle De Arturo Soria, 280  B",15162,1906,591,Centro de salud · 
 Ciudad Lineal,"Calle De Serrano Galvache, 3",15160,2218,517,Centro de salud · de Monovar 11,976,1599,True,25.6,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Angelita Cavero, 16",15143,2125,568,Centro de salud · del Estrecho de Corea 1,1021,1351,True,21.9,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Arturo Soria, 111",15150,1939,490,Centro de salud · de Vicente Muzas 8,1017,1374,True,20.6,,,no_hay_alternativa
-Ciudad Lineal,"Calle De Rodrigo De Triana, 6",15067,1165,392,Centro de salud · de los Hermanos García Noblejas 168,203,,,,,,sin_ruta
+Ciudad Lineal,"Calle De Rodrigo De Triana, 6",15067,1165,392,Centro de salud · de los Hermanos García Noblejas 168,203,398,True,4.7,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Los Misterios, 1",15093,1364,305,Centro de salud · de Alcalá 425,200,392,True,5.7,408,193.9,cumple_ya
 Ciudad Lineal,"Calle De San Maximiliano, 58",15022,1292,251,Centro de salud · de Daroca 4,769,1208,True,19.8,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Betancunia, 1",15073,1361,237,Centro de salud · de Gandhi 30,440,600,True,9.0,621,178.5,se_arregla_con_desvio
@@ -1004,7 +1004,7 @@ Ciudad Lineal,"Calle De Gregorio Donas, 23  B",15075,1518,394,Centro de salud ·
 Ciudad Lineal,"Calle De Forment, 6",15127,1629,438,Centro de salud · del Estrecho de Corea 1,464,577,True,8.9,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Ricardo Ortiz, 78",15002,994,256,Centro de salud · de Daroca 4,413,526,True,8.5,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Los Hermanos Machado, 21  B",15040,1894,369,Centro de salud · del Estrecho de Corea 1,731,979,True,15.9,,,no_hay_alternativa
-Ciudad Lineal,"Calle Del General Aranaz, 83  A",15143,2125,568,Centro de salud · del Estrecho de Corea 1,1067,,,,,,sin_ruta
+Ciudad Lineal,"Calle Del General Aranaz, 83  A",15143,2125,568,Centro de salud · del Estrecho de Corea 1,1067,1482,True,24.0,,,no_hay_alternativa
 Ciudad Lineal,"Avenida Del Marques De Corbera, 37",15020,1150,232,Centro de salud · de Daroca 4,697,,,,,,sin_ruta
 Ciudad Lineal,"Calle De Santa Genoveva, 52",15012,933,191,Centro de salud · de Daroca 4,1033,1368,True,22.6,,,no_hay_alternativa
 Ciudad Lineal,"Calle De Aleixandre, 4",15159,1678,401,Centro de salud · de Vicente Muzas 8,811,1122,True,16.6,,,no_hay_alternativa
@@ -1051,13 +1051,13 @@ Ciudad Lineal,"Calle De Juan De Iziar, 1",15030,1265,419,Centro de salud · de D
 Ciudad Lineal,"Calle De Yerma, 13",15161,2337,463,Centro de salud · de Monovar 11,1125,1841,True,30.1,,,no_hay_alternativa
 Fuencarral-El Pardo,"Camino De Servicio Del Canal De Isabel Ii, 14",08129,1809,825,Centro de salud · de Viloria de la Rioja S/N,3114,4987,True,80.0,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Arnedillo, 1  B",08131,1958,137,Centro de salud · de la Isla de Java c/v,1761,2278,True,37.6,,,no_hay_alternativa
-Fuencarral-El Pardo,"Calle Del Heroismo, 56",08001,925,220,Consultorio de atención primaria · de la Fortaleza 4,213,,,,,,sin_ruta
+Fuencarral-El Pardo,"Calle Del Heroismo, 56",08001,925,220,Consultorio de atención primaria · de la Fortaleza 4,213,588,True,8.5,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Valcarlos, 2",08171,1766,122,Centro de salud · de Viloria de la Rioja S/N,498,644,True,9.9,,,no_hay_alternativa
 Fuencarral-El Pardo,"Plaza Del Baile, 5",08124,1938,359,Centro de salud · de la Isla de Java c/v,632,702,True,11.5,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Maria De Maeztu, 122",08139,2413,72,Centro de salud · del Mirador de la Reina 117,683,1130,True,18.2,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Carlos Bravo, 18",08125,1505,216,Centro de salud · de la Isla de Java c/v,816,903,True,14.8,,,no_hay_alternativa
 Fuencarral-El Pardo,"Plaza De Fonsagrada, 2",08081,901,241,Centro de salud · de Finisterre 18,450,622,True,8.2,623,190.5,cumple_ya
-Fuencarral-El Pardo,"Ronda Del Caballero De La Mancha, 196",08159,1993,480,Centro de salud · de la Isla de Java c/v,1292,,,,,,sin_ruta
+Fuencarral-El Pardo,"Ronda Del Caballero De La Mancha, 196",08159,1993,480,Centro de salud · de la Isla de Java c/v,1292,1578,True,25.4,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Manresa, 15",08119,1854,332,Centro de salud · de la Isla de Java c/v,423,508,True,7.6,587,197.4,se_arregla_con_desvio
 Fuencarral-El Pardo,"Calle De La Isla De Cerdeña, 7",08009,1752,454,Centro de salud · de Cándido Mateos 11,688,933,True,14.9,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Alfredo Marquerie, 47",08144,1448,579,Centro de salud · de Valencia de Don Juan 1,467,641,True,10.4,,,no_hay_alternativa
@@ -1137,7 +1137,7 @@ Fuencarral-El Pardo,"Calle Del Cerro Minguete, 57",08163,1924,483,Centro de salu
 Fuencarral-El Pardo,"Calle Del Caballero De La Triste Figura, 41",08162,1428,272,Centro de salud · de Viloria de la Rioja S/N,1871,2723,True,44.9,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle Del Collado Del Mostajo, 8",08181,3175,389,Centro de salud · del Mirador de la Reina 117,97,354,True,5.2,,,no_hay_alternativa
 Fuencarral-El Pardo,"Camino De Alcobendas, 6",08112,1069,234,Centro de salud · del Llano Castellano 3,576,950,True,15.7,,,no_hay_alternativa
-Fuencarral-El Pardo,"Colonia Militar El Goloso, 42",08129,1809,825,Consultorio de atención primaria · de la Fortaleza 4,6580,,,,,,sin_ruta
+Fuencarral-El Pardo,"Colonia Militar El Goloso, 42",08129,1809,825,Consultorio de atención primaria · de la Fortaleza 4,6580,11096,True,182.3,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle Del Doctor Guiu, 19  A",08008,2009,393,Centro de salud · de Alfonso Rodríguez Castelao 17,499,698,True,11.3,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Rabanal Del Camino, 8",08161,2190,94,Centro de salud · de Viloria de la Rioja S/N,883,1179,True,19.1,1268,199.1,se_arregla_con_desvio
 Fuencarral-El Pardo,"Calle De Joaquin Lorenzo, 84",08008,2009,393,Centro de salud · de Alfonso Rodríguez Castelao 17,583,893,True,14.6,,,no_hay_alternativa
@@ -1164,7 +1164,7 @@ Fuencarral-El Pardo,"Calle De Sangenjo, 25",08040,968,411,Centro de salud · de 
 Fuencarral-El Pardo,"Calle De Ramon Gomez De La Serna, 50",08012,1538,417,Centro de salud · de Alfonso Rodríguez Castelao 17,645,1222,True,20.1,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Siguero, 11",08005,1192,283,Centro de salud · de Alfonso Rodríguez Castelao 17,838,1837,True,30.2,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Mario Recuero, 21",08012,1538,417,Centro de salud · de Alfonso Rodríguez Castelao 17,487,929,True,15.3,,,no_hay_alternativa
-Fuencarral-El Pardo,"Calle Del Mirador De La Reina, 30  K",08155,1560,347,Centro de salud · del Mirador de la Reina 117,141,,,,,,sin_ruta
+Fuencarral-El Pardo,"Calle Del Mirador De La Reina, 30  K",08155,1560,347,Centro de salud · del Mirador de la Reina 117,141,733,True,10.5,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Finisterre, 46",08099,1432,562,Centro de salud · de Finisterre 18,520,677,True,10.9,905,190.8,se_arregla_con_desvio
 Fuencarral-El Pardo,"Calle Del Cerro De La Carrasqueta, 3  G",08163,1924,483,Centro de salud · del Mirador de la Reina 117,327,418,True,6.3,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Las Arbucias, 19",08131,1958,137,Centro de salud · de la Isla de Java c/v,1823,2329,True,38.4,,,no_hay_alternativa
@@ -1193,7 +1193,7 @@ Fuencarral-El Pardo,"Calle De Vistas A Moraleja, 2  A",08166,2004,179,Centro de 
 Fuencarral-El Pardo,"Calle De Mataro, 51",08117,970,170,Centro de salud · de la Isla de Java c/v,644,1011,True,15.1,1063,174.8,se_arregla_con_desvio
 Fuencarral-El Pardo,"Calle De Arroyofresno, 22",08007,1298,363,Centro de salud · de Alfonso Rodríguez Castelao 17,762,908,True,14.9,,,no_hay_alternativa
 Fuencarral-El Pardo,"Ronda Del Ingenioso Hidalgo, 77",08159,1993,480,Centro de salud · de la Isla de Java c/v,1514,1860,True,29.9,,,no_hay_alternativa
-Fuencarral-El Pardo,"Calle De Marx, 8  A",08129,1809,825,Centro de salud · de Viloria de la Rioja S/N,5519,,,,,,sin_ruta
+Fuencarral-El Pardo,"Calle De Marx, 8  A",08129,1809,825,Centro de salud · de Viloria de la Rioja S/N,5519,7468,True,115.3,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De La Fortaleza, 15",08001,925,220,Consultorio de atención primaria · de la Fortaleza 4,142,413,True,6.5,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle De Salou, 17",08137,1780,509,Centro de salud · de Valencia de Don Juan 1,816,1180,True,19.3,,,no_hay_alternativa
 Fuencarral-El Pardo,"Calle Del Collado De Marichiva, 42",08181,3175,389,Centro de salud · del Mirador de la Reina 117,262,1084,True,17.5,,,no_hay_alternativa
@@ -1220,7 +1220,7 @@ Hortaleza,"Calle De Rafael Vega, 6",16030,1825,493,Centro de salud · de Machupi
 Hortaleza,"Calle De Rosa De Castro, 5",16030,1825,493,Centro de salud · de Machupichu 58,512,701,True,10.9,,,no_hay_alternativa
 Hortaleza,"Calle De Paula De La Vega, 7",16048,2231,650,Centro de salud · del Mar Báltico 2,142,228,True,3.2,254,144.9,se_arregla_con_desvio
 Hortaleza,"Calle De Napoles, 34",16006,2057,453,Centro de salud · de Benita Ávila 26,413,580,True,9.2,,,no_hay_alternativa
-Hortaleza,"Calle De Jordi Sole Tura, 13",16131,2204,75,Centro de salud · de Logroño 319,3409,,,,,,sin_ruta
+Hortaleza,"Calle De Jordi Sole Tura, 13",16131,2204,75,Centro de salud · de Logroño 319,3409,4606,True,74.8,,,no_hay_alternativa
 Hortaleza,"Calle Del Padre Arrupe, 25",16091,2478,241,Centro de salud · de Ana de Austria 26,2366,,,,,,sin_ruta
 Hortaleza,"Calle De Moreruela, 36  A",16107,3636,327,Centro de salud · del Mar Báltico 2,1780,2241,True,36.4,,,no_hay_alternativa
 Hortaleza,"Calle Del Alcalde Henche De La Plata, 7  C",16110,2721,169,Centro de salud · de Ana de Austria 26,825,1046,True,17.1,,,no_hay_alternativa
@@ -1232,7 +1232,7 @@ Hortaleza,"Calle De Ulises, 124",16006,2057,453,Centro de salud · de Machupichu
 Hortaleza,"Calle De Las Petunias, 33",16002,1911,302,Centro de salud · de Boltaña 5,1164,1460,True,24.1,,,no_hay_alternativa
 Hortaleza,"Calle Del Sotillo, 41",16102,2476,420,Centro de salud · de Machupichu 58,285,377,True,5.7,,,no_hay_alternativa
 Hortaleza,"Calle De El Algabeño, 164  J",16113,2090,364,Centro de salud · de Machupichu 58,868,1127,True,18.4,1336,192.8,se_arregla_con_desvio
-Hortaleza,"Calle De San Enrique De Osso, 319",16091,2478,241,Centro de salud · de Ana de Austria 26,2184,,,,,,sin_ruta
+Hortaleza,"Calle De San Enrique De Osso, 319",16091,2478,241,Centro de salud · de Ana de Austria 26,2184,3212,True,52.2,,,no_hay_alternativa
 Hortaleza,"Plaza De Villalcazar De Sirga, 1",16082,819,161,Centro de salud · de Monovar 11,280,568,True,9.0,,,no_hay_alternativa
 Hortaleza,"Avenida De La Fuente De La Mora, 5",16106,2740,509,Centro de salud · de Manoteras 47,202,406,True,6.2,,,no_hay_alternativa
 Hortaleza,"Calle De Oña, 19",16106,2740,509,Centro de salud · de Manoteras 47,357,1146,True,18.5,,,no_hay_alternativa
@@ -1376,7 +1376,7 @@ Latina,"Calle De Jarandilla, 7",10180,1254,300,Centro de salud · de las Águila
 Latina,"Calle De Fuentesauco, 1",10146,1533,351,Centro de salud · de Seseña 44,485,2243,True,37.1,,,no_hay_alternativa
 Latina,"Calle De Valmojado, 173",10112,1134,227,Centro de salud · de Los Yébenes 46-48,472,699,True,11.5,,,no_hay_alternativa
 Latina,"Paseo De Extremadura, 30",10206,1300,342,Centro de salud · de Linneo 3,578,785,True,11.8,,,no_hay_alternativa
-Latina,"Calle De Acereiro, 2",10165,1085,297,Centro de salud · de Seseña 44,856,,,,,,sin_ruta
+Latina,"Calle De Acereiro, 2",10165,1085,297,Centro de salud · de Seseña 44,856,1264,True,19.2,,,no_hay_alternativa
 Latina,"Calle De Cuart De Poblet, 125",10061,1833,313,Centro de salud · de La Latina 14,310,406,True,6.3,776,168.4,se_arregla_con_desvio
 Latina,"Calle De Domingo De Zaizita, 4",10046,1496,288,Centro de salud · de Extremadura 113-115,390,463,True,7.5,,,no_hay_alternativa
 Latina,"Calle De Arenas De San Pedro, 40",10152,835,238,Centro de salud · de Seseña 44,1037,1706,True,28.1,,,no_hay_alternativa
@@ -1443,7 +1443,7 @@ Latina,"Avenida De Las Aguilas, 16  F",10167,2153,481,Centro de salud · de las 
 Latina,"Calle De Maria Teresa Acosta, 2",10032,2381,372,Centro de salud · de Extremadura 113-115,285,444,True,6.9,,,no_hay_alternativa
 Latina,"Calle Del Lucero, 29",10058,1260,223,Centro de salud · de La Latina 14,502,665,True,10.7,737,197.5,se_arregla_con_desvio
 Latina,"Calle De San Marcelino, 6",10086,1807,333,Centro de salud · Vía Carpetana 202,684,801,True,13.0,,,no_hay_alternativa
-Latina,"Calle De San Pablo, 5",10197,1665,334,Centro de salud · de José de Cadalso 51,467,,,,,,sin_ruta
+Latina,"Calle De San Pablo, 5",10197,1665,334,Centro de salud · de José de Cadalso 51,467,652,True,10.0,,,no_hay_alternativa
 Latina,"Calle De La Cardencha, 5",10152,835,238,Centro de salud · de Seseña 44,879,1870,True,30.9,,,no_hay_alternativa
 Latina,"Autovia A-5, 1075 EN",10221,2498,218,Centro de salud · de Valle Inclán 97,2498,4058,True,66.0,,,no_hay_alternativa
 Latina,"Calle De Francisca Armada, 30",10008,1207,179,Centro de salud · de Extremadura 113-115,848,956,True,15.5,,,no_hay_alternativa
@@ -1493,7 +1493,7 @@ Latina,"Calle De Maqueda, 69",10126,1417,302,Centro de salud · de Seseña 44,59
 Latina,"Calle Del Palmipedo, 27",10058,1260,223,Centro de salud · de La Latina 14,626,946,True,15.6,1037,197.5,se_arregla_con_desvio
 Latina,"Calle De Guareña, 22",10167,2153,481,Centro de salud · de Seseña 44,1046,1297,True,21.4,,,no_hay_alternativa
 Latina,"Calle De Caramuel, 53",10020,891,161,Centro de salud · de Fuenteovejuna 17-19-21,100,199,False,3.0,199,199.2,cumple_ya
-Latina,"Calle De Cebreros, 86",10054,1415,429,Centro de salud · de La Latina 14,615,,,,,,sin_ruta
+Latina,"Calle De Cebreros, 86",10054,1415,429,Centro de salud · de La Latina 14,615,902,True,13.6,934,193.6,se_arregla_con_desvio
 Latina,"Calle De La Cardencha, 67",10152,835,238,Centro de salud · de Seseña 44,1113,1745,True,28.8,,,no_hay_alternativa
 Latina,"Calle Del Concejal Francisco Jose Jimenez Martin, 36",10215,1414,298,Centro de salud · Vía Carpetana 202,798,1560,True,25.6,,,no_hay_alternativa
 Latina,"Avenida Del Padre Piquer, 1",10133,1763,483,Centro de salud · de Seseña 44,153,2064,True,34.0,,,no_hay_alternativa
@@ -1506,8 +1506,8 @@ Moncloa-Aravaca,"Calle Del Niscalo, 35",09086,2501,286,Centro de salud · de Ria
 Moncloa-Aravaca,"Calle De Pilar Andrade, 11  H",09072,1691,314,Centro de salud · de Riaza 5,3670,4287,True,70.0,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Jose Fentanes, 32",09041,1888,435,Centro de salud · de San Martín de Porres 6,365,814,True,12.9,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De La Focha, 20",09079,1875,864,Centro de salud · de Riaza 5,1193,1500,True,24.6,,,no_hay_alternativa
-Moncloa-Aravaca,"Calle De Bolarque, 25",09078,2513,371,Centro de salud · de Riaza 5,1842,,,,,,sin_ruta
-Moncloa-Aravaca,"Calle De La Bola Del Mundo, 20  D",09087,2336,431,Centro de salud · de Riaza 5,365,,,,,,sin_ruta
+Moncloa-Aravaca,"Calle De Bolarque, 25",09078,2513,371,Centro de salud · de Riaza 5,1842,2936,True,47.2,,,no_hay_alternativa
+Moncloa-Aravaca,"Calle De La Bola Del Mundo, 20  D",09087,2336,431,Centro de salud · de Riaza 5,365,1036,True,16.4,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Santa Fe, 2",09007,910,219,Centro de salud · de la Ribera del Manzanares 113,669,897,True,13.4,1228,191.0,se_arregla_con_desvio
 Moncloa-Aravaca,"Calle De Benito Gutierrez, 18",09028,1621,398,Centro de salud · de Andrés Mellado 37,327,445,True,6.7,740,194.0,se_arregla_con_desvio
 Moncloa-Aravaca,"Paseo De La Florida, 33",09084,1114,272,Centro de salud · de Quintana 11,535,1301,True,21.4,,,no_hay_alternativa
@@ -1530,7 +1530,7 @@ Moncloa-Aravaca,"Calle De Cantos Negros, 8  B",09093,1541,344,Centro de salud ·
 Moncloa-Aravaca,"Calle Del Rio Esla, 35",09085,1527,342,Centro de salud · de Riaza 5,465,672,True,10.7,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Deusto, 5",09072,1691,314,Centro de salud · de Riaza 5,2589,,,,,,sin_ruta
 Moncloa-Aravaca,"Calle De Peguerinos, 35",09043,2059,450,Centro de salud · de San Martín de Porres 6,895,1285,True,21.0,,,no_hay_alternativa
-Moncloa-Aravaca,"Calle De Zumaya, 2",09072,1691,314,Centro de salud · de Riaza 5,2284,,,,,,sin_ruta
+Moncloa-Aravaca,"Calle De Zumaya, 2",09072,1691,314,Centro de salud · de Riaza 5,2284,3058,True,48.8,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Almansa, 77",09037,2513,612,Centro de salud · de la Reina Victoria 21,514,597,True,9.5,,,no_hay_alternativa
 Moncloa-Aravaca,"Camino De La Zarzuela, 29  O",09091,2079,323,Centro de salud · de Riaza 5,1328,1681,True,27.5,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Emerenciana Zurilla, 39  B",09053,922,177,Centro de salud · de Azuaga 13,534,784,True,12.5,,,no_hay_alternativa
@@ -1562,7 +1562,7 @@ Moncloa-Aravaca,"Calle De Altamirano, 7",09023,1973,416,Centro de salud · de An
 Moncloa-Aravaca,"Calle De Aniceto Marinas, 54",09001,1258,304,Centro de salud · de Quintana 11,594,1184,True,17.7,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Dragon, 1",09077,1249,259,Centro de salud · de Riaza 5,394,616,True,9.7,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Santa Balbina, 1",09074,1598,361,Centro de salud · de Riaza 5,284,459,True,7.0,,,no_hay_alternativa
-Moncloa-Aravaca,"Carretera De Humera, 31",09087,2336,431,Centro de salud · de Riaza 5,404,,,,,,sin_ruta
+Moncloa-Aravaca,"Carretera De Humera, 31",09087,2336,431,Centro de salud · de Riaza 5,404,686,True,10.3,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Aragonito, 4",09079,1875,864,Centro de salud · de Riaza 5,557,802,True,12.9,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Valle Del Baztan, 9",09063,1556,373,Centro de salud · de Azuaga 13,426,684,True,10.7,877,185.9,se_arregla_con_desvio
 Moncloa-Aravaca,"Ronda De La Buganvilla Del Rey, 1",09078,2513,371,Centro de salud · de Riaza 5,1437,1945,True,32.1,,,no_hay_alternativa
@@ -1570,7 +1570,7 @@ Moncloa-Aravaca,"Calle De Las Plantas, 4",09079,1875,864,Centro de salud · de R
 Moncloa-Aravaca,"Ronda De La Buganvilla Del Rey, 18",09078,2513,371,Centro de salud · de Riaza 5,1497,2152,True,35.4,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Marques De Urquijo, 23",09022,1111,288,Centro de salud · de Guzmán el Bueno 11,335,456,True,6.1,499,197.9,se_arregla_con_desvio
 Moncloa-Aravaca,"Calle De Aguilafuente, 59",09065,1382,241,Centro de salud · de Azuaga 13,241,335,True,5.0,353,188.5,cumple_ya
-Moncloa-Aravaca,"Calle De Alfonso Fernandez Clausells, 2  L",09041,1888,435,Centro de salud · de San Martín de Porres 6,609,,,,,,sin_ruta
+Moncloa-Aravaca,"Calle De Alfonso Fernandez Clausells, 2  L",09041,1888,435,Centro de salud · de San Martín de Porres 6,609,884,True,14.4,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Escultor Peresejo, 68",09089,1643,315,Centro de salud · de Riaza 5,569,704,True,11.2,,,no_hay_alternativa
 Moncloa-Aravaca,"Ronda De La Buganvilla Del Rey, 10",09078,2513,371,Centro de salud · de Riaza 5,1495,2001,True,32.8,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Alfar, 52",09089,1643,315,Centro de salud · de Riaza 5,648,1083,True,17.2,,,no_hay_alternativa
@@ -1579,7 +1579,7 @@ Moncloa-Aravaca,"Calle De Valderrodrigo, 29",09082,828,275,Centro de salud · de
 Moncloa-Aravaca,"Calle De Los Espinos, 13",09075,2808,538,Centro de salud · de Riaza 5,963,1420,True,23.3,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Aramunt, 10",09075,2808,538,Centro de salud · de Riaza 5,843,1009,True,15.9,,,no_hay_alternativa
 Moncloa-Aravaca,"Plaza De La Ciudad De Viena, 8",09034,1694,419,Centro de salud · de la Reina Victoria 21,636,789,True,12.8,1203,180.4,se_arregla_con_desvio
-Moncloa-Aravaca,"Calle De La Pinilla, 59",09087,2336,431,Centro de salud · de Riaza 5,294,,,,,,sin_ruta
+Moncloa-Aravaca,"Calle De La Pinilla, 59",09087,2336,431,Centro de salud · de Riaza 5,294,1071,True,16.4,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Luisa Andres, 21",09047,1490,397,Centro de salud · de Cándido Mateos 11,423,735,True,11.4,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Valderrey, 38",09055,1617,606,Centro de salud · de Cándido Mateos 11,408,604,True,9.8,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Guecho, 53",09093,1541,344,Centro de salud · de Riaza 5,4333,,,,,,sin_ruta
@@ -1621,12 +1621,12 @@ Moncloa-Aravaca,"Calle De Santa Pola, 8",09007,910,219,Centro de salud · de la 
 Moncloa-Aravaca,"Calle De Antonio Sanfiz, 1  C",09075,2808,538,Centro de salud · de Riaza 5,706,892,True,14.1,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De La Peña Del Yelmo, 6",09097,1615,188,Centro de salud · de Riaza 5,1787,2204,True,36.2,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Pilar Andrade, 25",09072,1691,314,Centro de salud · de Riaza 5,3537,4171,True,68.1,,,no_hay_alternativa
-Moncloa-Aravaca,"Calle De Ventura Rodriguez, 4",09016,952,190,Centro de salud · de Ventura Rodríguez 7,298,,,,,,sin_ruta
+Moncloa-Aravaca,"Calle De Ventura Rodriguez, 4",09016,952,190,Centro de salud · de Ventura Rodríguez 7,298,478,True,5.2,652,192.8,se_arregla_con_desvio
 Moncloa-Aravaca,"Calle De Santa Comba, 8",09006,806,200,Centro de salud · de la Ribera del Manzanares 113,285,434,True,6.4,454,177.9,cumple_ya
 Moncloa-Aravaca,"Calle De Sopelana, 23",09072,1691,314,Centro de salud · de Riaza 5,3052,3922,True,64.4,,,no_hay_alternativa
 Moncloa-Aravaca,"Plaza De Alcira, 7",09061,1039,188,Centro de salud · de Azuaga 13,273,469,True,7.1,581,193.8,se_arregla_con_desvio
 Moncloa-Aravaca,"Carretera De Humera, 2",09076,1045,219,Centro de salud · de Riaza 5,573,817,True,12.6,,,no_hay_alternativa
-Moncloa-Aravaca,"Calle De Jose Bastos, 21",09097,1615,188,Centro de salud · de Riaza 5,1984,,,,,,sin_ruta
+Moncloa-Aravaca,"Calle De Jose Bastos, 21",09097,1615,188,Centro de salud · de Riaza 5,1984,2579,True,40.8,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle De Rafael Villa, 28",09072,1691,314,Centro de salud · de Riaza 5,3751,4219,True,68.6,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Altozano, 4",09077,1249,259,Centro de salud · de Riaza 5,424,529,True,8.2,,,no_hay_alternativa
 Moncloa-Aravaca,"Calle Del Pico De La Miel, 47",09089,1643,315,Centro de salud · de Riaza 5,561,656,True,10.4,797,199.8,se_arregla_con_desvio
@@ -1675,12 +1675,12 @@ Moratalaz,"Avenida Del Doctor Garcia Tapia, 90",14029,941,239,Centro de salud ·
 Moratalaz,"Calle Del Cañon Del Rio Lobos, 8",14091,1800,411,Centro de salud · de la Hacienda de Pavones 271,977,1203,True,19.3,,,no_hay_alternativa
 Moratalaz,"Avenida Del Doctor Garcia Tapia, 128",14014,611,240,Centro de salud · del Camino de los Vinateros 140,775,1175,True,18.8,1227,192.6,se_arregla_con_desvio
 Moratalaz,"Calle Del Pico De Los Artilleros, 54",14076,843,256,Centro de salud · del Camino de los Vinateros 140,661,922,True,13.8,940,192.6,cumple_ya
-Moratalaz,"Calle De Felix Rodriguez De La Fuente, 57",14082,1335,205,Centro de salud · del Arroyo de la Media Legua 35,645,,,,,,sin_ruta
+Moratalaz,"Calle De Felix Rodriguez De La Fuente, 57",14082,1335,205,Centro de salud · del Arroyo de la Media Legua 35,645,817,True,12.2,,,no_hay_alternativa
 Moratalaz,"Calle Del Corregidor Señor De La Elipa, 14",14028,1016,225,Centro de salud · del Arroyo de la Media Legua 35,464,507,True,8.2,,,no_hay_alternativa
 Moratalaz,"Calle De Felix Rodriguez De La Fuente, 10",14083,1580,391,Centro de salud · del Arroyo de la Media Legua 35,556,1148,True,18.5,,,no_hay_alternativa
 Moratalaz,"Calle De Flandes, 5",14090,1576,194,Centro de salud · de Aquitania 22,1223,1603,True,23.9,,,no_hay_alternativa
 Moratalaz,"Calle De Jose Bergamin, 42",14087,1245,316,Centro de salud · del Camino de los Vinateros 140,1179,1487,True,24.4,1544,196.7,se_arregla_con_desvio
-Moratalaz,"Calle De Felix Rodriguez De La Fuente, 69",14082,1335,205,Centro de salud · del Arroyo de la Media Legua 35,594,,,,,,sin_ruta
+Moratalaz,"Calle De Felix Rodriguez De La Fuente, 69",14082,1335,205,Centro de salud · del Arroyo de la Media Legua 35,594,723,True,11.3,,,no_hay_alternativa
 Moratalaz,"Calle Del Corregidor Alonso De Tobar, 4",14047,1237,200,Centro de salud · del Camino de los Vinateros 140,208,321,True,4.8,336,151.8,cumple_ya
 Moratalaz,"Calle Del Arroyo Fontarron, 295",14055,948,268,Centro de salud · del Camino de los Vinateros 140,919,1159,True,18.8,1868,198.8,se_arregla_con_desvio
 Moratalaz,"Calle De La Encomienda De Palacios, 372",14002,1409,266,Centro de salud · de la Hacienda de Pavones 271,307,522,True,8.1,,,no_hay_alternativa
@@ -1703,7 +1703,7 @@ Moratalaz,"Calle Del Corregidor Juan De Bobadilla, 16",14073,1051,271,Centro de 
 Moratalaz,"Calle De Oberon, 4",14012,1509,500,Centro de salud · del Camino de los Vinateros 140,1047,1435,True,23.4,1614,199.8,se_arregla_con_desvio
 Moratalaz,"Pasaje De Valdilecha, 2",14086,1993,370,Centro de salud · del Camino de los Vinateros 140,918,1193,True,19.4,1482,199.8,se_arregla_con_desvio
 Moratalaz,"Calle Del Pico De Los Artilleros, 11",14013,970,392,Centro de salud · del Camino de los Vinateros 140,737,1001,True,14.6,1026,192.6,se_arregla_con_desvio
-Moratalaz,"Calle De La Primavera De Praga, 22",14084,1051,338,Centro de salud · del Arroyo de la Media Legua 35,226,,,,,,sin_ruta
+Moratalaz,"Calle De La Primavera De Praga, 22",14084,1051,338,Centro de salud · del Arroyo de la Media Legua 35,226,387,True,4.9,,,no_hay_alternativa
 Moratalaz,"Calle De El Paular, 10",14094,1581,487,Centro de salud · de la Hacienda de Pavones 271,1281,1790,True,29.5,,,no_hay_alternativa
 Moratalaz,"Calle De La Hacienda De Pavones, 354",14079,1546,619,Centro de salud · de la Hacienda de Pavones 271,213,351,True,5.2,,,no_hay_alternativa
 Moratalaz,"Calle Del Arroyo Fontarron, 291",14054,1157,230,Centro de salud · del Camino de los Vinateros 140,872,1098,True,17.8,1867,198.4,se_arregla_con_desvio
@@ -1740,7 +1740,7 @@ Moratalaz,"Calle Del Pico De Los Artilleros, 95",14050,1190,268,Centro de salud 
 Moratalaz,"Calle De La Encomienda De Palacios, 296",14003,1395,355,Centro de salud · de la Hacienda de Pavones 271,513,647,True,9.8,,,no_hay_alternativa
 Moratalaz,"Calle De La Hacienda De Pavones, 203",14062,998,258,Centro de salud · del Camino de los Vinateros 140,778,1037,True,16.9,1069,199.2,se_arregla_con_desvio
 Moratalaz,"Calle De La Hacienda De Pavones, 143",14062,998,258,Centro de salud · del Camino de los Vinateros 140,609,845,True,13.5,869,189.6,se_arregla_con_desvio
-Moratalaz,"Calle De Felix Rodriguez De La Fuente, 63",14082,1335,205,Centro de salud · del Arroyo de la Media Legua 35,619,,,,,,sin_ruta
+Moratalaz,"Calle De Felix Rodriguez De La Fuente, 63",14082,1335,205,Centro de salud · del Arroyo de la Media Legua 35,619,759,True,11.6,,,no_hay_alternativa
 Moratalaz,"Calle Del Pico De Los Artilleros, 30",14077,1506,376,Centro de salud · del Camino de los Vinateros 140,699,935,True,14.6,986,192.6,se_arregla_con_desvio
 Moratalaz,"Avenida Del Doctor Garcia Tapia, 159  D",14093,1411,216,Centro de salud · de la Hacienda de Pavones 271,1155,1400,True,22.7,,,no_hay_alternativa
 Moratalaz,"Calle De Eugenio D'Ors, 3",14084,1051,338,Centro de salud · del Arroyo de la Media Legua 35,176,439,True,6.9,,,no_hay_alternativa
@@ -2017,7 +2017,7 @@ Retiro,"Calle De La Estrella Polar, 1",03035,1161,323,Centro de salud · de los 
 Retiro,"Calle De Granada, 4",03005,736,143,Centro de salud · de los Reyes Magos 19-21,246,300,True,4.1,333,174.8,se_arregla_con_desvio
 Retiro,"Calle De Alfonso Xi, 14",03069,1531,322,Centro de salud · de la Alameda 5,856,1413,True,21.5,,,no_hay_alternativa
 Retiro,"Paseo De La Infanta Isabel, 29",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,636,687,True,8.9,,,no_hay_alternativa
-Retiro,"Calle Del Alcalde Sainz De Baranda, 37",03051,1097,293,Centro de salud · de O'Donnell 55,311,,,,,,sin_ruta
+Retiro,"Calle Del Alcalde Sainz De Baranda, 37",03051,1097,293,Centro de salud · de O'Donnell 55,311,480,True,7.1,,,no_hay_alternativa
 Retiro,"Calle De Las Adelfas, 38",03029,1616,435,Centro de salud · de los Reyes Magos 19-21,672,805,True,11.3,1541,197.2,se_arregla_con_desvio
 Retiro,"Pasaje De Carena, 10",03034,1380,420,Centro de salud · de los Reyes Magos 19-21,976,1185,True,19.4,,,no_hay_alternativa
 Retiro,"Calle De La Anunciacion, 12",03084,1498,376,Centro de salud · de Ibiza 7,590,800,True,12.8,921,198.7,se_arregla_con_desvio
@@ -2026,7 +2026,7 @@ Retiro,"Calle De Juan Valera, 33",03073,1661,453,Centro de salud · de los Reyes
 Retiro,"Calle De Granada, 18",03013,1079,242,Centro de salud · de los Reyes Magos 19-21,194,331,True,4.0,337,197.2,cumple_ya
 Retiro,"Calle Del Pez Volador, 30",03039,831,276,Centro de salud · del Arroyo de la Media Legua 35,847,1325,True,21.4,,,no_hay_alternativa
 Retiro,"Calle De Montalban, 2",03069,1531,322,Centro de salud · de Regueros 3,712,1026,True,13.7,,,no_hay_alternativa
-Retiro,"Calle De Luis Camoens, 9",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,556,,,,,,sin_ruta
+Retiro,"Calle De Luis Camoens, 9",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,556,1080,True,15.2,1250,196.7,se_arregla_con_desvio
 Retiro,"Calle De Gandia, 4",03025,1466,292,Centro de salud · de Altos de Cabrejas 4,291,527,True,8.5,,,no_hay_alternativa
 Retiro,"Calle De Luis Peidro, 11  A",03101,1552,257,Centro de salud · de Altos de Cabrejas 4,316,509,True,7.4,,,no_hay_alternativa
 Retiro,"Calle De Vicente Caballero, 12",03047,1740,476,Centro de salud · de O'Donnell 55,373,445,True,7.2,491,167.9,se_arregla_con_desvio
@@ -2044,8 +2044,8 @@ Retiro,"Calle Del Doctor Esquerdo, 142",03019,1875,594,Centro de salud · de los
 Retiro,"Calle De Valderribas, 6",03008,1078,304,Centro de salud · de los Reyes Magos 19-21,89,214,True,2.5,214,174.8,cumple_ya
 Retiro,"Calle Del Doctor Esquerdo, 154",03020,1477,330,Centro de salud · de los Reyes Magos 19-21,529,856,True,12.8,1299,197.2,se_arregla_con_desvio
 Retiro,"Calle Del Alcalde Sainz De Baranda, 6",03054,1272,388,Centro de salud · de Ibiza 7,154,203,True,3.3,226,141.5,se_arregla_con_desvio
-Retiro,"Calle De Alfonso Xii, 5  D",03073,1661,453,Centro de salud · de la Alameda 5,748,,,,,,sin_ruta
-Retiro,"Calle De Cavanilles, 58  A",03020,1477,330,Centro de salud · de los Reyes Magos 19-21,503,,,,,,sin_ruta
+Retiro,"Calle De Alfonso Xii, 5  D",03073,1661,453,Centro de salud · de la Alameda 5,748,1213,True,19.6,1424,194.6,se_arregla_con_desvio
+Retiro,"Calle De Cavanilles, 58  A",03020,1477,330,Centro de salud · de los Reyes Magos 19-21,503,812,True,11.6,1407,197.2,se_arregla_con_desvio
 Retiro,"Calle De Valderribas, 38",03021,2083,434,Centro de salud · de los Reyes Magos 19-21,418,649,True,10.5,,,no_hay_alternativa
 Retiro,"Calle De Perseo, 5",03033,1471,454,Centro de salud · del Arroyo de la Media Legua 35,961,1204,True,19.7,,,no_hay_alternativa
 Retiro,"Calle De Fernan Gonzalez, 48",03065,1491,376,Centro de salud · de O'Donnell 55,155,173,False,2.7,173,172.9,cumple_ya
@@ -2064,7 +2064,7 @@ Retiro,"Calle De Jose Martinez De Velasco, 12",03044,1248,307,Centro de salud ·
 Retiro,"Calle De Alfonso Xii, 26",03069,1531,322,Centro de salud · de la Alameda 5,785,1353,True,22.3,,,no_hay_alternativa
 Retiro,"Plaza Del Niño Jesus, 1",03084,1498,376,Centro de salud · de los Reyes Magos 19-21,623,849,True,11.0,,,no_hay_alternativa
 Retiro,"Calle De Narvaez, 72",03055,954,235,Centro de salud · de Ibiza 7,255,357,True,5.9,425,192.6,se_arregla_con_desvio
-Retiro,"Calle De Valderribas, 51",03020,1477,330,Centro de salud · de los Reyes Magos 19-21,484,,,,,,sin_ruta
+Retiro,"Calle De Valderribas, 51",03020,1477,330,Centro de salud · de los Reyes Magos 19-21,484,925,True,13.2,1321,197.2,se_arregla_con_desvio
 Retiro,"Calle De Pilar Millan Astray, 4",03087,2379,692,Centro de salud · de O'Donnell 55,451,682,True,10.4,875,192.9,se_arregla_con_desvio
 Retiro,"Calle De Jerico, 3",03082,1432,382,Centro de salud · de los Reyes Magos 19-21,821,1064,True,16.5,,,no_hay_alternativa
 Retiro,"Calle De Alfonso Xii, 40",03071,1376,379,Centro de salud · de la Alameda 5,609,1149,True,19.0,,,no_hay_alternativa
@@ -2113,7 +2113,7 @@ Salamanca,"Avenida De Bruselas, 58",04076,876,260,Centro de salud · de Verdague
 Salamanca,"Calle De Agustin Duran, 12",04089,789,165,Centro de salud · del Príncipe de Vergara 111,708,986,True,15.8,1233,199.0,se_arregla_con_desvio
 Salamanca,"Calle De Francisco Remiro, 4",04131,1289,200,Centro de salud · de Santa Hortensia 14,622,874,True,13.3,,,no_hay_alternativa
 Salamanca,"Calle De Nuñez De Balboa, 106",04124,1084,207,Centro de salud · del Príncipe de Vergara 111,342,460,True,7.5,485,191.9,se_arregla_con_desvio
-Salamanca,"Avenida De Baviera, 15",04080,771,197,Centro de salud · de Ramos Carrión 10,615,,,,,,sin_ruta
+Salamanca,"Avenida De Baviera, 15",04080,771,197,Centro de salud · de Ramos Carrión 10,615,874,True,11.8,,,no_hay_alternativa
 Salamanca,"Calle De Ardemans, 57",04093,1326,251,Centro de salud · del Príncipe de Vergara 111,583,846,True,13.6,1185,199.0,se_arregla_con_desvio
 Salamanca,"Calle De Diego De Leon, 5",04127,1240,200,Centro de salud · de Lagasca 122,165,204,True,2.7,,,no_hay_alternativa
 Salamanca,"Calle De Jose Picon, 11",04088,2155,517,Centro de salud · de Montesa 38,660,845,True,13.6,1013,195.0,se_arregla_con_desvio
@@ -2254,7 +2254,7 @@ San Blas-Canillejas,"Calle De Belice, 52",20099,1967,448,Centro de salud · de A
 San Blas-Canillejas,"Calle De La Aguja, 8",20033,1262,199,Centro de salud · de los Hermanos García Noblejas 168,910,1189,True,19.5,1610,198.4,se_arregla_con_desvio
 San Blas-Canillejas,"Calle De Santa Tecla, 20",20085,1910,510,Centro de salud · de Boltaña 5,53,122,False,1.9,122,122.1,cumple_ya
 San Blas-Canillejas,"Calle De Zurich, 3  B",20114,1887,244,Centro de salud · de Suecia 62,579,811,True,13.4,853,190.0,se_arregla_con_desvio
-San Blas-Canillejas,"Calle De San Faustino, 106",20082,2046,468,Centro de salud · de Boltaña 5,843,,,,,,sin_ruta
+San Blas-Canillejas,"Calle De San Faustino, 106",20082,2046,468,Centro de salud · de Boltaña 5,843,1578,True,24.5,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Los Lenceros, 13",20031,1531,209,Centro de salud · de Suecia 62,1099,1479,True,22.4,1743,197.8,se_arregla_con_desvio
 San Blas-Canillejas,"Calle De Fuencemillan, 29  B",20126,1664,211,Centro de salud · de la Carabela 7,1581,2339,True,38.8,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Etruria, 8",20073,1071,184,Centro de salud · de Boltaña 5,810,969,True,15.6,,,no_hay_alternativa
@@ -2266,13 +2266,13 @@ San Blas-Canillejas,"Calle De Alcala, 690  H",20123,1210,278,Centro de salud · 
 San Blas-Canillejas,"Calle De Esparta, 9",20093,1438,332,Centro de salud · de Boltaña 5,569,852,True,14.0,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Miguel Fleta, 4",20100,1793,373,Centro de salud · del Doctor Cirajas 20,576,816,True,12.7,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Circe, 26  B",20083,947,229,Centro de salud · de Boltaña 5,271,449,True,6.8,,,no_hay_alternativa
-San Blas-Canillejas,"Calle De Albasanz, 6",20100,1793,373,Centro de salud · de Alcalá 425,379,,,,,,sin_ruta
+San Blas-Canillejas,"Calle De Albasanz, 6",20100,1793,373,Centro de salud · de Alcalá 425,379,525,True,7.8,,,no_hay_alternativa
 San Blas-Canillejas,"Avenida De Guadalajara, 45",20044,1217,220,Centro de salud · de Aquitania 22,416,799,True,13.2,,,no_hay_alternativa
-San Blas-Canillejas,"Avenida De Luis Aragones, 40",20067,2243,364,Centro de salud · de Euterpe 12,800,,,,,,sin_ruta
+San Blas-Canillejas,"Avenida De Luis Aragones, 40",20067,2243,364,Centro de salud · de Euterpe 12,800,2140,True,33.6,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Pirra, 14  I",20129,1444,147,Centro de salud · de Euterpe 12,630,831,True,11.1,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Esparta, 11  A",20093,1438,332,Centro de salud · de Boltaña 5,586,876,True,14.1,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Campezo, 2  E",20121,2131,152,Centro de salud · de la Carabela 7,691,888,True,14.6,,,no_hay_alternativa
-San Blas-Canillejas,"Autovia M-40, 1100 IN",20107,2041,245,Centro de salud · de Suecia 62,853,,,,,,sin_ruta
+San Blas-Canillejas,"Autovia M-40, 1100 IN",20107,2041,245,Centro de salud · de Suecia 62,853,1476,True,22.8,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Julio, 36",20120,3516,306,Centro de salud · de la Carabela 7,1972,2972,True,49.1,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Talia, 25  B",20093,1438,332,Centro de salud · de Boltaña 5,538,1111,True,18.3,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Abril, 43",20120,3516,306,Centro de salud · de la Carabela 7,2102,2753,True,45.5,,,no_hay_alternativa
@@ -2332,7 +2332,7 @@ San Blas-Canillejas,"Calle De Campezo, 5  A",20068,2851,415,Centro de salud · d
 San Blas-Canillejas,"Calle Del Castillo De Ucles, 39",20010,1159,219,Centro de salud · de Gandhi 30,1263,1425,True,23.4,2048,196.2,se_arregla_con_desvio
 San Blas-Canillejas,"Calle De Ajofrin, 4",20037,797,227,Centro de salud · de los Hermanos García Noblejas 168,546,681,True,11.0,743,188.9,se_arregla_con_desvio
 San Blas-Canillejas,"Avenida De Niza, 34",20067,2243,364,Centro de salud · de Suecia 62,834,873,True,14.5,923,199.3,se_arregla_con_desvio
-San Blas-Canillejas,"Calle De Albaida, 34",20025,1202,205,Centro de salud · de Boltaña 5,1075,,,,,,sin_ruta
+San Blas-Canillejas,"Calle De Albaida, 34",20025,1202,205,Centro de salud · de Boltaña 5,1075,1558,True,22.4,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Arcos De Jalon, 15",20047,1658,276,Centro de salud · de Aquitania 22,595,923,True,15.2,,,no_hay_alternativa
 San Blas-Canillejas,"Calle Seis, 9",20070,1009,248,Centro de salud · de Euterpe 12,792,1755,True,28.7,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Manuel Vazquez Montalban, 2",20120,3516,306,Centro de salud · de la Carabela 7,3915,4406,True,72.3,,,no_hay_alternativa
@@ -2368,7 +2368,7 @@ San Blas-Canillejas,"Calle De Diciembre, 57",20120,3516,306,Centro de salud · d
 San Blas-Canillejas,"Calle De Boltaña, 49",20092,2097,448,Centro de salud · de Boltaña 5,705,789,True,10.0,811,192.6,se_arregla_con_desvio
 San Blas-Canillejas,"Calle De Maria Sevilla Diago, 16",20066,1717,621,Centro de salud · de Suecia 62,806,865,True,13.9,930,197.8,se_arregla_con_desvio
 San Blas-Canillejas,"Calle De Teseo, 122",20099,1967,448,Centro de salud · de Alcalá 425,1198,1807,True,29.4,,,no_hay_alternativa
-San Blas-Canillejas,"Calle De Nanclares De Oca, 1  G",20068,2851,415,Centro de salud · de la Carabela 7,1252,,,,,,sin_ruta
+San Blas-Canillejas,"Calle De Nanclares De Oca, 1  G",20068,2851,415,Centro de salud · de la Carabela 7,1252,1955,True,31.2,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Marsella, 1",20103,2331,328,Centro de salud · de Suecia 62,561,873,True,13.9,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Mayo, 8",20126,1664,211,Centro de salud · de la Carabela 7,1757,2635,True,43.7,,,no_hay_alternativa
 San Blas-Canillejas,"Calle De Samaniego, 22",20120,3516,306,Centro de salud · de Euterpe 12,1161,1385,True,22.9,,,no_hay_alternativa
@@ -2402,7 +2402,7 @@ San Blas-Canillejas,"Calle De Castor, 13",20088,2165,531,Centro de salud · de B
 Tetuan,"Avenida De Asturias, 71",06089,1317,227,Centro de salud · de Asturias 61-63,287,421,True,5.8,,,no_hay_alternativa
 Tetuan,"Calle De Bravo Murillo, 289",06107,1555,318,Consultorio de atención primaria · de Bravo Murillo 317,89,100,False,1.5,100,99.8,cumple_ya
 Tetuan,"Calle Del Marques De Viana, 19",06108,1437,232,Consultorio de atención primaria · de Bravo Murillo 317,195,375,True,5.4,,,no_hay_alternativa
-Tetuan,"Calle De Luis Esteban, 1",06078,1193,176,Centro de salud · de Núñez Morgado 4,707,,,,,,sin_ruta
+Tetuan,"Calle De Luis Esteban, 1",06078,1193,176,Centro de salud · de Núñez Morgado 4,707,968,True,15.0,1308,195.2,se_arregla_con_desvio
 Tetuan,"Calle Del Padre Rubio, 30",06085,1778,286,Centro de salud · de Asturias 61-63,617,908,True,13.8,,,no_hay_alternativa
 Tetuan,"Calle De Maria Ignacia, 10",06006,1101,142,Centro de salud · de Villaamil 19,429,587,True,7.9,,,no_hay_alternativa
 Tetuan,"Calle De San Benito, 34  C",06085,1778,286,Centro de salud · de Asturias 61-63,511,789,True,12.6,,,no_hay_alternativa
@@ -2610,7 +2610,7 @@ Usera,"Calle De Deva, 79",12007,1552,347,Centro de salud · de Cestona 3,279,424
 Usera,"Calle De Madridejos, 43",12094,2600,310,Centro de salud · de las Calesas 12,479,570,True,9.4,677,186.4,se_arregla_con_desvio
 Usera,"Calle Gran Avenida, 14",12015,1163,284,Centro de salud · de Cestona 3,515,776,True,12.7,,,no_hay_alternativa
 Usera,"Calle De Isabelita Usera, 68",12091,2051,400,Centro de salud · de Mariano Vela 62,348,485,True,7.8,,,no_hay_alternativa
-Usera,"Calle De Campotejar, 7",12019,1360,207,Centro de salud · de San Fermín 3,681,,,,,,sin_ruta
+Usera,"Calle De Campotejar, 7",12019,1360,207,Centro de salud · de San Fermín 3,681,1034,True,16.0,,,no_hay_alternativa
 Usera,"Calle De Regil, 41",12005,1142,276,Centro de salud · de Cestona 3,338,474,True,7.8,,,no_hay_alternativa
 Usera,"Calle De Los Carrascales, 13",12091,2051,400,Centro de salud · de Mariano Vela 62,305,420,True,6.9,,,no_hay_alternativa
 Usera,"Calle De Julio Aguirre, 6",12050,1567,272,Centro de salud · de la Antracita 2A,614,864,True,13.9,,,no_hay_alternativa
@@ -2725,12 +2725,12 @@ Vicalvaro,"Paseo Del Polideportivo, 80",19014,1631,313,Centro de salud · de Vil
 Vicalvaro,"Calle De Ataulfo Argenta, 26",19059,3078,161,Centro de salud · de Villablanca 81,5596,,,,,,sin_ruta
 Vicalvaro,"Calle De San Filemon, 21",19028,1576,271,Centro de salud · de los Artilleros 31,528,650,True,10.2,876,187.9,se_arregla_con_desvio
 Vicalvaro,"Paseo Del Polideportivo, 3",19032,2458,346,Centro de salud · de Villablanca 81,644,1027,True,16.7,,,no_hay_alternativa
-Vicalvaro,"Calle De Francisco Ibañez, 48",19001,2335,191,Centro de salud · de Villablanca 81,2844,,,,,,sin_ruta
+Vicalvaro,"Calle De Francisco Ibañez, 48",19001,2335,191,Centro de salud · de Villablanca 81,2844,3206,True,51.0,,,no_hay_alternativa
 Vicalvaro,"Calle De Velilla, 8",19003,1041,238,Centro de salud · de los Artilleros 31,211,352,True,5.7,469,182.8,se_arregla_con_desvio
 Vicalvaro,"Calle Del Cortijillo, 13",19059,3078,161,Centro de salud · de Villablanca 81,4491,5881,True,97.8,,,no_hay_alternativa
 Vicalvaro,"Calle De Minerva, 179",19042,2416,202,Centro de salud · de los Artilleros 31,1100,1519,True,22.8,1724,191.1,se_arregla_con_desvio
-Vicalvaro,"Avenida De La Gran Via Del Este, 26",19047,2519,227,Centro de salud · de Villablanca 81,330,,,,,,sin_ruta
-Vicalvaro,"Avenida De Antonio Herrero, 67",19001,2335,191,Centro de salud · de Villablanca 81,2849,,,,,,sin_ruta
+Vicalvaro,"Avenida De La Gran Via Del Este, 26",19047,2519,227,Centro de salud · de Villablanca 81,330,558,True,8.0,606,181.9,se_arregla_con_desvio
+Vicalvaro,"Avenida De Antonio Herrero, 67",19001,2335,191,Centro de salud · de Villablanca 81,2849,3162,True,51.4,,,no_hay_alternativa
 Vicalvaro,"Calle Del Cortijillo, 23",19059,3078,161,Centro de salud · de Villablanca 81,4520,5910,True,97.8,,,no_hay_alternativa
 Vicalvaro,"Calle De La Casa De Tilly, 50",19053,3233,162,Centro de salud · de Villablanca 81,4654,5803,True,95.9,,,no_hay_alternativa
 Vicalvaro,"Calle Del Alcalde Pedro Gutierrez, 111",19053,3233,162,Centro de salud · de Villablanca 81,4729,6090,True,101.1,,,no_hay_alternativa
@@ -2748,7 +2748,7 @@ Vicalvaro,"Avenida De Angel Del Rio, 81  A",19001,2335,191,Centro de salud · de
 Vicalvaro,"Avenida De Jesus Hermida, 36",19001,2335,191,Centro de salud · de Fuentespina 2,2685,,,,,,sin_ruta
 Vicalvaro,"Calle De Victoria Kent, 110",19060,2956,166,Centro de salud · de Villablanca 81,3768,5119,True,84.5,,,no_hay_alternativa
 Vicalvaro,"Avenida De Antonio Herrero, 92",19001,2335,191,Centro de salud · de Villablanca 81,2862,3123,True,51.7,,,no_hay_alternativa
-Vicalvaro,"Calle De Rivas-Vaciamadrid, 5",19001,2335,191,Centro de salud · de Fuentespina 2,2472,,,,,,sin_ruta
+Vicalvaro,"Calle De Rivas-Vaciamadrid, 5",19001,2335,191,Centro de salud · de Fuentespina 2,2472,4472,True,73.2,,,no_hay_alternativa
 Vicalvaro,"Calle Del Saxofon, 5",19060,2956,166,Centro de salud · de Villablanca 81,4434,5832,True,96.9,,,no_hay_alternativa
 Vicalvaro,"Calle De La Raya, 14  A",19034,1661,349,Centro de salud · de Indalecio Prieto 26,321,354,True,5.7,359,199.6,cumple_ya
 Vicalvaro,"Calle De Torremocha De Jarama, 20  A",19001,2335,191,Centro de salud · de Fuentespina 2,2612,4576,True,75.4,,,no_hay_alternativa
@@ -2761,7 +2761,7 @@ Vicalvaro,"Avenida De Angel Del Rio, 50",19001,2335,191,Centro de salud · de Fu
 Vicalvaro,"Lugar Cañada Real Sector 2, 186",19059,3078,161,Centro de salud · de Villablanca 81,4711,5958,True,98.2,,,no_hay_alternativa
 Vicalvaro,"Calle Del Marques De Casa Tilly, 47",19059,3078,161,Centro de salud · de Villablanca 81,4455,5472,True,91.0,,,no_hay_alternativa
 Vicalvaro,"Calle Del Concejal Victorino Granizo, 117",19056,3249,107,Centro de salud · de Villablanca 81,3404,4282,True,70.5,,,no_hay_alternativa
-Vicalvaro,"Avenida De David Gistau, 51  E",19001,2335,191,Centro de salud · de Fuentespina 2,2365,,,,,,sin_ruta
+Vicalvaro,"Avenida De David Gistau, 51  E",19001,2335,191,Centro de salud · de Fuentespina 2,2365,3821,True,61.8,,,no_hay_alternativa
 Vicalvaro,"Calle De Victoria Kent, 94",19060,2956,166,Centro de salud · de Villablanca 81,3720,5087,True,83.6,,,no_hay_alternativa
 Vicalvaro,"Calle Del Convento De La Merced, 67",19001,2335,191,Centro de salud · de Villablanca 81,3332,4997,True,83.0,,,no_hay_alternativa
 Vicalvaro,"Calle De Casalarreina, 16",19029,1033,190,Centro de salud · de los Artilleros 31,666,754,True,12.5,820,191.4,se_arregla_con_desvio
@@ -2770,9 +2770,9 @@ Vicalvaro,"Calle De La Caliza, 55",19051,1893,149,Centro de salud · de Villabla
 Vicalvaro,"Calle De San Cipriano, 50",19007,1290,285,Centro de salud · de Villablanca 81,265,347,True,5.6,354,196.5,cumple_ya
 Vicalvaro,"Calle De Guadalix De La Sierra, 29  Z",19001,2335,191,Centro de salud · de Fuentespina 2,2016,3379,True,55.8,,,no_hay_alternativa
 Vicalvaro,"Avenida De Joaquin Prat, 48",19001,2335,191,Centro de salud · de Fuentespina 2,2930,,,,,,sin_ruta
-Vicalvaro,"Lugar Cañada Real Sector 3, 81",19059,3078,161,Centro de salud · de Villablanca 81,5100,,,,,,sin_ruta
+Vicalvaro,"Lugar Cañada Real Sector 3, 81",19059,3078,161,Centro de salud · de Villablanca 81,5100,6799,True,110.7,,,no_hay_alternativa
 Vicalvaro,"Calle Del Gallo, 29",19026,1007,183,Centro de salud · de los Artilleros 31,311,423,True,6.5,,,no_hay_alternativa
-Vicalvaro,"Avenida De David Gistau, 7",19001,2335,191,Centro de salud · de Fuentespina 2,1509,,,,,,sin_ruta
+Vicalvaro,"Avenida De David Gistau, 7",19001,2335,191,Centro de salud · de Fuentespina 2,1509,2911,True,46.9,,,no_hay_alternativa
 Vicalvaro,"Avenida De Jose Maria Carrascal, 48",19001,2335,191,Centro de salud · de Fuentespina 2,2121,3438,True,57.0,,,no_hay_alternativa
 Vicalvaro,"Lugar Cañada Real Sector 3, 20",19001,2335,191,Centro de salud · de Villablanca 81,5071,7005,True,116.2,,,no_hay_alternativa
 Vicalvaro,"Lugar Cañada Real Sector 3, 10",19001,2335,191,Centro de salud · de Villablanca 81,5088,7115,True,117.9,,,no_hay_alternativa
@@ -2780,7 +2780,7 @@ Vicalvaro,"Calle De Juan Carreño De Miranda, 1",19061,2178,123,Centro de salud 
 Vicalvaro,"Calle De La Cuqueña Vieja, 19",19001,2335,191,Centro de salud · de Villablanca 81,1440,1727,True,28.3,,,no_hay_alternativa
 Vicalvaro,"Calle Del Teleferico De Las Canteras, 7",19053,3233,162,Centro de salud · de Villablanca 81,4664,6028,True,100.3,,,no_hay_alternativa
 Vicalvaro,"Calle De Valdeolmos-Alalpardo, 4  H",19001,2335,191,Centro de salud · de Fuentespina 2,1538,2751,True,45.6,,,no_hay_alternativa
-Vicalvaro,"Paseo Del Polideportivo, 6",19032,2458,346,Centro de salud · de los Artilleros 31,772,,,,,,sin_ruta
+Vicalvaro,"Paseo Del Polideportivo, 6",19032,2458,346,Centro de salud · de los Artilleros 31,772,888,True,13.5,994,198.4,se_arregla_con_desvio
 Vicalvaro,"Avenida De Constantino Mediavilla, 90",19001,2335,191,Centro de salud · de Fuentespina 2,2033,,,,,,sin_ruta
 Vicalvaro,"Calle De Minerva, 89",19042,2416,202,Centro de salud · de los Artilleros 31,895,1185,True,19.6,1425,199.2,se_arregla_con_desvio
 Vicalvaro,"Calle De Minerva, 98",19049,2115,192,Centro de salud · de los Artilleros 31,994,1378,True,20.6,1583,191.1,se_arregla_con_desvio
@@ -2797,20 +2797,20 @@ Vicalvaro,"Calle Del Campo De La Torre, 27",19051,1893,149,Centro de salud · de
 Vicalvaro,"Calle Del Charco Hondo, 23",19059,3078,161,Centro de salud · de Villablanca 81,4683,6291,True,104.0,,,no_hay_alternativa
 Vicalvaro,"Calle De Los Gallegos, 18",19002,1689,275,Centro de salud · de los Artilleros 31,206,265,True,4.0,274,189.5,cumple_ya
 Vicalvaro,"Calle De Majadahonda, 8  Z",19001,2335,191,Centro de salud · de Fuentespina 2,2764,,,,,,sin_ruta
-Vicalvaro,"Calle De Los Caños De San Pedro, 6",19007,1290,285,Centro de salud · de Villablanca 81,146,,,,,,sin_ruta
+Vicalvaro,"Calle De Los Caños De San Pedro, 6",19007,1290,285,Centro de salud · de Villablanca 81,146,200,False,2.5,218,168.9,cumple_ya
 Vicalvaro,"Calle De Villalmanzo, 2",19011,1327,327,Centro de salud · de los Artilleros 31,320,515,True,8.2,806,198.4,se_arregla_con_desvio
 Vicalvaro,"Calle De San Filemon, 3",19028,1576,271,Centro de salud · de los Artilleros 31,502,665,True,9.7,795,192.6,se_arregla_con_desvio
 Vicalvaro,"Calle De San Agustin Del Guadalix, 6",19001,2335,191,Centro de salud · de Fuentespina 2,3152,5596,True,92.4,,,no_hay_alternativa
 Vicalvaro,"Lugar Cañada Real Sector 2, 235",19059,3078,161,Centro de salud · de Villablanca 81,4766,5910,True,98.3,,,no_hay_alternativa
 Vicalvaro,"Calle Del Duque Del Sevillano, 9",19003,1041,238,Centro de salud · de los Artilleros 31,251,418,True,6.8,461,189.5,se_arregla_con_desvio
 Vicalvaro,"Avenida De Las Comunidades, 4",19044,1950,239,Centro de salud · de Indalecio Prieto 26,687,1062,True,17.2,,,no_hay_alternativa
-Vicalvaro,"Calle De La Pirotecnia, 20",19001,2335,191,Centro de salud · de Villablanca 81,921,,,,,,sin_ruta
+Vicalvaro,"Calle De La Pirotecnia, 20",19001,2335,191,Centro de salud · de Villablanca 81,921,1414,True,21.9,,,no_hay_alternativa
 Vicalvaro,"Calle De Los Gallegos, 20  B",19002,1689,275,Centro de salud · de los Artilleros 31,186,232,True,3.7,240,189.5,cumple_ya
 Vicalvaro,"Calle De Ferenc Puskas, 221",19053,3233,162,Centro de salud · de Villablanca 81,4561,5761,True,95.4,,,no_hay_alternativa
 Vicalvaro,"Calle De Alcorcon, 15",19001,2335,191,Centro de salud · de Fuentespina 2,1650,2830,True,46.6,,,no_hay_alternativa
 Vicalvaro,"Calle De La Igualdad, 48",19055,4400,111,Centro de salud · de Villablanca 81,4012,4897,True,81.3,,,no_hay_alternativa
 Vicalvaro,"Calle Del Dialogo, 23",19055,4400,111,Centro de salud · de Villablanca 81,3601,4563,True,75.5,,,no_hay_alternativa
-Vicalvaro,"Calle De Anna Frank, 8",19060,2956,166,Centro de salud · de Villablanca 81,4087,,,,,,sin_ruta
+Vicalvaro,"Calle De Anna Frank, 8",19060,2956,166,Centro de salud · de Villablanca 81,4087,5411,True,88.6,,,no_hay_alternativa
 Vicalvaro,"Calle De Navarredonda Y San Mames, 2",19001,2335,191,Centro de salud · de Fuentespina 2,3259,,,,,,sin_ruta
 Vicalvaro,"Avenida De La Gran Via Del Este, 36",19047,2519,227,Centro de salud · de Villablanca 81,354,571,True,8.4,619,181.9,se_arregla_con_desvio
 Vicalvaro,"Calle De Columba, 24",19001,2335,191,Centro de salud · de Villablanca 81,1401,1820,True,29.4,,,no_hay_alternativa
@@ -2820,7 +2820,7 @@ Vicalvaro,"Calle Del Jardin De La Duquesa, 20  C",19008,1446,304,Centro de salud
 Vicalvaro,"Calle De Cubas De La Sagra, 4  Z",19001,2335,191,Centro de salud · de Fuentespina 2,1986,,,,,,sin_ruta
 Vicalvaro,"Lugar Cañada Real Sector 3, 52",19001,2335,191,Centro de salud · de Villablanca 81,5074,6758,True,111.6,,,no_hay_alternativa
 Vicalvaro,"Calle De La Ilusion, 71",19055,4400,111,Centro de salud · de Villablanca 81,4007,4924,True,81.8,,,no_hay_alternativa
-Vicalvaro,"Avenida De David Gistau, 11",19001,2335,191,Centro de salud · de Fuentespina 2,1618,,,,,,sin_ruta
+Vicalvaro,"Avenida De David Gistau, 11",19001,2335,191,Centro de salud · de Fuentespina 2,1618,2995,True,48.1,,,no_hay_alternativa
 Vicalvaro,"Calle De Cordel De Pavones, 68",19039,1724,224,Centro de salud · de Indalecio Prieto 26,463,644,True,10.3,655,189.0,cumple_ya
 Vicalvaro,"Calle De La Ladera De Los Almendros, 27  C",19043,1316,301,Centro de salud · de Indalecio Prieto 26,197,297,True,2.3,315,193.9,cumple_ya
 Vicalvaro,"Calle De Los Canarios, 8  C",19055,4400,111,Centro de salud · de Villablanca 81,3626,5171,True,85.7,,,no_hay_alternativa
@@ -2849,7 +2849,7 @@ Vicalvaro,"Calle De La Ilusion, 2",19054,3445,142,Centro de salud · de Villabla
 Vicalvaro,"Calle Del Casco Antiguo, 9",19003,1041,238,Centro de salud · de los Artilleros 31,246,429,True,6.9,461,189.5,se_arregla_con_desvio
 Vicalvaro,"Avenida De Miguel Delibes, 32",19052,2932,111,Centro de salud · de Villablanca 81,3196,4068,True,67.5,,,no_hay_alternativa
 Vicalvaro,"Carretera De Madrid A Rivas Del Jarama, 14",19001,2335,191,Centro de salud · de Fuentespina 2,675,1972,True,31.9,,,no_hay_alternativa
-Villa De Vallecas,"Lugar Cañada Real Sector 6, 189  B",18045,3207,188,Centro de salud · de Cincovillas 1,4959,,,,,,sin_ruta
+Villa De Vallecas,"Lugar Cañada Real Sector 6, 189  B",18045,3207,188,Centro de salud · de Cincovillas 1,4959,6746,True,109.7,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Castrillo De Aza, 3",18028,1977,652,Centro de salud · de Fuentespina 2,730,1054,True,16.8,,,no_hay_alternativa
 Villa De Vallecas,"Calle Del Puerto De Pozazal, 4",18046,3540,195,Centro de salud · de Fuentidueña 12,1155,2112,True,34.6,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Fuentespina, 13  B",18040,2300,582,Centro de salud · de Fuentespina 2,146,268,True,3.9,269,138.5,cumple_ya
@@ -2857,9 +2857,9 @@ Villa De Vallecas,"Calle Del Puerto De Used, 6",18046,3540,195,Centro de salud �
 Villa De Vallecas,"Calle De La Peña Sorrapia, 64",18042,1839,253,Centro de salud · de Fuentidueña 12,239,342,True,4.9,469,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Granja De San Ildefonso, 23",18047,1487,214,Centro de salud · de Fuentidueña 12,499,661,True,10.5,776,190.2,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Poza De La Sal, 17",18040,2300,582,Centro de salud · de Fuentespina 2,78,271,True,3.8,273,141.7,cumple_ya
-Villa De Vallecas,"Lugar Cañada Real Sector 6, 71  S",18045,3207,188,Centro de salud · de Fuentespina 2,4484,,,,,,sin_ruta
+Villa De Vallecas,"Lugar Cañada Real Sector 6, 71  S",18045,3207,188,Centro de salud · de Fuentespina 2,4484,6277,True,103.2,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Frida Kahlo, 1",18053,3373,212,Centro de salud · de Fuentespina 2,1844,3488,True,57.7,,,no_hay_alternativa
-Villa De Vallecas,"Camino De Los Tomateros, 20",18046,3540,195,Centro de salud · de Las Camas 1,1565,,,,,,sin_ruta
+Villa De Vallecas,"Camino De Los Tomateros, 20",18046,3540,195,Centro de salud · de Las Camas 1,1565,3167,True,51.2,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Carrasca, 15",18042,1839,253,Centro de salud · de Fuentidueña 12,50,83,False,1.1,83,83.2,cumple_ya
 Villa De Vallecas,"Lugar Cañada Real Sector 6, 6",18045,3207,188,Centro de salud · de Fuentespina 2,4260,6293,True,104.4,,,no_hay_alternativa
 Villa De Vallecas,"Camino Del Pozo Del Tio Raimundo, 24",18046,3540,195,Centro de salud · de Villalobos 16,1102,2408,True,39.5,,,no_hay_alternativa
@@ -2869,7 +2869,7 @@ Villa De Vallecas,"Calle Del Pico De Montanchez, 8",18013,1297,212,Centro de sal
 Villa De Vallecas,"Calle De La Muela De San Juan, 6",18023,1351,253,Centro de salud · de Fuentidueña 12,741,990,True,15.4,1194,195.6,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Sierra De Bobia, 44",18043,2075,271,Centro de salud · de Fuentidueña 12,301,514,True,8.1,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Antonio Gades, 46",18052,2563,164,Centro de salud · de Fuentespina 2,2092,3125,True,51.5,,,no_hay_alternativa
-Villa De Vallecas,"Calle De La Peña Ambote, 11",18017,1241,205,Centro de salud · de Fuentidueña 12,720,,,,,,sin_ruta
+Villa De Vallecas,"Calle De La Peña Ambote, 11",18017,1241,205,Centro de salud · de Fuentidueña 12,720,873,True,13.7,1005,199.6,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Peñaranda De Bracamonte, 75",18063,1612,89,Centro de salud · de Fuentidueña 12,1084,1444,True,23.7,1591,196.4,se_arregla_con_desvio
 Villa De Vallecas,"Avenida Del Cerro Milano, 499",18057,1491,56,Centro de salud · de Fuentespina 2,2807,4095,True,65.2,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Villamayor De Santiago, 11  I",18051,1570,135,Centro de salud · de Fuentespina 2,462,829,True,13.6,869,193.9,se_arregla_con_desvio
@@ -2878,9 +2878,9 @@ Villa De Vallecas,"Lugar Cañada Real Sector 6, 30",18045,3207,188,Centro de sal
 Villa De Vallecas,"Calle De Antonio Gades, 7  D",18053,3373,212,Centro de salud · de Fuentespina 2,1816,3432,True,56.9,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Babilafuente, 3  A",18042,1839,253,Centro de salud · de Fuentidueña 12,240,437,True,6.8,532,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Sierra Gador, 44",18006,1397,231,Centro de salud · de Fuentidueña 12,1187,1475,True,24.1,1707,199.5,se_arregla_con_desvio
-Villa De Vallecas,"Lugar Cañada Real Sector 6, 158  B",18045,3207,188,Centro de salud · de Cincovillas 1,4277,,,,,,sin_ruta
+Villa De Vallecas,"Lugar Cañada Real Sector 6, 158  B",18045,3207,188,Centro de salud · de Cincovillas 1,4277,5158,True,83.5,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Navamures, 19",18065,3496,330,Centro de salud · de Fuentidueña 12,392,634,True,9.4,640,187.9,cumple_ya
-Villa De Vallecas,"Calle Del Puerto De Lumbreras, 47",18009,1653,336,Centro de salud · de Fuentidueña 12,1329,,,,,,sin_ruta
+Villa De Vallecas,"Calle Del Puerto De Lumbreras, 47",18009,1653,336,Centro de salud · de Fuentidueña 12,1329,1665,True,26.4,2118,199.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Peña Cavero, 38",18019,1806,354,Centro de salud · de Fuentidueña 12,354,493,True,7.9,796,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle Del Puente Del Arzobispo, 44",18051,1570,135,Centro de salud · de Fuentespina 2,526,881,True,14.5,921,193.9,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Peña De Oroel, 1",18014,1600,314,Centro de salud · de Fuentidueña 12,786,929,True,15.0,1064,192.5,se_arregla_con_desvio
@@ -2891,20 +2891,20 @@ Villa De Vallecas,"Camino De Las Hormigueras, 137",18046,3540,195,Centro de salu
 Villa De Vallecas,"Calle De Luis I, 80",18046,3540,195,Centro de salud · de Villalobos 16,640,,,,,,sin_ruta
 Villa De Vallecas,"Calle De Zazuar, 21",18032,1364,502,Centro de salud · de Fuentespina 2,319,814,True,12.8,,,no_hay_alternativa
 Villa De Vallecas,"Avenida De La Gavia, 46",18066,2291,148,Centro de salud · de Fuentidueña 12,875,1154,True,19.0,1546,193.7,se_arregla_con_desvio
-Villa De Vallecas,"Lugar Cañada Real Sector 6, 3  D",18045,3207,188,Centro de salud · de Fuentespina 2,4245,,,,,,sin_ruta
+Villa De Vallecas,"Lugar Cañada Real Sector 6, 3  D",18045,3207,188,Centro de salud · de Fuentespina 2,4245,6117,True,100.7,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Fernando Chueca Goitia, 48",18062,2693,177,Centro de salud · de Fuentespina 2,2071,3150,True,51.2,,,no_hay_alternativa
 Villa De Vallecas,"Avenida Del Ensanche De Vallecas, 68",18070,1524,134,Centro de salud · de Fuentespina 2,1588,2391,True,39.0,,,no_hay_alternativa
 Villa De Vallecas,"Calle Del Rayo Vallecano De Madrid, 77",18051,1570,135,Centro de salud · de Fuentespina 2,687,1086,True,17.8,1134,195.9,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Peñaranda De Bracamonte, 16  D",18069,1825,124,Centro de salud · de Fuentespina 2,689,1144,True,18.6,1202,193.0,se_arregla_con_desvio
-Villa De Vallecas,"Calle De Luis I, 31  F",18046,3540,195,Centro de salud · de Villalobos 16,729,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Luis I, 31  F",18046,3540,195,Centro de salud · de Villalobos 16,729,2049,True,32.3,,,no_hay_alternativa
 Villa De Vallecas,"Calle Del Arte Minimal, 36",18058,2354,100,Centro de salud · de Fuentespina 2,2910,4148,True,67.4,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Virgen De Las Viñas, 13",18034,1257,426,Centro de salud · de Fuentespina 2,266,521,True,8.4,562,176.5,se_arregla_con_desvio
-Villa De Vallecas,"Calle De Francisco Alvarez, 38",18045,3207,188,Centro de salud · de Fuentespina 2,3821,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Francisco Alvarez, 38",18045,3207,188,Centro de salud · de Fuentespina 2,3821,5477,True,89.5,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Jose Gutierrez Maroto, 1",18056,2207,154,Centro de salud · de Fuentespina 2,1261,2441,True,40.4,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Granja De San Ildefonso, 28",18072,1660,118,Centro de salud · de Cincovillas 1,517,738,True,11.6,777,184.7,se_arregla_con_desvio
 Villa De Vallecas,"Camino Viejo A La Cantera De La Inmaculada, 35",18045,3207,188,Centro de salud · de Fuentespina 2,3662,5289,True,87.6,,,no_hay_alternativa
-Villa De Vallecas,"Calle De Luis I, 81",18046,3540,195,Centro de salud · de Villalobos 16,738,,,,,,sin_ruta
-Villa De Vallecas,"Camino De Las Hormigueras, 176  I",18046,3540,195,Centro de salud · de Fuentidueña 12,1134,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Luis I, 81",18046,3540,195,Centro de salud · de Villalobos 16,738,1565,True,23.7,,,no_hay_alternativa
+Villa De Vallecas,"Camino De Las Hormigueras, 176  I",18046,3540,195,Centro de salud · de Fuentidueña 12,1134,1467,True,21.9,,,no_hay_alternativa
 Villa De Vallecas,"Autovia A-3, 1180 SA",18053,3373,212,Centro de salud · de Fuentespina 2,2020,3155,True,52.1,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Peña Veiga, 4",18015,1438,214,Centro de salud · de Fuentidueña 12,786,1026,True,16.8,1174,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Adolfo Marsillach, 36",18062,2693,177,Centro de salud · de Fuentespina 2,2192,3340,True,54.8,,,no_hay_alternativa
@@ -2925,16 +2925,16 @@ Villa De Vallecas,"Calle De Valdesaz, 1",18042,1839,253,Centro de salud · de Fu
 Villa De Vallecas,"Calle De Lumbrales, 3",18042,1839,253,Centro de salud · de Fuentidueña 12,45,116,False,1.4,116,116.2,cumple_ya
 Villa De Vallecas,"Bulevar De La Naturaleza, 1  C",18065,3496,330,Centro de salud · de Fuentidueña 12,713,892,True,13.8,997,194.6,se_arregla_con_desvio
 Villa De Vallecas,"Calle Del Pico Beriain, 13",18004,1236,246,Centro de salud · de Fuentidueña 12,1036,1287,True,21.0,1512,199.5,se_arregla_con_desvio
-Villa De Vallecas,"Calle De Castrillo De Aza, 24",18044,1288,406,Centro de salud · de Fuentespina 2,728,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Castrillo De Aza, 24",18044,1288,406,Centro de salud · de Fuentespina 2,728,1592,True,25.7,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Palazuelos, 66",18042,1839,253,Centro de salud · de Fuentidueña 12,99,168,False,2.4,168,167.8,cumple_ya
-Villa De Vallecas,"Camino Del Pozo Del Tio Raimundo, 20",18046,3540,195,Centro de salud · de Villalobos 16,1038,,,,,,sin_ruta
+Villa De Vallecas,"Camino Del Pozo Del Tio Raimundo, 20",18046,3540,195,Centro de salud · de Villalobos 16,1038,2436,True,39.3,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Gavia Seca, 25  A",18012,1652,404,Centro de salud · de Fuentidueña 12,968,1219,True,19.5,1560,194.2,se_arregla_con_desvio
 Villa De Vallecas,"Paseo De Federico Garcia Lorca, 22",18014,1600,314,Centro de salud · de Fuentidueña 12,931,1195,True,19.1,1385,194.2,se_arregla_con_desvio
 Villa De Vallecas,"Avenida Del Cerro Milano, 57",18076,2336,146,Centro de salud · de Cincovillas 1,1818,2219,True,36.4,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Sierra Vieja, 65",18006,1397,231,Centro de salud · de Fuentidueña 12,982,1249,True,20.2,1430,198.7,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Canencia De La Sierra, 28",18047,1487,214,Centro de salud · de Fuentidueña 12,495,666,True,10.4,781,190.2,se_arregla_con_desvio
 Villa De Vallecas,"Avenida De La Gran Via Del Sureste, 29",18057,1491,56,Centro de salud · de Fuentespina 2,2293,3642,True,58.8,,,no_hay_alternativa
-Villa De Vallecas,"Calle De Sabino Fernandez Campo, 1",18027,1793,326,Centro de salud · de Indalecio Prieto 26,1067,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Sabino Fernandez Campo, 1",18027,1793,326,Centro de salud · de Indalecio Prieto 26,1067,1589,True,22.9,,,no_hay_alternativa
 Villa De Vallecas,"Avenida Del Cerro Milano, 433",18058,2354,100,Centro de salud · de Fuentespina 2,2966,4089,True,67.2,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Gavia Seca, 34",18013,1297,212,Centro de salud · de Fuentidueña 12,876,1041,True,16.8,1446,195.6,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Sierra De Queija, 11",18016,1412,238,Centro de salud · de Fuentidueña 12,738,876,True,14.2,1012,192.5,se_arregla_con_desvio
@@ -2950,27 +2950,27 @@ Villa De Vallecas,"Calle De Alameda Del Valle, 50",18073,1803,115,Centro de salu
 Villa De Vallecas,"Calle De Palazuelos, 18",18043,2075,271,Centro de salud · de Fuentidueña 12,286,380,True,6.0,,,no_hay_alternativa
 Villa De Vallecas,"Avenida De Valdeculebras, 229",18058,2354,100,Centro de salud · de Fuentespina 2,2854,4085,True,66.4,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Sabino Fernandez Campo, 6",18027,1793,326,Centro de salud · de Indalecio Prieto 26,1302,3426,True,56.7,,,no_hay_alternativa
-Villa De Vallecas,"Lugar Cañada Real Sector 6, 49",18045,3207,188,Centro de salud · de Fuentespina 2,4340,,,,,,sin_ruta
+Villa De Vallecas,"Lugar Cañada Real Sector 6, 49",18045,3207,188,Centro de salud · de Fuentespina 2,4340,6130,True,100.9,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Peña Cervera, 16",18020,1471,336,Centro de salud · de Fuentidueña 12,247,294,True,4.4,,,no_hay_alternativa
 Villa De Vallecas,"Avenida De La Democracia, 2",18027,1793,326,Centro de salud · de Fuentidueña 12,1398,1733,True,28.4,2062,199.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Jesus Del Pino, 8",18008,1231,251,Centro de salud · de Fuentidueña 12,1235,1504,True,24.6,1866,199.5,se_arregla_con_desvio
-Villa De Vallecas,"Calle De Torre De Don Miguel, 12",18046,3540,195,Centro de salud · de Villalobos 16,716,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Torre De Don Miguel, 12",18046,3540,195,Centro de salud · de Villalobos 16,716,2202,True,34.4,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Rozas De Puerto Real, 12",18050,2952,186,Centro de salud · de Fuentidueña 12,873,1191,True,18.8,,,no_hay_alternativa
 Villa De Vallecas,"Avenida De La Democracia, 32",18027,1793,326,Centro de salud · de Indalecio Prieto 26,1102,1502,True,23.9,,,no_hay_alternativa
 Villa De Vallecas,"Avenida Del Ensanche De Vallecas, 2",18023,1351,253,Centro de salud · de Fuentespina 2,711,1084,True,17.4,1174,193.4,se_arregla_con_desvio
-Villa De Vallecas,"Calle De Peñaranda De Bracamonte, 6  B",18061,1672,128,Centro de salud · de Fuentespina 2,397,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Peñaranda De Bracamonte, 6  B",18061,1672,128,Centro de salud · de Fuentespina 2,397,890,True,13.6,906,188.1,cumple_ya
 Villa De Vallecas,"Calle De La Pueblanueva, 5",18061,1672,128,Centro de salud · de Fuentespina 2,439,731,True,11.8,760,189.2,se_arregla_con_desvio
-Villa De Vallecas,"Calle Del Gamonal, 17",18046,3540,195,Centro de salud · de Villalobos 16,917,,,,,,sin_ruta
+Villa De Vallecas,"Calle Del Gamonal, 17",18046,3540,195,Centro de salud · de Villalobos 16,917,2264,True,36.5,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Peñaranda De Bracamonte, 16  B",18069,1825,124,Centro de salud · de Fuentespina 2,660,1135,True,18.2,1166,193.8,se_arregla_con_desvio
-Villa De Vallecas,"Calle De Torre De Don Miguel, 10  B",18046,3540,195,Centro de salud · de Villalobos 16,689,,,,,,sin_ruta
+Villa De Vallecas,"Calle De Torre De Don Miguel, 10  B",18046,3540,195,Centro de salud · de Villalobos 16,689,2213,True,34.4,,,no_hay_alternativa
 Villa De Vallecas,"Calle De La Peña Cavero, 26",18019,1806,354,Centro de salud · de Fuentidueña 12,406,554,True,8.6,730,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Granja De San Ildefonso, 38",18072,1660,118,Centro de salud · de Cincovillas 1,569,709,True,11.5,748,184.7,se_arregla_con_desvio
-Villa De Vallecas,"Plaza De La Sierra Gistral, 2",18016,1412,238,Centro de salud · de Fuentidueña 12,750,,,,,,sin_ruta
+Villa De Vallecas,"Plaza De La Sierra Gistral, 2",18016,1412,238,Centro de salud · de Fuentidueña 12,750,905,True,14.2,1041,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Arturo Marcos, 3",18018,2047,364,Centro de salud · de Fuentidueña 12,594,750,True,12.0,882,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Tiedra, 2",18016,1412,238,Centro de salud · de Fuentidueña 12,741,904,True,14.5,1121,199.0,se_arregla_con_desvio
 Villa De Vallecas,"Avenida De La Gran Via Del Este, 80",18027,1793,326,Centro de salud · de Fuentespina 2,1316,3213,True,53.2,,,no_hay_alternativa
-Villa De Vallecas,"Calle Del Arte Abstracto, 12",18075,2002,108,Centro de salud · de Fuentespina 2,2406,,,,,,sin_ruta
-Villa De Vallecas,"Calle Veintiuno Mercamadrid, 2  B",18046,3540,195,Centro de salud · del Cabo Machichaco 62,986,,,,,,sin_ruta
+Villa De Vallecas,"Calle Del Arte Abstracto, 12",18075,2002,108,Centro de salud · de Fuentespina 2,2406,3478,True,56.7,,,no_hay_alternativa
+Villa De Vallecas,"Calle Veintiuno Mercamadrid, 2  B",18046,3540,195,Centro de salud · del Cabo Machichaco 62,986,2481,True,39.5,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Alameda Del Valle, 64",18073,1803,115,Centro de salud · de Cincovillas 1,753,921,True,14.4,964,192.4,se_arregla_con_desvio
 Villa De Vallecas,"Lugar Cañada Real Sector 6, 3",18045,3207,188,Centro de salud · de Fuentespina 2,4283,6303,True,104.7,,,no_hay_alternativa
 Villa De Vallecas,"Calle Del Puerto De Lumbreras, 29  B",18009,1653,336,Centro de salud · de Fuentespina 2,1223,1663,True,27.4,1898,195.0,se_arregla_con_desvio
@@ -2980,12 +2980,12 @@ Villa De Vallecas,"Camino De La Suerte, 15",18024,1027,322,Centro de salud · de
 Villa De Vallecas,"Calle De Justina De La Fuente, 3",18018,2047,364,Centro de salud · de Fuentidueña 12,646,786,True,12.3,967,198.0,se_arregla_con_desvio
 Villa De Vallecas,"Calle Del Embalse De La Jarosa, 30",18076,2336,146,Centro de salud · de Fuentespina 2,1771,2636,True,42.9,,,no_hay_alternativa
 Villa De Vallecas,"Avenida De Santa Eugenia, 43  A",18044,1288,406,Centro de salud · de Fuentespina 2,764,1434,True,23.6,1539,190.4,se_arregla_con_desvio
-Villa De Vallecas,"Autovia M-45, 1700 IN",18046,3540,195,Centro de salud · de Cincovillas 1,1224,,,,,,sin_ruta
+Villa De Vallecas,"Autovia M-45, 1700 IN",18046,3540,195,Centro de salud · de Cincovillas 1,1224,1645,True,25.0,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Manuel Cano, 8  B",18006,1397,231,Centro de salud · de Fuentidueña 12,1154,1448,True,23.3,1679,199.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Peña Cervera, 2",18020,1471,336,Centro de salud · de Fuentidueña 12,433,475,True,7.3,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Las Eras Altas, 2  C",18009,1653,336,Centro de salud · de Fuentidueña 12,1233,1532,True,25.0,1975,199.5,se_arregla_con_desvio
 Villa De Vallecas,"Avenida De Valdeculebras, 221",18058,2354,100,Centro de salud · de Fuentespina 2,2930,4096,True,67.2,,,no_hay_alternativa
-Villa De Vallecas,"Calle Del Monte Aya, 32",18017,1241,205,Centro de salud · de Fuentidueña 12,758,,,,,,sin_ruta
+Villa De Vallecas,"Calle Del Monte Aya, 32",18017,1241,205,Centro de salud · de Fuentidueña 12,758,899,True,13.7,1058,192.5,se_arregla_con_desvio
 Villa De Vallecas,"Calle De La Adrada, 1",18066,2291,148,Centro de salud · de Fuentespina 2,952,1214,True,19.8,1302,193.0,se_arregla_con_desvio
 Villa De Vallecas,"Avenida De Santa Eugenia, 46",18037,1148,255,Centro de salud · de Fuentespina 2,563,1002,True,15.3,1051,193.4,se_arregla_con_desvio
 Villa De Vallecas,"Calle De Almonte, 19",18059,3120,170,Centro de salud · de Fuentidueña 12,571,763,True,10.8,770,187.9,cumple_ya
@@ -3004,7 +3004,7 @@ Villaverde,"Calle De La Dulzura, 13  E",17096,1197,265,Centro de salud · Orovil
 Villaverde,"Avenida De La Espinela, 5",17011,1709,226,Centro de salud · de Potes S/N,384,589,True,9.5,,,no_hay_alternativa
 Villaverde,"Paseo De Maria Droc, 7",17031,1400,139,Centro de salud · de Benimamet 24,692,1364,True,22.0,,,no_hay_alternativa
 Villaverde,"Calle De Ciudad De Frias, 6  A",17106,2104,142,Centro de salud · de Alberto Palacios 22,640,1624,True,26.5,,,no_hay_alternativa
-Villaverde,"Avenida De Los Rosales, 407  C",17117,3584,186,Centro de salud · de Las Camas 1,1902,,,,,,sin_ruta
+Villaverde,"Avenida De Los Rosales, 407  C",17117,3584,186,Centro de salud · de Las Camas 1,1902,4235,True,68.4,,,no_hay_alternativa
 Villaverde,"Calle De El Santo De La Isidra, 16",17118,3696,470,Centro de salud · de Totanes 1,632,846,True,13.9,894,198.3,se_arregla_con_desvio
 Villaverde,"Calle Del Berrocal, 56  G",17111,2766,169,Centro de salud · de Las Camas 1,366,595,True,9.2,,,no_hay_alternativa
 Villaverde,"Calle De Pedro Jimenez, 18",17008,1752,250,Centro de salud · de Alberto Palacios 22,570,718,True,11.3,,,no_hay_alternativa
@@ -3055,7 +3055,7 @@ Villaverde,"Calle De San Norberto, 34",17106,2104,142,Centro de salud · de Albe
 Villaverde,"Calle De Puebla De Sanabria, 29  R",17099,776,210,Centro de salud · de Potes S/N,385,598,True,9.8,800,194.3,se_arregla_con_desvio
 Villaverde,"Calle De Santa Petronila, 24",17066,1465,214,Centro de salud · del Diamante 12,372,502,True,7.9,820,199.4,se_arregla_con_desvio
 Villaverde,"Calle De Las Covachuelas, 22",17024,2210,368,Centro de salud · de Potes S/N,175,247,True,3.9,293,151.9,se_arregla_con_desvio
-Villaverde,"Calle Del Rubi, 4",17026,1592,272,Centro de salud · de Totanes 1,444,,,,,,sin_ruta
+Villaverde,"Calle Del Rubi, 4",17026,1592,272,Centro de salud · de Totanes 1,444,672,True,10.1,1071,198.5,se_arregla_con_desvio
 Villaverde,"Calle De La Resina, 59  B",17106,2104,142,Centro de salud · de Alberto Palacios 22,677,1254,True,20.4,,,no_hay_alternativa
 Villaverde,"Camino Del Puente, 18",17106,2104,142,Centro de salud · de Alberto Palacios 22,1922,3641,True,60.0,,,no_hay_alternativa
 Villaverde,"Calle De Beniferri, 51",17037,1481,128,Centro de salud · de Benimamet 24,469,877,True,14.4,1140,193.8,se_arregla_con_desvio
@@ -3094,7 +3094,7 @@ Villaverde,"Calle De La Generosidad, 9",17104,2017,415,Centro de salud · Orovil
 Villaverde,"Paseo De Alberto Palacios, 58",17014,1433,190,Centro de salud · de Alberto Palacios 22,367,391,True,6.3,,,no_hay_alternativa
 Villaverde,"Calle De Las Lenguas, 12",17029,1742,220,Centro de salud · de Alberto Palacios 22,832,1162,True,18.3,,,no_hay_alternativa
 Villaverde,"Calle De La Cancion Del Olvido, 44",17090,1142,284,Centro de salud · Orovilla 53,940,1228,True,20.2,1967,193.0,se_arregla_con_desvio
-Villaverde,"Calle De Paterna, 43",17043,2563,258,Centro de salud · de Benimamet 24,170,,,,,,sin_ruta
+Villaverde,"Calle De Paterna, 43",17043,2563,258,Centro de salud · de Benimamet 24,170,936,True,15.2,,,no_hay_alternativa
 Villaverde,"Calle De La Canela, 7",17068,2938,368,Centro de salud · de Totanes 1,216,285,True,4.5,409,192.2,se_arregla_con_desvio
 Villaverde,"Calle De Villarrosa, 8  A",17053,1091,294,Centro de salud · del Diamante 12,312,363,True,5.8,494,191.5,se_arregla_con_desvio
 Villaverde,"Calle De Campos Ibañez, 12",17057,1787,264,Centro de salud · del Diamante 12,361,458,True,6.9,758,191.5,se_arregla_con_desvio
@@ -3107,7 +3107,7 @@ Villaverde,"Calle De San Cesareo, 18",17106,2104,142,Centro de salud · de Alber
 Villaverde,"Calle De La Unanimidad, 63",17105,1525,297,Centro de salud · Orovilla 53,547,731,True,10.6,974,182.6,se_arregla_con_desvio
 Villaverde,"Calle De Francisco Del Pino, 19",17064,1858,288,Centro de salud · del Diamante 12,175,231,True,3.7,,,no_hay_alternativa
 Villaverde,"Pasaje De La Avenencia, 11",17105,1525,297,Centro de salud · Orovilla 53,329,413,True,6.6,529,193.2,se_arregla_con_desvio
-Villaverde,"Avenida De Los Rosales, 159",17117,3584,186,Centro de salud · de Las Camas 1,1104,,,,,,sin_ruta
+Villaverde,"Avenida De Los Rosales, 159",17117,3584,186,Centro de salud · de Las Camas 1,1104,2931,True,47.4,,,no_hay_alternativa
 Villaverde,"Calle De Lillo, 8",17093,680,199,Centro de salud · Orovilla 53,856,1302,True,21.4,,,no_hay_alternativa
 Villaverde,"Plaza Del Ahorro, 6",17093,680,199,Centro de salud · Orovilla 53,730,1465,True,24.0,,,no_hay_alternativa
 Villaverde,"Calle De Lezo, 12",17073,1065,236,Centro de salud · del Diamante 12,423,599,True,9.7,658,191.5,se_arregla_con_desvio
@@ -3137,13 +3137,13 @@ Villaverde,"Calle De San Mames, 106",17106,2104,142,Centro de salud · de Albert
 Villaverde,"Calle De Encarnacion Oviol, 31",17064,1858,288,Centro de salud · del Diamante 12,90,174,False,2.7,174,174.4,cumple_ya
 Villaverde,"Calle Del Oro, 16",17115,2507,127,Centro de salud · del Diamante 12,825,969,True,15.9,,,no_hay_alternativa
 Villaverde,"Calle De Martinez Seco, 28",17013,1094,178,Centro de salud · de Potes S/N,364,680,True,10.8,,,no_hay_alternativa
-Villaverde,"Avenida De Los Rosales, 409  B",17117,3584,186,Centro de salud · de Las Camas 1,1979,,,,,,sin_ruta
+Villaverde,"Avenida De Los Rosales, 409  B",17117,3584,186,Centro de salud · de Las Camas 1,1979,4359,True,70.6,,,no_hay_alternativa
 Villaverde,"Calle De Puebla De Sanabria, 27  J",17099,776,210,Centro de salud · de Potes S/N,393,618,True,10.0,,,no_hay_alternativa
 Villaverde,"Calle De La Magnesia, 8",17109,1319,275,Centro de salud · de Alberto Palacios 22,714,879,True,13.4,,,no_hay_alternativa
 Villaverde,"Calle De Concepcion De La Oliva, 13",17047,1861,289,Centro de salud · del Diamante 12,683,880,True,14.4,,,no_hay_alternativa
 Villaverde,"Avenida Real De Pinto, 111",17106,2104,142,Centro de salud · de Alberto Palacios 22,1083,1769,True,29.1,,,no_hay_alternativa
 Villaverde,"Calle Del Lignito, 4",17106,2104,142,Centro de salud · de Benimamet 24,857,1264,True,20.2,,,no_hay_alternativa
-Villaverde,"Calle De San Norberto, 19",17106,2104,142,Centro de salud · de Benimamet 24,1079,,,,,,sin_ruta
+Villaverde,"Calle De San Norberto, 19",17106,2104,142,Centro de salud · de Benimamet 24,1079,1538,True,24.5,,,no_hay_alternativa
 Villaverde,"Calle Del Doctor Martin Arevalo, 49",17027,1989,409,Centro de salud · de Totanes 1,528,678,True,11.0,991,198.5,se_arregla_con_desvio
 Villaverde,"Calle De Potes, 7",17098,1163,229,Centro de salud · de Potes S/N,169,431,True,6.7,,,no_hay_alternativa
 Villaverde,"Calle De Las Arenas, 14",17012,1988,303,Centro de salud · de Potes S/N,421,697,True,10.8,,,no_hay_alternativa

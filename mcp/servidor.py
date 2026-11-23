@@ -189,7 +189,7 @@ TOOLS = {
         {
             "origen": {"type": "string"},
             "destino": {"type": "string"},
-            "max_sin_descanso": {"type": "integer", "minimum": 30, "maximum": 1500, "default": 200},
+            "max_sin_descanso": {"type": "integer", "minimum": 30, "maximum": 2000, "default": 200},
             "salida": {"type": "string", "description": "Fecha y hora local ISO, p. ej. 2025-07-01T14:00:00"},
         },
         ["origen", "destino"],
