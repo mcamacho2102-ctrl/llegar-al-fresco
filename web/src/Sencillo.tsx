@@ -37,7 +37,7 @@ const LAYERS: {
   {
     key: "sun",
     label: "Sol y sombra",
-    help: "Calculado a la hora de salida con edificios y árboles.",
+    help: "Calculado a la hora de salida, principalmente con la altura de los edificios.",
     legend: ["Sombra", "Sol a ratos", "Sol directo"],
   },
   {
@@ -97,6 +97,15 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
   const [prefer, setPrefer] = useState<"comfort" | "shade">("comfort");
   const advancedCount =
     Number(!stairs) + Number(minWidth !== null) + Number(maxSlope !== null) + Number(pace !== 1) + Number(prefer !== "comfort");
+
+  // Al llegar un resultado nuevo, llevar la pantalla hasta él (cuando ya está pintado).
+  useEffect(() => {
+    if (!result) return;
+    const frame = window.requestAnimationFrame(() =>
+      document.getElementById("resultado")?.scrollIntoView({ behavior: "smooth", block: "start" }),
+    );
+    return () => window.cancelAnimationFrame(frame);
+  }, [result]);
 
   const reset = () => {
     setResult(null);
@@ -181,10 +190,6 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       } as never);
       setResult(data);
       setLayer("route");
-      window.setTimeout(
-        () => document.getElementById("resultado")?.scrollIntoView({ behavior: "smooth" }),
-        80,
-      );
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -205,6 +210,11 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       setKind(null);
       setOtherDestination(true);
       setLimit(200);
+      setStairs(true);
+      setMinWidth(null);
+      setMaxSlope(null);
+      setPace(1);
+      setPrefer("comfort");
       setWhen("other");
       setDeparture(EXAMPLE.departure);
       await search(a.results[0], b.results[0], 200, EXAMPLE.departure, false);
@@ -276,7 +286,6 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                 setOtherDestination(false);
                 setDestination(null);
                 setKind(d.kind);
-                if (!origin) setError("Primero dinos desde dónde sales (paso 1).");
               }}
             >
               <span aria-hidden="true">{d.icon}</span> {d.label}
@@ -296,6 +305,14 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             ✏️ Otra dirección
           </button>
         </div>
+        {kind && !otherDestination && !origin && (
+          <p className="aviso" role="alert">
+            Primero dinos desde dónde sales (paso 1) y te enseñamos los más cercanos.
+          </p>
+        )}
+        {kind && !otherDestination && origin && options.length === 0 && (
+          <p className="aviso" role="status">Buscando los más cercanos…</p>
+        )}
         {kind && !otherDestination && origin && options.length > 0 && (
           <div className="cercanos">
             <p>Los más cercanos a tu salida:</p>

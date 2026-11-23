@@ -188,6 +188,8 @@ async def lifespan(app):
     app.state.city = Madrid()
     app.state.population = section_population()
     app.state.footfall = read_footfall(app.state.city)
+    with app.state.city.db_connect() as conn:
+        app.state.portals = conn.execute("SELECT count(*) FROM portals").fetchone()[0]
     app.state.registro = Registro(app.state.city)
     demo = RAW / "uso" / "consultas-demo.sqlite"
     app.state.demo = Registro(app.state.city, demo) if demo.exists() else None
@@ -272,23 +274,52 @@ async def security_headers(request: Request, call_next):
     return response
 
 
-@app.middleware("http")
-async def rate_limit(request: Request, call_next):
-    if RATE and request.url.path.startswith("/api/"):
+# Detrás de Fly.io (o con CONFIAR_PROXY=1) se usa la IP que reenvía el proxy; si no, la
+# de la conexión, para que nadie pueda saltarse el límite con una cabecera falsa.
+TRUST_PROXY = os.environ.get("CONFIAR_PROXY") == "1" or "FLY_APP_NAME" in os.environ
+HEAVY = {"/api/bank-plan", "/api/study"}  # cálculos de varios segundos
+HEAVY_RATE = int(os.environ.get("LIMITE_PETICIONES_PESADAS", "20"))
+_heavy_calls = defaultdict(deque)
+
+
+def client_ip(request):
+    if TRUST_PROXY:
         forwarded = request.headers.get("fly-client-ip") or request.headers.get(
             "x-forwarded-for", ""
         ).split(",")[0].strip()
-        client = forwarded or (request.client.host if request.client else "?")
+        if forwarded:
+            return forwarded
+    return request.client.host if request.client else "?"
+
+
+def over_limit(calls, client, limit, now):
+    window = calls[client]
+    while window and now - window[0] > 60:
+        window.popleft()
+    if len(window) >= limit:
+        return True
+    window.append(now)
+    return False
+
+
+@app.middleware("http")
+async def rate_limit(request: Request, call_next):
+    path = request.url.path
+    if RATE and path.startswith("/api/"):
+        client = client_ip(request)
         now = monotonic()
-        window = _calls[client]
-        while window and now - window[0] > 60:
-            window.popleft()
-        if len(window) >= RATE:
+        blocked = over_limit(_calls, client, RATE, now) or (
+            path in HEAVY and over_limit(_heavy_calls, client, HEAVY_RATE, now)
+        )
+        if len(_calls) > 5000:  # limpieza: IPs sin actividad en el último minuto
+            for table in (_calls, _heavy_calls):
+                for key in [k for k, w in table.items() if not w or now - w[-1] > 60]:
+                    del table[key]
+        if blocked:
             return JSONResponse(
                 {"detail": "Demasiadas consultas seguidas. Espera un minuto."},
                 status_code=429,
             )
-        window.append(now)
     return await call_next(request)
 
 
@@ -368,7 +399,7 @@ STATION_NAME = "Majadahonda"
 @lru_cache(maxsize=1)
 def observed_temperatures():
     """Temperaturas horarias validadas (magnitud 83) de la red regional: histórico 2025
-    y mes en curso. Clave: (AAAA-MM-DD, hora 1–23)."""
+    y mes en curso. Clave: (AAAA-MM-DD, hora 0–23)."""
     readings = {}
     for name in ("calidad_aire_datos_meteo_historico.csv", "calidad_aire_datos_meteo_mes.csv"):
         source = RAW / name
@@ -381,10 +412,13 @@ def observed_temperatures():
                 if row["magnitud"] != "83":
                     continue
                 day = f'{row["ano"]}-{int(row["mes"]):02d}-{int(row["dia"]):02d}'
-                for hour in range(1, 24):
+                following = (datetime.fromisoformat(day) + timedelta(days=1)).strftime("%Y-%m-%d")
+                for hour in range(1, 25):
                     if row.get(f"v{hour:02d}") == "V":
+                        # h24 es la medida que cierra el día: las 00 h del día siguiente.
+                        key = (following, 0) if hour == 24 else (day, hour)
                         try:
-                            readings[(day, hour)] = float(row[f"h{hour:02d}"].replace(",", "."))
+                            readings[key] = float(row[f"h{hour:02d}"].replace(",", "."))
                         except (TypeError, ValueError):
                             continue
     return readings
@@ -563,14 +597,12 @@ def informe_csv(demo: bool = False, dias: Optional[int] = Query(default=None, ge
 @app.get("/api/info")
 def info():
     city = app.state.city
-    with city.db_connect() as conn:
-        portals = conn.execute("SELECT count(*) FROM portals").fetchone()[0]
     return {
         "version": city.meta,
         "sources": SOURCE_FILES,
         "networkEdges": len(city.a),
         "benchConnections": sum(map(len, city.rests.values())),
-        "portals": portals,
+        "portals": app.state.portals,
     }
 
 
@@ -730,10 +762,31 @@ def points(w: float, s: float, e: float, n: float):
     if radius > 1500 or radius <= 0:
         return {"features": []}
     ids = city.poi_tree.query_ball_point((x, y), radius)
+    # Con más de 700 puntos, primero todo lo que no es banco (fuentes, aseos, centros…)
+    # y después bancos repartidos por igual en toda la vista, sin dejar media vista vacía.
+    others = [i for i in ids if city.pois[i]["kind"] != "bench"]
+    benches = [i for i in ids if city.pois[i]["kind"] == "bench"]
+    if len(others) > POINTS_OTHERS:
+        others = spread(others, POINTS_OTHERS)
+    chosen = others + spread(benches, POINTS_MAX - len(others))
     return {
-        "features": [city.poi_output(city.pois[i]) for i in ids[:700]],
-        "truncated": len(ids) > 700,
+        "features": [city.poi_output(city.pois[i]) for i in chosen],
+        "truncated": len(chosen) < len(ids),
     }
+
+
+POINTS_MAX = 700
+POINTS_OTHERS = 350
+
+
+def spread(items, quota):
+    """Muestra uniforme (orden espacial del árbol) de hasta `quota` elementos."""
+    if quota <= 0:
+        return []
+    if len(items) <= quota:
+        return items
+    step = len(items) / quota
+    return [items[int(k * step)] for k in range(quota)]
 
 
 @app.post("/api/routes")

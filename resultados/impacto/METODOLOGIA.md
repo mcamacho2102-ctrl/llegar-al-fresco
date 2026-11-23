@@ -59,7 +59,6 @@ Con 3.102 trayectos evaluables, el intervalo de confianza al 95 % (aproximación
 | Moratalaz | 27,4 | 81,3 % | 79,0 % | 39,3 % | 42,0 % | 73 m |
 | Arganzuela | 22,3 | 70,5 % | 71,9 % | 32,9 % | 37,6 % | 132 m |
 | Chamberí | 24,5 | 68,9 % | 71,3 % | 27,0 % | 41,9 % | 104 m |
-| Chamberí | 24,5 | 68,9 % | 71,3 % | 27,0 % | 41,9 % | 104 m |
 
 El detalle por trayecto está en `impacto_200m_n150_s2026_todos.csv`, y la sensibilidad en `impacto_150m_…` e `impacto_300m_…`.
 

@@ -3,13 +3,13 @@
   "area": "Servidor",
   "prueba": "Responde /api/info",
   "estado": "OK",
-  "detalle": "15 ms"
+  "detalle": "8 ms"
  },
  {
   "area": "Servidor",
   "prueba": "Sirve la web",
   "estado": "OK",
-  "detalle": "2 ms"
+  "detalle": "1 ms"
  },
  {
   "area": "Servidor",
@@ -45,13 +45,13 @@
   "area": "Buscador",
   "prueba": "«Calle Mayor 1»",
   "estado": "OK",
-  "detalle": "12 resultados · Maria Auxiliadora, Residencia de Personas May"
+  "detalle": "12 resultados · Clínica dental · Calle de Baños de Montemayor"
  },
  {
   "area": "Buscador",
   "prueba": "«calle mayor, 1»",
   "estado": "OK",
-  "detalle": "12 resultados · Maria Auxiliadora, Residencia de Personas May"
+  "detalle": "12 resultados · Clínica dental · Calle de Baños de Montemayor"
  },
  {
   "area": "Buscador",
@@ -75,13 +75,13 @@
   "area": "Buscador",
   "prueba": "«Avda. de América 2»",
   "estado": "OK",
-  "detalle": "1 resultados · Avenida De America, 2"
+  "detalle": "6 resultados · Consulta de otros profesionales sanitarios · "
  },
  {
   "area": "Buscador",
   "prueba": "«Paseo de la Castellana 100»",
   "estado": "OK",
-  "detalle": "3 resultados · Farmacia · Paseo de la Castellana 100"
+  "detalle": "5 resultados · Clínica dental · Paseo de la Castellana 100"
  },
  {
   "area": "Buscador",
@@ -111,7 +111,7 @@
   "area": "Buscador",
   "prueba": "«centro de salud segovia»",
   "estado": "OK",
-  "detalle": "1 resultados · Centro de salud · de Segovia 4"
+  "detalle": "1 resultados · Centro de salud · Calle de Segovia 4"
  },
  {
   "area": "Buscador",
@@ -153,7 +153,7 @@
   "area": "Buscador",
   "prueba": "«': OR 1=1 --»",
   "estado": "OK",
-  "detalle": "17 resultados · Clínica dental · de Andrea Jordán 1 "
+  "detalle": "17 resultados · Clínica dental · Calle de Andrea Jordán 1"
  },
  {
   "area": "Buscador",
@@ -189,7 +189,7 @@
   "area": "Rutas",
   "prueba": "Ejemplo de la demo",
   "estado": "OK",
-  "detalle": "[('distance', 238, 238), ('comfort', 316, 169), ('shade', 315, 169)] · 0.35 s"
+  "detalle": "[('distance', 238, 238), ('comfort', 316, 169), ('shade', 315, 169)] · 0.01 s"
  },
  {
   "area": "Rutas",
@@ -207,13 +207,13 @@
   "area": "Rendimiento",
   "prueba": "Barajas → Villaverde (≈17 km)",
   "estado": "OK",
-  "detalle": "1.4 s · [('distance', 20217)]"
+  "detalle": "1.2 s · [('distance', 20217)]"
  },
  {
   "area": "Rendimiento",
   "prueba": "El Pardo → Sol",
   "estado": "OK",
-  "detalle": "0.5 s · [('distance', 14236)]"
+  "detalle": "0.1 s · [('distance', 14236)]"
  },
  {
   "area": "Validación",
@@ -249,19 +249,19 @@
   "area": "Rutas",
   "prueba": "Límite 30 m",
   "estado": "OK",
-  "detalle": "0.01 s · ['distance', 'closest']"
+  "detalle": "0.00 s · ['distance', 'closest']"
  },
  {
   "area": "Rutas",
   "prueba": "Límite 2000 m",
   "estado": "OK",
-  "detalle": "0.01 s · ['distance', 'comfort', 'shade']"
+  "detalle": "0.00 s · ['distance', 'comfort', 'shade']"
  },
  {
   "area": "Rutas",
   "prueba": "Límite None m",
   "estado": "OK",
-  "detalle": "0.01 s · ['distance', 'comfort', 'shade']"
+  "detalle": "0.00 s · ['distance', 'comfort', 'shade']"
  },
  {
   "area": "Opciones",
@@ -273,7 +273,7 @@
   "area": "Opciones",
   "prueba": "Ancho ≥ 1,5 m",
   "estado": "OK",
-  "detalle": "1.37 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
+  "detalle": "1.43 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
  },
  {
   "area": "Opciones",
@@ -309,13 +309,13 @@
   "area": "Cercanos",
   "prueba": "salud desde Sol",
   "estado": "OK",
-  "detalle": "el más cercano a 408 m · 30 ms"
+  "detalle": "el más cercano a 408 m · 31 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "salud desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 500 m · 26 ms"
+  "detalle": "el más cercano a 500 m · 25 ms"
  },
  {
   "area": "Cercanos",
@@ -369,13 +369,13 @@
   "area": "Cercanos",
   "prueba": "biblioteca desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 1432 m · 24 ms"
+  "detalle": "el más cercano a 1432 m · 23 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "biblioteca desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 1395 m · 23 ms"
+  "detalle": "el más cercano a 1395 m · 24 ms"
  },
  {
   "area": "Validación",
@@ -417,7 +417,7 @@
   "area": "Ayuntamientos",
   "prueba": "Buscar ubicaciones para bancos",
   "estado": "OK",
-  "detalle": "4.4 s · 3"
+  "detalle": "3.7 s · 3"
  },
  {
   "area": "Ayuntamientos",
@@ -439,7 +439,7 @@
  },
  {
   "area": "Ayuntamientos",
-  "prueba": "CSV de huecos",
+  "prueba": "CSV de huecos (BOM y «;» para Excel)",
   "estado": "OK",
   "detalle": ""
  },

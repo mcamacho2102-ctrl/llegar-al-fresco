@@ -97,7 +97,8 @@ export default function BankPlanResults({
                       {option.medianReductionM !== null && (
                         <>
                           {" "}
-                          Reducción mediana {fmt(option.medianReductionM)} m.
+                          Donde se acorta, lo hace una mediana de{" "}
+                          {fmt(option.medianReductionM)} m.
                         </>
                       )}
                     </dd>

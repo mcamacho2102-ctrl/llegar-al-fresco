@@ -136,21 +136,38 @@ def pharmacy_points():
 
 
 def heat_hours():
-    """Horas ≥ 35 °C validadas en 2025 por estación de la red regional (magnitud 83)."""
+    """Horas ≥ 35 °C validadas en 2025 por municipio con estación de la red regional
+    (magnitud 83). Si un municipio tuviera varias estaciones, se promedian."""
     hours, valid = Counter(), Counter()
     for r in read("calidad_aire_datos_meteo_historico.csv"):
         if r["magnitud"] != "83" or r["ano"] != "2025":
             continue
-        code = r["municipio"].zfill(3)
+        station = (r["municipio"].zfill(3), r["estacion"])
         for h in range(1, 25):
             if r[f"v{h:02d}"] != "V":
                 continue
             value = number(r[f"h{h:02d}"])
             if value is None:
                 continue
-            valid[code] += 1
-            hours[code] += value >= HOT
-    return {code: (hours[code], valid[code]) for code in valid}
+            valid[station] += 1
+            hours[station] += value >= HOT
+    per_town = defaultdict(list)
+    for station in valid:
+        per_town[station[0]].append((hours[station], valid[station]))
+    return {
+        code: (round(sum(h for h, _ in items) / len(items)), round(sum(v for _, v in items) / len(items)))
+        for code, items in per_town.items()
+    }
+
+
+def without_centre(rows, count_key, ratio_key):
+    """Mayores por centro. Sin ningún centro, la situación es peor que el peor ratio
+    observado (y no equivale a tener uno): peor ratio + mayores del municipio."""
+    worst = max((r[ratio_key] for r in rows.values() if r[count_key]), default=0)
+    return {
+        c: (r[ratio_key] if r[count_key] else (worst + r["mayores65"] if r["mayores65"] else None))
+        for c, r in rows.items()
+    }
 
 
 def percentile(values):
@@ -199,13 +216,8 @@ def main():
     # Índice de prioridad: media de percentiles (0–1), mayor = más necesidad.
     criteria = {
         "pct65": {c: r["pct65"] for c, r in rows.items()},
-        "salud": {
-            c: (r["mayoresPorCentroSalud"] if r["centrosSalud"] else r["mayores65"]) for c, r in rows.items()
-        },
-        "mayores": {
-            c: (r["mayoresPorCentroMayores"] if r["centrosMayores"] else r["mayores65"])
-            for c, r in rows.items()
-        },
+        "salud": without_centre(rows, "centrosSalud", "mayoresPorCentroSalud"),
+        "mayores": without_centre(rows, "centrosMayores", "mayoresPorCentroMayores"),
         "calor": {c: r["horas35"] for c, r in rows.items()},
     }
     ranks = {k: percentile(v) for k, v in criteria.items()}

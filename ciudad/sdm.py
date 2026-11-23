@@ -61,7 +61,9 @@ def entities():
         entity = {
             "id": f"urn:ngsi-ld:PointOfInterest:llegar-al-fresco:{row['id']}-{slug(row['label'])}",
             "type": "PointOfInterest",
-            "name": row["label"].split(" — ")[0] if " — " in row["label"] else row["label"].split(" · ")[0],
+            # Con nombre propio («Nombre — …») se usa el nombre; si no, la etiqueta
+            # completa con dirección («Farmacia · Calle de Toledo 129»), que sí distingue.
+            "name": row["label"].split(" — ")[0] if " — " in row["label"] else row["label"],
             "description": row["label"],
             "category": [category],
             "location": {"type": "Point", "coordinates": [round(lon, 6), round(lat, 6)]},

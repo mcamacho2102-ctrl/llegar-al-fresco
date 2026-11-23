@@ -324,7 +324,7 @@ export default function Informe({ onSimulate }: { onSimulate: () => void }) {
             </div>
           </section>
 
-          <section className="source-panel">
+          <section id="fuentes" className="source-panel">
             <h2>Qué se guarda y qué no</h2>
             <p>
               De cada ruta se guarda el tipo de destino, el límite elegido, la longitud del camino directo

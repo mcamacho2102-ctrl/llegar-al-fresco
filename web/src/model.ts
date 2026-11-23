@@ -168,7 +168,17 @@ export interface Info {
 }
 export async function api<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options);
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    // Un proxy (502/504) o una caída pueden devolver HTML en vez de JSON.
+    throw new Error(
+      response.ok
+        ? "Respuesta inesperada del servidor. Vuelve a intentarlo."
+        : "El servidor no está disponible ahora mismo. Vuelve a intentarlo en un momento.",
+    );
+  }
   if (!response.ok)
     throw new Error(
       typeof data.detail === "string"

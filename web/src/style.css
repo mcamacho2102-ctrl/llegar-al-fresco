@@ -1461,3 +1461,19 @@ nav .volver {
 .aviso-ruta p:last-child { margin-bottom: 0; }
 .solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .sencillo .nota, .sencillo .privacidad { font-size: 16px; }
+@media (max-width: 480px) {
+  .brand { white-space: normal; min-width: 0; }
+}
+/* Pantallas muy estrechas o zoom muy alto: que nada obligue a desplazar en horizontal */
+.sencillo { overflow-wrap: anywhere; }
+.sencillo .hero-simple h1 { font-size: clamp(1.5rem, 7vw, 3.4rem); }
+.sencillo .paso, .sencillo .paso > *, .sencillo .botones-destino > *, .sencillo .botones-limite > * { min-width: 0; }
+@media (max-width: 240px) {
+  .sencillo { padding-left: 8px; padding-right: 8px; }
+  .paso { padding: 12px 10px; }
+  .paso h2 { flex-wrap: wrap; font-size: 1.1rem; }
+  .paso .num { width: 32px; height: 32px; }
+  .botones-limite .opcion { flex-basis: 100%; }
+  header { padding: 10px 8px; }
+  .brand img { width: 32px; height: 32px; }
+}

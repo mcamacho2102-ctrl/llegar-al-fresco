@@ -26,7 +26,9 @@ def main():
     filled = nearest_sidewalk_width(attrs, mid)
     arrays["attrs"] = attrs
     after = sizes[known()].sum() / sizes.sum()
-    backup = path.with_suffix(".antes-anchos.npz")
+    # La copia va fuera de datos/ciudad para que no entre en la imagen ni en la Release.
+    backup = VERSION.parent / "respaldos" / "grafo.antes-anchos.npz"
+    backup.parent.mkdir(parents=True, exist_ok=True)
     if not backup.exists():
         shutil.copy2(path, backup)
     np.savez_compressed(path, **arrays)

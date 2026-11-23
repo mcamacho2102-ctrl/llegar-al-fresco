@@ -100,8 +100,9 @@ def main():
 
         # Botón de destino sin salida
         page.get_by_role("button", name="Centro de salud").click()
-        msg = page.locator(".error-simple").inner_text() if page.locator(".error-simple").count() else ""
-        record("Mayores", "Aviso si elige destino antes de la salida", "OK" if "paso 1" in msg else "FALLO", msg[:80])
+        notice = page.locator(".paso").nth(1).locator(".aviso")
+        msg = notice.inner_text() if notice.count() else ""
+        record("Mayores", "Aviso dentro del paso 2 si elige destino antes de la salida", "OK" if "paso 1" in msg else "FALLO", msg[:80])
         search_btn = page.get_by_role("button", name="Buscar mi ruta")
         record("Mayores", "Buscar desactivado sin datos (y explicado)", "OK" if search_btn.is_disabled() and page.locator(".pista").count() else "FALLO")
 
@@ -115,12 +116,13 @@ def main():
         search_btn.click()
         page.wait_for_selector(".frase", timeout=30000)
         record("Mayores", "Flujo completo: dirección → centro de salud → 150 m", "OK", f"{time.perf_counter() - t:.1f} s · «{page.locator('.frase h2').inner_text()}»")
+        time.sleep(1.2)  # desplazamiento suave; se mide antes de capturas y auditorías
+        top = page.evaluate("document.getElementById('resultado').getBoundingClientRect().top")
+        record("Mayores", "Desplaza la pantalla hasta el resultado", "OK" if abs(top) < 120 else "AVISO", f"resultado a {top:.0f} px del borde superior")
         page.screenshot(path=str(SHOTS / "mayor_resultado.png"), full_page=True)
         mf = min_font(page, ".frase")
         record("Mayores", "Letra mínima en el resultado", "OK" if mf >= 15 else "AVISO", f"{mf:.0f} px")
         axe(page, "resultado móvil")
-        top = page.evaluate("document.getElementById('resultado').getBoundingClientRect().top")
-        record("Mayores", "Desplaza la pantalla hasta el resultado", "OK" if top < 500 else "AVISO", f"resultado a {top:.0f} px del borde superior")
 
         # Capas
         for name in ("Sol y sombra", "Cuestas", "Ancho de acera", "Ruta"):

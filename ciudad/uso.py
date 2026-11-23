@@ -87,8 +87,10 @@ class Registro:
         self.lock = threading.Lock()
         with self.connect() as db:
             db.executescript(SCHEMA)
-        benches = [row for row in city.pois if row["kind"] == "bench"]
-        self.bench_points = shapely.points([(row["x"], row["y"]) for row in benches])
+        # Solo los bancos enlazados a la red peatonal (los mismos que usa el motor),
+        # no los que están tras un muro o en un recinto cerrado.
+        linked = {rest.xy for rests in city.rests.values() for rest in rests}
+        self.bench_points = shapely.points(sorted(linked))
         self.bench_tree = STRtree(self.bench_points)
 
     def connect(self):
@@ -169,7 +171,12 @@ class Registro:
             )
 
     def register(self, request, routes):
-        if os.environ.get("USO_REGISTRO", "1") == "0" or request.live or not request.register:
+        if (
+            os.environ.get("USO_REGISTRO", "1") == "0"
+            or request.live
+            or not request.register
+            or request.scenario is not None  # simulaciones de mejoras: no es demanda real
+        ):
             return
         limit = request.preferences.rest
         shortest = next((r for r in routes if r["style"] == "distance"), None)
@@ -189,8 +196,10 @@ class Registro:
                 where = "WHERE dia >= ?"
                 args = [(datetime.now(LOCAL) - timedelta(days=days)).strftime("%Y-%m-%d")]
             rows = db.execute(f"SELECT * FROM consultas {where}", args).fetchall()
-            ids = {row["id"] for row in rows}
-            gaps = [g for g in db.execute("SELECT * FROM huecos").fetchall() if g["consulta"] in ids]
+            gaps = db.execute(
+                f"SELECT huecos.* FROM huecos JOIN consultas ON consultas.id = huecos.consulta {where}",
+                args,
+            ).fetchall()
         total = len(rows)
         results = Counter(row["resultado"] for row in rows)
         detours = [row["rodeo_m"] for row in rows if row["resultado"] == "rodeo"]
@@ -265,7 +274,8 @@ class Registro:
     def report_csv(self, **kwargs):
         data = self.report(limit_rows=500, **kwargs)
         out = io.StringIO()
-        writer = csv.writer(out)
+        out.write("\ufeff")  # BOM: Excel en español detecta UTF-8 (tildes)
+        writer = csv.writer(out, delimiter=";")
         writer.writerow(["calle", "lat", "lon", "consultas", "sin_alternativa", "rodeo_total_m", "hueco_mediano_m"])
         for h in data["huecos"]:
             lon, lat = h["coordinates"]

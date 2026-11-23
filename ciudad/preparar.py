@@ -20,7 +20,7 @@ from shapely.geometry import shape
 from shapely.strtree import STRtree
 
 from ciudad.fuentes import RAW
-from ciudad.regional import add_regional
+from ciudad.regional import add_regional, health_label
 
 VERSION = RAW / "ciudad"
 TO_METERS = Transformer.from_crs(4326, 25830, always_xy=True)
@@ -451,7 +451,7 @@ def add_places(handler, boundary):
             )
             if not x or not y:
                 continue
-            label = f'{row["centro_tipo"]} · {row["direccion_vial_nombre"]} {row["direccion_vial_nro"]}'
+            label = health_label(row)
             db.execute(
                 "INSERT OR IGNORE INTO poi VALUES(?,?,?,?,?,?,?)",
                 (

@@ -465,7 +465,7 @@ export default function Region() {
         </section>
       )}
 
-      <section className="source-panel">
+      <section id="fuentes" className="source-panel">
         <h2>Cómo se calcula</h2>
         <p>
           El índice es la media de cuatro percentiles: porcentaje de 65 años o

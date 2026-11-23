@@ -146,7 +146,7 @@ function Details({ route }: { route: Route }) {
           <span>Exposición directa al sol</span>
           <strong>{metric(route.sunMin, "min")}</strong>
           <small>
-            {route.coverage.sun}% modelado · edificios y copas con dimensiones
+            {route.coverage.sun}% modelado · sobre todo altura de edificios
           </small>
           <small>
             Tramo continuo estimado: {metric(route.sunStretchMin, "min")}
@@ -739,6 +739,7 @@ function App() {
                 walkDistance.current = 0;
                 state.carry = used;
                 state.restAt = 0;
+                state.spoken = -1; // la voz vuelve a anunciar desde el primer paso
                 setNavigationMessage("Trayecto actualizado.");
                 try {
                   localStorage.setItem(

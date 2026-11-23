@@ -233,7 +233,7 @@ def main():
     code, data, _ = call("/api/informe?demo=true&dias=30")
     record("Ayuntamientos", "Informe filtrado por días", "OK" if code == 200 else "FALLO", f"{data.get('consultas') if code == 200 else code}")
     code, data, _ = call("/api/informe.csv?demo=true")
-    record("Ayuntamientos", "CSV de huecos", "OK" if code == 200 and data.startswith("calle,") else "FALLO")
+    record("Ayuntamientos", "CSV de huecos (BOM y «;» para Excel)", "OK" if code == 200 and data.lstrip("\ufeff").startswith("calle;") else "FALLO")
 
     # ---------- Concurrencia ----------
     def one(_):

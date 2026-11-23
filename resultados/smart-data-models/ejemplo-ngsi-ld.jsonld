@@ -1,9 +1,9 @@
 [
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0010-Nueva-Edad-Centro-de-Dia-Centro-de-dia-para-mayores-de-Marti",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0010-Nueva-Edad-Centro-de-Dia-Centro-de-dia-para-mayores-Calle-de",
   "type": "PointOfInterest",
-  "name": "Nueva Edad, Centro de Dia",
-  "description": "Nueva Edad, Centro de Dia · Centro de día para mayores · de Martínez Villergas 6",
+  "name": "Nueva Edad, Centro de Dia · Centro de día para mayores · Calle de Martínez Villergas 6",
+  "description": "Nueva Edad, Centro de Dia · Centro de día para mayores · Calle de Martínez Villergas 6",
   "category": [
    "centro-para-mayores"
   ],
@@ -26,10 +26,10 @@
   ]
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0026-El-Encuentro-Hogar-o-club-de-mayores-de-Cyesa-13",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0026-El-Encuentro-Hogar-o-club-de-mayores-Calle-de-Cyesa-13",
   "type": "PointOfInterest",
-  "name": "El Encuentro",
-  "description": "El Encuentro · Hogar o club de mayores · de Cyesa 13",
+  "name": "El Encuentro · Hogar o club de mayores · Calle de Cyesa 13",
+  "description": "El Encuentro · Hogar o club de mayores · Calle de Cyesa 13",
   "category": [
    "centro-para-mayores"
   ],
@@ -54,8 +54,8 @@
  {
   "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:mC0074-Santa-Filipina-Residencia-de-Personas-Mayores-Residencia-de-",
   "type": "PointOfInterest",
-  "name": "Santa Filipina, Residencia de Personas Mayores",
-  "description": "Santa Filipina, Residencia de Personas Mayores · Residencia de mayores · de Burgos 4",
+  "name": "Santa Filipina, Residencia de Personas Mayores · Residencia de mayores · Avenida de Burgos 4",
+  "description": "Santa Filipina, Residencia de Personas Mayores · Residencia de mayores · Avenida de Burgos 4",
   "category": [
    "centro-para-mayores"
   ],

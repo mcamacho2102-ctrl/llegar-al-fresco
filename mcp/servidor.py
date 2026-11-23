@@ -54,6 +54,8 @@ def call(path, payload=None, query=None):
         raise ValueError(f"La aplicación respondió {error.code}: {detail}") from None
     except URLError as error:
         raise ValueError(f"No se puede conectar con {BASE}: {error.reason}") from None
+    except (OSError, TimeoutError) as error:  # socket.timeout en Python 3.9
+        raise ValueError(f"La aplicación no responde ({BASE}): {error}") from None
 
 
 def place(text):

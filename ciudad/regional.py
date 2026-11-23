@@ -19,6 +19,21 @@ SOCIAL = "atencion_social_registro_centros.csv"
 PHARMACIES = "oficinas_farmacia.csv"
 SOCIAL_SOURCE = "Comunidad de Madrid · Registro de centros de atención social"
 PHARMACY_SOURCE = "Comunidad de Madrid · registro de oficinas de farmacia"
+HEALTH_SOURCE = "Comunidad de Madrid · registro sanitario"
+VIA = {
+    "CALLE": "Calle", "AVDA": "Avenida", "AVENIDA": "Avenida", "PASEO": "Paseo", "PLAZA": "Plaza",
+    "CTRA": "Carretera", "CMNO": "Camino", "GTA": "Glorieta", "RONDA": "Ronda", "CUSTA": "Cuesta",
+    "BULEV": "Bulevar", "TRVA": "Travesía", "PSAJE": "Pasaje", "CRA": "Carrera", "CLLON": "Callejón",
+    "CSTAN": "Costanilla", "PZA": "Plaza", "PS": "Paseo", "AV": "Avenida", "CL": "Calle",
+}
+
+
+def via(kind):
+    """Tipo de vía legible a partir de la abreviatura del registro."""
+    text = str(kind or "").strip()
+    return VIA.get(text.upper(), text.title())
+
+
 SUBTYPES = {
     "CENTROS DE DÍA": "Centro de día para mayores",
     "CENTROS RESIDENCIALES": "Residencia de mayores",
@@ -66,7 +81,7 @@ def elderly_centres(boundary):
             filter(
                 None,
                 (
-                    row["direccion_via_tipo"].strip().title(),
+                    via(row["direccion_via_tipo"]),
                     row["direccion_via_nombre"].strip(),
                     row["direccion_portal"].strip(),
                 ),
@@ -90,14 +105,14 @@ def pharmacies(boundary):
             filter(
                 None,
                 (
-                    row["DIRECCION_VIAL_TIPO"].strip().title(),
+                    via(row["DIRECCION_VIAL_TIPO"]),
                     row["DIRECCION_VIAL_NOMBRE"].strip(),
                     row["DIRECCION_VIAL_NRO"].strip(),
                 ),
             )
         )
         yield (
-            "p" + row["FARMACIA_NRO_SOE"],
+            "farm:" + row["FARMACIA_NRO_SOE"],  # «p…» es el prefijo de los portales
             f"Farmacia · {street}",
             "pharmacy",
             x,
@@ -105,6 +120,38 @@ def pharmacies(boundary):
             PHARMACY_SOURCE,
             None,
         )
+
+
+def health_label(row):
+    """Etiqueta de un centro del registro sanitario, con tipo de vía."""
+    street = " ".join(
+        part
+        for part in (
+            via(row["direccion_vial_tipo"]),
+            row["direccion_vial_nombre"].strip(),
+            row["direccion_vial_nro"].strip(),
+        )
+        if part
+    )
+    return f'{row["centro_tipo"]} · {street}'
+
+
+def fix_health_labels(db):
+    """Rehace la parte de dirección de los centros sanitarios ya indexados, conservando
+    el nombre añadido desde OSM («Nombre — …»)."""
+    labels = {}
+    for row in rows("centros_servicios_establecimientos_sanitarios.csv"):
+        labels.setdefault("s" + row["centro_nro_registro"], health_label(row))
+    changed = 0
+    for ident, label in db.execute("SELECT id,label FROM poi WHERE source=?", (HEALTH_SOURCE,)).fetchall():
+        base = labels.get(ident)
+        if not base:
+            continue
+        new = (label.split(" — ")[0] + " — " + base) if " — " in label else base
+        if new != label:
+            db.execute("UPDATE poi SET label=? WHERE id=?", (new, ident))
+            changed += 1
+    return changed
 
 
 def add_regional(db, boundary):
@@ -126,6 +173,7 @@ def main():
     boundary = shapely.from_wkb((VERSION / "limite.wkb").read_bytes())
     db = sqlite3.connect(VERSION / "lugares.sqlite")
     add_regional(db, boundary)
+    print(f"Centros sanitarios con tipo de vía corregido: {fix_health_labels(db):,}", flush=True)
     db.commit()
     db.close()
 

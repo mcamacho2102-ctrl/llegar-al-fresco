@@ -5,3 +5,4 @@ __pycache__/
 web/node_modules/
 web/.build/
 llegar-al-fresco-datos-*.tar.gz*
+.openai/

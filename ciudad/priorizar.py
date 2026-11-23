@@ -133,7 +133,12 @@ def measured_effect(samples, baseline, routes, complete, populations):
         "lostPaths": lost,
         "reducedGaps": sum(v > 0 for v in reductions),
         "pairedPaths": len(reductions),
-        "medianReductionM": round(median(reductions), 1) if reductions else None,
+        # Mediana solo entre las rutas que el banco acorta de verdad.
+        "medianReductionM": (
+            round(median([v for v in reductions if v > 0]), 1)
+            if any(v > 0 for v in reductions)
+            else None
+        ),
         "newSections": len(sections),
         "olderInNewSections": (
             sum(older[section] for section in sections) if known else None
