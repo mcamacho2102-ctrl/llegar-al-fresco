@@ -482,8 +482,13 @@ def route_set(trip, request, full=True):
     routes = []
     limited = False
     shortest_m = None
+    impossible = False
     for style, label in styles:
         limit = criteria.rest if style != "distance" else None
+        if style == "shade" and impossible:
+            # Sombra solo cambia el coste, no qué caminos cumplen el límite: si con
+            # «menos esfuerzo» no hay ninguno, tampoco lo habrá aquí.
+            continue
         result, paused = trip.solve(
             criteria,
             date,
@@ -495,6 +500,7 @@ def route_set(trip, request, full=True):
         )
         limited |= paused
         if not result:
+            impossible |= style == "comfort" and not paused
             continue
         if style == "distance":
             shortest_m = result["meters"]
@@ -517,6 +523,8 @@ def route_set(trip, request, full=True):
             criteria.rest is None or result["maxWithoutRest"] <= criteria.rest + 0.01
         )
         routes.append(result)
+        if full and style == "distance" and shortest_m > TOO_FAR_WALK_M:
+            break  # a pie es demasiado largo: solo el camino directo, sin más búsquedas
     if not full and not routes:
         # Navegando: si ya no hay forma de respetar el límite, se guía por el camino directo.
         result, paused = trip.solve(
@@ -528,7 +536,7 @@ def route_set(trip, request, full=True):
             result.update(label="Camino directo", style="distance", fitsRest=False)
             routes.append(result)
     if full and criteria.rest is not None and routes and not any(r["fitsRest"] for r in routes) \
-            and trip.straight_m() <= TOO_FAR_M:
+            and trip.straight_m() <= TOO_FAR_M and (shortest_m or 0) <= TOO_FAR_WALK_M:
         closest = closest_route(trip, criteria, date, p.pace, request.initialSinceRest, routes)
         if closest:
             closest["nearbyServices"] = list(
@@ -541,13 +549,15 @@ def route_set(trip, request, full=True):
     return routes, limited
 
 
-def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=60000):
+def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=40000, probes=5):
     """Cuando ninguna ruta respeta el límite, busca la que minimiza el tramo más largo
-    sin banco: el menor límite L ≥ el pedido para el que existe ruta (búsqueda binaria)."""
+    sin banco: el menor límite L ≥ el pedido para el que existe ruta (búsqueda binaria).
+    Como mucho `probes` intentos: en el servidor cada uno cuesta unos segundos."""
     low = criteria.rest
     high = min(r["maxWithoutRest"] for r in routes)
     best = None
-    while high - low > step:
+    while high - low > step and probes > 0:
+        probes -= 1
         middle = int((low + high) / 2)
         result, _ = trip.solve(
             criteria._replace(rest=middle),
@@ -704,12 +714,15 @@ def jsonify_candidates(root, q):
 
 
 TOO_FAR_M = 3000  # más de 3 km en línea recta: se recomienda transporte público
+TOO_FAR_WALK_M = 4000  # o más de 4 km andando (p. ej. hay que rodear una autovía o las vías)
 
 
 @app.get("/api/dentro")
 def dentro(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90)):
-    """¿Está el punto dentro del área que cubre la aplicación (Madrid capital)?"""
-    return {"dentro": -4 <= lon <= -3 and 40 <= lat <= 41 and app.state.city.inside(lon, lat)}
+    """¿Está el punto dentro del área que cubre la aplicación (Madrid capital)? Y, si lo
+    está, ¿hay una calle o camino de la red a menos de MAX_CONNECT m para empezar?"""
+    inside = -4 <= lon <= -3 and 40 <= lat <= 41 and app.state.city.inside(lon, lat)
+    return {"dentro": inside, "red": inside and app.state.city.locate(lon, lat) is not None}
 
 
 @app.get("/api/cerca")
@@ -747,7 +760,11 @@ def nearby(
     lat: float = Query(ge=-90, le=90),
     n: int = Query(default=3, ge=1, le=8),
 ):
-    """Destinos de los registros de la Comunidad más cercanos en línea recta."""
+    """Destinos de los registros de la Comunidad más cercanos andando.
+
+    Se toman los más cercanos en línea recta a los que se puede llegar desde la red
+    peatonal y se ordenan por el camino a pie más corto: una biblioteca a 700 m en
+    línea recta puede quedar a 7 km andando si hay que rodear una autovía."""
     city = app.state.city
     if not city.inside(lon, lat):
         raise HTTPException(
@@ -756,21 +773,38 @@ def nearby(
         )
     x, y = TO_METERS.transform(lon, lat)
     wanted = NEARBY_KINDS[kind]
+    pool = max(n, NEARBY_POOL)
     found = []
     for k in (40, 200, 1000, len(city.pois)):
         distances, indices = city.poi_tree.query((x, y), k=min(k, len(city.pois)))
-        found = [
-            (d, city.pois[i])
-            for d, i in zip(distances, indices)
-            if wanted(city.pois[i])
-        ]
-        if len(found) >= n:
+        found = [(d, city.pois[i]) for d, i in zip(distances, indices) if wanted(city.pois[i])]
+        if len(found) >= 3 * pool:
             break
-    return {
-        "results": [
-            city.poi_output(row) | {"straightM": round(float(d))} for d, row in found[:n]
-        ]
-    }
+    origin = city.locate(lon, lat)
+    out = []
+    for d, row in found:
+        place = city.poi_output(row) | {"straightM": round(float(d))}
+        if city.locate(*place["coordinates"]) is None:
+            continue  # sin calle o camino cerca (p. ej. dentro de la terminal del aeropuerto)
+        if origin is not None:
+            place["walkM"] = walking_m((lon, lat), place["coordinates"])
+        out.append(place)
+        if len(out) >= pool:
+            break
+    out.sort(key=lambda r: (r.get("walkM") is None, r.get("walkM") or 0, r["straightM"]))
+    return {"results": out[:n]}
+
+
+NEARBY_POOL = 5  # candidatos que se miden andando antes de elegir los n más cercanos
+
+
+def walking_m(origin, destination):
+    """Longitud del camino a pie más corto, sin más condiciones (None si no se encuentra)."""
+    trip = app.state.city.prepare_trip(origin, destination, None)
+    if trip is None:
+        return None
+    result, _ = trip.solve(Limits(), datetime.now(LOCAL).timestamp(), 1.0, "distance", None, 0, max_checks=40000)
+    return result["meters"] if result else None
 
 
 @app.get("/api/points")
@@ -826,11 +860,13 @@ def routes(request: RouteRequest):
         )
         show, limited = route_set(trip, lenient, True)
     app.state.registro.register(request, show)
+    walk_m = min((r["meters"] for r in show if r["style"] == "distance"), default=0)
     return {
         "routes": show,
         "relaxed": relaxed,
-        "tooFar": trip.straight_m() > TOO_FAR_M,
+        "tooFar": trip.straight_m() > TOO_FAR_M or walk_m > TOO_FAR_WALK_M,
         "straightM": round(trip.straight_m()),
+        "walkM": walk_m or None,
         "limited": limited,
         "alternativeMaxM": trip.practical_limit(),
         "weather": air_at(times(request)) if not request.live else None,

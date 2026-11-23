@@ -86,6 +86,7 @@ export interface RouteResponse {
   relaxed?: ("width" | "slope")[];
   tooFar?: boolean;
   straightM?: number;
+  walkM?: number | null;
   limited: boolean;
   alternativeMaxM: number;
   weather: {

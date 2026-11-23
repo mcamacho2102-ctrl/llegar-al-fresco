@@ -17,7 +17,7 @@ import {
 } from "./model";
 
 type Kind = "salud" | "farmacia" | "mayores" | "biblioteca";
-type Nearby = Place & { straightM: number };
+type Nearby = Place & { straightM: number; walkM?: number | null };
 
 const DESTINATIONS: { kind: Kind; icon: string; label: string }[] = [
   { kind: "salud", icon: "🏥", label: "Centro de salud" },
@@ -70,6 +70,10 @@ function instruction({ action, label, turn }: Step) {
 const minutes = (value: number) => {
   const m = Math.max(1, Math.round(value));
   return m === 1 ? "1 minuto" : `${m} minutos`;
+};
+const about = (value: number) => {
+  const m = Math.max(1, Math.round(value));
+  return m === 1 ? "1 minuto" : `unos ${m} minutos`;
 };
 const times = (n: number) => (n === 1 ? "1 vez" : `${n} veces`);
 // Tramo real más largo sin banco junto al camino (el servidor lo calcula para el camino directo).
@@ -139,7 +143,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
 
   const summary = (route: Route) => {
     const parts = [
-      `Ruta de ${fmt(route.meters)} metros, unos ${minutes(route.durationMin)}.`,
+      `Ruta de ${fmt(route.meters)} metros, ${about(route.durationMin)}.`,
       route.rests.length
         ? `Te sentarás ${times(route.rests.length)}: ` +
           route.rests.map((r, i) => `${i + 1}, banco de ${r.label}, a los ${Math.round(r.atM)} metros`).join("; ") + "."
@@ -271,11 +275,20 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       );
       const coords: Position = [p.coords.longitude, p.coords.latitude];
       try {
-        const { dentro } = await api<{ dentro: boolean }>(`/api/dentro?lon=${coords[0]}&lat=${coords[1]}`);
+        const { dentro, red } = await api<{ dentro: boolean; red?: boolean }>(
+          `/api/dentro?lon=${coords[0]}&lat=${coords[1]}`,
+        );
         if (!dentro) {
           setMessage("");
           setError(
             "Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid: escribe una dirección de Madrid.",
+          );
+          return;
+        }
+        if (red === false) {
+          setMessage("");
+          setError(
+            "Tu ubicación queda lejos de cualquier calle o camino del mapa (puede que estés en un parque grande, un recinto o el campo). Escribe la dirección o márcala en el mapa.",
           );
           return;
         }
@@ -468,7 +481,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
               >
                 <strong>{place.label.split(" · ").slice(0, 2).join(" · ")}</strong>
                 <small>
-                  a {fmt(place.straightM)} m en línea recta
+                  {place.walkM ? `a ${fmt(place.walkM)} m andando` : `a ${fmt(place.straightM)} m en línea recta`}
                   {place.hours ? " · " + place.hours.slice(0, 60) : ""}
                 </small>
               </button>
@@ -640,6 +653,11 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           {busy ? "Buscando tu ruta…" : "Buscar mi ruta"}
         </button>
         {!ready && <p className="pista">Completa los pasos 1 y 2.</p>}
+        {busy && (
+          <p className="pista" role="status">
+            Estamos comparando caminos con bancos y sombra. Puede tardar unos segundos.
+          </p>
+        )}
         <button type="button" className="link-button grande-enlace" onClick={() => void example()}>
           Ver un ejemplo
         </button>
@@ -667,7 +685,11 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             <div className="aviso-ruta" role="status">
               {result.tooFar && (
                 <p>
-                  <strong>Es un trayecto largo para ir a pie</strong> ({fmt(Math.round((result.straightM || 0) / 100) / 10)} km en línea recta).
+                  <strong>Es un trayecto largo para ir a pie</strong> (
+                  {result.walkM
+                    ? `${fmt(Math.round(result.walkM / 100) / 10)} km andando`
+                    : `${fmt(Math.round((result.straightM || 0) / 100) / 10)} km en línea recta`}
+                  ).
                   Te recomendamos transporte público. Te mostramos el camino a pie más corto por si lo necesitas.
                 </p>
               )}
@@ -691,7 +713,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
               {recommended ? (
                 <>
                   <h2>
-                    {fmt(recommended.meters)} m · unos {minutes(recommended.durationMin)}
+                    {fmt(recommended.meters)} m · {about(recommended.durationMin)}
                   </h2>
                   {limit === null || recommended.rests.length === 0 ? (
                     <p>
@@ -733,7 +755,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                     La mejor posible: como mucho {fmt(Math.round(closest.maxWithoutRest))} m sin sentarte
                   </h2>
                   <p>
-                    {fmt(closest.meters)} m · unos {minutes(closest.durationMin)}.{" "}
+                    {fmt(closest.meters)} m · {about(closest.durationMin)}.{" "}
                     {closest.rests.length
                       ? <>Te sentarás <strong>{times(closest.rests.length)}</strong>.</>
                       : "No hay ningún banco por el camino."}
@@ -751,7 +773,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                       ))}
                     </ol>
                   )}
-                  {shortest && limit !== null && gapOf(shortest) > limit && (
+                  {shortest && limit !== null && gapOf(shortest) > Math.max(limit, closest.maxWithoutRest) && (
                     <p className="comparacion">
                       El camino más corto mide {fmt(shortest.meters)} m, con un tramo de{" "}
                       {fmt(Math.round(gapOf(shortest)))} m seguidos sin ningún banco.
@@ -775,7 +797,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                   </span>
                 )}
                 {shown.sunMin !== null && (
-                  <span className="chip">☀️ Al sol unos {minutes(shown.sunMin)}</span>
+                  <span className="chip">☀️ Al sol {about(shown.sunMin)}</span>
                 )}
                 <span className="chip">
                   {shown.slopePct !== null && shown.slopePct > 8 ? "⛰️ Alguna cuesta fuerte" : "🚶 Sin cuestas fuertes"}
