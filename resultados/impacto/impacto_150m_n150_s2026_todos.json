@@ -1,0 +1,255 @@
+{
+  "limite_m": 150,
+  "total": {
+    "muestra": 3150,
+    "evaluables": 2989,
+    "pct_supera_limite": 94.1,
+    "pct_se_arregla": 15.9,
+    "pct_sin_alternativa": 78.2
+  },
+  "distritos": {
+    "Arganzuela": {
+      "pct_mayores65": 22.3,
+      "muestra": 150,
+      "evaluables": 137,
+      "pct_supera_limite": 86.9,
+      "pct_supera_limite_ponderado_mayores": 87.8,
+      "pct_se_arregla": 23.4,
+      "pct_sin_alternativa": 63.5,
+      "desvio_mediano_m": 94,
+      "excluidos_sin_ruta_o_inconclusos": 13
+    },
+    "Barajas": {
+      "pct_mayores65": 20.2,
+      "muestra": 150,
+      "evaluables": 139,
+      "pct_supera_limite": 97.8,
+      "pct_supera_limite_ponderado_mayores": 97.3,
+      "pct_se_arregla": 5.0,
+      "pct_sin_alternativa": 92.8,
+      "desvio_mediano_m": 191,
+      "excluidos_sin_ruta_o_inconclusos": 11
+    },
+    "Carabanchel": {
+      "pct_mayores65": 18.4,
+      "muestra": 150,
+      "evaluables": 147,
+      "pct_supera_limite": 95.9,
+      "pct_supera_limite_ponderado_mayores": 95.2,
+      "pct_se_arregla": 10.9,
+      "pct_sin_alternativa": 85.0,
+      "desvio_mediano_m": 138,
+      "excluidos_sin_ruta_o_inconclusos": 3
+    },
+    "Centro": {
+      "pct_mayores65": 16.7,
+      "muestra": 150,
+      "evaluables": 149,
+      "pct_supera_limite": 95.3,
+      "pct_supera_limite_ponderado_mayores": 96.3,
+      "pct_se_arregla": 17.4,
+      "pct_sin_alternativa": 77.9,
+      "desvio_mediano_m": 105,
+      "excluidos_sin_ruta_o_inconclusos": 1
+    },
+    "Chamartin": {
+      "pct_mayores65": 24.3,
+      "muestra": 150,
+      "evaluables": 144,
+      "pct_supera_limite": 91.7,
+      "pct_supera_limite_ponderado_mayores": 93.4,
+      "pct_se_arregla": 16.7,
+      "pct_sin_alternativa": 75.0,
+      "desvio_mediano_m": 243,
+      "excluidos_sin_ruta_o_inconclusos": 6
+    },
+    "Chamberi": {
+      "pct_mayores65": 24.5,
+      "muestra": 150,
+      "evaluables": 145,
+      "pct_supera_limite": 80.0,
+      "pct_supera_limite_ponderado_mayores": 82.5,
+      "pct_se_arregla": 29.7,
+      "pct_sin_alternativa": 50.3,
+      "desvio_mediano_m": 103,
+      "excluidos_sin_ruta_o_inconclusos": 5
+    },
+    "Ciudad Lineal": {
+      "pct_mayores65": 23.0,
+      "muestra": 150,
+      "evaluables": 144,
+      "pct_supera_limite": 98.6,
+      "pct_supera_limite_ponderado_mayores": 98.7,
+      "pct_se_arregla": 9.7,
+      "pct_sin_alternativa": 88.9,
+      "desvio_mediano_m": 97,
+      "excluidos_sin_ruta_o_inconclusos": 6
+    },
+    "Fuencarral-El Pardo": {
+      "pct_mayores65": 22.4,
+      "muestra": 150,
+      "evaluables": 143,
+      "pct_supera_limite": 97.2,
+      "pct_supera_limite_ponderado_mayores": 97.5,
+      "pct_se_arregla": 7.7,
+      "pct_sin_alternativa": 89.5,
+      "desvio_mediano_m": 131,
+      "excluidos_sin_ruta_o_inconclusos": 7
+    },
+    "Hortaleza": {
+      "pct_mayores65": 19.5,
+      "muestra": 150,
+      "evaluables": 140,
+      "pct_supera_limite": 99.3,
+      "pct_supera_limite_ponderado_mayores": 99.1,
+      "pct_se_arregla": 11.4,
+      "pct_sin_alternativa": 87.9,
+      "desvio_mediano_m": 193,
+      "excluidos_sin_ruta_o_inconclusos": 10
+    },
+    "Latina": {
+      "pct_mayores65": 23.4,
+      "muestra": 150,
+      "evaluables": 143,
+      "pct_supera_limite": 96.5,
+      "pct_supera_limite_ponderado_mayores": 96.6,
+      "pct_se_arregla": 5.6,
+      "pct_sin_alternativa": 90.9,
+      "desvio_mediano_m": 224,
+      "excluidos_sin_ruta_o_inconclusos": 7
+    },
+    "Moncloa-Aravaca": {
+      "pct_mayores65": 23.1,
+      "muestra": 150,
+      "evaluables": 137,
+      "pct_supera_limite": 97.1,
+      "pct_supera_limite_ponderado_mayores": 97.5,
+      "pct_se_arregla": 6.6,
+      "pct_sin_alternativa": 90.5,
+      "desvio_mediano_m": 115,
+      "excluidos_sin_ruta_o_inconclusos": 13
+    },
+    "Moratalaz": {
+      "pct_mayores65": 27.4,
+      "muestra": 150,
+      "evaluables": 146,
+      "pct_supera_limite": 91.1,
+      "pct_supera_limite_ponderado_mayores": 90.8,
+      "pct_se_arregla": 34.9,
+      "pct_sin_alternativa": 56.2,
+      "desvio_mediano_m": 123,
+      "excluidos_sin_ruta_o_inconclusos": 4
+    },
+    "Puente De Vallecas": {
+      "pct_mayores65": 18.1,
+      "muestra": 150,
+      "evaluables": 150,
+      "pct_supera_limite": 92.7,
+      "pct_supera_limite_ponderado_mayores": 92.6,
+      "pct_se_arregla": 12.0,
+      "pct_sin_alternativa": 80.7,
+      "desvio_mediano_m": 233,
+      "excluidos_sin_ruta_o_inconclusos": 0
+    },
+    "Retiro": {
+      "pct_mayores65": 27.7,
+      "muestra": 150,
+      "evaluables": 144,
+      "pct_supera_limite": 95.1,
+      "pct_supera_limite_ponderado_mayores": 95.8,
+      "pct_se_arregla": 13.9,
+      "pct_sin_alternativa": 81.2,
+      "desvio_mediano_m": 85,
+      "excluidos_sin_ruta_o_inconclusos": 6
+    },
+    "Salamanca": {
+      "pct_mayores65": 24.6,
+      "muestra": 150,
+      "evaluables": 149,
+      "pct_supera_limite": 94.6,
+      "pct_supera_limite_ponderado_mayores": 94.6,
+      "pct_se_arregla": 23.5,
+      "pct_sin_alternativa": 71.1,
+      "desvio_mediano_m": 196,
+      "excluidos_sin_ruta_o_inconclusos": 1
+    },
+    "San Blas-Canillejas": {
+      "pct_mayores65": 19.1,
+      "muestra": 150,
+      "evaluables": 144,
+      "pct_supera_limite": 96.5,
+      "pct_supera_limite_ponderado_mayores": 96.3,
+      "pct_se_arregla": 21.5,
+      "pct_sin_alternativa": 75.0,
+      "desvio_mediano_m": 145,
+      "excluidos_sin_ruta_o_inconclusos": 6
+    },
+    "Tetuan": {
+      "pct_mayores65": 19.0,
+      "muestra": 150,
+      "evaluables": 149,
+      "pct_supera_limite": 92.6,
+      "pct_supera_limite_ponderado_mayores": 93.0,
+      "pct_se_arregla": 16.8,
+      "pct_sin_alternativa": 75.8,
+      "desvio_mediano_m": 143,
+      "excluidos_sin_ruta_o_inconclusos": 1
+    },
+    "Usera": {
+      "pct_mayores65": 16.5,
+      "muestra": 150,
+      "evaluables": 149,
+      "pct_supera_limite": 92.6,
+      "pct_supera_limite_ponderado_mayores": 93.6,
+      "pct_se_arregla": 9.4,
+      "pct_sin_alternativa": 83.2,
+      "desvio_mediano_m": 74,
+      "excluidos_sin_ruta_o_inconclusos": 1
+    },
+    "Vicalvaro": {
+      "pct_mayores65": 13.7,
+      "muestra": 150,
+      "evaluables": 125,
+      "pct_supera_limite": 96.8,
+      "pct_supera_limite_ponderado_mayores": 95.7,
+      "pct_se_arregla": 24.8,
+      "pct_sin_alternativa": 72.0,
+      "desvio_mediano_m": 109,
+      "excluidos_sin_ruta_o_inconclusos": 25
+    },
+    "Villa De Vallecas": {
+      "pct_mayores65": 14.5,
+      "muestra": 150,
+      "evaluables": 122,
+      "pct_supera_limite": 92.6,
+      "pct_supera_limite_ponderado_mayores": 89.8,
+      "pct_se_arregla": 24.6,
+      "pct_sin_alternativa": 68.0,
+      "desvio_mediano_m": 183,
+      "excluidos_sin_ruta_o_inconclusos": 28
+    },
+    "Villaverde": {
+      "pct_mayores65": 16.4,
+      "muestra": 150,
+      "evaluables": 143,
+      "pct_supera_limite": 95.1,
+      "pct_supera_limite_ponderado_mayores": 93.0,
+      "pct_se_arregla": 10.5,
+      "pct_sin_alternativa": 84.6,
+      "desvio_mediano_m": 90,
+      "excluidos_sin_ruta_o_inconclusos": 7
+    }
+  },
+  "semilla": 2026,
+  "n_por_distrito": 150,
+  "salida_simulada": "2025-07-01T14:00 Europe/Madrid",
+  "segundos": 26,
+  "version_datos": {
+    "built": "2026-11-19T20:13:07.354241+00:00",
+    "osm": "2026-11-18T21:21:02Z",
+    "banks": "2026",
+    "addresses": "2026-10",
+    "districts": 21
+  },
+  "destino": "Centro de salud o consultorio de atención primaria más cercano en línea recta · Comunidad de Madrid, registro de centros sanitarios"
+}
