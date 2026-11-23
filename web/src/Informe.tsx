@@ -226,7 +226,7 @@ export default function Informe({
           </section>
 
           <div className="informe-mapa">
-            <div ref={host} className="map" aria-label="Mapa de bancos estratégicos" />
+            <div ref={host} className="map" role="region" aria-label="Mapa de bancos estratégicos" />
           </div>
           <p className="leyenda-informe">
             <span><i className="dot mid" /> Banco que ahorra rodeos</span>

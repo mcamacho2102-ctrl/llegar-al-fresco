@@ -359,7 +359,7 @@ export default function Region() {
           )}
         </section>
         <div className="map-wrap region-map">
-          <div ref={host} className="map" aria-label="Mapa de municipios" />
+          <div ref={host} className="map" role="region" aria-label="Mapa de municipios" />
         </div>
       </div>
 

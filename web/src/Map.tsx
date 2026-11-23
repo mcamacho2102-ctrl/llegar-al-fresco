@@ -409,7 +409,7 @@ export default function Map({
         <div
           className="map"
           ref={host}
-          aria-label="Mapa de recorridos de Madrid"
+          role="region" aria-label="Mapa de recorridos de Madrid"
         />
       )}
     </div>
