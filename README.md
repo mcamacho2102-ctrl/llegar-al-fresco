@@ -2,7 +2,7 @@
 
 **Rutas a pie para quien necesita sentarse por el camino, y una herramienta para que los ayuntamientos decidan dónde poner el próximo banco.** Proyecto para DATAMAD 2026.
 
-- 🌐 **Demo:** https://llegaralfresco.outofthemark.com · plan B local: `scripts/arrancar.sh`
+- 🌐 **Demo:** https://llegaralfresco.outofthemark.com (también https://llegaralfresco.95-217-181-34.sslip.io) · plan B local: `scripts/arrancar.sh`
 - 📦 **Datos compilados:** [Release v1.0-datamad](https://github.com/mcamacho2102-ctrl/llegar-al-fresco/releases/tag/v1.0-datamad)
 - 📄 Licencia del código: [Apache-2.0](LICENSE) · datos: [DATA-LICENSE.md](DATA-LICENSE.md)
 
