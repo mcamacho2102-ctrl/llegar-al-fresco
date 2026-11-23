@@ -23,6 +23,7 @@ from ciudad.fuentes import AEMET, RAW, ROOT, response
 from ciudad.motor import MAX_CHECKS, MAX_CONNECT, Madrid, Limits, TO_METERS, coordinates, normal
 from ciudad.aforos import CAMPAIGN_SOURCE, PERMANENT_SOURCE, read_footfall
 from ciudad.priorizar import SEARCH_BUDGET, compare_banks
+from ciudad.uso import Registro
 
 LOCAL = ZoneInfo("Europe/Madrid")
 SUMMER_PROGRAM = "https://www.madrid.es/portales/munimadrid/es/Inicio/El-Ayuntamiento/Notas-de-prensa/Matadero-Madrid-y-CentroCentro-abren-espacios-culturales-vegetales-para-refugiarse-del-calor/?vgnextchannel=6091317d3d2a7010VgnVCM100000dc0ca8c0RCRD&vgnextfmt=default&vgnextoid=f1e95a8688fee910VgnVCM100000891ecb1aRCRD"
@@ -163,6 +164,9 @@ class RouteRequest(BaseModel):
     scenario: Optional[Improvement] = None
     live: bool = False
     initialSinceRest: float = Field(default=0, ge=0, le=10000)
+    # Registro anónimo para el informe municipal (ver ciudad/uso.py)
+    purpose: Optional[Literal["salud", "farmacia", "mayores", "biblioteca", "direccion"]] = None
+    register: bool = True
 
 
 class AreaRequest(RouteRequest):
@@ -182,6 +186,9 @@ async def lifespan(app):
     app.state.city = Madrid()
     app.state.population = section_population()
     app.state.footfall = read_footfall(app.state.city)
+    app.state.registro = Registro(app.state.city)
+    demo = RAW / "uso" / "consultas-demo.sqlite"
+    app.state.demo = Registro(app.state.city, demo) if demo.exists() else None
     yield
 
 
@@ -373,11 +380,6 @@ def route_set(trip, request, full=True):
     p = request.preferences
     date = times(request)
     criteria = limits(request)
-    if (criteria.width or criteria.slope) and max(trip.a.offset, trip.b.offset) > 3:
-        raise HTTPException(
-            422,
-            "El acceso de un extremo está sin verificar. Marca un punto sobre la acera para aplicar límites imprescindibles de ancho o pendiente.",
-        )
     styles = (
         [
             ("distance", "Más corta"),
@@ -390,6 +392,7 @@ def route_set(trip, request, full=True):
     seen = set()
     routes = []
     limited = False
+    shortest_m = None
     for style, label in styles:
         limit = criteria.rest if style != "distance" else None
         result, paused = trip.solve(
@@ -399,11 +402,13 @@ def route_set(trip, request, full=True):
             style,
             limit,
             request.initialSinceRest,
-            max_walk=None if style == "distance" else trip.practical_limit(),
+            max_walk=None if style == "distance" else trip.walk_limit(shortest_m),
         )
         limited |= paused
         if not result:
             continue
+        if style == "distance":
+            shortest_m = result["meters"]
         signature = (
             tuple(map(tuple, result["geometry"]["coordinates"])),
             tuple(x["atM"] for x in result["rests"]),
@@ -420,7 +425,73 @@ def route_set(trip, request, full=True):
             criteria.rest is None or result["maxWithoutRest"] <= criteria.rest + 0.01
         )
         routes.append(result)
+    if full and criteria.rest is not None and routes and not any(r["fitsRest"] for r in routes):
+        closest = closest_route(trip, criteria, date, p.pace, request.initialSinceRest, routes)
+        if closest:
+            closest["nearbyServices"] = list(
+                trip.city.nearby_services(closest["geometry"]["coordinates"])
+            )
+            closest["label"] = "La que menos anda sin sentarse"
+            closest["style"] = "closest"
+            closest["fitsRest"] = False
+            routes.append(closest)
     return routes, limited
+
+
+def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=60000):
+    """Cuando ninguna ruta respeta el límite, busca la que minimiza el tramo más largo
+    sin banco: el menor límite L ≥ el pedido para el que existe ruta (búsqueda binaria)."""
+    low = criteria.rest
+    high = min(r["maxWithoutRest"] for r in routes)
+    best = None
+    while high - low > step:
+        middle = int((low + high) / 2)
+        result, _ = trip.solve(
+            criteria._replace(rest=middle),
+            date,
+            pace,
+            "comfort",
+            middle,
+            initial,
+            max_walk=trip.walk_limit(min(r["meters"] for r in routes)),
+            max_checks=budget,
+        )
+        if result:
+            best = result
+            high = min(middle, result["maxWithoutRest"])
+        else:
+            low = middle
+    if best is None or best["maxWithoutRest"] >= min(r["maxWithoutRest"] for r in routes) - 1:
+        return None  # no mejora a lo que ya se muestra
+    best["bestRestM"] = round(best["maxWithoutRest"])
+    return best
+
+
+def informe_fuente(demo):
+    if demo:
+        if app.state.demo is None:
+            raise HTTPException(404, "No hay datos de demostración. Ejecuta python -m ciudad.uso_demo.")
+        return app.state.demo
+    return app.state.registro
+
+
+@app.get("/api/informe")
+def informe(demo: bool = False, dias: Optional[int] = Query(default=None, ge=1, le=3650)):
+    data = informe_fuente(demo).report(days=dias)
+    data["demo"] = demo
+    data["hayDemo"] = app.state.demo is not None
+    return data
+
+
+@app.get("/api/informe.csv")
+def informe_csv(demo: bool = False, dias: Optional[int] = Query(default=None, ge=1, le=3650)):
+    from fastapi.responses import Response
+
+    return Response(
+        informe_fuente(demo).report_csv(days=dias),
+        media_type="text/csv; charset=utf-8",
+        headers={"Content-Disposition": "attachment; filename=huecos-sin-banco.csv"},
+    )
 
 
 @app.get("/api/info")
@@ -590,6 +661,7 @@ def points(w: float, s: float, e: float, n: float):
 def routes(request: RouteRequest):
     trip = build_trip(request)
     show, limited = route_set(trip, request, not request.live)
+    app.state.registro.register(request, show)
     return {
         "routes": show,
         "limited": limited,
@@ -608,8 +680,6 @@ def study_route(
         return None, False
     p = request.preferences
     criteria = limits(request)
-    if (criteria.width or criteria.slope) and max(trip.a.offset, trip.b.offset) > 3:
-        return None, False
     return trip.solve(
         criteria,
         times(request),

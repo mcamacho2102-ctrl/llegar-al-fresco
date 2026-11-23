@@ -3,9 +3,9 @@
   "total": {
     "muestra": 3150,
     "evaluables": 3102,
-    "pct_supera_limite": 88.2,
-    "pct_se_arregla": 27.2,
-    "pct_sin_alternativa": 60.9
+    "pct_supera_limite": 88.1,
+    "pct_se_arregla": 27.6,
+    "pct_sin_alternativa": 60.5
   },
   "distritos": {
     "Arganzuela": {
@@ -45,11 +45,11 @@
       "pct_mayores65": 16.7,
       "muestra": 150,
       "evaluables": 150,
-      "pct_supera_limite": 84.7,
-      "pct_supera_limite_ponderado_mayores": 86.7,
-      "pct_se_arregla": 34.7,
-      "pct_sin_alternativa": 50.0,
-      "desvio_mediano_m": 122,
+      "pct_supera_limite": 84.0,
+      "pct_supera_limite_ponderado_mayores": 86.1,
+      "pct_se_arregla": 35.3,
+      "pct_sin_alternativa": 48.7,
+      "desvio_mediano_m": 118,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
     "Chamartin": {
@@ -113,8 +113,8 @@
       "evaluables": 146,
       "pct_supera_limite": 95.2,
       "pct_supera_limite_ponderado_mayores": 95.3,
-      "pct_se_arregla": 10.3,
-      "pct_sin_alternativa": 84.9,
+      "pct_se_arregla": 11.0,
+      "pct_sin_alternativa": 84.2,
       "desvio_mediano_m": 73,
       "excluidos_sin_ruta_o_inconclusos": 4
     },
@@ -135,8 +135,8 @@
       "evaluables": 150,
       "pct_supera_limite": 81.3,
       "pct_supera_limite_ponderado_mayores": 79.0,
-      "pct_se_arregla": 38.7,
-      "pct_sin_alternativa": 42.7,
+      "pct_se_arregla": 39.3,
+      "pct_sin_alternativa": 42.0,
       "desvio_mediano_m": 73,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -157,9 +157,9 @@
       "evaluables": 149,
       "pct_supera_limite": 85.2,
       "pct_supera_limite_ponderado_mayores": 87.2,
-      "pct_se_arregla": 30.2,
-      "pct_sin_alternativa": 55.0,
-      "desvio_mediano_m": 121,
+      "pct_se_arregla": 32.2,
+      "pct_sin_alternativa": 53.0,
+      "desvio_mediano_m": 134,
       "excluidos_sin_ruta_o_inconclusos": 1
     },
     "Salamanca": {
@@ -179,8 +179,8 @@
       "evaluables": 150,
       "pct_supera_limite": 91.3,
       "pct_supera_limite_ponderado_mayores": 92.0,
-      "pct_se_arregla": 32.7,
-      "pct_sin_alternativa": 58.7,
+      "pct_se_arregla": 33.3,
+      "pct_sin_alternativa": 58.0,
       "desvio_mediano_m": 99,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -201,8 +201,8 @@
       "evaluables": 150,
       "pct_supera_limite": 89.3,
       "pct_supera_limite_ponderado_mayores": 90.3,
-      "pct_se_arregla": 22.0,
-      "pct_sin_alternativa": 67.3,
+      "pct_se_arregla": 22.7,
+      "pct_sin_alternativa": 66.7,
       "desvio_mediano_m": 183,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -223,8 +223,8 @@
       "evaluables": 146,
       "pct_supera_limite": 90.4,
       "pct_supera_limite_ponderado_mayores": 88.1,
-      "pct_se_arregla": 44.5,
-      "pct_sin_alternativa": 45.9,
+      "pct_se_arregla": 45.9,
+      "pct_sin_alternativa": 44.5,
       "desvio_mediano_m": 148,
       "excluidos_sin_ruta_o_inconclusos": 4
     },
@@ -234,8 +234,8 @@
       "evaluables": 149,
       "pct_supera_limite": 89.9,
       "pct_supera_limite_ponderado_mayores": 87.7,
-      "pct_se_arregla": 33.6,
-      "pct_sin_alternativa": 56.4,
+      "pct_se_arregla": 34.2,
+      "pct_sin_alternativa": 55.7,
       "desvio_mediano_m": 190,
       "excluidos_sin_ruta_o_inconclusos": 1
     }
@@ -243,7 +243,7 @@
   "semilla": 2026,
   "n_por_distrito": 150,
   "salida_simulada": "2025-07-01T14:00 Europe/Madrid",
-  "segundos": 54,
+  "segundos": 38,
   "version_datos": {
     "built": "2026-11-19T20:13:07.354241+00:00",
     "osm": "2026-11-18T21:21:02Z",

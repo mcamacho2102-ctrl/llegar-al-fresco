@@ -4,8 +4,8 @@
     "muestra": 3150,
     "evaluables": 3102,
     "pct_supera_limite": 74.0,
-    "pct_se_arregla": 41.6,
-    "pct_sin_alternativa": 32.4
+    "pct_se_arregla": 42.8,
+    "pct_sin_alternativa": 31.2
   },
   "distritos": {
     "Arganzuela": {
@@ -14,9 +14,9 @@
       "evaluables": 149,
       "pct_supera_limite": 51.0,
       "pct_supera_limite_ponderado_mayores": 52.0,
-      "pct_se_arregla": 30.2,
-      "pct_sin_alternativa": 20.8,
-      "desvio_mediano_m": 130,
+      "pct_se_arregla": 30.9,
+      "pct_sin_alternativa": 20.1,
+      "desvio_mediano_m": 141,
       "excluidos_sin_ruta_o_inconclusos": 1
     },
     "Barajas": {
@@ -25,8 +25,8 @@
       "evaluables": 147,
       "pct_supera_limite": 93.2,
       "pct_supera_limite_ponderado_mayores": 92.1,
-      "pct_se_arregla": 50.3,
-      "pct_sin_alternativa": 42.9,
+      "pct_se_arregla": 51.0,
+      "pct_sin_alternativa": 42.2,
       "desvio_mediano_m": 154,
       "excluidos_sin_ruta_o_inconclusos": 3
     },
@@ -36,8 +36,8 @@
       "evaluables": 150,
       "pct_supera_limite": 80.0,
       "pct_supera_limite_ponderado_mayores": 77.7,
-      "pct_se_arregla": 46.7,
-      "pct_sin_alternativa": 33.3,
+      "pct_se_arregla": 47.3,
+      "pct_sin_alternativa": 32.7,
       "desvio_mediano_m": 224,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -45,10 +45,10 @@
       "pct_mayores65": 16.7,
       "muestra": 150,
       "evaluables": 150,
-      "pct_supera_limite": 66.0,
-      "pct_supera_limite_ponderado_mayores": 67.6,
-      "pct_se_arregla": 60.0,
-      "pct_sin_alternativa": 6.0,
+      "pct_supera_limite": 65.3,
+      "pct_supera_limite_ponderado_mayores": 67.0,
+      "pct_se_arregla": 60.7,
+      "pct_sin_alternativa": 4.7,
       "desvio_mediano_m": 86,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -69,9 +69,9 @@
       "evaluables": 148,
       "pct_supera_limite": 53.4,
       "pct_supera_limite_ponderado_mayores": 58.0,
-      "pct_se_arregla": 49.3,
-      "pct_sin_alternativa": 4.1,
-      "desvio_mediano_m": 137,
+      "pct_se_arregla": 50.7,
+      "pct_sin_alternativa": 2.7,
+      "desvio_mediano_m": 141,
       "excluidos_sin_ruta_o_inconclusos": 2
     },
     "Ciudad Lineal": {
@@ -91,8 +91,8 @@
       "evaluables": 148,
       "pct_supera_limite": 85.8,
       "pct_supera_limite_ponderado_mayores": 87.9,
-      "pct_se_arregla": 35.1,
-      "pct_sin_alternativa": 50.7,
+      "pct_se_arregla": 36.5,
+      "pct_sin_alternativa": 49.3,
       "desvio_mediano_m": 172,
       "excluidos_sin_ruta_o_inconclusos": 2
     },
@@ -102,8 +102,8 @@
       "evaluables": 142,
       "pct_supera_limite": 86.6,
       "pct_supera_limite_ponderado_mayores": 82.9,
-      "pct_se_arregla": 32.4,
-      "pct_sin_alternativa": 54.2,
+      "pct_se_arregla": 33.8,
+      "pct_sin_alternativa": 52.8,
       "desvio_mediano_m": 109,
       "excluidos_sin_ruta_o_inconclusos": 8
     },
@@ -113,9 +113,9 @@
       "evaluables": 146,
       "pct_supera_limite": 80.1,
       "pct_supera_limite_ponderado_mayores": 80.5,
-      "pct_se_arregla": 24.7,
-      "pct_sin_alternativa": 55.5,
-      "desvio_mediano_m": 103,
+      "pct_se_arregla": 25.3,
+      "pct_sin_alternativa": 54.8,
+      "desvio_mediano_m": 102,
       "excluidos_sin_ruta_o_inconclusos": 4
     },
     "Moncloa-Aravaca": {
@@ -124,8 +124,8 @@
       "evaluables": 145,
       "pct_supera_limite": 84.8,
       "pct_supera_limite_ponderado_mayores": 86.3,
-      "pct_se_arregla": 33.1,
-      "pct_sin_alternativa": 51.7,
+      "pct_se_arregla": 33.8,
+      "pct_sin_alternativa": 51.0,
       "desvio_mediano_m": 115,
       "excluidos_sin_ruta_o_inconclusos": 5
     },
@@ -135,8 +135,8 @@
       "evaluables": 150,
       "pct_supera_limite": 58.7,
       "pct_supera_limite_ponderado_mayores": 57.5,
-      "pct_se_arregla": 44.7,
-      "pct_sin_alternativa": 14.0,
+      "pct_se_arregla": 45.3,
+      "pct_sin_alternativa": 13.3,
       "desvio_mediano_m": 63,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -146,9 +146,9 @@
       "evaluables": 150,
       "pct_supera_limite": 64.7,
       "pct_supera_limite_ponderado_mayores": 64.5,
-      "pct_se_arregla": 48.7,
-      "pct_sin_alternativa": 16.0,
-      "desvio_mediano_m": 103,
+      "pct_se_arregla": 50.0,
+      "pct_sin_alternativa": 14.7,
+      "desvio_mediano_m": 106,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
     "Retiro": {
@@ -157,9 +157,9 @@
       "evaluables": 149,
       "pct_supera_limite": 69.1,
       "pct_supera_limite_ponderado_mayores": 71.3,
-      "pct_se_arregla": 51.0,
-      "pct_sin_alternativa": 18.1,
-      "desvio_mediano_m": 125,
+      "pct_se_arregla": 57.0,
+      "pct_sin_alternativa": 12.1,
+      "desvio_mediano_m": 131,
       "excluidos_sin_ruta_o_inconclusos": 1
     },
     "Salamanca": {
@@ -168,9 +168,9 @@
       "evaluables": 150,
       "pct_supera_limite": 75.3,
       "pct_supera_limite_ponderado_mayores": 76.7,
-      "pct_se_arregla": 45.3,
-      "pct_sin_alternativa": 30.0,
-      "desvio_mediano_m": 113,
+      "pct_se_arregla": 46.7,
+      "pct_sin_alternativa": 28.7,
+      "desvio_mediano_m": 114,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
     "San Blas-Canillejas": {
@@ -179,9 +179,9 @@
       "evaluables": 150,
       "pct_supera_limite": 83.3,
       "pct_supera_limite_ponderado_mayores": 84.0,
-      "pct_se_arregla": 46.0,
-      "pct_sin_alternativa": 37.3,
-      "desvio_mediano_m": 108,
+      "pct_se_arregla": 46.7,
+      "pct_sin_alternativa": 36.7,
+      "desvio_mediano_m": 115,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
     "Tetuan": {
@@ -190,9 +190,9 @@
       "evaluables": 150,
       "pct_supera_limite": 64.7,
       "pct_supera_limite_ponderado_mayores": 64.4,
-      "pct_se_arregla": 46.7,
-      "pct_sin_alternativa": 18.0,
-      "desvio_mediano_m": 85,
+      "pct_se_arregla": 48.0,
+      "pct_sin_alternativa": 16.7,
+      "desvio_mediano_m": 88,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
     "Usera": {
@@ -201,8 +201,8 @@
       "evaluables": 150,
       "pct_supera_limite": 74.7,
       "pct_supera_limite_ponderado_mayores": 75.8,
-      "pct_se_arregla": 34.0,
-      "pct_sin_alternativa": 40.7,
+      "pct_se_arregla": 37.3,
+      "pct_sin_alternativa": 37.3,
       "desvio_mediano_m": 162,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
@@ -221,11 +221,11 @@
       "pct_mayores65": 14.5,
       "muestra": 150,
       "evaluables": 146,
-      "pct_supera_limite": 81.5,
-      "pct_supera_limite_ponderado_mayores": 80.2,
-      "pct_se_arregla": 39.0,
-      "pct_sin_alternativa": 42.5,
-      "desvio_mediano_m": 63,
+      "pct_supera_limite": 80.8,
+      "pct_supera_limite_ponderado_mayores": 78.7,
+      "pct_se_arregla": 39.7,
+      "pct_sin_alternativa": 41.1,
+      "desvio_mediano_m": 71,
       "excluidos_sin_ruta_o_inconclusos": 4
     },
     "Villaverde": {
@@ -234,8 +234,8 @@
       "evaluables": 149,
       "pct_supera_limite": 75.2,
       "pct_supera_limite_ponderado_mayores": 69.5,
-      "pct_se_arregla": 39.6,
-      "pct_sin_alternativa": 35.6,
+      "pct_se_arregla": 40.9,
+      "pct_sin_alternativa": 34.2,
       "desvio_mediano_m": 77,
       "excluidos_sin_ruta_o_inconclusos": 1
     }
@@ -243,7 +243,7 @@
   "semilla": 2026,
   "n_por_distrito": 150,
   "salida_simulada": "2025-07-01T14:00 Europe/Madrid",
-  "segundos": 56,
+  "segundos": 45,
   "version_datos": {
     "built": "2026-11-19T20:13:07.354241+00:00",
     "osm": "2026-11-18T21:21:02Z",

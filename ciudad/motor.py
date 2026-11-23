@@ -483,17 +483,29 @@ class Trip:
         c = self.city
         edge = arc.edge
         flags = int(c.flags[edge])
-        explicit = finite(c.explicit_width[edge])
-        slope = finite(c.incline[edge])
         if flags & 128 and self.improved.get(edge) != "crossing":
             return False
         if limits.stairs and flags & 1:
             return False
-        if limits.width is not None and (explicit is None or explicit < limits.width):
-            return False
-        if limits.slope is not None and (slope is None or abs(slope) > limits.slope):
-            return False
+        # Ancho: etiqueta OSM o acera municipal medida; pendiente: etiqueta OSM o
+        # relieve MDT05. Un tramo sin dato no se excluye (se informa como desconocido).
+        if limits.width is not None:
+            width = finite(c.explicit_width[edge])
+            width = width if width is not None else finite(c.attrs[edge, 0])
+            if width is not None and width < limits.width:
+                return False
+        if limits.slope is not None:
+            slope = finite(c.grade[edge])
+            slope = abs(slope) if slope is not None else finite(c.attrs[edge, 1])
+            if slope is not None and slope > limits.slope:
+                return False
         return True
+
+    def walk_limit(self, shortest_m=None):
+        """Longitud máxima explorada para rutas con descansos: el tope práctico o,
+        si el camino directo es sinuoso, 1,5 veces su longitud."""
+        base = self.practical_limit()
+        return base if shortest_m is None else max(base, math.ceil(1.5 * shortest_m))
 
     def practical_limit(self):
         return max(

@@ -1357,3 +1357,29 @@ nav .volver {
   border: 3px solid #1f6b52;
   background: #e3f1e6;
 }
+.avanzadas .botones-limite { margin-bottom: 6px; }
+.opcion-titulo { font-weight: 700; margin: 14px 0 8px; }
+.check-grande { display: flex; align-items: center; gap: 12px; font-weight: 700; margin-top: 8px; }
+.check-grande input { width: 26px; height: 26px; }
+.kicker-aviso { color: #9d3b1f; font-weight: 800; letter-spacing: .02em; margin: 0 0 6px; }
+
+/* Informe para ayuntamientos */
+.fuente-datos { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.informe-kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.informe-mapa { position: relative; height: 480px; border-radius: 17px; overflow: hidden; border: 1px solid #cddbd0; margin-top: 8px; }
+.informe-mapa .map { position: absolute; inset: 0; }
+.leyenda-informe { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .92rem; color: #3c5d51; margin: 10px 0 0; }
+.leyenda-informe span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #0002; }
+.dot.mid { background: #d18a1c; } .dot.bad { background: #b94c1d; }
+.boton-enlace { text-decoration: none; padding: 8px 14px; border-radius: 10px; border: 1px solid #b9cdbf; font-weight: 700; }
+.zonas li { padding: 4px 0; }
+.informe-graficos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.barras { list-style: none; padding: 0; margin: 10px 0 0; }
+.barras li { display: grid; grid-template-columns: 9.5em 1fr 3.5em; align-items: center; gap: 8px; padding: 3px 0; font-size: .92rem; }
+.barras i { display: block; height: 12px; border-radius: 6px; background: #2d8a4e; }
+.barras b { text-align: right; }
+@media (max-width: 860px) {
+  .informe-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .informe-graficos { grid-template-columns: 1fr; }
+}

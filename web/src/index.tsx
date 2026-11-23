@@ -5,6 +5,7 @@ import BankPlanResults from "./BankPlan";
 import Map from "./Map";
 import Region from "./Region";
 import Sencillo from "./Sencillo";
+import Informe from "./Informe";
 import {
   api,
   BankOption,
@@ -228,12 +229,14 @@ function App() {
   const [chosenDeparture, setChosenDeparture] = useState<string | null>(null);
   const departure = chosenDeparture ?? automaticDeparture;
   const [preferences, setPreferences] = useState(saved?.preferences || initial);
-  const [mode, setMode] = useState<"inicio" | "walk" | "city" | "region">(
+  const [mode, setMode] = useState<"inicio" | "informe" | "walk" | "city" | "region">(
       () =>
         window.location.hash === "#region"
           ? "region"
           : window.location.hash === "#tecnicos"
-            ? "city"
+            ? "informe"
+            : window.location.hash === "#simulador"
+              ? "city"
             : window.location.hash === "#detallado"
               ? "walk"
               : "inicio",
@@ -835,7 +838,7 @@ function App() {
             type="button"
             className="link-button tecnicos-link"
             onClick={() => {
-              setMode("city");
+              setMode("informe");
               invalidate();
             }}
           >
@@ -853,6 +856,17 @@ function App() {
             }}
           >
             ← App ciudadana
+          </button>
+          <button
+            type="button"
+            aria-pressed={mode === "informe"}
+            onClick={() => {
+              setMode("informe");
+              invalidate();
+              setScenario(null);
+            }}
+          >
+            Informe de uso
           </button>
           <button
             type="button"
@@ -874,7 +888,7 @@ function App() {
               invalidate();
             }}
           >
-            Panel municipal
+            Simulador de mejoras
           </button>
           <button
             type="button"
@@ -899,6 +913,14 @@ function App() {
       {mode === "inicio" ? (
         <Sencillo
           onProfessional={() => {
+            setMode("informe");
+            invalidate();
+            window.scrollTo({ top: 0 });
+          }}
+        />
+      ) : mode === "informe" ? (
+        <Informe
+          onSimulate={() => {
             setMode("city");
             invalidate();
             window.scrollTo({ top: 0 });

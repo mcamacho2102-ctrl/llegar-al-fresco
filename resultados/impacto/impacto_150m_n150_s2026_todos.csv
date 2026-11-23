@@ -546,7 +546,7 @@ Centro,"Calle Del Meson De Paredes, 68",01035,1562,256,Centro de salud · de los
 Centro,"Calle De Cervantes, 26",01065,792,147,Centro de salud · de San Jerónimo 32,277,327,True,4.6,,,no_hay_alternativa
 Centro,"Calle Del Nuncio, 15",01011,1119,232,Centro de salud · de Segovia 4,195,356,True,4.5,,,no_hay_alternativa
 Centro,"Calle Del Duque De Osuna, 6",01111,977,184,Consultorio de atención primaria · de la Palma 54,270,478,True,6.3,,,no_hay_alternativa
-Centro,"Calle De La Alameda, 20",01062,960,195,Centro de salud · de la Alameda 5,135,491,True,7.9,,,no_hay_alternativa
+Centro,"Calle De La Alameda, 20",01062,960,195,Centro de salud · de la Alameda 5,135,491,True,7.9,512,146.3,se_arregla_con_desvio
 Centro,"Calle De Velarde, 10",01093,1597,219,Centro de salud · de la Palma 51,488,673,True,7.7,887,148.6,se_arregla_con_desvio
 Centro,"Costanilla De San Andres, 12",01016,1138,196,Centro de salud · de Segovia 4,120,316,True,4.0,,,no_hay_alternativa
 Centro,"Calle De Las Postas, 4",01120,860,152,Centro de salud · de San Jerónimo 32,472,571,True,9.2,,,no_hay_alternativa
@@ -834,7 +834,7 @@ Chamberi,"Calle De Cristobal Bordiu, 29",07108,1060,222,Centro de salud · de Es
 Chamberi,"Calle De Gonzalo De Cordoba, 3",07058,1156,269,Centro de salud · de Eloy Gonzalo 24,62,78,False,1.2,78,77.8,cumple_ya
 Chamberi,"Plaza Del Conde Del Valle De Suchil, 19",07044,927,308,Centro de salud · de Eloy Gonzalo 24,418,540,True,8.3,587,147.5,se_arregla_con_desvio
 Chamberi,"Calle De Ponzano, 50",07099,929,203,Centro de salud · de Espronceda 24,268,392,True,6.0,,,no_hay_alternativa
-Chamberi,"Calle De Andres Mellado, 15",07006,1590,441,Centro de salud · de Andrés Mellado 37,116,323,True,4.7,,,no_hay_alternativa
+Chamberi,"Calle De Andres Mellado, 15",07006,1590,441,Centro de salud · de Andrés Mellado 37,116,323,True,4.7,450,141.1,se_arregla_con_desvio
 Chamberi,"Calle Del Monte Esquinza, 36",07081,1435,335,Centro de salud · de Lagasca 122,662,1013,True,16.2,,,no_hay_alternativa
 Chamberi,"Calle De Alberto Aguilera, 60",07002,868,223,Centro de salud · de Guzmán el Bueno 11,151,223,True,3.4,224,123.2,cumple_ya
 Chamberi,"Calle Del Arcipreste De Hita, 10",07008,1321,437,Centro de salud · de Andrés Mellado 37,193,275,True,4.3,277,141.8,cumple_ya
@@ -1481,11 +1481,11 @@ Latina,"Calle De Domingo De Zaizita, 17",10046,1496,288,Centro de salud · de Ex
 Latina,"Calle Del Concejal Francisco Jose Jimenez Martin, 42",10215,1414,298,Centro de salud · de Extremadura 113-115,791,947,True,15.6,,,no_hay_alternativa
 Latina,"Calle De La Grandeza Española, 38",10027,1431,250,Centro de salud · de Extremadura 113-115,434,577,True,9.0,,,no_hay_alternativa
 Latina,"Paseo De Extremadura, 8",10017,1000,269,Centro de salud · de Linneo 3,450,734,True,10.9,,,no_hay_alternativa
-Latina,"Calle De Berlanas, 14",10213,2253,470,Centro de salud · de La Latina 14,184,549,True,8.9,,,no_hay_alternativa
+Latina,"Calle De Berlanas, 14",10213,2253,470,Centro de salud · de La Latina 14,184,549,True,8.9,643,135.3,se_arregla_con_desvio
 Latina,"Calle Del Fuerte De Navidad, 24",10209,1411,431,Centro de salud · de José de Cadalso 51,662,907,True,14.6,,,no_hay_alternativa
 Latina,"Calle De Oliva De Plasencia, 21",10174,910,313,Centro de salud · de las Águilas 18,87,110,False,1.7,110,110.3,cumple_ya
 Latina,"Plaza Del Patriarca Eijo Y Garay, 5",10042,1545,288,Centro de salud · de Extremadura 113-115,199,299,True,4.7,,,no_hay_alternativa
-Latina,"Calle De Cabezas Del Villar, 7",10218,1173,196,Centro de salud · de La Latina 14,313,813,True,13.0,,,no_hay_alternativa
+Latina,"Calle De Cabezas Del Villar, 7",10218,1173,196,Centro de salud · de La Latina 14,313,813,True,13.0,863,136.3,se_arregla_con_desvio
 Latina,"Paseo De Los Olivos, 59",10040,1065,156,Centro de salud · de Extremadura 113-115,401,551,True,8.8,,,no_hay_alternativa
 Latina,"Calle De Athos, 4",10032,2381,372,Centro de salud · de Fuenteovejuna 17-19-21,258,390,True,6.4,,,no_hay_alternativa
 Latina,"Calle De Doña Mencia, 36",10021,1469,279,Centro de salud · de Fuenteovejuna 17-19-21,292,354,True,5.6,,,no_hay_alternativa
@@ -1955,7 +1955,7 @@ Retiro,"Calle De Alfonso Xi, 11",03069,1531,322,Centro de salud · de Regueros 3
 Retiro,"Calle De Valderribas, 54  A",03099,1487,381,Centro de salud · de la Ciudad de Barcelona 190,529,762,True,11.3,,,no_hay_alternativa
 Retiro,"Avenida Del Mediterraneo, 41",03031,1142,305,Centro de salud · de los Reyes Magos 19-21,742,1162,True,19.2,,,no_hay_alternativa
 Retiro,"Calle De Antonio Maura, 5",03069,1531,322,Centro de salud · de la Alameda 5,799,1390,True,21.0,,,no_hay_alternativa
-Retiro,"Calle De Juan Valera, 25",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,479,945,True,13.9,,,no_hay_alternativa
+Retiro,"Calle De Juan Valera, 25",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,479,945,True,13.9,1220,149.6,se_arregla_con_desvio
 Retiro,"Calle De Juan De Urbieta, 41",03010,1014,352,Centro de salud · de los Reyes Magos 19-21,223,386,True,5.8,,,no_hay_alternativa
 Retiro,"Calle De Luis Mitjans, 25  B",03029,1616,435,Centro de salud · de la Ciudad de Barcelona 190,611,782,True,11.9,,,no_hay_alternativa
 Retiro,"Avenida De Menendez Pelayo, 77",03077,1583,443,Centro de salud · de los Reyes Magos 19-21,435,536,True,5.3,596,137.1,se_arregla_con_desvio
@@ -2022,11 +2022,11 @@ Retiro,"Calle De Las Adelfas, 38",03029,1616,435,Centro de salud · de los Reyes
 Retiro,"Pasaje De Carena, 10",03034,1380,420,Centro de salud · de los Reyes Magos 19-21,976,1185,True,19.4,,,no_hay_alternativa
 Retiro,"Calle De La Anunciacion, 12",03084,1498,376,Centro de salud · de Ibiza 7,590,800,True,12.8,,,no_hay_alternativa
 Retiro,"Plaza De Cibeles, 1",03069,1531,322,Centro de salud · de Regueros 3,635,895,True,11.0,,,no_hay_alternativa
-Retiro,"Calle De Juan Valera, 33",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,441,888,True,12.8,,,no_hay_alternativa
+Retiro,"Calle De Juan Valera, 33",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,441,888,True,12.8,1149,149.6,se_arregla_con_desvio
 Retiro,"Calle De Granada, 18",03013,1079,242,Centro de salud · de los Reyes Magos 19-21,194,331,True,4.0,425,141.2,se_arregla_con_desvio
 Retiro,"Calle Del Pez Volador, 30",03039,831,276,Centro de salud · del Arroyo de la Media Legua 35,847,1325,True,21.4,,,no_hay_alternativa
 Retiro,"Calle De Montalban, 2",03069,1531,322,Centro de salud · de Regueros 3,712,1026,True,13.7,,,no_hay_alternativa
-Retiro,"Calle De Luis Camoens, 9",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,556,1080,True,15.2,,,no_hay_alternativa
+Retiro,"Calle De Luis Camoens, 9",03073,1661,453,Centro de salud · de los Reyes Magos 19-21,556,1080,True,15.2,1369,149.6,se_arregla_con_desvio
 Retiro,"Calle De Gandia, 4",03025,1466,292,Centro de salud · de Altos de Cabrejas 4,291,527,True,8.5,,,no_hay_alternativa
 Retiro,"Calle De Luis Peidro, 11  A",03101,1552,257,Centro de salud · de Altos de Cabrejas 4,316,509,True,7.4,,,no_hay_alternativa
 Retiro,"Calle De Vicente Caballero, 12",03047,1740,476,Centro de salud · de O'Donnell 55,373,445,True,7.2,494,147.8,se_arregla_con_desvio
@@ -2080,7 +2080,7 @@ Retiro,"Avenida De La Ciudad De Barcelona, 146",03095,1812,571,Centro de salud �
 Retiro,"Calle De Martinez Corrochano, 16",03098,1888,352,Centro de salud · de Altos de Cabrejas 4,640,923,True,15.1,,,no_hay_alternativa
 Retiro,"Calle De Fernan Gonzalez, 63",03051,1097,293,Centro de salud · de O'Donnell 55,246,337,True,5.1,,,no_hay_alternativa
 Retiro,"Calle De Gutenberg, 1",03002,996,215,Centro de salud · de los Reyes Magos 19-21,341,407,True,6.2,493,136.5,se_arregla_con_desvio
-Retiro,"Calle Del Doctor Velasco, 8",03071,1376,379,Centro de salud · de la Alameda 5,500,995,True,16.4,,,no_hay_alternativa
+Retiro,"Calle Del Doctor Velasco, 8",03071,1376,379,Centro de salud · de la Alameda 5,500,995,True,16.4,1244,149.7,se_arregla_con_desvio
 Retiro,"Calle De Leo, 9",03033,1471,454,Centro de salud · de los Reyes Magos 19-21,923,1171,True,16.9,,,no_hay_alternativa
 Retiro,"Calle De Fernan Gonzalez, 66  B",03056,1164,288,Centro de salud · de O'Donnell 55,310,417,True,6.6,,,no_hay_alternativa
 Retiro,"Calle Del Alcalde Sainz De Baranda, 11",03055,954,235,Centro de salud · de Ibiza 7,231,393,True,5.8,,,no_hay_alternativa
@@ -2091,7 +2091,7 @@ Retiro,"Calle De Mendez Nuñez, 7",03069,1531,322,Centro de salud · de la Alame
 Retiro,"Calle De Granada, 25",03012,1022,297,Centro de salud · de los Reyes Magos 19-21,202,386,True,5.8,504,141.2,se_arregla_con_desvio
 Retiro,"Calle De Julian Gayarre, 8",03002,996,215,Centro de salud · de los Reyes Magos 19-21,419,,,,,,sin_ruta
 Retiro,"Calle De Las Adelfas, 7",03099,1487,381,Centro de salud · de la Ciudad de Barcelona 190,458,564,True,8.4,,,no_hay_alternativa
-Retiro,"Calle Del Poeta Esteban De Villegas, 20",03076,1041,302,Centro de salud · de los Reyes Magos 19-21,221,603,True,8.2,,,no_hay_alternativa
+Retiro,"Calle Del Poeta Esteban De Villegas, 20",03076,1041,302,Centro de salud · de los Reyes Magos 19-21,221,603,True,8.2,692,143.2,se_arregla_con_desvio
 Retiro,"Calle Del Doctor Esquerdo, 171",03031,1142,305,Centro de salud · de los Reyes Magos 19-21,716,944,True,13.9,,,no_hay_alternativa
 Retiro,"Calle Del Conde De Cartagena, 12",03078,1472,380,Centro de salud · de los Reyes Magos 19-21,332,430,True,6.6,,,no_hay_alternativa
 Retiro,"Avenida De La Ciudad De Barcelona, 15",03002,996,215,Centro de salud · de los Reyes Magos 19-21,353,424,True,6.3,510,136.5,se_arregla_con_desvio
@@ -2889,7 +2889,7 @@ Villa De Vallecas,"Calle De Frida Kahlo, 27",18067,1770,111,Centro de salud · d
 Villa De Vallecas,"Calle De Fernando Chueca Goitia, 32",18067,1770,111,Centro de salud · de Fuentespina 2,1990,3280,True,53.8,,,no_hay_alternativa
 Villa De Vallecas,"Camino De Las Hormigueras, 137",18046,3540,195,Centro de salud · de Villalobos 16,807,1958,True,32.2,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Luis I, 80",18046,3540,195,Centro de salud · de Villalobos 16,640,,,,,,sin_ruta
-Villa De Vallecas,"Calle De Zazuar, 21",18032,1364,502,Centro de salud · de Fuentespina 2,319,814,True,12.8,,,no_hay_alternativa
+Villa De Vallecas,"Calle De Zazuar, 21",18032,1364,502,Centro de salud · de Fuentespina 2,319,814,True,12.8,909,145.9,se_arregla_con_desvio
 Villa De Vallecas,"Avenida De La Gavia, 46",18066,2291,148,Centro de salud · de Fuentidueña 12,875,1154,True,19.0,,,no_hay_alternativa
 Villa De Vallecas,"Lugar Cañada Real Sector 6, 3  D",18045,3207,188,Centro de salud · de Fuentespina 2,4245,6117,True,100.7,,,no_hay_alternativa
 Villa De Vallecas,"Calle De Fernando Chueca Goitia, 48",18062,2693,177,Centro de salud · de Fuentespina 2,2071,3150,True,51.2,,,no_hay_alternativa
@@ -3058,7 +3058,7 @@ Villaverde,"Calle De Las Covachuelas, 22",17024,2210,368,Centro de salud · de P
 Villaverde,"Calle Del Rubi, 4",17026,1592,272,Centro de salud · de Totanes 1,444,672,True,10.1,,,no_hay_alternativa
 Villaverde,"Calle De La Resina, 59  B",17106,2104,142,Centro de salud · de Alberto Palacios 22,677,1254,True,20.4,,,no_hay_alternativa
 Villaverde,"Camino Del Puente, 18",17106,2104,142,Centro de salud · de Alberto Palacios 22,1922,3641,True,60.0,,,no_hay_alternativa
-Villaverde,"Calle De Beniferri, 51",17037,1481,128,Centro de salud · de Benimamet 24,469,877,True,14.4,,,no_hay_alternativa
+Villaverde,"Calle De Beniferri, 51",17037,1481,128,Centro de salud · de Benimamet 24,469,877,True,14.4,1184,146.4,se_arregla_con_desvio
 Villaverde,"Calle De La Generosidad, 10",17096,1197,265,Centro de salud · Orovilla 53,354,430,True,6.8,,,no_hay_alternativa
 Villaverde,"Calle De Laguna Del Marquesado, 32  K",17106,2104,142,Centro de salud · de Alberto Palacios 22,797,1316,True,21.2,,,no_hay_alternativa
 Villaverde,"Calle Del Doctor Martin Arevalo, 3",17011,1709,226,Centro de salud · de Potes S/N,362,613,True,9.9,,,no_hay_alternativa

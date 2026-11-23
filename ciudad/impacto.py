@@ -85,7 +85,7 @@ def solve(trip, rest):
         1.0,
         "distance",
         rest,
-        max_walk=trip.practical_limit(),
+        max_walk=trip.walk_limit(shortest["meters"] if shortest else None),
     )
     return shortest, rested, short_paused or rest_paused
 

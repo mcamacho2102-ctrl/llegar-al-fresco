@@ -8,7 +8,7 @@
 
 ## El problema, en una cifra
 
-> En Madrid capital, en el **88,2 %** de los trayectos hasta el centro de salud más cercano hay que caminar **más de 200 m seguidos sin un banco** por el camino directo. En el **60,9 %** no existe **ninguna** ruta que permita parar cada 200 m.
+> En Madrid capital, en el **88,1 %** de los trayectos hasta el centro de salud más cercano hay que caminar **más de 200 m seguidos sin un banco** por el camino directo. En el **60,5 %** no existe **ninguna** ruta que permita parar cada 200 m.
 
 Son 3.102 trayectos calculados en los 21 distritos con una muestra aleatoria reproducible. El destino es el centro de salud de atención primaria más cercano según el registro de la Comunidad de Madrid, y se cuentan los 54.172 bancos municipales operativos. Con 300 m de límite, la cifra baja al 74,0 %. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
 
@@ -18,8 +18,9 @@ En la Comunidad viven **1,34 millones de personas de 65 años o más**. Para muc
 
 | Para quién | Qué ofrece |
 |---|---|
-| **Personas mayores y sus familias** · *Mi recorrido* | Una ruta que **nunca supera los metros sin descanso que elijas** (100, 150, 200 m…), con sombra calculada hora a hora, sin escaleras, con pendiente y ancho de acera, y con fuentes y aseos cerca. Destinos: **centros de salud, centros de día y residencias, farmacias y bibliotecas** de los registros de la Comunidad. Navegación paso a paso; funciona sin conexión una vez instalada. |
-| **Ayuntamientos** · *Panel municipal* | **Simula un banco, un rebaje o sombra** y mide sobre una muestra de portales cuántos trayectos nuevos se hacen posibles. **Busca automáticamente las mejores ubicaciones** para nuevos bancos, con mayores residentes y aforos peatonales. Compara coste por ruta habilitada. |
+| **Personas mayores y sus familias** · *Mi recorrido* | Tres pasos grandes. Una ruta que **nunca supera los metros sin descanso que elijas** (de 100 m a 2 km); si no existe, la que **menos metros seguidos** te hace andar sin sentarte. Opciones avanzadas: escaleras, ancho mínimo de acera, cuesta máxima, ritmo y preferencia por sombra, con sombra calculada hora a hora, sin escaleras, con pendiente y ancho de acera, y con fuentes y aseos cerca. Destinos: **centros de salud, centros de día y residencias, farmacias y bibliotecas** de los registros de la Comunidad. Navegación paso a paso; funciona sin conexión una vez instalada. |
+| **Ayuntamientos** · *Informe de uso* | De cada consulta se guarda, de forma anónima, **dónde faltó un banco** en el camino directo (no la dirección de salida). El informe agrupa esos huecos y señala los **bancos estratégicos**: los que evitarían más rodeos o harían posible rutas que hoy no existen. Exportable a CSV. Mientras no hay usuarios, se muestra una simulación etiquetada. |
+| **Ayuntamientos** · *Simulador de mejoras* | **Simula un banco, un rebaje o sombra** y mide sobre una muestra de portales cuántos trayectos nuevos se hacen posibles. **Busca automáticamente las mejores ubicaciones** para nuevos bancos, con mayores residentes y aforos peatonales. Compara coste por ruta habilitada. |
 | **Comunidad de Madrid** · *Mapa regional* | Clasificación de los **179 municipios** según envejecimiento, mayores por centro de salud, mayores por centro para mayores y horas a 35 °C o más. Sirve para decidir dónde desplegar después. **Usa solo datos de la Comunidad.** |
 
 ## Datos de la Comunidad de Madrid que usa
@@ -81,7 +82,11 @@ El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. Para Fly.io 
 .venv/bin/python -m ciudad.municipios   # capa regional de los 179 municipios
 .venv/bin/python -m ciudad.impacto --todos --n 150   # cifra de impacto (36 s)
 .venv/bin/python -m ciudad.sdm          # destinos como Smart Data Models · PointOfInterest, validados
+.venv/bin/python -m ciudad.uso_demo     # informe municipal de demostración (3.096 consultas simuladas)
+.venv/bin/python -m ciudad.anchos       # ancho de acera más cercana en una red ya compilada
 ```
+
+El registro de uso vive en `datos/uso/consultas.sqlite` (debe ser escribible en el servidor; se desactiva con `USO_REGISTRO=0`). Qué se guarda y qué no: `ciudad/uso.py`.
 
 **Interoperabilidad.** `resultados/smart-data-models/` contiene los 2.630 destinos regionales (centros para mayores, farmacias, centros de salud y bibliotecas) como entidades [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest) NGSI-LD, validadas contra el esquema oficial. El servidor MCP de `mcp/` permite que un asistente de IA use la herramienta con datos verificables.
 

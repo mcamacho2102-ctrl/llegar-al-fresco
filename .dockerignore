@@ -14,3 +14,4 @@ datos/*
 !datos/aemet-madrid.xml
 !datos/calidad_aire_datos_meteo_historico.csv
 !datos/aforos
+!datos/uso

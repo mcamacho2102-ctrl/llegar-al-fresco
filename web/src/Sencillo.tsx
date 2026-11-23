@@ -87,6 +87,14 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [purpose, setPurpose] = useState<Kind | "direccion">("direccion");
+  const [stairs, setStairs] = useState(true);
+  const [minWidth, setMinWidth] = useState<number | null>(null);
+  const [maxSlope, setMaxSlope] = useState<number | null>(null);
+  const [pace, setPace] = useState(1);
+  const [prefer, setPrefer] = useState<"comfort" | "shade">("comfort");
+  const advancedCount =
+    Number(!stairs) + Number(minWidth !== null) + Number(maxSlope !== null) + Number(pace !== 1) + Number(prefer !== "comfort");
 
   const reset = () => {
     setResult(null);
@@ -138,6 +146,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     to = destination,
     max = limit,
     at = when === "now" ? madridNow() : departure,
+    register = true,
   ) => {
     if (!from || !to) {
       setError("Indica desde dónde sales y a dónde vas.");
@@ -150,9 +159,11 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
         origin: point(from.coordinates),
         destination: point(to.coordinates),
         departure: at,
-        preferences: { pace: 1, rest: max, width: null, slope: null, avoidStairs: true },
+        preferences: { pace, rest: max, width: minWidth, slope: maxSlope, avoidStairs: stairs },
         scenario: null,
-      });
+        purpose,
+        register,
+      } as never);
       setResult(data);
       setLayer("route");
       window.setTimeout(
@@ -181,7 +192,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       setLimit(200);
       setWhen("other");
       setDeparture(EXAMPLE.departure);
-      await search(a.results[0], b.results[0], 200, EXAMPLE.departure);
+      await search(a.results[0], b.results[0], 200, EXAMPLE.departure, false);
     } catch (e) {
       setError((e as Error).message);
     }
@@ -192,13 +203,15 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
   const recommended: Route | null = useMemo(() => {
     const fitting = routes.filter((r) => r.fitsRest);
     return (
+      fitting.find((r) => r.style === prefer) ||
       fitting.find((r) => r.style === "comfort") ||
       fitting.find((r) => r.style === "shade") ||
       fitting[0] ||
       null
     );
-  }, [routes]);
-  const shown = recommended || shortest;
+  }, [routes, prefer]);
+  const closest = routes.find((r) => r.style === "closest") || null;
+  const shown = recommended || closest || shortest;
   const selectedIndex = shown ? routes.indexOf(shown) : 0;
   const mapRoutes = result ? routes : [];
   const layerInfo = LAYERS.find((l) => l.key === layer)!;
@@ -280,6 +293,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                 onClick={() => {
                   reset();
                   setDestination(place);
+                  if (kind) setPurpose(kind);
                 }}
               >
                 <strong>{place.label.split(" · ").slice(0, 2).join(" · ")}</strong>
@@ -298,6 +312,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             onChange={(p) => {
               reset();
               setDestination(p);
+              setPurpose("direccion");
             }}
             onMap={() => setPicking("destination")}
           />
@@ -356,6 +371,55 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             ))}
           </select>
         </label>
+        <details className="cuando avanzadas">
+          <summary>
+            Opciones avanzadas{advancedCount ? ` (${advancedCount} activas)` : ""}
+          </summary>
+          <label className="check-grande">
+            <input type="checkbox" checked={stairs} onChange={(e) => { reset(); setStairs(e.target.checked); }} />
+            Evitar escaleras
+          </label>
+          <p className="opcion-titulo">Ancho mínimo de acera</p>
+          <div className="botones-limite">
+            {([null, 1.2, 1.5, 1.8] as (number | null)[]).map((v) => (
+              <button key={String(v)} type="button" className="opcion" aria-pressed={minWidth === v}
+                onClick={() => { reset(); setMinWidth(v); }}>
+                {v === null ? "Sin mínimo" : `${fmt(v)} m${v === 1.2 ? " · andador" : v === 1.5 ? " · silla de ruedas" : ""}`}
+              </button>
+            ))}
+          </div>
+          <p className="opcion-titulo">Cuesta máxima</p>
+          <div className="botones-limite">
+            {([null, 4, 6, 8, 10] as (number | null)[]).map((v) => (
+              <button key={String(v)} type="button" className="opcion" aria-pressed={maxSlope === v}
+                onClick={() => { reset(); setMaxSlope(v); }}>
+                {v === null ? "Sin límite" : `${v} %${v === 4 ? " · casi llano" : ""}`}
+              </button>
+            ))}
+          </div>
+          <p className="opcion-titulo">Tu ritmo al andar</p>
+          <div className="botones-limite">
+            {([[0.7, "Despacio"], [1, "Normal"], [1.3, "Ligero"]] as [number, string][]).map(([v, label]) => (
+              <button key={v} type="button" className="opcion" aria-pressed={pace === v}
+                onClick={() => { reset(); setPace(v); }}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="opcion-titulo">Prefiero</p>
+          <div className="botones-limite">
+            <button type="button" className="opcion" aria-pressed={prefer === "comfort"} onClick={() => setPrefer("comfort")}>
+              Menos esfuerzo
+            </button>
+            <button type="button" className="opcion" aria-pressed={prefer === "shade"} onClick={() => setPrefer("shade")}>
+              Más sombra
+            </button>
+          </div>
+          <p className="nota">
+            Ancho y cuesta usan la acera medida por el Ayuntamiento y el relieve del IGN. Los tramos sin
+            dato no se descartan; lo verás en «Más detalles».
+          </p>
+        </details>
         <details className="cuando">
           <summary>¿Cuándo sales? {when === "now" ? "Ahora" : departure.replace("T", " a las ")}</summary>
           <div className="botones-limite">
@@ -457,13 +521,43 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                     </p>
                   )}
                 </>
+              ) : closest ? (
+                <>
+                  <p className="kicker-aviso">No hay ninguna ruta con un banco cada {limit} m</p>
+                  <h2>
+                    La mejor posible: como mucho {fmt(Math.round(closest.maxWithoutRest))} m sin sentarte
+                  </h2>
+                  <p>
+                    {fmt(closest.meters)} m · unos {minutes(closest.durationMin)}.{" "}
+                    {closest.rests.length
+                      ? <>Te sentarás <strong>{times(closest.rests.length)}</strong>.</>
+                      : "No hay ningún banco por el camino."}
+                  </p>
+                  {closest.rests.length > 0 && (
+                    <ol className="descansos">
+                      {closest.rests.map((rest, i) => (
+                        <li key={i}>
+                          <span className="pin-mini">{i + 1}</span>
+                          Banco de <strong>{rest.label}</strong>
+                          <small> · a los {fmt(Math.round(rest.atM))} m</small>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                  {shortest && (
+                    <p className="comparacion">
+                      El camino más corto mide {fmt(shortest.meters)} m, con{" "}
+                      {fmt(Math.round(shortest.maxWithoutRest))} m seguidos sin ningún banco.
+                    </p>
+                  )}
+                </>
               ) : (
                 <>
-                  <h2>No hay una ruta con bancos cada {limit} m</h2>
+                  <p className="kicker-aviso">No hay ninguna ruta con un banco cada {limit} m</p>
+                  <h2>{fmt(shown.meters)} m sin ningún banco por el camino</h2>
                   <p>
-                    El camino más corto mide {fmt(shown.meters)} m y tiene un tramo de{" "}
-                    {fmt(Math.round(shown.maxWithoutRest))} m sin ningún banco. Prueba con otro
-                    límite o con otro destino cercano.
+                    No hemos encontrado bancos que acorten el tramo más largo. Prueba con otro destino
+                    cercano o lleva un bastón asiento.
                   </p>
                 </>
               )}
@@ -479,7 +573,9 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                 <span className="chip">
                   {shown.slopePct !== null && shown.slopePct > 8 ? "⛰️ Alguna cuesta fuerte" : "🚶 Sin cuestas fuertes"}
                 </span>
-                <span className="chip">🚫 Sin escaleras</span>
+                {stairs && <span className="chip">🚫 Sin escaleras</span>}
+                {minWidth && <span className="chip">↔️ Aceras de {fmt(minWidth)} m o más</span>}
+                {maxSlope && <span className="chip">📐 Cuestas de {maxSlope} % como mucho</span>}
               </div>
             </div>
           )}

@@ -14,6 +14,8 @@ DB = Path(__file__).resolve().parent.parent / "datos" / "ciudad" / "lugares.sqli
 
 
 def api(path, query=None):
+    if isinstance(query, dict) and "origin" in query:
+        query = {**query, "register": False}  # las pruebas no cuentan en el informe
     payload = json.dumps(query).encode() if query is not None else None
     with urlopen(
         Request(

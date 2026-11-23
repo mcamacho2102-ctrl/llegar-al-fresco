@@ -4,8 +4,8 @@
     "muestra": 3150,
     "evaluables": 3102,
     "pct_supera_limite": 94.3,
-    "pct_se_arregla": 15.6,
-    "pct_sin_alternativa": 78.6
+    "pct_se_arregla": 16.0,
+    "pct_sin_alternativa": 78.3
   },
   "distritos": {
     "Arganzuela": {
@@ -47,9 +47,9 @@
       "evaluables": 150,
       "pct_supera_limite": 95.3,
       "pct_supera_limite_ponderado_mayores": 96.3,
-      "pct_se_arregla": 17.3,
-      "pct_sin_alternativa": 78.0,
-      "desvio_mediano_m": 105,
+      "pct_se_arregla": 18.0,
+      "pct_sin_alternativa": 77.3,
+      "desvio_mediano_m": 90,
       "excluidos_sin_ruta_o_inconclusos": 0
     },
     "Chamartin": {
@@ -69,8 +69,8 @@
       "evaluables": 148,
       "pct_supera_limite": 80.4,
       "pct_supera_limite_ponderado_mayores": 82.8,
-      "pct_se_arregla": 29.7,
-      "pct_sin_alternativa": 50.7,
+      "pct_se_arregla": 30.4,
+      "pct_sin_alternativa": 50.0,
       "desvio_mediano_m": 122,
       "excluidos_sin_ruta_o_inconclusos": 2
     },
@@ -113,9 +113,9 @@
       "evaluables": 146,
       "pct_supera_limite": 96.6,
       "pct_supera_limite_ponderado_mayores": 96.7,
-      "pct_se_arregla": 6.2,
-      "pct_sin_alternativa": 90.4,
-      "desvio_mediano_m": 194,
+      "pct_se_arregla": 7.5,
+      "pct_sin_alternativa": 89.0,
+      "desvio_mediano_m": 172,
       "excluidos_sin_ruta_o_inconclusos": 4
     },
     "Moncloa-Aravaca": {
@@ -157,9 +157,9 @@
       "evaluables": 149,
       "pct_supera_limite": 95.3,
       "pct_supera_limite_ponderado_mayores": 95.9,
-      "pct_se_arregla": 14.1,
-      "pct_sin_alternativa": 81.2,
-      "desvio_mediano_m": 85,
+      "pct_se_arregla": 17.4,
+      "pct_sin_alternativa": 77.9,
+      "desvio_mediano_m": 89,
       "excluidos_sin_ruta_o_inconclusos": 1
     },
     "Salamanca": {
@@ -223,8 +223,8 @@
       "evaluables": 146,
       "pct_supera_limite": 93.2,
       "pct_supera_limite_ponderado_mayores": 91.0,
-      "pct_se_arregla": 20.5,
-      "pct_sin_alternativa": 72.6,
+      "pct_se_arregla": 21.2,
+      "pct_sin_alternativa": 71.9,
       "desvio_mediano_m": 183,
       "excluidos_sin_ruta_o_inconclusos": 4
     },
@@ -234,16 +234,16 @@
       "evaluables": 149,
       "pct_supera_limite": 95.3,
       "pct_supera_limite_ponderado_mayores": 93.2,
-      "pct_se_arregla": 10.1,
-      "pct_sin_alternativa": 85.2,
-      "desvio_mediano_m": 90,
+      "pct_se_arregla": 10.7,
+      "pct_sin_alternativa": 84.6,
+      "desvio_mediano_m": 98,
       "excluidos_sin_ruta_o_inconclusos": 1
     }
   },
   "semilla": 2026,
   "n_por_distrito": 150,
   "salida_simulada": "2025-07-01T14:00 Europe/Madrid",
-  "segundos": 36,
+  "segundos": 28,
   "version_datos": {
     "built": "2026-11-19T20:13:07.354241+00:00",
     "osm": "2026-11-18T21:21:02Z",

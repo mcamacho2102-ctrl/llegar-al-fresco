@@ -7,6 +7,7 @@ OUT="llegar-al-fresco-datos-$VERSION.tar.gz"
 tar -czf "$OUT" \
   datos/ciudad \
   datos/padron.csv datos/fuentes.csv datos/aemet-madrid.xml \
-  datos/calidad_aire_datos_meteo_historico.csv datos/aforos
+  datos/calidad_aire_datos_meteo_historico.csv datos/aforos \
+  datos/uso/consultas-demo.sqlite
 shasum -a 256 "$OUT" > "$OUT.sha256"
 ls -lh "$OUT"
