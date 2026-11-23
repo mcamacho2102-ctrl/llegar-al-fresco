@@ -1,0 +1,16 @@
+# Solo entran el código y los datos que el servidor lee al arrancar.
+.git
+.venv
+.openai
+dist
+resultados
+web/node_modules
+web/.build
+**/__pycache__
+datos/*
+!datos/ciudad
+!datos/padron.csv
+!datos/fuentes.csv
+!datos/aemet-madrid.xml
+!datos/calidad_aire_datos_meteo_historico.csv
+!datos/aforos

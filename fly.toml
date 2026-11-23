@@ -1,0 +1,28 @@
+# Despliegue en Fly.io: fly launch --no-deploy --copy-config && fly deploy
+app = "llegar-al-fresco"
+primary_region = "mad"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 20
+    hard_limit = 40
+
+  [[http_service.checks]]
+    grace_period = "90s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/info"
+    timeout = "10s"
+
+[[vm]]
+  size = "shared-cpu-2x"
+  memory = "2gb"

@@ -1,31 +1,138 @@
 # Llegar al fresco
 
-Prototipo para DATAMAD 2026. Compara una ruta peatonal con una que incorpora descansos, y permite añadir un banco hipotético para comparar el resultado. Zona piloto de Puerta de Toledo, Madrid.
+**Rutas a pie para quien necesita sentarse por el camino, y una herramienta para que los ayuntamientos decidan dónde poner el próximo banco.** Proyecto para DATAMAD 2026.
 
-## Ejecutar
+- 🌐 **Demo:** _se añadirá la URL pública_ · plan B local: `scripts/arrancar.sh`
+- 🎬 **Vídeo de 2 minutos:** _se añadirá el enlace_
+- 📄 Licencia del código: [Apache-2.0](LICENSE) · datos: [DATA-LICENSE.md](DATA-LICENSE.md)
 
-Ejecute `python3 -m http.server 8765 --directory dist` desde esta carpeta y abra http://localhost:8765. Es necesaria conexión a internet para cargar Leaflet y el mapa base. Las rutas se calculan en el navegador; no se envían ubicaciones a un servidor propio.
+## El problema, en una cifra
 
-Los datos procesados para el piloto están incluidos en `dist/data.json` y `dist/insolacion.json`. `preparar.py` permite volver a generar el primero con las fuentes originales en `datos/`, Python 3 y pyproj. La carpeta de datos de origen está excluida del repositorio por su tamaño.
+> En Madrid capital, en el **87,8 %** de los trayectos hasta el centro de salud más cercano hay que caminar **más de 200 m seguidos sin un banco** por el camino directo. En el **60,3 %** no existe **ninguna** ruta que permita parar cada 200 m.
 
-## Método y limitaciones
+Son 2.989 trayectos calculados en los 21 distritos con una muestra aleatoria reproducible. El destino es el centro de salud de atención primaria más cercano según el registro de la Comunidad de Madrid, y se cuentan los 54.172 bancos municipales operativos. Con 300 m de límite, la cifra baja al 73,5 %. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
 
-La red procede de la API de OpenStreetMap, descargada el 19/11/2026 para un área limitada. Se excluyen vías con acceso peatonal prohibido y escaleras etiquetadas. No se garantiza que el resto sea accesible. Los bancos del inventario municipal de 2026 se convierten de ETRS89 UTM 30N a latitud/longitud y se conectan al nodo de la red más próximo cuando está a 35 m o menos. El acceso al banco y el retorno a ese nodo se aproximan en línea recta y se incluyen dos veces en la longitud. Las conexiones entre origen/destino y la red son aproximaciones en línea recta. Los pasos de calles y barreras no pueden garantizarse con estos datos.
+En la Comunidad viven **1,34 millones de personas de 65 años o más**. Para muchas de ellas, con artrosis, EPOC, insuficiencia cardiaca o simplemente con muchos años, la pregunta no es «¿cuánto tardo?», sino **«¿dónde me puedo sentar?»**. Y en verano, «¿por dónde hay sombra?».
 
-La búsqueda utiliza Dijkstra con un estado de distancia acumulada desde el último descanso. Se redondean los tramos hacia arriba en incrementos de 5 m para aplicar el máximo de forma conservadora. Puede descartarse una alternativa factible por el redondeo o por la conexión a nodos. La ruta directa no incorpora paradas, por eso su mayor tramo sin descanso equivale a su longitud. La simulación agrega un banco ficticio de forma temporal y recalcula la alternativa.
+## Qué hace
 
-La insolación se presenta como capa municipal estacional, no como cálculo para una hora ni como evaluación térmica de la ruta. La temperatura del ejemplo es una observación de la estación regional de Majadahonda, 1/7/2025, magnitud 83, franja h14, valor 33,6 °C validado. No representa la temperatura en la ruta. Los centros sanitarios se identifican por tipo y dirección, son públicos o privados. La biblioteca regional se localizó usando la geometría OSM y su correspondencia por nombre; debe contrastarse sobre el terreno. Los horarios y el estado efectivo de bancos, aceras y destinos no están confirmados en tiempo real.
+| Para quién | Qué ofrece |
+|---|---|
+| **Personas mayores y sus familias** · *Mi recorrido* | Una ruta que **nunca supera los metros sin descanso que elijas** (100, 150, 200 m…), con sombra calculada hora a hora, sin escaleras, con pendiente y ancho de acera, y con fuentes y aseos cerca. Destinos: **centros de salud, centros de día y residencias, farmacias y bibliotecas** de los registros de la Comunidad. Navegación paso a paso; funciona sin conexión una vez instalada. |
+| **Ayuntamientos** · *Panel municipal* | **Simula un banco, un rebaje o sombra** y mide sobre una muestra de portales cuántos trayectos nuevos se hacen posibles. **Busca automáticamente las mejores ubicaciones** para nuevos bancos, con mayores residentes y aforos peatonales. Compara coste por ruta habilitada. |
+| **Comunidad de Madrid** · *Mapa regional* | Clasificación de los **179 municipios** según envejecimiento, mayores por centro de salud, mayores por centro para mayores y horas a 35 °C o más. Sirve para decidir dónde desplegar después. **Usa solo datos de la Comunidad.** |
+
+## Datos de la Comunidad de Madrid que usa
+
+| Conjunto (datos.comunidad.madrid) | Para qué sirve en el producto |
+|---|---|
+| [Centros, servicios y establecimientos sanitarios](https://datos.comunidad.madrid/dataset/centros_servicios_establecimientos_sanitarios) | Destinos buscables (8.876 en la capital); destino de la cifra de impacto; centros de salud por municipio |
+| [Registro de centros de atención social](https://datos.comunidad.madrid/dataset/atencion_social_registro_centros) | 440 centros de día, residencias y hogares de mayores como destinos |
+| [Oficinas de farmacia](https://datos.comunidad.madrid/dataset/oficinas_farmacia) | 1.811 farmacias como destinos (sustituyen a las de OSM) y farmacias por municipio |
+| [Bibliotecas y servicios de lectura](https://datos.comunidad.madrid/dataset/spacm_listado_bibliotecas_servicios_lectura) | 250 bibliotecas con horario como destinos frescos |
+| [Red de Calidad del Aire · datos meteorológicos horarios](https://datos.comunidad.madrid/dataset/calidad_aire_datos_meteo_historico) | Temperatura observada en la demostración (1/7/2025: 33,6 °C) y horas a 35 °C o más por municipio |
+| [Población censada por edad, nacionalidad y sexo](https://datos.comunidad.madrid/dataset/poblacion_censada_por_edad_nacionalidad_y_sexo) | Mayores de 65 y 80 años por municipio |
+| [Grado de envejecimiento por edad](https://datos.comunidad.madrid/dataset/grado_envejecimiento_por_edad) | % de 65 años o más por municipio |
+| [Centros de servicios sociales por tipo](https://datos.comunidad.madrid/dataset/centros_servicios_sociales_por_tipo) | Centros para mayores por municipio |
+| [Secciones censales](https://datos.comunidad.madrid/dataset/secciones_censales) | Geometría de los 179 municipios |
+
+Se combinan con datos del Ayuntamiento de Madrid (callejero, bancos, fuentes, padrón, aforos, accesibilidad viaria, alturas de edificios), del IGN (MDT05, CartoCiudad), de AEMET y de OpenStreetMap (red peatonal).
+
+## Por qué es viable
+
+- **Funciona hoy** sobre Madrid capital completa: 215.542 portales, 701.604 tramos y 54.172 bancos. Calcula una ruta en menos de un segundo. El servidor ocupa unos 930 MB de RAM, así que basta un servidor pequeño (unos 5–30 €/mes).
+- **Es reproducible.** Tres comandos rehacen todos los datos desde las fuentes públicas (`ciudad.fuentes`, `ciudad.preparar`, `ciudad.relieve`), y `ciudad.comprobar` verifica los resultados.
+- **Se puede llevar a otros municipios** con su callejero, su inventario de bancos y OSM. El mapa regional indica por dónde empezar.
+- **Modelo:** la app ciudadana es gratuita y el núcleo es abierto. Los ayuntamientos pagan la implantación y los estudios de ubicación de mobiliario, y se ofrece integración a teleasistencia, asociaciones de mayores y empresas de información (sector infomediario).
+
+---
+
+## Arranque local
+
+Requiere Python 3.9–3.12 y Node 22 o posterior. Desde la raíz del proyecto:
+
+```sh
+scripts/descargar_datos.sh usuario/repositorio   # datos compilados de la Release (o reconstrúyelos, abajo)
+scripts/arrancar.sh                               # crea el entorno, compila la web y abre http://localhost:8768
+```
+
+O paso a paso:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+npm --prefix web ci
+npm --prefix web run build
+.venv/bin/python -m uvicorn ciudad.servicio:app --host 127.0.0.1 --port 8768 --no-access-log
+```
+
+El backend sirve también la interfaz compilada. Para el mapa base (OpenFreeMap) y la previsión de AEMET se necesita internet. La versión anterior para Puerta de Toledo se abre con `python3 -m http.server 8765 --directory dist`, y sus pruebas con `node comprobar-rutas.js`.
+
+### Despliegue público
+
+El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. Para Fly.io (`fly.toml`, 2 GB): `scripts/descargar_datos.sh …`, `fly launch --no-deploy --copy-config` y `fly deploy`. Las llamadas a `/api/` se limitan por IP (`LIMITE_PETICIONES`, 600 por minuto por defecto).
+
+### Reconstruir los datos
+
+```sh
+.venv/bin/python -m ciudad.fuentes      # descarga las fuentes públicas
+.venv/bin/python -m ciudad.preparar     # red, índices, destinos (incluye ciudad.regional)
+.venv/bin/python -m ciudad.relieve      # cotas del MDT05
+.venv/bin/python -m ciudad.municipios   # capa regional de los 179 municipios
+.venv/bin/python -m ciudad.impacto --todos --n 150   # cifra de impacto (36 s)
+```
+
+`ciudad.regional` puede ejecutarse solo, para actualizar centros para mayores y farmacias sobre una compilación existente. Los ficheros de entrada y las capas compiladas están excluidos de Git. El código trabaja en UTM ETRS89 30N y sirve coordenadas lon/lat. SQLite FTS5 indexa portales y destinos. La interfaz usa React, TypeScript, MapLibre y Vite.
+
+## Demostración
+
+En **Mi recorrido**, pulsa **Cargar ejemplo** y **Comparar rutas**. La Plaza de la Virgen de la Paloma, 1 y la Biblioteca Pedro Salinas están a 238 m por la ruta corta. Con un límite de 200 m sin descanso, la alternativa con banco mide 315 m y su tramo continuo más largo es de 168,7 m. Para reproducir las condiciones históricas, elige el **1 de julio de 2025 a las 14:00**: el resultado muestra la observación regional de 33,6 °C de la estación de Majadahonda.
+
+En **Panel municipal**, vuelve a pulsar **Cargar ejemplo** y **Comparar rutas**. El banco hipotético acorta la alternativa en 77 m, hasta 238 m, con un máximo de 157,4 m sin parar. **Evaluar zona** calcula, sobre portales muestreados, el acceso al mismo destino con y sin la actuación. **Buscar ubicaciones para bancos** propone hasta tres candidatos, ordenados por nuevas rutas compatibles, mejora de los tramos sin descanso y residentes de 65 años o más.
+
+Para **Evitar escaleras**, busca **Calle de los Mancebos, 3 → Calle de Segovia, 16** con **Sin límite** de descanso: 297 m con escaleras y 387 m evitándolas.
+
+En **Mapa regional**, pulsa cualquier municipio o elige el indicador del mapa. La tabla ordena los 15 municipios con más prioridad y la del piloto muestra la cifra de impacto por distrito.
+
+Los aforos horarios corresponden a enero–junio de 2024 ([permanentes](https://datos.madrid.es/dataset/300321-0-aforos-peatones-bicicletas/downloads), [campañas](https://datos.madrid.es/dataset/300197-0-aforo-trafico/downloads)). Si falta cobertura, el aforo se muestra como desconocido.
+
+## Qué significa cada dato
+
+- **Direcciones y accesos.** El buscador local usa el callejero municipal y los registros regionales de centros sanitarios, centros para mayores, farmacias y bibliotecas. Si no hay resultados, CartoCiudad se consulta con una acción explícita. Los enlaces a la red se aproximan en línea recta, con un máximo de 60 m.
+- **Descansos.** Los bancos operativos se conectan a caminos cartografiados a un máximo de 10 m. El desvío hasta el asiento y el regreso cuentan en la distancia. La búsqueda distingue entre un cálculo inconcluso y la ausencia de alternativa.
+- **Anchura, pendiente y cruces.** Anchura y pendiente OSM explícitas permiten filtros estrictos. La acera municipal aporta valores medios y el MDT05 estima subidas y bajadas. Se muestra qué porcentaje del recorrido tiene datos.
+- **Sombra y meteorología.** La proyección solar usa la altura de los edificios y las copas de OSM con dimensiones, en intervalos de 15 minutos. Se modela sobre terreno plano, con cobertura de arbolado limitada. AEMET aporta el pronóstico horario y la red regional, la observación histórica.
+- **Equipamientos.** Fuentes y aseos cercanos al trayecto, con acceso por confirmar. CentroCentro y Matadero tienen fichas históricas del verano de 2026. Que un centro esté registrado no significa que esté abierto en ese momento ni que sea un refugio climático.
+- **Navegación y privacidad.** La ubicación requiere permiso del navegador. La ruta activa se guarda en el dispositivo y se borra al terminar. La API recibe origen y destino solo para calcular, y el servidor desactiva los registros de acceso.
+- **Estudios municipales.** Hasta 16 portales de cuadrículas de 75 m, con la misma función de coste para ambos recorridos. Las cifras cuentan portales muestreados. Los costes los introduce el analista.
+
+## Verificación
+
+Con el servidor en marcha, ejecuta `.venv/bin/python -m ciudad.comprobar [URL]`. Comprueba:
+- un portal por distrito;
+- destinos regionales;
+- fecha de refugio y observación histórica;
+- descansos e imposibilidad dentro de un límite real;
+- retirada del banco;
+- evaluación de actuaciones sobre la misma muestra.
+
+Los estados de aceras, bancos, pasos y accesos deben corroborarse sobre el terreno. Queda pendiente probar la navegación con GPS en la calle y con personas mayores o con movilidad reducida.
 
 ## Fuentes y licencias
 
-- Comunidad de Madrid, centros sanitarios, bibliotecas y meteorología: https://datos.comunidad.madrid/dataset/centros_servicios_establecimientos_sanitarios , https://datos.comunidad.madrid/dataset/spacm_listado_bibliotecas_servicios_lectura y https://datos.comunidad.madrid/dataset/calidad_aire_datos_meteo_historico. Consultadas el 19/11/2026.
-- Ayuntamiento de Madrid, bancos 2026 y capa de accesibilidad viaria: https://datos.madrid.es/dataset/300095-0-mobiliario-bancos y https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/ACCESIBILIDAD_VIARIA/MapServer/layers. Consultadas el 19/11/2026.
-- Red peatonal © colaboradores de OpenStreetMap, ODbL: https://www.openstreetmap.org/copyright. La redistribución de la base de datos derivada debe cumplir las condiciones de ODbL.
-- Leaflet, BSD-2-Clause: https://github.com/Leaflet/Leaflet. Mapa base © OpenStreetMap.
-- El algoritmo se escribió para este prototipo. Se revisaron los proyectos Oasis-Madrid y CurbShade como referencias, sin copiar código.
+Atribuciones completas en [DATA-LICENSE.md](DATA-LICENSE.md).
 
-Antes de publicación general, validar horarios, datos cartográficos, licencias de redistribución y accesibilidad con usuarios. La geometría y los datos originales no aseguran que un recorrido sea seguro.
-
-## Comprobación
-
-`node comprobar-rutas.js` verifica rutas sin bancos, desviaciones, dos descansos, límites y simulación. El prototipo no se ha validado con personas mayores ni se ha contrastado físicamente cada banco o destino.
+- **Comunidad de Madrid:** los conjuntos de la tabla de arriba.
+- **Ayuntamiento de Madrid:**
+  - [callejero](https://datos.madrid.es/dataset/200075-0-callejero);
+  - [bancos](https://datos.madrid.es/dataset/300095-0-mobiliario-bancos/downloads);
+  - [fuentes](https://datos.madrid.es/dataset/300051-0-fuentes/downloads);
+  - [padrón](https://datos.madrid.es/dataset/200076-0-padron);
+  - [accesibilidad viaria](https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/ACCESIBILIDAD_VIARIA/MapServer/layers);
+  - [alturas](https://geoportal.madrid.es/IDEAM_WBGEOPORTAL/dataset.iam?id=ALTURAS_EDIFICIOS);
+  - [Protección Civil](https://geoportal.madrid.es/IDEAM_WBGEOPORTAL/dataset.iam?id=RECURSOS_PROTECCION_CIVIL).
+- **IGN:** [MDT05](https://datos.gob.es/es/catalogo/e0dat0002-modelo-digital-del-terreno-con-paso-de-malla-de-5-metros-mdt05-de-espana1) y [CartoCiudad](https://www.cartociudad.es/web/portal/).
+- **AEMET:** [predicción horaria para Madrid](https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/madrid-id28079).
+- **OpenStreetMap:** red peatonal © [colaboradores de OpenStreetMap](https://www.openstreetmap.org/copyright), vía [Geofabrik](https://download.geofabrik.de/europe/spain/madrid.html). Las bases de datos derivadas quedan sujetas a ODbL.
+- **Mapa base:** [OpenFreeMap](https://openfreemap.org).
+- **Referentes:** se revisaron [OasisMadrid](https://github.com/ariaslombardero/Oasis-Madrid) y [CurbShade](https://github.com/davidmariscalf/CurbShade) como referentes de diseño y metodología. El motor y la preparación se escribieron para este proyecto. [MapLibre GL JS](https://github.com/maplibre/maplibre-gl-js) se usa bajo BSD-3-Clause.
