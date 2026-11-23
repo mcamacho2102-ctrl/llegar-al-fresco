@@ -3,7 +3,7 @@
 # Uso: scripts/descargar_datos.sh [usuario/repositorio] [versión]
 set -eu
 cd "$(dirname "$0")/.."
-REPO="${1:-${LLEGAR_REPO:?Indica usuario/repositorio}}"
+REPO="${1:-${LLEGAR_REPO:-mcamacho2102-ctrl/llegar-al-fresco}}"
 VERSION="${2:-v1.0-datamad}"
 FILE="llegar-al-fresco-datos-$VERSION.tar.gz"
 URL="https://github.com/$REPO/releases/download/$VERSION/$FILE"

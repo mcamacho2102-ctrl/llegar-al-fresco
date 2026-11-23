@@ -2,8 +2,8 @@
 
 **Rutas a pie para quien necesita sentarse por el camino, y una herramienta para que los ayuntamientos decidan dónde poner el próximo banco.** Proyecto para DATAMAD 2026.
 
-- 🌐 **Demo:** _se añadirá la URL pública_ · plan B local: `scripts/arrancar.sh`
-- 🎬 **Vídeo de 2 minutos:** _se añadirá el enlace_
+- 🌐 **Demo:** https://llegaralfresco.outofthemark.com · plan B local: `scripts/arrancar.sh`
+- 📦 **Datos compilados:** [Release v1.0-datamad](https://github.com/mcamacho2102-ctrl/llegar-al-fresco/releases/tag/v1.0-datamad)
 - 📄 Licencia del código: [Apache-2.0](LICENSE) · datos: [DATA-LICENSE.md](DATA-LICENSE.md)
 
 ## El problema, en una cifra
@@ -53,7 +53,7 @@ Se combinan con datos del Ayuntamiento de Madrid (callejero, bancos, fuentes, pa
 Requiere Python 3.9–3.12 y Node 22 o posterior. Desde la raíz del proyecto:
 
 ```sh
-scripts/descargar_datos.sh usuario/repositorio   # datos compilados de la Release (o reconstrúyelos, abajo)
+scripts/descargar_datos.sh                        # datos compilados de la Release (o reconstrúyelos, abajo)
 scripts/arrancar.sh                               # crea el entorno, compila la web y abre http://localhost:8768
 ```
 
@@ -71,7 +71,7 @@ El backend sirve también la interfaz compilada. Para el mapa base (OpenFreeMap)
 
 ### Despliegue público
 
-El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. Para Fly.io (`fly.toml`, 2 GB): `scripts/descargar_datos.sh …`, `fly launch --no-deploy --copy-config` y `fly deploy`. Las llamadas a `/api/` se limitan por IP (`LIMITE_PETICIONES`, 600 por minuto por defecto).
+El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. También hay un `fly.toml` para Fly.io (2 GB). La demo pública corre en un contenedor aislado (ver `despliegue/`). Las llamadas a `/api/` se limitan por IP (`LIMITE_PETICIONES`, 600 por minuto por defecto).
 
 ### Reconstruir los datos
 
@@ -113,6 +113,10 @@ Los aforos horarios corresponden a enero–junio de 2024 ([permanentes](https://
 - **Equipamientos.** Fuentes y aseos cercanos al trayecto, con acceso por confirmar. CentroCentro y Matadero tienen fichas históricas del verano de 2026. Que un centro esté registrado no significa que esté abierto en ese momento ni que sea un refugio climático.
 - **Navegación y privacidad.** La ubicación requiere permiso del navegador. La ruta activa se guarda en el dispositivo y se borra al terminar. La API recibe origen y destino solo para calcular, y el servidor desactiva los registros de acceso.
 - **Estudios municipales.** Hasta 16 portales de cuadrículas de 75 m, con la misma función de coste para ambos recorridos. Las cifras cuentan portales muestreados. Los costes los introduce el analista.
+
+## Pruebas
+
+Con el servidor en marcha: `python3 pruebas/banco_api.py` (75 comprobaciones de la API), `python pruebas/banco_web.py` (recorridos por perfiles en un navegador real y auditoría de accesibilidad axe; necesita Playwright) y `.venv/bin/python -m ciudad.banco_pruebas` (uso adversarial). Ninguna prueba cuenta en el informe de uso.
 
 ## Verificación
 
