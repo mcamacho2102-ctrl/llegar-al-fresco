@@ -665,8 +665,10 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                       {recommended.rests.map((rest, i) => (
                         <li key={i}>
                           <span className="pin-mini">{i + 1}</span>
-                          Banco de <strong>{rest.label}</strong>
-                          <small> · a los {fmt(Math.round(rest.atM))} m</small>
+                          <span>
+                            Banco de <strong>{rest.label}</strong>
+                            <small> · a los {fmt(Math.round(rest.atM))} m</small>
+                          </span>
                         </li>
                       ))}
                     </ol>
@@ -695,8 +697,10 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                       {closest.rests.map((rest, i) => (
                         <li key={i}>
                           <span className="pin-mini">{i + 1}</span>
-                          Banco de <strong>{rest.label}</strong>
-                          <small> · a los {fmt(Math.round(rest.atM))} m</small>
+                          <span>
+                            Banco de <strong>{rest.label}</strong>
+                            <small> · a los {fmt(Math.round(rest.atM))} m</small>
+                          </span>
                         </li>
                       ))}
                     </ol>

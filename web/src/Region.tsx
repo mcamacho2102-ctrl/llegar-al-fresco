@@ -72,7 +72,7 @@ const indicators = {
 } as const;
 type Indicator = keyof typeof indicators;
 
-const palette = ["#f3efe0", "#f1d39a", "#e7a25a", "#cf6a33", "#9e3b1f"];
+const palette = ["#f5ede4", "#ebcbaa", "#dda071", "#b8592a", "#8e4320"];
 
 const pct = (value: number) =>
   value.toLocaleString("es-ES", { maximumFractionDigits: 1 }) + " %";
@@ -146,7 +146,7 @@ export default function Region() {
         id: "seleccion",
         type: "line",
         source: "municipios",
-        paint: { "line-color": "#193e34", "line-width": 2.5 },
+        paint: { "line-color": "#0b3b30", "line-width": 2.5 },
         filter: ["==", ["get", "codigo"], ""],
       });
       m.on(

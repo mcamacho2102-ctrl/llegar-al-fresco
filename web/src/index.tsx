@@ -5,6 +5,7 @@ import BankPlanResults from "./BankPlan";
 import Map from "./Map";
 import Region from "./Region";
 import Sencillo from "./Sencillo";
+import Logo from "./Logo";
 import Informe from "./Informe";
 import {
   api,
@@ -837,11 +838,8 @@ function App() {
   return (
     <>
       <header>
-        <a href="#" className="brand">
-          <img src="/icon-192.png" alt="" />
-          <span>
-            Llegar al fresco<small>Madrid a pie</small>
-          </span>
+        <a href="#" className="brand" aria-label="Llegar al fresco, inicio">
+          <Logo />
         </a>
         {mode === "inicio" ? (
           <button

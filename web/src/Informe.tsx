@@ -116,7 +116,7 @@ export default function Informe({
         source: "huecos",
         paint: {
           "circle-radius": ["interpolate", ["linear"], ["get", "consultas"], 3, 6, 20, 18],
-          "circle-color": ["case", [">", ["get", "bloqueadas"], ["/", ["get", "consultas"], 2]], "#b94c1d", "#d18a1c"],
+          "circle-color": ["case", [">", ["get", "bloqueadas"], ["/", ["get", "consultas"], 2]], "#b8592a", "#cf8b23"],
           "circle-opacity": 0.85,
           "circle-stroke-color": "#fff",
           "circle-stroke-width": 2,

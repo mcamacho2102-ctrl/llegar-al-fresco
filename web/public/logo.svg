@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Llegar al fresco">
+  <rect width="64" height="64" rx="16" fill="#0E5242"/>
+  <!-- árbol que da sombra -->
+  <circle cx="22" cy="23" r="11.5" fill="#9AD8BC"/>
+  <circle cx="34" cy="18.5" r="9.5" fill="#9AD8BC"/>
+  <circle cx="43" cy="24.5" r="7" fill="#9AD8BC"/>
+  <path d="M22 31v20" stroke="#9AD8BC" stroke-width="3.8" stroke-linecap="round"/>
+  <!-- banco de perfil, con respaldo -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M29 42.5h19"/>
+    <path d="M48 42.5l3.2-10.5"/>
+    <path d="M32 42.5v8.5M45 42.5v8.5"/>
+  </g>
+</svg>
