@@ -4,6 +4,7 @@ import Address from "./Address";
 import BankPlanResults from "./BankPlan";
 import Map from "./Map";
 import Region from "./Region";
+import Sencillo from "./Sencillo";
 import {
   api,
   BankOption,
@@ -227,8 +228,15 @@ function App() {
   const [chosenDeparture, setChosenDeparture] = useState<string | null>(null);
   const departure = chosenDeparture ?? automaticDeparture;
   const [preferences, setPreferences] = useState(saved?.preferences || initial);
-  const [mode, setMode] = useState<"walk" | "city" | "region">(() =>
-      window.location.hash === "#region" ? "region" : "walk",
+  const [mode, setMode] = useState<"inicio" | "walk" | "city" | "region">(
+      () =>
+        window.location.hash === "#region"
+          ? "region"
+          : window.location.hash === "#tecnicos"
+            ? "city"
+            : window.location.hash === "#detallado"
+              ? "walk"
+              : "inicio",
     ),
     [pick, setPick] = useState<"origin" | "destination" | "scenario" | null>(
       null,
@@ -822,7 +830,30 @@ function App() {
             Llegar al fresco<small>Madrid a pie</small>
           </span>
         </a>
-        <nav aria-label="Modos de la aplicación">
+        {mode === "inicio" ? (
+          <button
+            type="button"
+            className="link-button tecnicos-link"
+            onClick={() => {
+              setMode("city");
+              invalidate();
+            }}
+          >
+            Para ayuntamientos →
+          </button>
+        ) : (
+        <nav aria-label="Herramientas para técnicos">
+          <button
+            type="button"
+            className="volver"
+            onClick={() => {
+              setMode("inicio");
+              invalidate();
+              setScenario(null);
+            }}
+          >
+            ← App ciudadana
+          </button>
           <button
             type="button"
             aria-pressed={mode === "walk"}
@@ -832,7 +863,7 @@ function App() {
               setScenario(null);
             }}
           >
-            Mi recorrido
+            Recorrido detallado
           </button>
           <button
             type="button"
@@ -858,11 +889,22 @@ function App() {
             Mapa regional
           </button>
         </nav>
-        <a href="#fuentes" className="sources-link">
-          Fuentes
-        </a>
+        )}
+        {mode !== "inicio" && (
+          <a href="#fuentes" className="sources-link">
+            Fuentes
+          </a>
+        )}
       </header>
-      {mode === "region" ? (
+      {mode === "inicio" ? (
+        <Sencillo
+          onProfessional={() => {
+            setMode("city");
+            invalidate();
+            window.scrollTo({ top: 0 });
+          }}
+        />
+      ) : mode === "region" ? (
         <Region />
       ) : (
       <main>

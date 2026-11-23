@@ -515,6 +515,44 @@ def jsonify_candidates(root, q):
     return raw
 
 
+NEARBY_KINDS = {
+    "salud": lambda row: row["kind"] == "health"
+    and row["label"].startswith(("Centro de salud ·", "Consultorio de atención primaria ·")),
+    "farmacia": lambda row: row["kind"] == "pharmacy",
+    "mayores": lambda row: row["kind"] == "elderly",
+    "biblioteca": lambda row: row["kind"] == "library"
+    and row["source"].startswith("Comunidad de Madrid"),
+}
+
+
+@app.get("/api/nearby")
+def nearby(
+    kind: Literal["salud", "farmacia", "mayores", "biblioteca"],
+    lon: float = Query(ge=-4, le=-3),
+    lat: float = Query(ge=40, le=41),
+    n: int = Query(default=3, ge=1, le=8),
+):
+    """Destinos de los registros de la Comunidad más cercanos en línea recta."""
+    city = app.state.city
+    x, y = TO_METERS.transform(lon, lat)
+    wanted = NEARBY_KINDS[kind]
+    found = []
+    for k in (40, 200, 1000, len(city.pois)):
+        distances, indices = city.poi_tree.query((x, y), k=min(k, len(city.pois)))
+        found = [
+            (d, city.pois[i])
+            for d, i in zip(distances, indices)
+            if wanted(city.pois[i])
+        ]
+        if len(found) >= n:
+            break
+    return {
+        "results": [
+            city.poi_output(row) | {"straightM": round(float(d))} for d, row in found[:n]
+        ]
+    }
+
+
 @app.get("/api/points")
 def points(w: float, s: float, e: float, n: float):
     lower = TO_METERS.transform(w, s)

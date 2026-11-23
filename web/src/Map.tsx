@@ -31,6 +31,8 @@ export default function Map({
   scenario,
   position,
   onPick,
+  simple = false,
+  showPois = true,
 }: {
   origin: Place | null;
   destination: Place | null;
@@ -42,13 +44,20 @@ export default function Map({
   scenario: Improvement | null;
   position: Position | null;
   onPick: (p: Position) => void;
+  /** Modo ciudadano: marcadores grandes y solo los bancos de la ruta. */
+  simple?: boolean;
+  /** Muestra todos los bancos, fuentes y aseos de la vista (a partir de zoom 14). */
+  showPois?: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null),
     map = useRef<MapLibre | null>(null),
-    click = useRef(onPick);
+    click = useRef(onPick),
+    poisWanted = useRef(showPois),
+    refreshPois = useRef<() => void>(() => {});
   const [ready, setReady] = useState(false),
     [failed, setFailed] = useState(false);
   click.current = onPick;
+  poisWanted.current = showPois;
   useEffect(() => {
     try {
       const m = new maplibregl.Map({
@@ -98,7 +107,7 @@ export default function Map({
           type: "line",
           source: "routes",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": "#fff", "line-width": 9 },
+          paint: { "line-color": "#fff", "line-width": simple ? 13 : 9 },
         });
         m.addLayer({
           id: "routes",
@@ -107,7 +116,7 @@ export default function Map({
           layout: { "line-cap": "round", "line-join": "round" },
           paint: {
             "line-color": ["case", ["get", "active"], "#157256", "#9bada5"],
-            "line-width": ["case", ["get", "active"], 6, 3],
+            "line-width": ["case", ["get", "active"], simple ? 8 : 6, 3],
           },
         });
         m.addLayer({
@@ -123,10 +132,10 @@ export default function Map({
               "middle",
               "#d18a1c",
               "low",
-              "#19618a",
-              "#687475",
+              "#2d8a4e",
+              "#9aa5a0",
             ],
-            "line-width": 6,
+            "line-width": simple ? 8 : 6,
           },
         });
         m.addLayer({
@@ -176,7 +185,7 @@ export default function Map({
         let pending: AbortController | undefined;
         const refresh = async () => {
           pending?.abort();
-          if (m.getZoom() < 14) {
+          if (m.getZoom() < 14 || !poisWanted.current) {
             (m.getSource("pois") as GeoJSONSource).setData(empty());
             return;
           }
@@ -198,6 +207,7 @@ export default function Map({
           }
         };
         m.on("moveend", refresh);
+        refreshPois.current = () => void refresh();
         void refresh();
         setReady(true);
       });
@@ -209,6 +219,9 @@ export default function Map({
       setFailed(true);
     }
   }, []);
+  useEffect(() => {
+    if (ready) refreshPois.current();
+  }, [ready, showPois]);
   useEffect(() => {
     if (!ready || !map.current) return;
     const m = map.current;
@@ -277,9 +290,9 @@ export default function Map({
     const features: Feature<Point>[] = additionalPoints
       .filter((place) => place.kind !== "bank-candidate")
       .map((place) => marker(place.coordinates, place.kind, place.label));
-    if (origin)
+    if (origin && !simple)
       features.push(marker(origin.coordinates, "origin", origin.label));
-    if (destination)
+    if (destination && !simple)
       features.push(
         marker(destination.coordinates, "destination", destination.label),
       );
@@ -293,8 +306,9 @@ export default function Map({
       );
     if (position)
       features.push(marker(position, "position", "Tu posición aproximada"));
-    for (const rest of routes[selected]?.rests || [])
-      features.push(marker(rest.coordinates, "rest", rest.label));
+    if (!simple)
+      for (const rest of routes[selected]?.rests || [])
+        features.push(marker(rest.coordinates, "rest", rest.label));
     (map.current.getSource("pins") as GeoJSONSource).setData({
       type: "FeatureCollection",
       features,
@@ -308,7 +322,44 @@ export default function Map({
     scenario,
     position,
     additionalPoints,
+    simple,
   ]);
+  useEffect(() => {
+    // Modo ciudadano: salida «A», llegada «B» y bancos de la ruta numerados.
+    const current = map.current;
+    if (!ready || !current || !simple) return;
+    const pin = (
+      coordinates: Position,
+      className: string,
+      text: string,
+      label: string,
+    ) => {
+      const element = document.createElement("div");
+      element.className = "simple-pin " + className;
+      element.textContent = text;
+      element.setAttribute("role", "img");
+      element.setAttribute("aria-label", label);
+      return new maplibregl.Marker({ element })
+        .setLngLat(coordinates)
+        .setPopup(new maplibregl.Popup({ offset: 22 }).setText(label))
+        .addTo(current);
+    };
+    const markers = [
+      ...(routes[selected]?.rests || []).map((rest, index) =>
+        pin(
+          rest.coordinates,
+          "pin-rest",
+          String(index + 1),
+          `Descanso ${index + 1}: banco en ${rest.label}`,
+        ),
+      ),
+      ...(origin ? [pin(origin.coordinates, "pin-a", "A", "Salida: " + origin.label)] : []),
+      ...(destination
+        ? [pin(destination.coordinates, "pin-b", "B", "Llegada: " + destination.label)]
+        : []),
+    ];
+    return () => markers.forEach((item) => item.remove());
+  }, [ready, simple, origin, destination, routes, selected]);
   useEffect(() => {
     const current = map.current;
     if (!ready || !current) return;

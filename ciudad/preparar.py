@@ -209,7 +209,38 @@ def acera_attributes(points, usable):
                     if np.isnan(current)
                     else (min(current, value) if col == 0 else max(current, value))
                 )
+    nearest_sidewalk_width(attrs, points, rows, tree)
     return attrs
+
+
+NEAREST_SIDEWALK_M = 15
+
+
+def nearest_sidewalk_width(attrs, points, rows=None, tree=None):
+    """Completa el ancho de los tramos sin acera propia con la acera municipal más
+    cercana a menos de NEAREST_SIDEWALK_M metros. En OSM muchas calles se dibujan por
+    el eje de la calzada, así que su punto medio no cae dentro del polígono de acera
+    aunque esta exista y esté medida. Devuelve cuántos tramos se completan."""
+    if rows is None:
+        rows = [row for row in features("aceras.jsonl.gz")]
+    if tree is None:
+        tree = STRtree([shapely.make_valid(shape(row["geometry"])) for row in rows])
+    missing = np.flatnonzero(np.isnan(attrs[:, 0]))
+    if not len(missing):
+        return 0
+    (point_index, polygon_index), _ = tree.query_nearest(
+        shapely.points(points[missing]),
+        max_distance=NEAREST_SIDEWALK_M,
+        return_distance=True,
+        all_matches=False,
+    )
+    filled = 0
+    for i, polygon in zip(point_index, polygon_index):
+        value = number(rows[polygon]["properties"].get("ancho_ac_m"))
+        if value is not None and value > 0 and np.isnan(attrs[missing[i], 0]):
+            attrs[missing[i], 0] = value
+            filled += 1
+    return filled
 
 
 def graph(boundary):
