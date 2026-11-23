@@ -40,6 +40,8 @@ export interface Route {
   meters: number;
   durationMin: number;
   maxWithoutRest: number;
+  /** Tramo real más largo sin banco junto al camino (solo el camino directo). */
+  maxGapM?: number;
   fitsRest: boolean;
   widthM: number | null;
   slopePct: number | null;

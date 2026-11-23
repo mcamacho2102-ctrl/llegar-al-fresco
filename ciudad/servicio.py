@@ -498,6 +498,9 @@ def route_set(trip, request, full=True):
             continue
         if style == "distance":
             shortest_m = result["meters"]
+            # Sin paradas, maxWithoutRest es la longitud entera: se informa del tramo
+            # real más largo entre bancos que hay junto a este camino.
+            result["maxGapM"] = round(app.state.registro.longest_gap(result), 1)
         signature = (
             tuple(map(tuple, result["geometry"]["coordinates"])),
             tuple(x["atM"] for x in result["rests"]),

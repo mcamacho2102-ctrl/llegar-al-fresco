@@ -72,6 +72,25 @@ const minutes = (value: number) => {
   return m === 1 ? "1 minuto" : `${m} minutos`;
 };
 const times = (n: number) => (n === 1 ? "1 vez" : `${n} veces`);
+// Tramo real más largo sin banco junto al camino (el servidor lo calcula para el camino directo).
+const gapOf = (route: Route) => route.maxGapM ?? route.maxWithoutRest;
+
+/** Mejor voz en español disponible: las neuronales/mejoradas suenan mucho más claras. */
+function bestSpanishVoice(): SpeechSynthesisVoice | undefined {
+  const voices = window.speechSynthesis?.getVoices() || [];
+  const spanish = voices.filter((v) => v.lang.toLowerCase().startsWith("es"));
+  const score = (v: SpeechSynthesisVoice) => {
+    const name = v.name.toLowerCase();
+    let points = 0;
+    if (/natural|neural|online|premium|enhanced|mejorad/.test(name)) points += 50; // Edge, iOS, macOS
+    if (/google/.test(name)) points += 40; // Chrome (voz en red)
+    if (/m[oó]nica|paulina|marisol|elvira|alvaro|álvaro|jorge|lucía|lucia|elena/.test(name)) points += 20;
+    if (v.lang === "es-ES") points += 15;
+    if (!v.localService) points += 5;
+    return points;
+  };
+  return spanish.sort((a, b) => score(b) - score(a))[0];
+}
 
 export default function Sencillo({ onProfessional }: { onProfessional: () => void }) {
   const [origin, setOrigin] = useState<Place | null>(null);
@@ -112,7 +131,11 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     window.speechSynthesis?.cancel();
     setSpeaking(false);
   };
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  useEffect(() => {
+    // Las voces se cargan tarde en algunos navegadores: pedirlas al montar.
+    window.speechSynthesis?.getVoices();
+    return () => window.speechSynthesis?.cancel();
+  }, []);
 
   const summary = (route: Route) => {
     const parts = [
@@ -136,11 +159,12 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       ),
       "Has llegado.",
     ];
-    const voice = synth.getVoices().find((v) => v.lang.startsWith("es"));
+    const voice = bestSpanishVoice();
     lines.forEach((text, index) => {
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "es-ES";
-      utterance.rate = 0.9;
+      utterance.lang = voice?.lang || "es-ES";
+      utterance.rate = 0.92;
+      utterance.pitch = 1;
       if (voice) utterance.voice = voice;
       if (index === lines.length - 1) utterance.onend = () => setSpeaking(false);
       synth.speak(utterance);
@@ -673,10 +697,10 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                       ))}
                     </ol>
                   )}
-                  {shortest && shortest !== recommended && limit !== null && (
+                  {shortest && shortest !== recommended && limit !== null && gapOf(shortest) > limit && (
                     <p className="comparacion">
-                      El camino más corto mide {fmt(shortest.meters)} m, pero tiene{" "}
-                      {fmt(Math.round(shortest.maxWithoutRest))} m seguidos sin ningún banco.
+                      El camino más corto mide {fmt(shortest.meters)} m, pero tiene un tramo de{" "}
+                      {fmt(Math.round(gapOf(shortest)))} m seguidos sin ningún banco.
                     </p>
                   )}
                 </>
@@ -705,10 +729,10 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                       ))}
                     </ol>
                   )}
-                  {shortest && (
+                  {shortest && limit !== null && gapOf(shortest) > limit && (
                     <p className="comparacion">
-                      El camino más corto mide {fmt(shortest.meters)} m, con{" "}
-                      {fmt(Math.round(shortest.maxWithoutRest))} m seguidos sin ningún banco.
+                      El camino más corto mide {fmt(shortest.meters)} m, con un tramo de{" "}
+                      {fmt(Math.round(gapOf(shortest)))} m seguidos sin ningún banco.
                     </p>
                   )}
                 </>
@@ -735,8 +759,12 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                   {shown.slopePct !== null && shown.slopePct > 8 ? "⛰️ Alguna cuesta fuerte" : "🚶 Sin cuestas fuertes"}
                 </span>
                 {stairs && <span className="chip">🚫 Sin escaleras</span>}
-                {minWidth && <span className="chip">↔️ Aceras de {fmt(minWidth)} m o más</span>}
-                {maxSlope && <span className="chip">📐 Cuestas de {maxSlope} % como mucho</span>}
+                {minWidth && !result.relaxed?.includes("width") && (
+                  <span className="chip">↔️ Aceras de {fmt(minWidth)} m o más</span>
+                )}
+                {maxSlope && !result.relaxed?.includes("slope") && (
+                  <span className="chip">📐 Cuestas de {maxSlope} % como mucho</span>
+                )}
               </div>
             </div>
           )}

@@ -118,6 +118,16 @@ class Registro:
                 found.append((spot.x, spot.y, length, self.street(spot)))
         return found
 
+    def longest_gap(self, route):
+        """Tramo más largo del camino sin un banco enlazado a menos de 10 m."""
+        xy = np.array([TO_METERS.transform(*p) for p in route["geometry"]["coordinates"]])
+        if len(xy) < 2:
+            return 0.0
+        line = LineString(xy)
+        near = self.bench_tree.query(line, predicate="dwithin", distance=BENCH_REACH_M)
+        cuts = [0.0, *sorted(line.project(self.bench_points[i]) for i in near), line.length]
+        return max(b - a for a, b in zip(cuts, cuts[1:]))
+
     def street(self, point):
         """Nombre de la calle con nombre más cercana (a 60 m o menos)."""
         candidates = self.city.segment_tree.query(point, predicate="dwithin", distance=60)

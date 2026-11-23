@@ -27,6 +27,7 @@ TO_METERS = Transformer.from_crs(4326, 25830, always_xy=True)
 TO_DEGREES = Transformer.from_crs(25830, 4326, always_xy=True)
 MAX_CONNECT = 150
 BENCH_CONNECT = 10
+SIM_BENCH_REACH = 40  # un banco simulado se lleva a la acera más cercana
 MAX_CHECKS = 220000
 
 
@@ -219,12 +220,12 @@ class Madrid:
     def inside(self, lon, lat):
         return bool(shapely.intersects_xy(self.boundary, *TO_METERS.transform(lon, lat)))
 
-    def locate(self, lon, lat, bench=False):
+    def locate(self, lon, lat, bench=False, reach=None):
         xy = np.array(TO_METERS.transform(lon, lat))
         if not shapely.intersects_xy(self.boundary, *xy):
             return None
         point = Point(xy)
-        distance = BENCH_CONNECT if bench else MAX_CONNECT
+        distance = reach or (BENCH_CONNECT if bench else MAX_CONNECT)
         tree = self.rest_tree if bench else self.segment_tree
         result = tree.query(point, predicate="dwithin", distance=distance)
         candidates = []
@@ -300,7 +301,14 @@ class Madrid:
         improved = {}
         if scenario:
             point = (scenario.lon, scenario.lat)
-            location = self.locate(*point, bench=scenario.kind == "bench")
+            bench = scenario.kind == "bench"
+            location = self.locate(*point, bench=bench)
+            snapped = False
+            if location is None and bench:
+                # El punto propuesto (p. ej. un hueco del informe) puede caer en la
+                # calzada: el banco se coloca en la acera peatonal más cercana.
+                location = self.locate(*point, bench=True, reach=SIM_BENCH_REACH)
+                snapped = location is not None
             if location is None:
                 raise ValueError(
                     "No hay un tramo peatonal adecuado cerca de la intervención."
@@ -312,8 +320,8 @@ class Madrid:
                     Rest(
                         "sim",
                         "Banco propuesto",
-                        TO_METERS.transform(*point),
-                        location.offset,
+                        tuple(location.xy) if snapped else TO_METERS.transform(*point),
+                        1.0 if snapped else location.offset,
                         True,
                     )
                 ]
