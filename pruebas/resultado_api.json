@@ -3,13 +3,13 @@
   "area": "Servidor",
   "prueba": "Responde /api/info",
   "estado": "OK",
-  "detalle": "8 ms"
+  "detalle": "10 ms"
  },
  {
   "area": "Servidor",
   "prueba": "Sirve la web",
   "estado": "OK",
-  "detalle": "1 ms"
+  "detalle": "2 ms"
  },
  {
   "area": "Servidor",
@@ -207,13 +207,13 @@
   "area": "Rendimiento",
   "prueba": "Barajas → Villaverde (≈17 km)",
   "estado": "OK",
-  "detalle": "1.2 s · [('distance', 20217)]"
+  "detalle": "0.7 s · [('distance', 20217)]"
  },
  {
   "area": "Rendimiento",
   "prueba": "El Pardo → Sol",
   "estado": "OK",
-  "detalle": "0.1 s · [('distance', 14236)]"
+  "detalle": "0.3 s · [('distance', 14236)]"
  },
  {
   "area": "Validación",
@@ -249,7 +249,7 @@
   "area": "Rutas",
   "prueba": "Límite 30 m",
   "estado": "OK",
-  "detalle": "0.00 s · ['distance', 'closest']"
+  "detalle": "0.01 s · ['distance', 'closest']"
  },
  {
   "area": "Rutas",
@@ -273,7 +273,7 @@
   "area": "Opciones",
   "prueba": "Ancho ≥ 1,5 m",
   "estado": "OK",
-  "detalle": "1.43 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
+  "detalle": "1.08 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
  },
  {
   "area": "Opciones",
@@ -309,13 +309,13 @@
   "area": "Cercanos",
   "prueba": "salud desde Sol",
   "estado": "OK",
-  "detalle": "el más cercano a 408 m · 31 ms"
+  "detalle": "el más cercano a 408 m · 28 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "salud desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 500 m · 25 ms"
+  "detalle": "el más cercano a 500 m · 26 ms"
  },
  {
   "area": "Cercanos",
@@ -369,13 +369,13 @@
   "area": "Cercanos",
   "prueba": "biblioteca desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 1432 m · 23 ms"
+  "detalle": "el más cercano a 1432 m · 24 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "biblioteca desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 1395 m · 24 ms"
+  "detalle": "el más cercano a 1395 m · 26 ms"
  },
  {
   "area": "Validación",
@@ -417,7 +417,7 @@
   "area": "Ayuntamientos",
   "prueba": "Buscar ubicaciones para bancos",
   "estado": "OK",
-  "detalle": "3.7 s · 3"
+  "detalle": "4.2 s · 3"
  },
  {
   "area": "Ayuntamientos",

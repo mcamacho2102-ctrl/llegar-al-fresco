@@ -1,4 +1,4 @@
-const cacheName = "llegar-al-fresco-shell-v3";
+const cacheName = "llegar-al-fresco-shell-v4";
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
@@ -15,6 +15,8 @@ self.addEventListener("install", (event) => {
         "/manifest.webmanifest",
         "/icon-192.png",
         "/icon-512.png",
+        "/fonts/atkinson-hyperlegible-next-latin.woff2",
+        "/fonts/source-serif-4-latin.woff2",
         ...assets,
       ]);
       await cache.put("/", html);

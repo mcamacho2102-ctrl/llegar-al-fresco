@@ -930,10 +930,31 @@ function App() {
         />
       ) : mode === "informe" ? (
         <Informe
-          onSimulate={() => {
+          onSimulate={async (at?: Position, destino?: string) => {
             setMode("city");
             invalidate();
             window.scrollTo({ top: 0 });
+            if (!at) return;
+            // Banco estratégico del informe: el banco en ese punto, la zona alrededor y,
+            // como destino, el lugar más cercano del tipo que más se repite allí.
+            const kindOf = ["salud", "farmacia", "mayores", "biblioteca"].includes(destino || "")
+              ? destino
+              : "salud";
+            try {
+              const { results } = await api<{ results: Place[] }>(
+                `/api/nearby?kind=${kindOf}&lon=${at[0]}&lat=${at[1]}&n=1`,
+              );
+              setOrigin(mapPlace(at, "Punto del banco estratégico"));
+              if (results[0]) setDestination(results[0]);
+              setScenario({ kind: "bench", lon: at[0], lat: at[1] });
+              setKind("bench");
+              setRadius(500);
+              setNotice(
+                "Banco estratégico cargado. Pulsa «Evaluar zona» para medir cuántos portales de alrededor ganan una ruta con él.",
+              );
+            } catch (e) {
+              setError((e as Error).message);
+            }
           }}
         />
       ) : mode === "region" ? (

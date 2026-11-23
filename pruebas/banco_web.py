@@ -157,7 +157,7 @@ def main():
         time.sleep(2)
         # Nota: una captura de pantalla aquí (CDP) impide que el clic siguiente fije el punto
         # en Chromium sin GPU; la captura del selector se hace en la segunda apertura.
-        page.get_by_role("button", name="Usar el centro del mapa").wait_for(timeout=15000)
+        page.get_by_role("button", name="Usar el centro del mapa").wait_for(timeout=40000)
         page.get_by_role("button", name="Usar el centro del mapa").click()
         page.locator(".selector-mapa").wait_for(state="detached", timeout=10000)
         label = page.locator(".paso input[role=combobox]").first.input_value()

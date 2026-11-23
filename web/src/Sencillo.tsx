@@ -107,7 +107,99 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     return () => window.cancelAnimationFrame(frame);
   }, [result]);
 
+  const [speaking, setSpeaking] = useState(false);
+  const stopSpeaking = () => {
+    window.speechSynthesis?.cancel();
+    setSpeaking(false);
+  };
+  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+
+  const summary = (route: Route) => {
+    const parts = [
+      `Ruta de ${fmt(route.meters)} metros, unos ${minutes(route.durationMin)}.`,
+      route.rests.length
+        ? `Te sentarás ${times(route.rests.length)}: ` +
+          route.rests.map((r, i) => `${i + 1}, banco de ${r.label}, a los ${Math.round(r.atM)} metros`).join("; ") + "."
+        : "No hace falta parar.",
+    ];
+    return parts.join(" ");
+  };
+
+  const speak = (route: Route) => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    synth.cancel();
+    const lines = [
+      summary(route),
+      ...route.steps.map((step) =>
+        instruction(step) + (step.action === "walk" ? `, ${Math.round(step.distanceM)} metros.` : "."),
+      ),
+      "Has llegado.",
+    ];
+    const voice = synth.getVoices().find((v) => v.lang.startsWith("es"));
+    lines.forEach((text, index) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "es-ES";
+      utterance.rate = 0.9;
+      if (voice) utterance.voice = voice;
+      if (index === lines.length - 1) utterance.onend = () => setSpeaking(false);
+      synth.speak(utterance);
+    });
+    setSpeaking(true);
+  };
+
+  const shareLink = () => {
+    if (!origin || !destination) return window.location.origin;
+    const q = new URLSearchParams({
+      o: origin.coordinates.map((v) => v.toFixed(6)).join(","),
+      d: destination.coordinates.map((v) => v.toFixed(6)).join(","),
+      on: origin.label === "Mi ubicación" ? "Salida" : origin.label,
+      dn: destination.label,
+      l: limit === null ? "0" : String(limit),
+    });
+    return `${window.location.origin}/?${q.toString()}`;
+  };
+
+  const share = async (route: Route) => {
+    const text =
+      `${destination?.label || "Ruta"} · ${summary(route)} ` +
+      "La he preparado con Llegar al fresco, rutas a pie con sitios para sentarse.";
+    const url = shareLink();
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "Llegar al fresco", text, url });
+        return;
+      }
+    } catch {
+      return; // cancelado por la persona
+    }
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + url)}`, "_blank", "noopener");
+  };
+
+  // Enlace compartido: ?o=lon,lat&d=lon,lat&on=…&dn=…&l=200 abre la misma ruta.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const parse = (value: string | null): Position | null => {
+      const parts = (value || "").split(",").map(Number);
+      return parts.length === 2 && parts.every(Number.isFinite) ? [parts[0], parts[1]] : null;
+    };
+    const o = parse(params.get("o"));
+    const d = parse(params.get("d"));
+    if (!o || !d) return;
+    const from = mapPlace(o, params.get("on") || "Salida compartida");
+    const to = mapPlace(d, params.get("dn") || "Llegada compartida");
+    const shared = Number(params.get("l"));
+    const max = shared === 0 ? null : LIMITS.concat(MORE_LIMITS).includes(shared) ? shared : 200;
+    setOrigin(from);
+    setDestination(to);
+    setOtherDestination(true);
+    setLimit(max);
+    void search(from, to, max, madridNow(), false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const reset = () => {
+    stopSpeaking();
     setResult(null);
     setLayer("route");
     setError("");
@@ -748,6 +840,19 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                 </p>
               </details>
               <div className="acciones">
+                {"speechSynthesis" in window && (
+                  <button
+                    type="button"
+                    className="grande secundario"
+                    aria-pressed={speaking}
+                    onClick={() => (speaking ? stopSpeaking() : speak(shown))}
+                  >
+                    {speaking ? "⏹️ Parar" : "🔊 Escuchar indicaciones"}
+                  </button>
+                )}
+                <button type="button" className="grande secundario" onClick={() => void share(shown)}>
+                  📤 Compartir ruta
+                </button>
                 <button type="button" className="grande secundario" onClick={() => window.print()}>
                   🖨️ Imprimir
                 </button>
@@ -799,13 +904,23 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
               showPois={false}
               onPick={(p: Position) => {
                 reset();
-                const place = mapPlace(p, picking === "origin" ? "Punto de salida en el mapa" : "Punto de llegada en el mapa");
-                if (picking === "origin") setOrigin(place);
+                const target = picking;
+                const place = mapPlace(p, target === "origin" ? "Punto de salida en el mapa" : "Punto de llegada en el mapa");
+                if (target === "origin") setOrigin(place);
                 else {
                   setDestination(place);
                   setPurpose("direccion");
                 }
                 setPicking(null);
+                // Confirmar con la dirección más cercana («Junto a Calle de Toledo, 46»).
+                api<{ label: string | null }>(`/api/cerca?lon=${p[0]}&lat=${p[1]}`)
+                  .then(({ label }) => {
+                    if (!label) return;
+                    const named = mapPlace(p, label);
+                    if (target === "origin") setOrigin((old) => (old?.id === place.id ? named : old));
+                    else setDestination((old) => (old?.id === place.id ? named : old));
+                  })
+                  .catch(() => undefined);
               }}
             />
             <div className="mira" aria-hidden="true">+</div>

@@ -62,7 +62,11 @@ function Bars({ data, label }: { data: Record<string, number>; label: (k: string
   );
 }
 
-export default function Informe({ onSimulate }: { onSimulate: () => void }) {
+export default function Informe({
+  onSimulate,
+}: {
+  onSimulate: (at?: Position, destino?: string) => void;
+}) {
   const [demo, setDemo] = useState<boolean | null>(null);
   const [data, setData] = useState<Report | null>(null);
   const [error, setError] = useState("");
@@ -273,6 +277,18 @@ export default function Informe({ onSimulate }: { onSimulate: () => void }) {
                       <td>
                         <button type="button" className="link-button" onClick={() => focus(h.coordinates)}>
                           Ver
+                        </button>{" "}
+                        <button
+                          type="button"
+                          className="link-button"
+                          onClick={() =>
+                            onSimulate(
+                              h.coordinates,
+                              Object.entries(h.destinos).sort((a, b) => b[1] - a[1])[0]?.[0],
+                            )
+                          }
+                        >
+                          Simular este banco →
                         </button>
                       </td>
                     </tr>
@@ -282,7 +298,7 @@ export default function Informe({ onSimulate }: { onSimulate: () => void }) {
             </div>
             <p className="form-note">
               Para comprobar el efecto de un banco concreto sobre una zona, usa el{" "}
-              <button type="button" className="link-button" onClick={onSimulate}>
+              <button type="button" className="link-button" onClick={() => onSimulate()}>
                 simulador de mejoras
               </button>
               .

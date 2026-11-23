@@ -1,3 +1,18 @@
+/* Tipografías incluidas en la app (licencia SIL OFL 1.1, ver /fonts/OFL-*.txt) */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("/fonts/atkinson-hyperlegible-next-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   font:
     16px/1.55 "Atkinson Hyperlegible Next",
@@ -127,7 +142,7 @@ p {
 }
 h1 {
   font:
-    700 clamp(2.4rem, 5vw, 4.4rem)/0.99 Georgia,
+    700 clamp(2.4rem, 5vw, 4.4rem)/0.99 "Source Serif 4", Georgia,
     serif;
   letter-spacing: -0.042em;
   margin: 0 0 13px;
@@ -847,7 +862,7 @@ fieldset {
 }
 .impact-figure {
   font:
-    700 clamp(3rem, 8vw, 5.4rem)/0.95 Georgia,
+    700 clamp(3rem, 8vw, 5.4rem)/0.95 "Source Serif 4", Georgia,
     serif;
   letter-spacing: -0.04em;
   color: #9e3b1f;
@@ -1146,7 +1161,7 @@ fieldset {
 }
 .frase h2 {
   font-size: 1.9rem;
-  font-family: Georgia, serif;
+  font-family: "Source Serif 4", Georgia, serif;
   margin-bottom: 10px;
 }
 .frase p {

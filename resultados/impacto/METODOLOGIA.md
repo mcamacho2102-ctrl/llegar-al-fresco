@@ -22,6 +22,10 @@ Reproducir: `.venv/bin/python -m ciudad.impacto --todos --n 150 --limite 200 --s
    - `no_hay_alternativa`: no existe dentro de lo explorado.
    - Se excluyen `sin_ruta` (punto a más de 150 m de la red principal conectada, sobre todo urbanizaciones nuevas de Vicálvaro aún sin calles en OSM: 48 casos) e `inconcluso` (búsqueda agotada: 0 casos). Los extremos solo se enganchan a la red principal conectada, nunca a un patio o recinto aislado.
 
+## Qué cuenta como «cumple ya»
+
+Una ruta con descansos «cumple ya» si no alarga el camino directo más de 20 m. Esos 20 m incluyen el paso lateral hasta el banco y la vuelta. Si además se descuenta todo el paso lateral (sea cual sea su longitud) y solo se cuenta el rodeo del itinerario, unos 80 trayectos (el 2,5 %) pasan a «cumple ya» y la cifra queda en **85,6 %** (25,0 % con rodeo + 60,5 % sin alternativa; este último no cambia). Mantenemos el 88,1 % como cifra principal porque, para quien necesita sentarse, el paso hasta el banco también se camina.
+
 ## Margen de error
 
 Con 3.102 trayectos evaluables, el intervalo de confianza al 95 % (aproximación binomial) es de **±1,1 puntos** para el 88,1 % y de **±1,7 puntos** para el 60,5 %. La muestra está estratificada por distrito (150 portales por distrito, no proporcional a la población), así que el total da el mismo peso a cada distrito; la versión ponderada por mayores, por distrito, figura en la tabla.

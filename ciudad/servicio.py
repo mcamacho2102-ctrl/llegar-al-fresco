@@ -709,6 +709,25 @@ def dentro(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90
     return {"dentro": -4 <= lon <= -3 and 40 <= lat <= 41 and app.state.city.inside(lon, lat)}
 
 
+@app.get("/api/cerca")
+def cerca(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90)):
+    """Portal del callejero más cercano a un punto marcado en el mapa (≤ 80 m)."""
+    city = app.state.city
+    if not city.inside(lon, lat):
+        return {"label": None}
+    x, y = TO_METERS.transform(lon, lat)
+    reach = 80
+    with city.db_connect() as conn:
+        rows = conn.execute(
+            "SELECT label,x,y FROM portals WHERE x BETWEEN ? AND ? AND y BETWEEN ? AND ?",
+            (x - reach, x + reach, y - reach, y + reach),
+        ).fetchall()
+    best = min(rows, key=lambda r: hypot(r["x"] - x, r["y"] - y), default=None)
+    if best is None or hypot(best["x"] - x, best["y"] - y) > reach:
+        return {"label": None}
+    return {"label": "Junto a " + best["label"], "distanceM": round(hypot(best["x"] - x, best["y"] - y))}
+
+
 NEARBY_KINDS = {
     "salud": is_primary_care,
     "farmacia": lambda row: row["kind"] == "pharmacy",
