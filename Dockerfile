@@ -15,5 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ciudad/ ciudad/
 COPY datos/ datos/
 COPY --from=web /web/.build web/.build
+# Usuario sin privilegios; datos/uso es el único directorio escribible (volumen).
+RUN useradd --system --uid 10001 --home /app app && mkdir -p datos/uso && chown -R app datos/uso
+USER app
 EXPOSE 8080
 CMD ["uvicorn", "ciudad.servicio:app", "--host", "0.0.0.0", "--port", "8080", "--no-access-log", "--proxy-headers"]

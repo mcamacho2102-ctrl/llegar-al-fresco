@@ -1,0 +1,6 @@
+# Bloque para el Caddy del servidor: añadir al final de /etc/caddy/Caddyfile
+# (cambiar los dominios por los reales). La app ya envía sus cabeceras de seguridad.
+llegaralfresco.example.com {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:8780
+}
