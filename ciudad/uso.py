@@ -29,6 +29,10 @@ from ciudad.fuentes import RAW
 from ciudad.motor import TO_METERS, coordinates
 
 BENCH_REACH_M = 10  # banco utilizable si está a 10 m o menos del camino
+# Para contar en pantalla el tramo sin bancos del camino corto: OSM dibuja muchas calles por
+# el eje y los bancos están en la acera, así que se acepta el banco que queda al lado (25 m).
+# Con 10 m se exageraba el tramo (1.403 m frente a 441 m en Vinateros 65 → C. S. Numancia).
+BENCH_SIDE_M = 25
 GRID_M = 60  # agrupación de huecos para el informe
 MIN_COUNT = 3  # huecos con menos consultas no se muestran
 LONG_GAP_M = 800  # más largo: zona sin bancos, no un banco estratégico
@@ -119,12 +123,12 @@ class Registro:
         return found
 
     def longest_gap(self, route):
-        """Tramo más largo del camino sin un banco enlazado a menos de 10 m."""
+        """Tramo más largo del camino sin un banco a su lado (a BENCH_SIDE_M o menos)."""
         xy = np.array([TO_METERS.transform(*p) for p in route["geometry"]["coordinates"]])
         if len(xy) < 2:
             return 0.0
         line = LineString(xy)
-        near = self.bench_tree.query(line, predicate="dwithin", distance=BENCH_REACH_M)
+        near = self.bench_tree.query(line, predicate="dwithin", distance=BENCH_SIDE_M)
         cuts = [0.0, *sorted(line.project(self.bench_points[i]) for i in near), line.length]
         return max(b - a for a, b in zip(cuts, cuts[1:]))
 

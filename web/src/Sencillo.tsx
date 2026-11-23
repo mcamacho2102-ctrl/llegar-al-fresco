@@ -250,34 +250,56 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
   }, [kind, origin]);
 
   const locate = () => {
+    if (!window.isSecureContext) {
+      setError(
+        "La ubicación solo funciona abriendo la página segura (https://llegaralfresco.outofthemark.com). Mientras, escribe la dirección.",
+      );
+      return;
+    }
     if (!navigator.geolocation) {
       setError("Este navegador no da la ubicación. Escribe la dirección.");
       return;
     }
+    setError("");
     setMessage("Buscando dónde estás…");
-    navigator.geolocation.getCurrentPosition(
-      async (p) => {
-        setMessage("");
-        reset();
-        const coords: Position = [p.coords.longitude, p.coords.latitude];
-        try {
-          const { dentro } = await api<{ dentro: boolean }>(`/api/dentro?lon=${coords[0]}&lat=${coords[1]}`);
-          if (!dentro) {
-            setError(
-              "Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid: escribe una dirección de Madrid.",
-            );
-            return;
-          }
-        } catch {
-          /* si no se puede comprobar, se intenta igualmente */
+    const found = async (p: GeolocationPosition) => {
+      reset();
+      setMessage(
+        p.coords.accuracy > 300
+          ? `Ubicación aproximada (unos ${fmt(Math.round(p.coords.accuracy / 50) * 50)} m de margen). Si no es tu sitio, escribe la dirección.`
+          : "",
+      );
+      const coords: Position = [p.coords.longitude, p.coords.latitude];
+      try {
+        const { dentro } = await api<{ dentro: boolean }>(`/api/dentro?lon=${coords[0]}&lat=${coords[1]}`);
+        if (!dentro) {
+          setMessage("");
+          setError(
+            "Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid: escribe una dirección de Madrid.",
+          );
+          return;
         }
-        setOrigin(mapPlace(coords, "Mi ubicación"));
+      } catch {
+        /* si no se puede comprobar, se intenta igualmente */
+      }
+      setOrigin(mapPlace(coords, "Mi ubicación"));
+    };
+    const fail = (e: GeolocationPositionError) => {
+      setMessage("");
+      setError(
+        e.code === e.PERMISSION_DENIED
+          ? "El teléfono no deja ver tu ubicación. En iPhone: Ajustes › Privacidad › Localización › Safari › «Al usar la app». En Android: toca el candado junto a la dirección › Permisos › Ubicación. Mientras, escribe la dirección."
+          : "No hemos podido saber dónde estás ahora mismo (poca señal). Vuelve a intentarlo o escribe la dirección.",
+      );
+    };
+    // Primero una posición rápida (wifi o antena); si no llega a tiempo, se insiste con el GPS.
+    navigator.geolocation.getCurrentPosition(
+      found,
+      (e) => {
+        if (e.code === e.PERMISSION_DENIED) return fail(e);
+        navigator.geolocation.getCurrentPosition(found, fail, { timeout: 25000, enableHighAccuracy: true, maximumAge: 0 });
       },
-      () => {
-        setMessage("");
-        setError("No se pudo saber dónde estás. Escribe la dirección.");
-      },
-      { timeout: 12000, enableHighAccuracy: true },
+      { timeout: 10000, enableHighAccuracy: false, maximumAge: 120000 },
     );
   };
 

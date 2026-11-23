@@ -9,7 +9,7 @@
   "area": "Servidor",
   "prueba": "Sirve la web",
   "estado": "OK",
-  "detalle": "3 ms"
+  "detalle": "1 ms"
  },
  {
   "area": "Servidor",
@@ -189,7 +189,7 @@
   "area": "Rutas",
   "prueba": "Ejemplo de la demo",
   "estado": "OK",
-  "detalle": "[('distance', 238, 238), ('comfort', 316, 169), ('shade', 315, 169)] · 0.01 s"
+  "detalle": "[('distance', 238, 238), ('comfort', 316, 169), ('shade', 315, 169)] · 0.02 s"
  },
  {
   "area": "Rutas",
@@ -207,7 +207,7 @@
   "area": "Rendimiento",
   "prueba": "Barajas → Villaverde (≈17 km)",
   "estado": "OK",
-  "detalle": "1.3 s · [('distance', 20217)]"
+  "detalle": "1.5 s · [('distance', 20217)]"
  },
  {
   "area": "Rendimiento",
@@ -273,7 +273,7 @@
   "area": "Opciones",
   "prueba": "Ancho ≥ 1,5 m",
   "estado": "OK",
-  "detalle": "1.31 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
+  "detalle": "1.06 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
  },
  {
   "area": "Opciones",
@@ -309,13 +309,13 @@
   "area": "Cercanos",
   "prueba": "salud desde Sol",
   "estado": "OK",
-  "detalle": "el más cercano a 408 m · 27 ms"
+  "detalle": "el más cercano a 408 m · 28 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "salud desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 500 m · 32 ms"
+  "detalle": "el más cercano a 500 m · 26 ms"
  },
  {
   "area": "Cercanos",
@@ -369,13 +369,13 @@
   "area": "Cercanos",
   "prueba": "biblioteca desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 1432 m · 25 ms"
+  "detalle": "el más cercano a 1432 m · 24 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "biblioteca desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 1395 m · 22 ms"
+  "detalle": "el más cercano a 1395 m · 24 ms"
  },
  {
   "area": "Validación",
@@ -417,7 +417,7 @@
   "area": "Ayuntamientos",
   "prueba": "Buscar ubicaciones para bancos",
   "estado": "OK",
-  "detalle": "4.1 s · 3"
+  "detalle": "4.5 s · 3"
  },
  {
   "area": "Ayuntamientos",
