@@ -18,11 +18,11 @@ from scipy.spatial import cKDTree
 
 from ciudad.fuentes import RAW
 from ciudad.impacto import DEPARTURE, all_districts
-from ciudad.motor import Limits, Madrid, coordinates
+from ciudad.motor import Limits, Madrid, coordinates, is_primary_care
 from ciudad.uso import LOCAL, Registro
 
 KINDS = [  # (tipo, peso, filtro)
-    ("salud", 0.5, lambda r: r["kind"] == "health" and r["label"].startswith(("Centro de salud ·", "Consultorio de atención primaria ·"))),
+    ("salud", 0.5, is_primary_care),
     ("farmacia", 0.25, lambda r: r["kind"] == "pharmacy"),
     ("mayores", 0.15, lambda r: r["kind"] == "elderly"),
     ("biblioteca", 0.10, lambda r: r["kind"] == "library" and r["source"].startswith("Comunidad de Madrid")),

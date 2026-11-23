@@ -53,6 +53,8 @@ const LAYERS: {
     legend: ["Ancha", "Justa", "Estrecha"],
   },
 ];
+// Las pruebas automáticas abren la app con «?sin-registro» para no contar en el informe.
+const NO_REGISTER = new URLSearchParams(window.location.search).has("sin-registro");
 const EXAMPLE = {
   origin: "Plaza Virgen De La Paloma, 1",
   destination: "Biblioteca Pedro Salinas",
@@ -115,8 +117,9 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       { signal: controller.signal },
     )
       .then((data) => setOptions(data.results))
-      .catch(() => {
-        if (!controller.signal.aborted) setError("No hemos podido buscar lugares cercanos.");
+      .catch((e) => {
+        if (!controller.signal.aborted)
+          setError((e as Error).message || "No hemos podido buscar lugares cercanos.");
       });
     return () => controller.abort();
   }, [kind, origin]);
@@ -128,10 +131,22 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     }
     setMessage("Buscando dónde estás…");
     navigator.geolocation.getCurrentPosition(
-      (p) => {
+      async (p) => {
         setMessage("");
         reset();
-        setOrigin(mapPlace([p.coords.longitude, p.coords.latitude], "Mi ubicación"));
+        const coords: Position = [p.coords.longitude, p.coords.latitude];
+        try {
+          const { dentro } = await api<{ dentro: boolean }>(`/api/dentro?lon=${coords[0]}&lat=${coords[1]}`);
+          if (!dentro) {
+            setError(
+              "Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid: escribe una dirección de Madrid.",
+            );
+            return;
+          }
+        } catch {
+          /* si no se puede comprobar, se intenta igualmente */
+        }
+        setOrigin(mapPlace(coords, "Mi ubicación"));
       },
       () => {
         setMessage("");
@@ -162,7 +177,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
         preferences: { pace, rest: max, width: minWidth, slope: maxSlope, avoidStairs: stairs },
         scenario: null,
         purpose,
-        register,
+        register: register && !NO_REGISTER,
       } as never);
       setResult(data);
       setLayer("route");
@@ -470,9 +485,13 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           {busy ? "Buscando tu ruta…" : "Buscar mi ruta"}
         </button>
         {!ready && <p className="pista">Completa los pasos 1 y 2.</p>}
-        <button type="button" className="link-button" onClick={() => void example()}>
+        <button type="button" className="link-button grande-enlace" onClick={() => void example()}>
           Ver un ejemplo
         </button>
+        <p className="privacidad">
+          Para ayudar a tu ayuntamiento a decidir dónde poner bancos, guardamos sin tu dirección ni
+          ningún dato personal en qué tramos del camino faltó un banco.
+        </p>
       </div>
       {error && (
         <p className="error-simple" role="alert">
@@ -481,8 +500,37 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       )}
 
       {/* Resultado */}
-      {(result || picking) && (
+      {result && (
         <section id="resultado" className="resultado" aria-live="polite">
+          {result && !shown && (
+            <div className="frase">
+              <h2>No hemos encontrado ningún camino</h2>
+              <p>Prueba con otro punto de salida o de llegada cercano, o quita alguna opción avanzada.</p>
+            </div>
+          )}
+          {result && shown && (result.tooFar || (result.relaxed && result.relaxed.length > 0)) && (
+            <div className="aviso-ruta" role="status">
+              {result.tooFar && (
+                <p>
+                  <strong>Es un trayecto largo para ir a pie</strong> ({fmt(Math.round((result.straightM || 0) / 100) / 10)} km en línea recta).
+                  Te recomendamos transporte público. Te mostramos el camino a pie más corto por si lo necesitas.
+                </p>
+              )}
+              {result.relaxed?.includes("width") && (
+                <p>
+                  <strong>No hay ningún camino con aceras de al menos {fmt(minWidth || 0)} m</strong> entre estos puntos,
+                  según las aceras medidas por el Ayuntamiento. Te mostramos el mejor camino disponible: revisa el
+                  ancho en la capa «Ancho de acera».
+                </p>
+              )}
+              {result.relaxed?.includes("slope") && (
+                <p>
+                  <strong>No hay ningún camino con cuestas de {maxSlope} % o menos.</strong> Te mostramos el mejor camino
+                  disponible: revisa las cuestas en la capa «Cuestas».
+                </p>
+              )}
+            </div>
+          )}
           {result && shown && (
             <div className="frase">
               {recommended ? (
@@ -580,15 +628,6 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             </div>
           )}
 
-          {picking && (
-            <p className="aviso">
-              Toca el mapa para marcar {picking === "origin" ? "la salida" : "la llegada"}.{" "}
-              <button type="button" className="link-button" onClick={() => setPicking(null)}>
-                Cancelar
-              </button>
-            </p>
-          )}
-
           {result && (
             <div className="capas" role="radiogroup" aria-label="Qué ver en el mapa">
               {LAYERS.map((l) => (
@@ -634,19 +673,12 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
               additionalPoints={[]}
               selected={selectedIndex}
               layer={layer}
-              placing={!!picking}
+              placing={false}
               scenario={null}
               position={null}
               simple
               showPois={showAll}
-              onPick={(p: Position) => {
-                if (!picking) return;
-                reset();
-                const place = mapPlace(p);
-                if (picking === "origin") setOrigin(place);
-                else setDestination(place);
-                setPicking(null);
-              }}
+              onPick={() => undefined}
             />
           </div>
           {result && (
@@ -716,6 +748,52 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
             </>
           )}
         </section>
+      )}
+
+      {picking && (
+        <div
+          className="selector-mapa"
+          role="dialog"
+          aria-modal="true"
+          aria-label={picking === "origin" ? "Marcar la salida en el mapa" : "Marcar la llegada en el mapa"}
+          onKeyDown={(e) => e.key === "Escape" && setPicking(null)}
+        >
+          <div className="selector-cabecera">
+            <p>
+              <strong>Toca en el mapa {picking === "origin" ? "dónde sales" : "a dónde vas"}</strong>
+              <span>O mueve el mapa y pulsa «Usar el centro del mapa».</span>
+            </p>
+            <button type="button" className="grande secundario" onClick={() => setPicking(null)} autoFocus>
+              Cancelar
+            </button>
+          </div>
+          <div className="selector-cuerpo">
+            <Map
+              origin={picking === "destination" ? origin : null}
+              destination={picking === "origin" ? destination : null}
+              routes={[]}
+              additionalPoints={[]}
+              selected={0}
+              layer="route"
+              placing
+              scenario={null}
+              position={null}
+              simple
+              showPois={false}
+              onPick={(p: Position) => {
+                reset();
+                const place = mapPlace(p, picking === "origin" ? "Punto de salida en el mapa" : "Punto de llegada en el mapa");
+                if (picking === "origin") setOrigin(place);
+                else {
+                  setDestination(place);
+                  setPurpose("direccion");
+                }
+                setPicking(null);
+              }}
+            />
+            <div className="mira" aria-hidden="true">+</div>
+          </div>
+        </div>
       )}
 
       <p className="profesional">

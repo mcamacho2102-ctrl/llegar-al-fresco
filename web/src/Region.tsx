@@ -300,7 +300,6 @@ export default function Region() {
                 role="radio"
                 aria-checked={indicator === key}
                 className="route-option"
-                aria-pressed={indicator === key}
                 onClick={() => setIndicator(key)}
               >
                 <strong>{indicators[key].label}</strong>
@@ -386,7 +385,7 @@ export default function Region() {
 
       <section className="results study region-table">
         <h2>Los 15 municipios con mayor prioridad</h2>
-        <div className="table-wrap">
+        <div className="table-wrap" tabIndex={0} role="region" aria-label="Tabla desplazable de municipios">
           <table>
             <thead>
               <tr>
@@ -429,7 +428,7 @@ export default function Region() {
       {principal && (
         <section className="results study region-table">
           <h2>Piloto en Madrid capital, por distrito</h2>
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label="Tabla desplazable de distritos">
             <table>
               <thead>
                 <tr>

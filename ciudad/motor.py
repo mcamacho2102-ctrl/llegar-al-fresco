@@ -30,6 +30,18 @@ BENCH_CONNECT = 10
 MAX_CHECKS = 220000
 
 
+PRIMARY_CARE = ("Centro de salud ·", "Consultorio de atención primaria ·")
+
+
+def registry_label(label):
+    """Etiqueta original del registro, sin el nombre añadido desde OSM («Nombre — …»)."""
+    return label.split(" — ")[-1]
+
+
+def is_primary_care(row):
+    return row["kind"] == "health" and registry_label(row["label"]).startswith(PRIMARY_CARE)
+
+
 def finite(value):
     return float(value) if np.isfinite(value) else None
 
@@ -377,6 +389,14 @@ class Madrid:
             "hours": row["hours"],
         }
 
+    def number_in_places(self, terms):
+        """Hay lugares cuyo nombre contiene el número buscado (p. ej. «12 de Octubre»)."""
+        numbers = [t for t in terms if t.isdigit()]
+        return any(
+            all(t in label for t in terms) and any(n in label.split() for n in numbers)
+            for _, label in self.places_index
+        )
+
     def search(self, query):
         aliases = {
             "c": "calle",
@@ -411,14 +431,21 @@ class Madrid:
                 row
                 for _, row in sorted(
                     (
-                        (-sum(t in label.split() for t in terms), row)
+                        (
+                            (
+                                -sum(t in label.split() for t in terms),
+                                not label.startswith(terms[0]),
+                                not str(row["source"]).startswith("Comunidad de Madrid"),
+                            ),
+                            row,
+                        )
                         for row, label in self.places_index
                         if all(t in label for t in terms)
                     ),
                     key=lambda item: item[0],
                 )
             ][:5]
-            if not exact_number
+            if not exact_number or self.number_in_places(terms)
             else []
         )
         if exact_number:
@@ -500,6 +527,9 @@ class Trip:
             if slope is not None and slope > limits.slope:
                 return False
         return True
+
+    def straight_m(self):
+        return math.dist(self.a.xy, self.b.xy)
 
     def walk_limit(self, shortest_m=None):
         """Longitud máxima explorada para rutas con descansos: el tope práctico o,

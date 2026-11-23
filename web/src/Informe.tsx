@@ -242,7 +242,7 @@ export default function Informe({ onSimulate }: { onSimulate: () => void }) {
               gente eligió. Solo se muestran los que se repiten en {data.minimoConsultas} consultas o más
               ({fmt(data.huecosOcultos)} puntos con menos consultas no se muestran, por privacidad).
             </p>
-            <div className="table-wrap">
+            <div className="table-wrap" tabIndex={0} role="region" aria-label="Tabla desplazable">
               <table>
                 <thead>
                   <tr>
@@ -253,7 +253,7 @@ export default function Informe({ onSimulate }: { onSimulate: () => void }) {
                     <th>Rodeo acumulado</th>
                     <th>Tramo sin banco</th>
                     <th>Destinos</th>
-                    <th></th>
+                    <th><span className="solo-lector">Acciones</span></th>
                   </tr>
                 </thead>
                 <tbody>

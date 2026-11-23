@@ -1,0 +1,194 @@
+[
+ {
+  "area": "Rendimiento",
+  "prueba": "Carga inicial en móvil",
+  "estado": "OK",
+  "detalle": "0.6 s hasta red en reposo · DOMContentLoaded 74 ms · 1.5 MB transferidos"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Sin desbordamiento horizontal (390 px)",
+  "estado": "OK",
+  "detalle": "0 px"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Botones de al menos 44 × 44 px",
+  "estado": "OK",
+  "detalle": "[]"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Letra mínima en la pantalla principal",
+  "estado": "AVISO",
+  "detalle": "14 px"
+ },
+ {
+  "area": "Accesibilidad",
+  "prueba": "axe · inicio móvil",
+  "estado": "OK",
+  "detalle": "sin incidencias"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Aviso si elige destino antes de la salida",
+  "estado": "OK",
+  "detalle": "Primero dinos desde dónde sales (paso 1)."
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Buscar desactivado sin datos (y explicado)",
+  "estado": "OK",
+  "detalle": ""
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Flujo completo: dirección → centro de salud → 150 m",
+  "estado": "OK",
+  "detalle": "0.1 s · «La mejor posible: como mucho 209 m sin sentarte»"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Letra mínima en el resultado",
+  "estado": "OK",
+  "detalle": "16 px"
+ },
+ {
+  "area": "Accesibilidad",
+  "prueba": "axe · resultado móvil",
+  "estado": "OK",
+  "detalle": "sin incidencias"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Desplaza la pantalla hasta el resultado",
+  "estado": "OK",
+  "detalle": "resultado a 77 px del borde superior"
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Cambiar entre las 4 capas",
+  "estado": "OK",
+  "detalle": ""
+ },
+ {
+  "area": "Movilidad reducida",
+  "prueba": "Ancho mínimo 1,5 m: respuesta comprensible",
+  "estado": "OK",
+  "detalle": "No hay ningún camino con aceras de al menos 1,5 m entre estos puntos, según las aceras medidas por el Ayuntamiento. Te m"
+ },
+ {
+  "area": "Familias",
+  "prueba": "«Mapa» abre selector a pantalla completa",
+  "estado": "OK",
+  "detalle": "{'x': 0, 'y': 0, 'width': 1280, 'height': 860}"
+ },
+ {
+  "area": "Familias",
+  "prueba": "Usar el centro del mapa como salida",
+  "estado": "OK",
+  "detalle": "Punto de salida en el mapa"
+ },
+ {
+  "area": "Familias",
+  "prueba": "Escape cierra el selector",
+  "estado": "OK",
+  "detalle": ""
+ },
+ {
+  "area": "Familias",
+  "prueba": "Ruta desde un punto del mapa",
+  "estado": "OK",
+  "detalle": "La mejor posible: como mucho 209 m sin sentarte"
+ },
+ {
+  "area": "Familias",
+  "prueba": "Vista de impresión generada",
+  "estado": "OK",
+  "detalle": "revisar captura impresion.png"
+ },
+ {
+  "area": "Seguridad",
+  "prueba": "La política CSP no bloquea nada de la app",
+  "estado": "OK",
+  "detalle": ""
+ },
+ {
+  "area": "Mayores",
+  "prueba": "Buscar «Gregorio Marañón» por su nombre",
+  "estado": "OK",
+  "detalle": "Hospital General Universitario Gregorio Marañón. — Hospital general · del Doctor Esquerdo "
+ },
+ {
+  "area": "Teclado",
+  "prueba": "Se llega a los destinos con Tab",
+  "estado": "OK",
+  "detalle": "6 pulsaciones"
+ },
+ {
+  "area": "Teclado",
+  "prueba": "Foco visible",
+  "estado": "OK",
+  "detalle": "solid"
+ },
+ {
+  "area": "Accesibilidad",
+  "prueba": "Reflujo a 320 px (WCAG 1.4.10)",
+  "estado": "OK",
+  "detalle": "0 px"
+ },
+ {
+  "area": "Accesibilidad",
+  "prueba": "Zoom al 200 % sin cortar contenido",
+  "estado": "AVISO",
+  "detalle": "114 px de desbordamiento"
+ },
+ {
+  "area": "Ubicación",
+  "prueba": "Usar mi ubicación en Madrid",
+  "estado": "OK",
+  "detalle": "Mi ubicación"
+ },
+ {
+  "area": "Ubicación",
+  "prueba": "Usar mi ubicación en Barcelona",
+  "estado": "OK",
+  "detalle": "aviso: «Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid: » · salida rellenada: «»"
+ },
+ {
+  "area": "Ayuntamientos",
+  "prueba": "Informe de uso carga",
+  "estado": "OK",
+  "detalle": "Consultas 3096 del 2025-06-01 al 2025-08-31 Tuvieron que dar un rodeo 20 % rodeo mediano 95 m Sin ninguna ruta con banco"
+ },
+ {
+  "area": "Accesibilidad",
+  "prueba": "axe · informe",
+  "estado": "OK",
+  "detalle": "sin incidencias"
+ },
+ {
+  "area": "Ayuntamientos",
+  "prueba": "Descarga CSV",
+  "estado": "OK",
+  "detalle": "huecos-sin-banco.csv"
+ },
+ {
+  "area": "Ayuntamientos",
+  "prueba": "Simulador: buscar ubicaciones",
+  "estado": "OK",
+  "detalle": "3 candidatos"
+ },
+ {
+  "area": "Accesibilidad",
+  "prueba": "axe · mapa regional",
+  "estado": "OK",
+  "detalle": "sin incidencias"
+ },
+ {
+  "area": "Ayuntamientos",
+  "prueba": "Sin errores de JavaScript en la zona técnica",
+  "estado": "OK",
+  "detalle": ""
+ }
+]

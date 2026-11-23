@@ -53,11 +53,13 @@ export default function Map({
     map = useRef<MapLibre | null>(null),
     click = useRef(onPick),
     poisWanted = useRef(showPois),
+    placingRef = useRef(placing),
     refreshPois = useRef<() => void>(() => {});
   const [ready, setReady] = useState(false),
     [failed, setFailed] = useState(false);
   click.current = onPick;
   poisWanted.current = showPois;
+  placingRef.current = placing;
   useEffect(() => {
     try {
       const m = new maplibregl.Map({
@@ -172,6 +174,7 @@ export default function Map({
           },
         });
         const popup = (event: maplibregl.MapMouseEvent) => {
+          if (placingRef.current) return;
           const found = m.queryRenderedFeatures(event.point, {
             layers: ["pins", "pois"],
           })[0];
@@ -379,8 +382,13 @@ export default function Map({
     return () => markers.forEach((marker) => marker.remove());
   }, [ready, additionalPoints]);
 
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    map.current.getCanvas().style.cursor = placing ? "crosshair" : "";
+  }, [ready, placing]);
+
   return (
-    <div className="map-wrap">
+    <div className={placing ? "map-wrap placing" : "map-wrap"}>
       {placing && ready && (
         <button
           type="button"

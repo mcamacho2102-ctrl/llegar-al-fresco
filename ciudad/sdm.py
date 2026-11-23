@@ -15,7 +15,7 @@ import unicodedata
 from urllib.request import Request, urlopen
 
 from ciudad.fuentes import RAW, ROOT
-from ciudad.motor import coordinates
+from ciudad.motor import coordinates, is_primary_care
 
 SCHEMA = "https://raw.githubusercontent.com/smart-data-models/dataModel.PointOfInterest/master/PointOfInterest/schema.json"
 CONTEXT = "https://raw.githubusercontent.com/smart-data-models/dataModel.PointOfInterest/master/context.jsonld"
@@ -54,14 +54,14 @@ def entities():
     db.close()
     for row in rows:
         kind = row["kind"]
-        if kind == "health" and not row["label"].startswith(PRIMARY):
+        if kind == "health" and not is_primary_care(row):
             continue
         category = "centro-de-salud" if kind == "health" else KINDS[kind][0]
         lon, lat = coordinates((row["x"], row["y"]))
         entity = {
             "id": f"urn:ngsi-ld:PointOfInterest:llegar-al-fresco:{row['id']}-{slug(row['label'])}",
             "type": "PointOfInterest",
-            "name": row["label"].split(" · ")[0],
+            "name": row["label"].split(" — ")[0] if " — " in row["label"] else row["label"].split(" · ")[0],
             "description": row["label"],
             "category": [category],
             "location": {"type": "Point", "coordinates": [round(lon, 6), round(lat, 6)]},

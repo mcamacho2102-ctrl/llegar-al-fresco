@@ -6,7 +6,7 @@
 - En el **27,6 %** se puede evitar dando un rodeo: la mediana del rodeo está entre 63 y 197 m según el distrito.
 - En el **60,5 %** **no existe ninguna ruta** dentro de un recorrido razonable que permita parar cada 200 m.
 
-Reproducir: `.venv/bin/python -m ciudad.impacto --todos --n 150 --limite 200 --semilla 2026` (36 s; la misma semilla produce el mismo CSV, con SHA-1 `a9a448a8…`).
+Reproducir: `.venv/bin/python -m ciudad.impacto --todos --n 150 --limite 200 --semilla 2026` (36 s; la misma semilla produce el mismo CSV, con SHA-1 `fa556b90…`).
 
 ## Método
 

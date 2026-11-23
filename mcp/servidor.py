@@ -93,6 +93,8 @@ def request_body(origin, destination, rest, departure):
         "destination": {"lon": destination["lon"], "lat": destination["lat"]},
         "departure": departure or datetime.now().strftime("%Y-%m-%dT%H:%M:00"),
         "preferences": {"rest": rest, "avoidStairs": True, "pace": 1},
+        # Las consultas de un asistente cuentan en el informe de uso, salvo en pruebas.
+        "register": os.environ.get("LLEGAR_SIN_REGISTRO") != "1",
     }
 
 

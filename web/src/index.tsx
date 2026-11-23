@@ -351,6 +351,7 @@ function App() {
       departure: requestedDeparture,
       preferences,
       scenario: improvement,
+      register: false, // herramientas técnicas: no cuentan como demanda ciudadana
     };
   };
   const validRefugeDate = (requestedDeparture: string) => {
@@ -418,8 +419,16 @@ function App() {
   };
   const activateMap = (target: typeof pick) => {
     setPick(target);
-    if (window.innerWidth < 860)
-      layout.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const el = layout.current;
+    if (!el) return;
+    if (window.innerWidth <= 860) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > window.innerHeight + 80) {
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
   };
   const choosePoint = (coords: Position) => {
     if (pick === "origin" || pick === "destination") {

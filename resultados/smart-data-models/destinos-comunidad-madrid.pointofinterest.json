@@ -10120,10 +10120,10 @@
   "dataProvider": "Comunidad de Madrid · Registro de centros de atención social"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0037-Centro-de-salud-de-las-Calesas-12",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0037-Centro-de-Salud-Las-Calesas-Centro-de-salud-de-las-Calesas-1",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de las Calesas 12",
+  "name": "Centro de Salud Las Calesas",
+  "description": "Centro de Salud Las Calesas — Centro de salud · de las Calesas 12",
   "category": [
    "centro-de-salud"
   ],
@@ -10143,10 +10143,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0112-Centro-de-salud-Orovilla-53",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0112-Centro-de-Salud-El-Espinillo-Centro-de-salud-Orovilla-53",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · Orovilla 53",
+  "name": "Centro de Salud El Espinillo",
+  "description": "Centro de Salud El Espinillo — Centro de salud · Orovilla 53",
   "category": [
    "centro-de-salud"
   ],
@@ -10166,10 +10166,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0265-Centro-de-salud-de-los-Artilleros-31",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0265-Centro-de-Salud-Artilleros-Centro-de-salud-de-los-Artilleros",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de los Artilleros 31",
+  "name": "Centro de Salud Artilleros",
+  "description": "Centro de Salud Artilleros — Centro de salud · de los Artilleros 31",
   "category": [
    "centro-de-salud"
   ],
@@ -10189,10 +10189,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0287-Centro-de-salud-del-Cabo-Machichaco-62",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0287-Centro-de-Salud-Jose-Maria-Llanos-Centro-de-salud-del-Cabo-M",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Cabo Machichaco 62",
+  "name": "Centro de Salud José María Llanos",
+  "description": "Centro de Salud José María Llanos — Centro de salud · del Cabo Machichaco 62",
   "category": [
    "centro-de-salud"
   ],
@@ -10212,10 +10212,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0292-Centro-de-salud-del-Camino-de-los-Vinateros-140",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0292-Centro-de-Salud-El-Torito-Centro-de-salud-del-Camino-de-los-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Camino de los Vinateros 140",
+  "name": "Centro de Salud El Torito",
+  "description": "Centro de Salud El Torito — Centro de salud · del Camino de los Vinateros 140",
   "category": [
    "centro-de-salud"
   ],
@@ -10235,10 +10235,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0293-Centro-de-salud-de-Pedroches-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0293-Centro-de-Salud-Entrevias-Centro-de-salud-de-Pedroches-4",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Pedroches 4",
+  "name": "Centro de Salud Entrevías",
+  "description": "Centro de Salud Entrevías — Centro de salud · de Pedroches 4",
   "category": [
    "centro-de-salud"
   ],
@@ -10258,10 +10258,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0330-Centro-de-salud-de-Espronceda-24",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0330-Centro-de-Salud-Espronceda-Centro-de-salud-de-Espronceda-24",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Espronceda 24",
+  "name": "Centro de Salud Espronceda",
+  "description": "Centro de Salud Espronceda — Centro de salud · de Espronceda 24",
   "category": [
    "centro-de-salud"
   ],
@@ -10281,10 +10281,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0339-Centro-de-salud-de-Finisterre-18",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0339-Centro-de-Salud-Barrio-del-Pilar-Centro-de-salud-de-Finister",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Finisterre 18",
+  "name": "Centro de Salud Barrio del Pilar",
+  "description": "Centro de Salud Barrio del Pilar — Centro de salud · de Finisterre 18",
   "category": [
    "centro-de-salud"
   ],
@@ -10304,10 +10304,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0350-Centro-de-salud-de-Fuentiduena-12",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0350-Centro-de-Salud-Villa-de-Vallecas-Centro-de-salud-de-Fuentid",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Fuentidueña 12",
+  "name": "Centro de Salud Villa de Vallecas",
+  "description": "Centro de Salud Villa de Vallecas — Centro de salud · de Fuentidueña 12",
   "category": [
    "centro-de-salud"
   ],
@@ -10327,10 +10327,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0377-Centro-de-salud-de-Ibiza-7",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0377-Centro-de-Salud-Ibiza-Centro-de-salud-de-Ibiza-7",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Ibiza 7",
+  "name": "Centro de Salud Ibiza",
+  "description": "Centro de Salud Ibiza — Centro de salud · de Ibiza 7",
   "category": [
    "centro-de-salud"
   ],
@@ -10373,10 +10373,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0403-Centro-de-salud-de-San-Claudio-154",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0403-Centro-de-Salud-Rafael-Alberti-Centro-de-salud-de-San-Claudi",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de San Claudio 154",
+  "name": "Centro de Salud Rafael Alberti",
+  "description": "Centro de Salud Rafael Alberti — Centro de salud · de San Claudio 154",
   "category": [
    "centro-de-salud"
   ],
@@ -10396,10 +10396,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0457-Centro-de-salud-de-Pio-Felipe-26",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0457-Centro-de-Salud-Buenos-Aires-Centro-de-salud-de-Pio-Felipe-2",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Pío Felipe 26",
+  "name": "Centro de Salud \"Buenos Aires\"",
+  "description": "Centro de Salud \"Buenos Aires\" — Centro de salud · de Pío Felipe 26",
   "category": [
    "centro-de-salud"
   ],
@@ -10419,10 +10419,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0459-Centro-de-salud-de-los-Reyes-Magos-19-21",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0459-Centro-de-Salud-Pacifico-Centro-de-salud-de-los-Reyes-Magos-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de los Reyes Magos 19-21",
+  "name": "Centro de Salud Pacífico",
+  "description": "Centro de Salud Pacífico — Centro de salud · de los Reyes Magos 19-21",
   "category": [
    "centro-de-salud"
   ],
@@ -10442,10 +10442,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0501-Centro-de-salud-de-Visitacion-5",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0501-Centro-de-Salud-Almendrales-Centro-de-salud-de-Visitacion-5",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Visitación 5",
+  "name": "Centro de Salud Almendrales",
+  "description": "Centro de Salud Almendrales — Centro de salud · de Visitación 5",
   "category": [
    "centro-de-salud"
   ],
@@ -10465,10 +10465,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0581-Centro-de-salud-de-Benita-Avila-26",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0581-Centro-de-Salud-Benita-de-Avila-Centro-de-salud-de-Benita-Av",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Benita Ávila 26",
+  "name": "Centro de Salud Benita de Ávila",
+  "description": "Centro de Salud Benita de Ávila — Centro de salud · de Benita Ávila 26",
   "category": [
    "centro-de-salud"
   ],
@@ -10488,10 +10488,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0586-Centro-de-salud-del-Doctor-Cirajas-20",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0586-Centro-de-Salud-Doctor-Cirajas-Centro-de-salud-del-Doctor-Ci",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Doctor Cirajas 20",
+  "name": "Centro de Salud Doctor Cirajas",
+  "description": "Centro de Salud Doctor Cirajas — Centro de salud · del Doctor Cirajas 20",
   "category": [
    "centro-de-salud"
   ],
@@ -10511,10 +10511,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0597-Centro-de-salud-de-la-Guayaba-S-N",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0597-Centro-de-Salud-Mental-Aguacate-Carabanchel-Centro-de-salud-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Guayaba S/N",
+  "name": "Centro de Salud Mental Aguacate-Carabanchel",
+  "description": "Centro de Salud Mental Aguacate-Carabanchel — Centro de salud · de la Guayaba S/N",
   "category": [
    "centro-de-salud"
   ],
@@ -10534,10 +10534,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0611-Centro-de-salud-de-la-Reina-Victoria-21",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0611-Centro-de-salud-Reina-Victoria-Centro-de-salud-de-la-Reina-V",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Reina Victoria 21",
+  "name": "Centro de salud Reina Victoria",
+  "description": "Centro de salud Reina Victoria — Centro de salud · de la Reina Victoria 21",
   "category": [
    "centro-de-salud"
   ],
@@ -10580,10 +10580,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0662-Centro-de-salud-de-Martinez-de-la-Riva-57",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0662-Centro-de-Salud-Martinez-de-la-Riva-Centro-de-salud-de-Marti",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Martínez de la Riva 57",
+  "name": "Centro de Salud Martínez de la Riva",
+  "description": "Centro de Salud Martínez de la Riva — Centro de salud · de Martínez de la Riva 57",
   "category": [
    "centro-de-salud"
   ],
@@ -10603,10 +10603,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0740-Centro-de-salud-de-Alcala-de-Guadaira-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0740-Centro-de-Salud-Alcala-de-Guadaira-Centro-de-salud-de-Alcala",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Alcalá de Guadaira 4",
+  "name": "Centro de Salud Alcalá de Guadaira",
+  "description": "Centro de Salud Alcalá de Guadaira — Centro de salud · de Alcalá de Guadaira 4",
   "category": [
    "centro-de-salud"
   ],
@@ -10626,10 +10626,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0750-Centro-de-salud-de-Daroca-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0750-Centro-de-Salud-Daroca-Centro-de-salud-de-Daroca-4",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Daroca 4",
+  "name": "Centro de Salud Daroca",
+  "description": "Centro de Salud Daroca — Centro de salud · de Daroca 4",
   "category": [
    "centro-de-salud"
   ],
@@ -10649,10 +10649,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0760-Centro-de-salud-de-Manoteras-47",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0760-Centro-de-Salud-Virgen-del-Cortijo-Centro-de-salud-de-Manote",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Manoteras 47",
+  "name": "Centro de Salud Virgen del Cortijo",
+  "description": "Centro de Salud Virgen del Cortijo — Centro de salud · de Manoteras 47",
   "category": [
    "centro-de-salud"
   ],
@@ -10672,10 +10672,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0761-Centro-de-salud-del-Mar-Baltico-2",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0761-Centro-de-Salud-Mar-Baltico-Centro-de-salud-del-Mar-Baltico-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Mar Báltico 2",
+  "name": "Centro de Salud Mar Báltico",
+  "description": "Centro de Salud Mar Báltico — Centro de salud · del Mar Báltico 2",
   "category": [
    "centro-de-salud"
   ],
@@ -10695,10 +10695,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0821-Centro-de-salud-de-Nuestra-Senora-de-Fatima-93",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0821-Centro-de-Salud-Nuestra-Senora-de-Fatima-Centro-de-salud-de-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Nuestra Señora de Fátima 93",
+  "name": "Centro de Salud Nuestra Señora de Fátima",
+  "description": "Centro de Salud Nuestra Señora de Fátima — Centro de salud · de Nuestra Señora de Fátima 93",
   "category": [
    "centro-de-salud"
   ],
@@ -10718,10 +10718,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0878-Centro-de-salud-de-Eduardo-Marquina-33",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0878-Centro-de-Salud-Comillas-Centro-de-salud-de-Eduardo-Marquina",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Eduardo Marquina 33",
+  "name": "Centro de Salud Comillas",
+  "description": "Centro de Salud Comillas — Centro de salud · de Eduardo Marquina 33",
   "category": [
    "centro-de-salud"
   ],
@@ -10741,10 +10741,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0951-Centro-de-salud-de-Totanes-1",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS0951-Centro-de-Salud-Los-Angeles-Centro-de-salud-de-Totanes-1",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Totanes 1",
+  "name": "Centro de Salud Los Ángeles",
+  "description": "Centro de Salud Los Ángeles — Centro de salud · de Totanes 1",
   "category": [
    "centro-de-salud"
   ],
@@ -10764,10 +10764,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1012-Centro-de-salud-de-Candilejas-66",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1012-Centro-de-Salud-Angela-Uriarte-Centro-de-salud-de-Candilejas",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Candilejas 66",
+  "name": "Centro de Salud Ángela Uriarte",
+  "description": "Centro de Salud Ángela Uriarte — Centro de salud · de Candilejas 66",
   "category": [
    "centro-de-salud"
   ],
@@ -10787,10 +10787,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1013-Centro-de-salud-de-Villalobos-16",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1013-Centro-de-Salud-Campo-de-la-Paloma-Centro-de-salud-de-Villal",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Villalobos 16",
+  "name": "Centro de Salud Campo de la Paloma",
+  "description": "Centro de Salud Campo de la Paloma — Centro de salud · de Villalobos 16",
   "category": [
    "centro-de-salud"
   ],
@@ -10810,10 +10810,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS10285-Centro-de-salud-de-Montesa-38",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS10285-Centro-de-Salud-Montesa-Centro-de-salud-de-Montesa-38",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Montesa 38",
+  "name": "Centro de Salud Montesa",
+  "description": "Centro de Salud Montesa — Centro de salud · de Montesa 38",
   "category": [
    "centro-de-salud"
   ],
@@ -10833,10 +10833,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS10841-Centro-de-salud-de-Maria-Auxiliadora-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS10841-Centro-de-Salud-Maria-Auxiliadora-Centro-de-salud-de-Maria-A",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de María Auxiliadora 3",
+  "name": "Centro de Salud María Auxiliadora",
+  "description": "Centro de Salud María Auxiliadora — Centro de salud · de María Auxiliadora 3",
   "category": [
    "centro-de-salud"
   ],
@@ -10856,10 +10856,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS11009-Centro-de-salud-de-Sesena-44",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS11009-Centro-de-Salud-Maqueda-Centro-de-salud-de-Sesena-44",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Seseña 44",
+  "name": "Centro de Salud Maqueda",
+  "description": "Centro de Salud Maqueda — Centro de salud · de Seseña 44",
   "category": [
    "centro-de-salud"
   ],
@@ -10879,10 +10879,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS11352-Centro-de-salud-de-Carabanchel-Alto-150",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS11352-Centro-de-Salud-Carabanchel-Alto-Centro-de-salud-de-Carabanc",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Carabanchel Alto 150",
+  "name": "Centro de Salud Carabanchel Alto",
+  "description": "Centro de Salud Carabanchel Alto — Centro de salud · de Carabanchel Alto 150",
   "category": [
    "centro-de-salud"
   ],
@@ -10902,10 +10902,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS11358-Centro-de-salud-de-San-Martin-de-Porres-6",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS11358-Centro-de-Salud-Isla-de-Oza-Centro-de-salud-de-San-Martin-de",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de San Martín de Porres 6",
+  "name": "Centro de Salud Isla de Oza",
+  "description": "Centro de Salud Isla de Oza — Centro de salud · de San Martín de Porres 6",
   "category": [
    "centro-de-salud"
   ],
@@ -10925,10 +10925,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1140-Centro-de-salud-de-O-Donnell-55",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1140-Centro-de-Salud-Goya-Centro-de-salud-de-O-Donnell-55",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de O'Donnell 55",
+  "name": "Centro de Salud Goya",
+  "description": "Centro de Salud Goya — Centro de salud · de O'Donnell 55",
   "category": [
    "centro-de-salud"
   ],
@@ -10948,10 +10948,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1183-Centro-de-salud-de-Potes-S-N",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1183-Centro-Salud-Potes-Centro-de-salud-de-Potes-S-N",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Potes S/N",
+  "name": "Centro Salud Potes",
+  "description": "Centro Salud Potes — Centro de salud · de Potes S/N",
   "category": [
    "centro-de-salud"
   ],
@@ -10971,10 +10971,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1247-Centro-de-salud-de-Monovar-11",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1247-Centro-de-Salud-Monovar-Centro-de-salud-de-Monovar-11",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Monovar 11",
+  "name": "Centro de Salud Monóvar",
+  "description": "Centro de Salud Monóvar — Centro de salud · de Monovar 11",
   "category": [
    "centro-de-salud"
   ],
@@ -10994,10 +10994,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1268-Centro-de-salud-de-Eloy-Gonzalo-24",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1268-Centro-de-Salud-Eloy-Gonzalo-Centro-de-salud-de-Eloy-Gonzalo",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Eloy Gonzalo 24",
+  "name": "Centro de Salud Eloy Gonzalo",
+  "description": "Centro de Salud Eloy Gonzalo — Centro de salud · de Eloy Gonzalo 24",
   "category": [
    "centro-de-salud"
   ],
@@ -11017,10 +11017,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1276-Centro-de-salud-de-Alcala-425",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1276-Centro-de-Salud-Av-de-Aragon-Centro-de-salud-de-Alcala-425",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Alcalá 425",
+  "name": "Centro de Salud Av. de Aragón",
+  "description": "Centro de Salud Av. de Aragón — Centro de salud · de Alcalá 425",
   "category": [
    "centro-de-salud"
   ],
@@ -11040,10 +11040,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS12769-Consultorio-de-atencion-primaria-de-la-Fortaleza-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS12769-Consultorio-Medico-de-Mingorrubio-Consultorio-de-atencion-pr",
   "type": "PointOfInterest",
-  "name": "Consultorio de atención primaria",
-  "description": "Consultorio de atención primaria · de la Fortaleza 4",
+  "name": "Consultorio Médico de Mingorrubio",
+  "description": "Consultorio Médico de Mingorrubio — Consultorio de atención primaria · de la Fortaleza 4",
   "category": [
    "centro-de-salud"
   ],
@@ -11063,10 +11063,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1336-Centro-de-salud-de-Alberto-Palacios-22",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1336-Centro-de-Salud-San-Andres-Centro-de-salud-de-Alberto-Palaci",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Alberto Palacios 22",
+  "name": "Centro de Salud San Andrés",
+  "description": "Centro de Salud San Andrés — Centro de salud · de Alberto Palacios 22",
   "category": [
    "centro-de-salud"
   ],
@@ -11086,10 +11086,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1387-Centro-de-salud-del-Arroyo-de-la-Media-Legua-35",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1387-Centro-de-Salud-Arroyo-de-la-Media-Legua-Centro-de-salud-del",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Arroyo de la Media Legua 35",
+  "name": "Centro de Salud Arroyo de la Media Legua",
+  "description": "Centro de Salud Arroyo de la Media Legua — Centro de salud · del Arroyo de la Media Legua 35",
   "category": [
    "centro-de-salud"
   ],
@@ -11109,10 +11109,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS13991-Centro-de-salud-de-la-Sierra-de-Alquife-8",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS13991-Centro-de-salud-y-de-especialidades-Vicente-Soldevilla-Centr",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Sierra de Alquife 8",
+  "name": "Centro de salud y de especialidades Vicente Soldevilla",
+  "description": "Centro de salud y de especialidades Vicente Soldevilla — Centro de salud · de la Sierra de Alquife 8",
   "category": [
    "centro-de-salud"
   ],
@@ -11132,10 +11132,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS14146-Centro-de-salud-de-la-Alameda-5",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS14146-Centro-de-Salud-Alameda-Centro-de-salud-de-la-Alameda-5",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Alameda 5",
+  "name": "Centro de Salud Alameda",
+  "description": "Centro de Salud Alameda — Centro de salud · de la Alameda 5",
   "category": [
    "centro-de-salud"
   ],
@@ -11155,10 +11155,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS14189-Centro-de-salud-del-Puerto-de-Cotos-2",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS14189-Centro-de-salud-Numancia-Centro-de-salud-del-Puerto-de-Cotos",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Puerto de Cotos 2",
+  "name": "Centro de salud Numancia",
+  "description": "Centro de salud Numancia — Centro de salud · del Puerto de Cotos 2",
   "category": [
    "centro-de-salud"
   ],
@@ -11178,10 +11178,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS14480-Centro-de-salud-de-Nunez-Morgado-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS14480-Centro-de-Salud-Nunez-Morgado-Centro-de-salud-de-Nunez-Morga",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Núñez Morgado 4",
+  "name": "Centro de Salud Núñez Morgado",
+  "description": "Centro de Salud Núñez Morgado — Centro de salud · de Núñez Morgado 4",
   "category": [
    "centro-de-salud"
   ],
@@ -11201,10 +11201,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1477-Centro-de-salud-de-la-Alegria-24",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1477-Centro-de-Salud-Puerta-Bonita-Centro-de-salud-de-la-Alegria-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Alegría 24",
+  "name": "Centro de Salud Puerta Bonita",
+  "description": "Centro de Salud Puerta Bonita — Centro de salud · de la Alegría 24",
   "category": [
    "centro-de-salud"
   ],
@@ -11224,10 +11224,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS15542-Centro-de-salud-de-Quintana-11",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS15542-Centro-de-Salud-Arguelles-Centro-de-salud-de-Quintana-11",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Quintana 11",
+  "name": "Centro de Salud Argüelles",
+  "description": "Centro de Salud Argüelles — Centro de salud · de Quintana 11",
   "category": [
    "centro-de-salud"
   ],
@@ -11270,10 +11270,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS17064-Centro-de-salud-de-Andres-Mellado-37",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS17064-Centro-de-Salud-Andres-Mellado-Centro-de-salud-de-Andres-Mel",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Andrés Mellado 37",
+  "name": "Centro de Salud Andrés Mellado",
+  "description": "Centro de Salud Andrés Mellado — Centro de salud · de Andrés Mellado 37",
   "category": [
    "centro-de-salud"
   ],
@@ -11293,10 +11293,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1832-Centro-de-salud-de-las-Aguilas-18",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS1832-Centro-de-Salud-General-Fanjul-Centro-de-salud-de-las-Aguila",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de las Águilas 18",
+  "name": "Centro de Salud General Fanjul",
+  "description": "Centro de Salud General Fanjul — Centro de salud · de las Águilas 18",
   "category": [
    "centro-de-salud"
   ],
@@ -11339,10 +11339,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2040-Centro-de-salud-de-Caceres-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2040-Centro-de-Salud-Caceres-Centro-de-salud-de-Caceres-4",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Cáceres 4",
+  "name": "Centro de Salud Cáceres",
+  "description": "Centro de Salud Cáceres — Centro de salud · de Cáceres 4",
   "category": [
    "centro-de-salud"
   ],
@@ -11362,10 +11362,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2041-Centro-de-salud-del-Parroco-Julio-Morate-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2041-Centro-de-Salud-Parroco-Julio-Morate-Centro-de-salud-del-Par",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Párroco Julio Morate 3",
+  "name": "Centro de Salud Párroco Julio Morate",
+  "description": "Centro de Salud Párroco Julio Morate — Centro de salud · del Párroco Julio Morate 3",
   "category": [
    "centro-de-salud"
   ],
@@ -11385,10 +11385,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS21829-Centro-de-salud-de-Lagasca-122",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS21829-Centro-de-Salud-Lagasca-Centro-de-salud-de-Lagasca-122",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Lagasca 122",
+  "name": "Centro de Salud Lagasca",
+  "description": "Centro de Salud Lagasca — Centro de salud · de Lagasca 122",
   "category": [
    "centro-de-salud"
   ],
@@ -11408,10 +11408,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS21856-Centro-de-salud-de-O-Donnell-55",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS21856-Centro-de-Salud-Goya-Centro-de-salud-de-O-Donnell-55",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de O'Donnell 55",
+  "name": "Centro de Salud Goya",
+  "description": "Centro de Salud Goya — Centro de salud · de O'Donnell 55",
   "category": [
    "centro-de-salud"
   ],
@@ -11431,10 +11431,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2223-Centro-de-salud-de-Logrono-319",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2223-Centro-de-Salud-de-Barajas-Centro-de-salud-de-Logrono-319",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Logroño 319",
+  "name": "Centro de Salud de Barajas",
+  "description": "Centro de Salud de Barajas — Centro de salud · de Logroño 319",
   "category": [
    "centro-de-salud"
   ],
@@ -11454,10 +11454,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2225-Centro-de-salud-de-Verdaguer-y-Garcia-56",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2225-Centro-de-Salud-Canal-de-Panama-Centro-de-salud-de-Verdaguer",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Verdaguer y García 56",
+  "name": "Centro de Salud Canal de Panamá",
+  "description": "Centro de Salud Canal de Panamá — Centro de salud · de Verdaguer y García 56",
   "category": [
    "centro-de-salud"
   ],
@@ -11523,10 +11523,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2260-Centro-de-salud-de-Fuentespina-2",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2260-Centro-de-Salud-Cerro-Almodovar-Centro-de-salud-de-Fuentespi",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Fuentespina 2",
+  "name": "Centro de Salud Cerro Almodóvar",
+  "description": "Centro de Salud Cerro Almodóvar — Centro de salud · de Fuentespina 2",
   "category": [
    "centro-de-salud"
   ],
@@ -11546,10 +11546,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2494-Centro-de-salud-del-Estrecho-de-Corea-1",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2494-Centro-de-Salud-Estrecho-de-Corea-Centro-de-salud-del-Estrec",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Estrecho de Corea 1",
+  "name": "Centro de Salud Estrecho de Corea",
+  "description": "Centro de Salud Estrecho de Corea — Centro de salud · del Estrecho de Corea 1",
   "category": [
    "centro-de-salud"
   ],
@@ -11569,10 +11569,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2896-Centro-de-salud-de-los-Hermanos-Garcia-Noblejas-168",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2896-Centro-de-Salud-Garcia-Noblejas-Centro-de-salud-de-los-Herma",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de los Hermanos García Noblejas 168",
+  "name": "Centro de Salud García Noblejas",
+  "description": "Centro de Salud García Noblejas — Centro de salud · de los Hermanos García Noblejas 168",
   "category": [
    "centro-de-salud"
   ],
@@ -11592,10 +11592,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2901-Centro-de-salud-de-Boltana-5",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS2901-Centro-de-Salud-Canillejas-Centro-de-salud-de-Boltana-5",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Boltaña 5",
+  "name": "Centro de Salud Canillejas",
+  "description": "Centro de Salud Canillejas — Centro de salud · de Boltaña 5",
   "category": [
    "centro-de-salud"
   ],
@@ -11615,10 +11615,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS3680-Centro-de-salud-de-la-Carabela-7",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS3680-Centro-de-Salud-Alameda-de-Osuna-Centro-de-salud-de-la-Carab",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Carabela 7",
+  "name": "Centro de Salud Alameda de Osuna",
+  "description": "Centro de Salud Alameda de Osuna — Centro de salud · de la Carabela 7",
   "category": [
    "centro-de-salud"
   ],
@@ -11638,10 +11638,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4041-Centro-de-salud-de-la-Ciudad-de-Barcelona-190",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4041-Centro-de-Salud-Adelfas-Centro-de-salud-de-la-Ciudad-de-Barc",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Ciudad de Barcelona 190",
+  "name": "Centro de Salud Adelfas",
+  "description": "Centro de Salud Adelfas — Centro de salud · de la Ciudad de Barcelona 190",
   "category": [
    "centro-de-salud"
   ],
@@ -11661,10 +11661,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4114-Centro-de-salud-de-Azuaga-13",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4114-Centro-de-Salud-Valdezarza-Sur-Centro-de-salud-de-Azuaga-13",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Azuaga 13",
+  "name": "Centro de Salud Valdezarza Sur",
+  "description": "Centro de Salud Valdezarza Sur — Centro de salud · de Azuaga 13",
   "category": [
    "centro-de-salud"
   ],
@@ -11684,10 +11684,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4381-Centro-de-salud-de-Indalecio-Prieto-26",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4381-Centro-de-Salud-Valdebernardo-Centro-de-salud-de-Indalecio-P",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Indalecio Prieto 26",
+  "name": "Centro de Salud Valdebernardo",
+  "description": "Centro de Salud Valdebernardo — Centro de salud · de Indalecio Prieto 26",
   "category": [
    "centro-de-salud"
   ],
@@ -11707,10 +11707,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4786-Centro-de-salud-de-Potosi-7",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS4786-Centro-de-Salud-Potosi-Centro-de-salud-de-Potosi-7",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Potosí 7",
+  "name": "Centro de Salud Potosí",
+  "description": "Centro de Salud Potosí — Centro de salud · de Potosí 7",
   "category": [
    "centro-de-salud"
   ],
@@ -11753,10 +11753,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS5628-Centro-de-salud-de-Gandhi-30",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS5628-Centro-de-Salud-Gandhi-Centro-de-salud-de-Gandhi-30",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Gandhi 30",
+  "name": "Centro de Salud \"Gandhi\"",
+  "description": "Centro de Salud \"Gandhi\" — Centro de salud · de Gandhi 30",
   "category": [
    "centro-de-salud"
   ],
@@ -11776,10 +11776,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6082-Centro-de-salud-de-Valle-Inclan-97",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6082-Centro-de-Salud-Valle-Inclan-Centro-de-salud-de-Valle-Inclan",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Valle Inclán 97",
+  "name": "Centro de Salud Valle-Inclán",
+  "description": "Centro de Salud Valle-Inclán — Centro de salud · de Valle Inclán 97",
   "category": [
    "centro-de-salud"
   ],
@@ -11799,10 +11799,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6083-Centro-de-salud-de-Cea-Bermudez-10",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6083-Centro-de-Salud-Cea-Bermudez-Centro-de-salud-de-Cea-Bermudez",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Cea Bermúdez 10",
+  "name": "Centro de Salud Cea Bermúdez",
+  "description": "Centro de Salud Cea Bermúdez — Centro de salud · de Cea Bermúdez 10",
   "category": [
    "centro-de-salud"
   ],
@@ -11822,10 +11822,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6208-Centro-de-salud-Via-Carpetana-202",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6208-Centro-de-Salud-Los-Carmenes-Centro-de-salud-Via-Carpetana-2",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · Vía Carpetana 202",
+  "name": "Centro de Salud Los Cármenes",
+  "description": "Centro de Salud Los Cármenes — Centro de salud · Vía Carpetana 202",
   "category": [
    "centro-de-salud"
   ],
@@ -11845,10 +11845,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6210-Centro-de-salud-de-Guzman-el-Bueno-11",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6210-Centro-de-Salud-Guzman-el-Bueno-Centro-de-salud-de-Guzman-el",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Guzmán el Bueno 11",
+  "name": "Centro de Salud Guzmán el Bueno",
+  "description": "Centro de Salud Guzmán el Bueno — Centro de salud · de Guzmán el Bueno 11",
   "category": [
    "centro-de-salud"
   ],
@@ -11891,10 +11891,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6256-Centro-de-salud-de-Mariano-Vela-62",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6256-Centro-de-Salud-Joaquin-Rodrigo-Centro-de-salud-de-Mariano-V",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Mariano Vela 62",
+  "name": "Centro de Salud Joaquín Rodrigo",
+  "description": "Centro de Salud Joaquín Rodrigo — Centro de salud · de Mariano Vela 62",
   "category": [
    "centro-de-salud"
   ],
@@ -11914,10 +11914,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6269-Centro-de-salud-de-Aquitania-22",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6269-Centro-de-Salud-Aquitania-Centro-de-salud-de-Aquitania-22",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Aquitania 22",
+  "name": "Centro de Salud Aquitania",
+  "description": "Centro de Salud Aquitania — Centro de salud · de Aquitania 22",
   "category": [
    "centro-de-salud"
   ],
@@ -11960,10 +11960,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6632-Centro-de-salud-del-Diamante-12",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6632-Centro-de-Salud-Los-Rosales-Centro-de-salud-del-Diamante-12",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Diamante 12",
+  "name": "Centro de Salud Los Rosales",
+  "description": "Centro de Salud Los Rosales — Centro de salud · del Diamante 12",
   "category": [
    "centro-de-salud"
   ],
@@ -11983,10 +11983,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6706-Consultorio-de-atencion-primaria-de-la-Palma-54",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6706-Centro-Salud-Palma-Norte-Consultorio-de-atencion-primaria-de",
   "type": "PointOfInterest",
-  "name": "Consultorio de atención primaria",
-  "description": "Consultorio de atención primaria · de la Palma 54",
+  "name": "Centro Salud Palma Norte",
+  "description": "Centro Salud Palma Norte — Consultorio de atención primaria · de la Palma 54",
   "category": [
    "centro-de-salud"
   ],
@@ -12006,10 +12006,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6849-Centro-de-salud-de-Villaamil-19",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6849-Centro-de-Salud-Villaamil-Centro-de-salud-de-Villaamil-19",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Villaamil 19",
+  "name": "Centro de Salud Villaamil",
+  "description": "Centro de Salud Villaamil — Centro de salud · de Villaamil 19",
   "category": [
    "centro-de-salud"
   ],
@@ -12052,10 +12052,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6873-Centro-de-salud-de-Asturias-61-63",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6873-Centro-de-Salud-La-Ventilla-Centro-de-salud-de-Asturias-61-6",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Asturias 61-63",
+  "name": "Centro de Salud La Ventilla",
+  "description": "Centro de Salud La Ventilla — Centro de salud · de Asturias 61-63",
   "category": [
    "centro-de-salud"
   ],
@@ -12075,10 +12075,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6878-Centro-de-salud-de-la-Isla-de-Java-c-v",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS6878-Centro-de-Salud-Fuencarral-Centro-de-salud-de-la-Isla-de-Jav",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Isla de Java c/v",
+  "name": "Centro de Salud - Fuencarral.",
+  "description": "Centro de Salud - Fuencarral. — Centro de salud · de la Isla de Java c/v",
   "category": [
    "centro-de-salud"
   ],
@@ -12098,10 +12098,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7081-Centro-de-salud-de-Pantoja-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7081-Centro-de-Salud-Ciudad-Jardin-Centro-de-salud-de-Pantoja-3",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Pantoja 3",
+  "name": "Centro de Salud Ciudad Jardín",
+  "description": "Centro de Salud Ciudad Jardín — Centro de salud · de Pantoja 3",
   "category": [
    "centro-de-salud"
   ],
@@ -12121,10 +12121,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7193-Centro-de-salud-de-Extremadura-113-115",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7193-Centro-de-Salud-Puerta-del-Angel-Centro-de-salud-de-Extremad",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Extremadura 113-115",
+  "name": "Centro de Salud Puerta del Ángel",
+  "description": "Centro de Salud Puerta del Ángel — Centro de salud · de Extremadura 113-115",
   "category": [
    "centro-de-salud"
   ],
@@ -12144,10 +12144,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7196-Centro-de-salud-del-Segre-27",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7196-Centro-de-salud-Segre-Centro-de-salud-del-Segre-27",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Segre 27",
+  "name": "Centro de salud Segre",
+  "description": "Centro de salud Segre — Centro de salud · del Segre 27",
   "category": [
    "centro-de-salud"
   ],
@@ -12167,10 +12167,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7198-Centro-de-salud-de-Santa-Hortensia-14",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7198-Centro-de-Salud-Santa-Hortensia-Centro-de-salud-de-Santa-Hor",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Santa Hortensia 14",
+  "name": "Centro de Salud Santa Hortensia",
+  "description": "Centro de Salud Santa Hortensia — Centro de salud · de Santa Hortensia 14",
   "category": [
    "centro-de-salud"
   ],
@@ -12190,10 +12190,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7199-Centro-de-salud-del-Principe-de-Vergara-111",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7199-Centro-de-Salud-Principe-de-Vergara-Centro-de-salud-del-Prin",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Príncipe de Vergara 111",
+  "name": "Centro de Salud Príncipe de Vergara",
+  "description": "Centro de Salud Príncipe de Vergara — Centro de salud · del Príncipe de Vergara 111",
   "category": [
    "centro-de-salud"
   ],
@@ -12213,10 +12213,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7201-Centro-de-salud-de-Ventura-Rodriguez-7",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7201-Centro-de-Salud-Ventura-Rodriguez-Centro-de-salud-de-Ventura",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Ventura Rodríguez 7",
+  "name": "Centro de Salud Ventura Rodríguez",
+  "description": "Centro de Salud Ventura Rodríguez — Centro de salud · de Ventura Rodríguez 7",
   "category": [
    "centro-de-salud"
   ],
@@ -12236,10 +12236,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7259-Centro-de-salud-de-Los-Yebenes-46-48",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7259-Centro-de-Salud-Los-Yebenes-Centro-de-salud-de-Los-Yebenes-4",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Los Yébenes 46-48",
+  "name": "Centro de Salud Los Yébenes",
+  "description": "Centro de Salud Los Yébenes — Centro de salud · de Los Yébenes 46-48",
   "category": [
    "centro-de-salud"
   ],
@@ -12259,10 +12259,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7271-Centro-de-salud-de-Riaza-5",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7271-Centro-de-Salud-Aravaca-Centro-de-salud-de-Riaza-5",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Riaza 5",
+  "name": "Centro de Salud Aravaca",
+  "description": "Centro de Salud Aravaca — Centro de salud · de Riaza 5",
   "category": [
    "centro-de-salud"
   ],
@@ -12282,10 +12282,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7335-Centro-de-salud-del-Mirador-de-la-Reina-117",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7335-Centro-de-Salud-Mirasierra-Centro-de-salud-del-Mirador-de-la",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Mirador de la Reina 117",
+  "name": "Centro de Salud Mirasierra",
+  "description": "Centro de Salud Mirasierra — Centro de salud · del Mirador de la Reina 117",
   "category": [
    "centro-de-salud"
   ],
@@ -12305,10 +12305,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7365-Centro-de-salud-de-Bustarviejo-5-7",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7365-Centro-de-Salud-Bustarviejo-Centro-de-salud-de-Bustarviejo-5",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Bustarviejo 5-7",
+  "name": "Centro de Salud Bustarviejo",
+  "description": "Centro de Salud Bustarviejo — Centro de salud · de Bustarviejo 5-7",
   "category": [
    "centro-de-salud"
   ],
@@ -12328,10 +12328,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7368-Centro-de-salud-de-la-Palma-51",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7368-Centro-de-Salud-Universidad-Centro-de-salud-de-la-Palma-51",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Palma 51",
+  "name": "Centro de Salud Universidad",
+  "description": "Centro de Salud Universidad — Centro de salud · de la Palma 51",
   "category": [
    "centro-de-salud"
   ],
@@ -12351,10 +12351,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7382-Centro-de-salud-de-Alfonso-Rodriguez-Castelao-17",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7382-Centro-de-Salud-Fuentelarreyna-Centro-de-salud-de-Alfonso-Ro",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Alfonso Rodríguez Castelao 17",
+  "name": "Centro de Salud Fuentelarreyna.",
+  "description": "Centro de Salud Fuentelarreyna. — Centro de salud · de Alfonso Rodríguez Castelao 17",
   "category": [
    "centro-de-salud"
   ],
@@ -12374,10 +12374,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7466-Centro-de-salud-del-Llano-Castellano-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS7466-Centro-de-Salud-Virgen-Begona-Centro-de-salud-del-Llano-Cast",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Llano Castellano 3",
+  "name": "Centro de Salud Virgen Begoña",
+  "description": "Centro de Salud Virgen Begoña — Centro de salud · del Llano Castellano 3",
   "category": [
    "centro-de-salud"
   ],
@@ -12397,10 +12397,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8070-Centro-de-salud-de-Euterpe-12",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8070-Centro-de-Salud-Rejas-Centro-de-salud-de-Euterpe-12",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Euterpe 12",
+  "name": "Centro de Salud Rejas",
+  "description": "Centro de Salud Rejas — Centro de salud · de Euterpe 12",
   "category": [
    "centro-de-salud"
   ],
@@ -12443,10 +12443,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8140-Centro-de-salud-de-Ana-de-Austria-26",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8140-Centro-de-Salud-Sanchinarro-Centro-de-salud-de-Ana-de-Austri",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Ana de Austria 26",
+  "name": "Centro de Salud Sanchinarro",
+  "description": "Centro de Salud Sanchinarro — Centro de salud · de Ana de Austria 26",
   "category": [
    "centro-de-salud"
   ],
@@ -12466,10 +12466,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8173-Centro-de-salud-de-Machupichu-58",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8173-Centro-de-Salud-Silvano-Centro-de-salud-de-Machupichu-58",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Machupichu 58",
+  "name": "Centro de Salud Silvano",
+  "description": "Centro de Salud Silvano — Centro de salud · de Machupichu 58",
   "category": [
    "centro-de-salud"
   ],
@@ -12489,10 +12489,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8174-Centro-de-salud-de-Candido-Mateos-11",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8174-Centro-de-Salud-Doctor-Castroviejo-Centro-de-salud-de-Candid",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Cándido Mateos 11",
+  "name": "Centro de Salud Doctor Castroviejo",
+  "description": "Centro de Salud Doctor Castroviejo — Centro de salud · de Cándido Mateos 11",
   "category": [
    "centro-de-salud"
   ],
@@ -12512,10 +12512,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8427-Centro-de-salud-del-Cardenal-Solis-6",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8427-Centro-de-Salud-Embajadores-Centro-de-salud-del-Cardenal-Sol",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del Cardenal Solís 6",
+  "name": "Centro de Salud Embajadores",
+  "description": "Centro de Salud Embajadores — Centro de salud · del Cardenal Solís 6",
   "category": [
    "centro-de-salud"
   ],
@@ -12558,10 +12558,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8465-Centro-de-salud-de-Abrantes-55",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8465-Centro-de-Salud-Abrantes-Centro-de-salud-de-Abrantes-55",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Abrantes 55",
+  "name": "Centro de Salud Abrantes",
+  "description": "Centro de Salud Abrantes — Centro de salud · de Abrantes 55",
   "category": [
    "centro-de-salud"
   ],
@@ -12581,10 +12581,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8477-Centro-de-salud-de-Delicias-5",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8477-Centro-de-Salud-Delicias-Centro-de-salud-de-Delicias-5",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Delicias 5",
+  "name": "Centro de Salud Delicias",
+  "description": "Centro de Salud Delicias — Centro de salud · de Delicias 5",
   "category": [
    "centro-de-salud"
   ],
@@ -12604,10 +12604,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8501-Centro-de-salud-de-Martin-de-Vargas-15",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8501-Centro-de-Salud-Martin-de-Vargas-Centro-de-salud-de-Martin-d",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Martín de Vargas 15",
+  "name": "Centro de Salud Martín de Vargas",
+  "description": "Centro de Salud Martín de Vargas — Centro de salud · de Martín de Vargas 15",
   "category": [
    "centro-de-salud"
   ],
@@ -12627,10 +12627,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8503-Centro-de-salud-de-la-Antracita-2A",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8503-Centro-de-Salud-Legazpi-Centro-de-salud-de-la-Antracita-2A",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Antracita 2A",
+  "name": "Centro de Salud Legazpi",
+  "description": "Centro de Salud Legazpi — Centro de salud · de la Antracita 2A",
   "category": [
    "centro-de-salud"
   ],
@@ -12650,10 +12650,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8545-Centro-de-salud-de-Cestona-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8545-Centro-de-Especialidades-Orcasitas-y-Centro-de-Salud-Orcasit",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Cestona 3",
+  "name": "Centro de Especialidades Orcasitas y Centro de Salud Orcasitas",
+  "description": "Centro de Especialidades Orcasitas y Centro de Salud Orcasitas — Centro de salud · de Cestona 3",
   "category": [
    "centro-de-salud"
   ],
@@ -12673,10 +12673,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8590-Centro-de-salud-de-la-Infanta-Mercedes-7-9",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8590-Centro-de-Salud-Infanta-Mercedes-Centro-de-salud-de-la-Infan",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Infanta Mercedes 7-9",
+  "name": "Centro de Salud Infanta Mercedes",
+  "description": "Centro de Salud Infanta Mercedes — Centro de salud · de la Infanta Mercedes 7-9",
   "category": [
    "centro-de-salud"
   ],
@@ -12696,10 +12696,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8600-Centro-de-salud-de-San-Fermin-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8600-Centro-de-Salud-San-Fermin-Centro-de-salud-de-San-Fermin-3",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de San Fermín 3",
+  "name": "Centro de Salud San Fermín",
+  "description": "Centro de Salud San Fermín — Centro de salud · de San Fermín 3",
   "category": [
    "centro-de-salud"
   ],
@@ -12719,10 +12719,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8629-Centro-de-salud-del-General-Ricardos-131",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8629-Centro-de-Salud-General-Ricardos-Centro-de-salud-del-General",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · del General Ricardos 131",
+  "name": "Centro de Salud General Ricardos",
+  "description": "Centro de Salud General Ricardos — Centro de salud · del General Ricardos 131",
   "category": [
    "centro-de-salud"
   ],
@@ -12742,10 +12742,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8640-Centro-de-salud-de-Cincovillas-1",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8640-Centro-de-Salud-Ensanche-de-Vallecas-Centro-de-salud-de-Cinc",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Cincovillas 1",
+  "name": "Centro de Salud Ensanche de Vallecas",
+  "description": "Centro de Salud Ensanche de Vallecas — Centro de salud · de Cincovillas 1",
   "category": [
    "centro-de-salud"
   ],
@@ -12765,10 +12765,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8693-Centro-de-salud-de-Valencia-de-Don-Juan-1",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8693-Centro-de-Salud-Ciudad-de-los-Periodistas-Centro-de-salud-de",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Valencia de Don Juan 1",
+  "name": "Centro de Salud Ciudad de los Periodistas",
+  "description": "Centro de Salud Ciudad de los Periodistas — Centro de salud · de Valencia de Don Juan 1",
   "category": [
    "centro-de-salud"
   ],
@@ -12788,10 +12788,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8694-Centro-de-salud-de-los-Embajadores-41",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8694-Centro-de-Salud-Lavapies-Centro-de-salud-de-los-Embajadores-",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de los Embajadores 41",
+  "name": "Centro de Salud Lavapiés",
+  "description": "Centro de Salud Lavapiés — Centro de salud · de los Embajadores 41",
   "category": [
    "centro-de-salud"
   ],
@@ -12811,10 +12811,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8695-Centro-de-salud-de-Altos-de-Cabrejas-4",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8695-Centro-de-Salud-Pena-Prieta-Centro-de-salud-de-Altos-de-Cabr",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Altos de Cabrejas 4",
+  "name": "Centro de Salud Peña Prieta",
+  "description": "Centro de Salud Peña Prieta — Centro de salud · de Altos de Cabrejas 4",
   "category": [
    "centro-de-salud"
   ],
@@ -12834,10 +12834,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8726-Centro-de-salud-de-La-Latina-14",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8726-Centro-de-Salud-de-La-Latina-Lucero-Centro-de-salud-de-La-La",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de La Latina 14",
+  "name": "Centro de Salud de La Latina Lucero",
+  "description": "Centro de Salud de La Latina Lucero — Centro de salud · de La Latina 14",
   "category": [
    "centro-de-salud"
   ],
@@ -12857,10 +12857,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8745-Centro-de-salud-de-Fuenteovejuna-17-19-21",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8745-Centro-de-Salud-Caramuel-Centro-de-salud-de-Fuenteovejuna-17",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Fuenteovejuna 17-19-21",
+  "name": "Centro de Salud Caramuel",
+  "description": "Centro de Salud Caramuel — Centro de salud · de Fuenteovejuna 17-19-21",
   "category": [
    "centro-de-salud"
   ],
@@ -12880,10 +12880,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8790-Centro-de-salud-de-Regueros-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8790-Centro-de-Salud-Justicia-Centro-de-salud-de-Regueros-3",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Regueros 3",
+  "name": "Centro de Salud Justicia",
+  "description": "Centro de Salud Justicia — Centro de salud · de Regueros 3",
   "category": [
    "centro-de-salud"
   ],
@@ -12903,10 +12903,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8806-Centro-de-salud-de-la-Ribera-del-Manzanares-113",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8806-Centro-de-Salud-Casa-de-Campo-Centro-de-salud-de-la-Ribera-d",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Ribera del Manzanares 113",
+  "name": "Centro de Salud Casa de Campo",
+  "description": "Centro de Salud Casa de Campo — Centro de salud · de la Ribera del Manzanares 113",
   "category": [
    "centro-de-salud"
   ],
@@ -12926,10 +12926,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8836-Centro-de-salud-de-la-Hacienda-de-Pavones-271",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8836-Centro-de-Salud-Pavones-Centro-de-salud-de-la-Hacienda-de-Pa",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de la Hacienda de Pavones 271",
+  "name": "Centro de Salud Pavones",
+  "description": "Centro de Salud Pavones — Centro de salud · de la Hacienda de Pavones 271",
   "category": [
    "centro-de-salud"
   ],
@@ -12949,10 +12949,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8864-Centro-de-salud-de-Villablanca-81",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS8864-Centro-de-Salud-Villablanca-Centro-de-salud-de-Villablanca-8",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Villablanca 81",
+  "name": "Centro de Salud Villablanca",
+  "description": "Centro de Salud Villablanca — Centro de salud · de Villablanca 81",
   "category": [
    "centro-de-salud"
   ],
@@ -12972,10 +12972,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9038-Centro-de-salud-de-Londres-55",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9038-Centro-de-Salud-Londres-Centro-de-salud-de-Londres-55",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Londres 55",
+  "name": "Centro de Salud Londres",
+  "description": "Centro de Salud Londres — Centro de salud · de Londres 55",
   "category": [
    "centro-de-salud"
   ],
@@ -12995,10 +12995,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9268-Centro-de-salud-de-Toledo-180",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9268-Centro-de-Salud-Paseo-Imperial-Centro-de-salud-de-Toledo-180",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Toledo 180",
+  "name": "Centro de Salud Paseo Imperial",
+  "description": "Centro de Salud Paseo Imperial — Centro de salud · de Toledo 180",
   "category": [
    "centro-de-salud"
   ],
@@ -13018,10 +13018,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9289-Centro-de-salud-de-Linneo-3",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9289-Centro-de-Salud-Linneo-Centro-de-salud-de-Linneo-3",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de Linneo 3",
+  "name": "Centro de Salud Linneo",
+  "description": "Centro de Salud Linneo — Centro de salud · de Linneo 3",
   "category": [
    "centro-de-salud"
   ],
@@ -13041,10 +13041,10 @@
   "dataProvider": "Comunidad de Madrid · registro sanitario"
  },
  {
-  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9655-Centro-de-salud-de-San-Jeronimo-32",
+  "id": "urn:ngsi-ld:PointOfInterest:llegar-al-fresco:sCS9655-Centro-de-Salud-Las-Cortes-Centro-de-salud-de-San-Jeronimo-3",
   "type": "PointOfInterest",
-  "name": "Centro de salud",
-  "description": "Centro de salud · de San Jerónimo 32",
+  "name": "Centro de Salud Las Cortes",
+  "description": "Centro de Salud Las Cortes — Centro de salud · de San Jerónimo 32",
   "category": [
    "centro-de-salud"
   ],

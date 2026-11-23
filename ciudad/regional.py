@@ -63,7 +63,14 @@ def elderly_centres(boundary):
             kind = "Hogar o club de mayores"
         kind = kind or "Centro para mayores"
         street = " ".join(
-            filter(None, (row["direccion_via_nombre"], row["direccion_portal"]))
+            filter(
+                None,
+                (
+                    row["direccion_via_tipo"].strip().title(),
+                    row["direccion_via_nombre"].strip(),
+                    row["direccion_portal"].strip(),
+                ),
+            )
         )
         label = f"{title(row['denominacion'])} · {kind}"
         if street:

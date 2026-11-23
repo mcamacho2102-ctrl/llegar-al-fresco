@@ -76,9 +76,14 @@ export interface RouteQuery {
   scenario: Improvement | null;
   live?: boolean;
   initialSinceRest?: number;
+  /** Solo la app ciudadana alimenta el informe de uso. */
+  register?: boolean;
 }
 export interface RouteResponse {
   routes: Route[];
+  relaxed?: ("width" | "slope")[];
+  tooFar?: boolean;
+  straightM?: number;
   limited: boolean;
   alternativeMaxM: number;
   weather: {

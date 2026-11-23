@@ -29,7 +29,7 @@ from zoneinfo import ZoneInfo
 from scipy.spatial import cKDTree
 
 from ciudad.fuentes import RAW, ROOT
-from ciudad.motor import Limits, Madrid, coordinates
+from ciudad.motor import Limits, Madrid, coordinates, is_primary_care
 
 OUT = ROOT / "resultados" / "impacto"
 PRIMARY = ("Centro de salud ·", "Consultorio de atención primaria ·")
@@ -108,7 +108,7 @@ def run(districts, n, rest, seed):
     people, older = padron()
     ageing = district_ageing(city, people, older)
     primary = [
-        row for row in city.pois if row["kind"] == "health" and row["label"].startswith(PRIMARY)
+        row for row in city.pois if is_primary_care(row)
     ]
     tree = cKDTree([(row["x"], row["y"]) for row in primary])
     if not districts:

@@ -15,12 +15,14 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from ciudad.fuentes import AEMET, RAW, ROOT, response
-from ciudad.motor import MAX_CHECKS, MAX_CONNECT, Madrid, Limits, TO_METERS, coordinates, normal
+from ciudad.motor import MAX_CHECKS, MAX_CONNECT, Madrid, Limits, TO_METERS, coordinates, is_primary_care, normal
 from ciudad.aforos import CAMPAIGN_SOURCE, PERMANENT_SOURCE, read_footfall
 from ciudad.priorizar import SEARCH_BUDGET, compare_banks
 from ciudad.uso import Registro
@@ -220,12 +222,54 @@ def section_population():
 
 
 app = FastAPI(title="Llegar al fresco", version="2.0", lifespan=lifespan)
+
+
+@app.exception_handler(RequestValidationError)
+async def friendly_validation(request: Request, exc: RequestValidationError):
+    """Traduce los errores de validación a mensajes comprensibles."""
+    fields = {str(part) for error in exc.errors() for part in error.get("loc", ())}
+    if fields & {"origin", "destination", "lon", "lat"}:
+        message = "Ese punto está fuera de la zona que cubre la aplicación (Madrid capital)."
+    elif "departure" in fields:
+        message = "La fecha u hora de salida no es válida."
+    elif "rest" in fields:
+        message = "El límite sin descanso debe estar entre 30 m y 2 km."
+    else:
+        message = "Revisa los datos de la consulta."
+    return JSONResponse({"detail": message, "errors": jsonable_encoder(exc.errors())}, status_code=422)
 front = ROOT / "web" / ".build"
 
 # Límite sencillo de llamadas a la API por IP para una demo pública.
 # Desactivado si LIMITE_PETICIONES=0. Detrás de un proxy se usa la IP que este reenvía.
 RATE = int(os.environ.get("LIMITE_PETICIONES", "600"))
 _calls = defaultdict(deque)
+
+
+CSP = "; ".join(
+    [
+        "default-src 'self'",
+        "script-src 'self'",
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: blob: https://tiles.openfreemap.org",
+        "font-src 'self' data: https://tiles.openfreemap.org",
+        "connect-src 'self' https://tiles.openfreemap.org",
+        "worker-src 'self' blob:",
+        "frame-ancestors 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+    ]
+)
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "DENY")
+    response.headers.setdefault("Referrer-Policy", "no-referrer")
+    response.headers.setdefault("Permissions-Policy", "geolocation=(self), camera=(), microphone=()")
+    response.headers.setdefault("Content-Security-Policy", CSP)
+    return response
 
 
 @app.middleware("http")
@@ -317,45 +361,54 @@ def forecast(_bucket):
     return issued, values
 
 
+STATION = ("28", "80", "3")  # Majadahonda, red regional de calidad del aire
+STATION_NAME = "Majadahonda"
+
+
 @lru_cache(maxsize=1)
+def observed_temperatures():
+    """Temperaturas horarias validadas (magnitud 83) de la red regional: histórico 2025
+    y mes en curso. Clave: (AAAA-MM-DD, hora 1–23)."""
+    readings = {}
+    for name in ("calidad_aire_datos_meteo_historico.csv", "calidad_aire_datos_meteo_mes.csv"):
+        source = RAW / name
+        if not source.is_file():
+            continue
+        with source.open(encoding="utf-8-sig", newline="") as file:
+            for row in csv.DictReader(file, delimiter=";"):
+                if (row["provincia"], row["municipio"].lstrip("0"), row["estacion"]) != STATION:
+                    continue
+                if row["magnitud"] != "83":
+                    continue
+                day = f'{row["ano"]}-{int(row["mes"]):02d}-{int(row["dia"]):02d}'
+                for hour in range(1, 24):
+                    if row.get(f"v{hour:02d}") == "V":
+                        try:
+                            readings[(day, hour)] = float(row[f"h{hour:02d}"].replace(",", "."))
+                        except (TypeError, ValueError):
+                            continue
+    return readings
+
+
 def summer_reading():
-    source = RAW / "calidad_aire_datos_meteo_historico.csv"
-    if not source.is_file():
-        return None
-    with source.open(encoding="utf-8-sig", newline="") as file:
-        for row in csv.DictReader(file, delimiter=";"):
-            keys = (
-                "provincia",
-                "municipio",
-                "estacion",
-                "magnitud",
-                "ano",
-                "mes",
-                "dia",
-                "v14",
-            )
-            if tuple(row[key] for key in keys) == (
-                "28",
-                "80",
-                "3",
-                "83",
-                "2025",
-                "7",
-                "1",
-                "V",
-            ):
-                return {
-                    "temperatureC": float(row["h14"].replace(",", ".")),
-                    "at": "2025-07-01",
-                    "issued": None,
-                    "source": "Comunidad de Madrid · estación de Majadahonda · franja h14",
-                }
-    return None
+    value = observed_temperatures().get(("2025-07-01", 14))
+    return None if value is None else observation("2025-07-01", 14, value)
+
+
+def observation(day, hour, value):
+    return {
+        "temperatureC": value,
+        "at": f"{day}T{hour:02d}:00",
+        "issued": None,
+        "source": f"Comunidad de Madrid · Red de Calidad del Aire · estación de {STATION_NAME} · observado el {day} a las {hour} h",
+    }
 
 
 def air_at(epoch):
-    if datetime.fromtimestamp(epoch, LOCAL).strftime("%Y-%m-%dT%H") == "2025-07-01T14":
-        return summer_reading()
+    moment = datetime.fromtimestamp(epoch, LOCAL)
+    observed = observed_temperatures().get((moment.strftime("%Y-%m-%d"), moment.hour))
+    if observed is not None and moment <= datetime.now(LOCAL):
+        return observation(moment.strftime("%Y-%m-%d"), moment.hour, observed)
     if abs(datetime.now(LOCAL).timestamp() - epoch) > 4 * 86400:
         return None
     result = forecast(int(datetime.now().timestamp() // 1800))
@@ -389,6 +442,8 @@ def route_set(trip, request, full=True):
         if full
         else [("comfort", "Con descansos")]
     )
+    if full and trip.straight_m() > TOO_FAR_M:
+        styles = [("distance", "Más corta")]  # a pie no es razonable: solo el camino directo
     seen = set()
     routes = []
     limited = False
@@ -425,7 +480,18 @@ def route_set(trip, request, full=True):
             criteria.rest is None or result["maxWithoutRest"] <= criteria.rest + 0.01
         )
         routes.append(result)
-    if full and criteria.rest is not None and routes and not any(r["fitsRest"] for r in routes):
+    if not full and not routes:
+        # Navegando: si ya no hay forma de respetar el límite, se guía por el camino directo.
+        result, paused = trip.solve(
+            criteria._replace(rest=None), date, p.pace, "distance", None, request.initialSinceRest
+        )
+        limited |= paused
+        if result:
+            result["nearbyServices"] = list(trip.city.nearby_services(result["geometry"]["coordinates"]))
+            result.update(label="Camino directo", style="distance", fitsRest=False)
+            routes.append(result)
+    if full and criteria.rest is not None and routes and not any(r["fitsRest"] for r in routes) \
+            and trip.straight_m() <= TOO_FAR_M:
         closest = closest_route(trip, criteria, date, p.pace, request.initialSinceRest, routes)
         if closest:
             closest["nearbyServices"] = list(
@@ -602,9 +668,17 @@ def jsonify_candidates(root, q):
     return raw
 
 
+TOO_FAR_M = 3000  # más de 3 km en línea recta: se recomienda transporte público
+
+
+@app.get("/api/dentro")
+def dentro(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90)):
+    """¿Está el punto dentro del área que cubre la aplicación (Madrid capital)?"""
+    return {"dentro": -4 <= lon <= -3 and 40 <= lat <= 41 and app.state.city.inside(lon, lat)}
+
+
 NEARBY_KINDS = {
-    "salud": lambda row: row["kind"] == "health"
-    and row["label"].startswith(("Centro de salud ·", "Consultorio de atención primaria ·")),
+    "salud": is_primary_care,
     "farmacia": lambda row: row["kind"] == "pharmacy",
     "mayores": lambda row: row["kind"] == "elderly",
     "biblioteca": lambda row: row["kind"] == "library"
@@ -615,12 +689,17 @@ NEARBY_KINDS = {
 @app.get("/api/nearby")
 def nearby(
     kind: Literal["salud", "farmacia", "mayores", "biblioteca"],
-    lon: float = Query(ge=-4, le=-3),
-    lat: float = Query(ge=40, le=41),
+    lon: float = Query(ge=-180, le=180),
+    lat: float = Query(ge=-90, le=90),
     n: int = Query(default=3, ge=1, le=8),
 ):
     """Destinos de los registros de la Comunidad más cercanos en línea recta."""
     city = app.state.city
+    if not city.inside(lon, lat):
+        raise HTTPException(
+            422,
+            "Ese punto está fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid.",
+        )
     x, y = TO_METERS.transform(lon, lat)
     wanted = NEARBY_KINDS[kind]
     found = []
@@ -661,9 +740,22 @@ def points(w: float, s: float, e: float, n: float):
 def routes(request: RouteRequest):
     trip = build_trip(request)
     show, limited = route_set(trip, request, not request.live)
+    relaxed = []
+    p = request.preferences
+    if not show and not request.live and (p.width or p.slope):
+        # Ningún camino cumple el ancho o la cuesta pedidos: se muestra el mejor sin
+        # esos filtros y se avisa de qué no se ha podido respetar.
+        relaxed = [name for name, value in (("width", p.width), ("slope", p.slope)) if value]
+        lenient = request.model_copy(
+            update={"preferences": p.model_copy(update={"width": None, "slope": None})}
+        )
+        show, limited = route_set(trip, lenient, True)
     app.state.registro.register(request, show)
     return {
         "routes": show,
+        "relaxed": relaxed,
+        "tooFar": trip.straight_m() > TOO_FAR_M,
+        "straightM": round(trip.straight_m()),
         "limited": limited,
         "alternativeMaxM": trip.practical_limit(),
         "weather": air_at(times(request)) if not request.live else None,

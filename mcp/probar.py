@@ -15,6 +15,7 @@ SERVER = Path(__file__).with_name("servidor.py")
 def main():
     proc = subprocess.Popen(
         [sys.executable, str(SERVER)],
+        env={**__import__("os").environ, "LLEGAR_SIN_REGISTRO": "1"},
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         text=True,
