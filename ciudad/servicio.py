@@ -472,7 +472,7 @@ def air_at(epoch):
     }
 
 
-def route_set(trip, request, full=True):
+def route_set(trip, request, full=True, deadline=None):
     p = request.preferences
     date = times(request)
     criteria = limits(request)
@@ -506,6 +506,9 @@ def route_set(trip, request, full=True):
             limit,
             request.initialSinceRest,
             max_walk=None if style == "distance" else trip.walk_limit(shortest_m),
+            # El camino directo siempre se completa; las búsquedas con descansos se cortan
+            # al agotar el tiempo de la consulta (en el servidor van ~4 veces más lentas).
+            deadline=None if style == "distance" else deadline,
         )
         limited |= paused
         if not result:
@@ -546,7 +549,9 @@ def route_set(trip, request, full=True):
             routes.append(result)
     if full and criteria.rest is not None and routes and not any(r["fitsRest"] for r in routes) \
             and trip.straight_m() <= TOO_FAR_M and (shortest_m or 0) <= TOO_FAR_WALK_M:
-        closest = closest_route(trip, criteria, date, p.pace, request.initialSinceRest, routes)
+        closest = closest_route(
+            trip, criteria, date, p.pace, request.initialSinceRest, routes, deadline=deadline
+        )
         if closest:
             closest["nearbyServices"] = list(
                 trip.city.nearby_services(closest["geometry"]["coordinates"])
@@ -558,7 +563,9 @@ def route_set(trip, request, full=True):
     return routes, limited
 
 
-def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=40000, probes=5):
+def closest_route(
+    trip, criteria, date, pace, initial, routes, step=10, budget=40000, probes=5, deadline=None
+):
     """Cuando ninguna ruta respeta el límite, busca la que minimiza el tramo más largo
     sin banco: el menor límite L ≥ el pedido para el que existe ruta (búsqueda binaria).
     Como mucho `probes` intentos: en el servidor cada uno cuesta unos segundos."""
@@ -566,7 +573,7 @@ def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=4
     high = min(r["maxWithoutRest"] for r in routes)
     best = None
     stuck = 0  # intentos seguidos que se agotan sin saber si hay ruta
-    while high - low > step and probes > 0 and stuck < 2:
+    while high - low > step and probes > 0 and stuck < 2 and (deadline is None or monotonic() < deadline):
         probes -= 1
         middle = int((low + high) / 2)
         result, paused = trip.solve(
@@ -578,6 +585,7 @@ def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=4
             initial,
             max_walk=trip.walk_limit(min(r["meters"] for r in routes)),
             max_checks=budget,
+            deadline=deadline,
         )
         stuck = stuck + 1 if paused and not result else 0
         if result:
@@ -724,6 +732,9 @@ def jsonify_candidates(root, q):
     return raw
 
 
+# Tiempo máximo de búsqueda de rutas con descansos por consulta: una persona mayor no
+# espera medio minuto. El camino directo se calcula siempre entero.
+ROUTE_SECONDS = float(os.environ.get("SEGUNDOS_RUTA", "10"))
 TOO_FAR_M = 3000  # más de 3 km en línea recta: se recomienda transporte público
 TOO_FAR_WALK_M = 4000  # o más de 4 km andando (p. ej. hay que rodear una autovía o las vías)
 
@@ -870,7 +881,8 @@ def spread(items, quota):
 @app.post("/api/routes")
 def routes(request: RouteRequest):
     trip = build_trip(request)
-    show, limited = route_set(trip, request, not request.live)
+    deadline = monotonic() + ROUTE_SECONDS
+    show, limited = route_set(trip, request, not request.live, deadline)
     relaxed = []
     p = request.preferences
     if not show and not request.live and (p.width or p.slope):
@@ -880,7 +892,7 @@ def routes(request: RouteRequest):
         lenient = request.model_copy(
             update={"preferences": p.model_copy(update={"width": None, "slope": None})}
         )
-        show, limited = route_set(trip, lenient, True)
+        show, limited = route_set(trip, lenient, True, max(deadline, monotonic() + 3))
     if not show and not request.live and p.avoidStairs:
         # Hay sitios a los que solo se llega por escaleras (p. ej. algunas plazas con
         # accesos en escalinata): se enseña el mejor camino y se avisa de ellas.
@@ -888,7 +900,7 @@ def routes(request: RouteRequest):
         stairs = request.model_copy(
             update={"preferences": p.model_copy(update={"width": None, "slope": None, "avoidStairs": False})}
         )
-        show, limited = route_set(trip, stairs, True)
+        show, limited = route_set(trip, stairs, True, max(deadline, monotonic() + 3))
     app.state.registro.register(request, show)
     walk_m = min((r["meters"] for r in show if r["style"] == "distance"), default=0)
     return {

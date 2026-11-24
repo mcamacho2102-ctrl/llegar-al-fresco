@@ -5,6 +5,7 @@ import csv
 import difflib
 from functools import lru_cache
 from heapq import heappop, heappush
+from time import monotonic
 import itertools
 import json
 import math
@@ -640,7 +641,9 @@ class Trip:
         initial_since_rest=0,
         max_walk=None,
         max_checks=MAX_CHECKS,
+        deadline=None,
     ):
+        """`deadline` (time.monotonic): si se pasa, la búsqueda se da por agotada."""
         c = self.city
         target = np.array(self.b.xy)
         labels = []
@@ -710,6 +713,8 @@ class Trip:
                 )
             checks += 1
             if checks > max_checks:
+                return None, True
+            if deadline is not None and checks % 1024 == 0 and monotonic() > deadline:
                 return None, True
             for arc in self.edges_at(node):
                 if rest_limit is not None and since + arc.length > rest_limit + 1e-6:
