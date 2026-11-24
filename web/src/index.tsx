@@ -948,7 +948,7 @@ function App() {
               setKind("bench");
               setRadius(500);
               setNotice(
-                "Banco estratégico cargado. Pulsa «Evaluar zona» para medir cuántos portales de alrededor ganan una ruta con él.",
+                "Banco estratégico cargado donde más consultas echaron en falta un banco. «Evaluar zona» mide el efecto de ese banco solo; «Buscar ubicaciones para bancos» compara 12 sitios de alrededor y propone los mejores.",
               );
             } catch (e) {
               setError((e as Error).message);
@@ -1584,6 +1584,15 @@ function App() {
               {study.reducedSunPaths} reducen la exposición estimada al sol ·{" "}
               {study.lostPaths} pierden la opción encontrada.
             </p>
+            {study.newPaths === 0 && study.reducedRestPaths === 0 && (
+              <p className="notice">
+                Con este único banco no mejora ningún recorrido de la muestra. Suele
+                pasar cuando los caminos de la zona tienen varios tramos largos sin
+                banco: uno solo no basta. Prueba «Buscar ubicaciones para bancos»,
+                que compara 12 sitios de la zona, o sitúa el banco a mitad de un
+                tramo concreto.
+              </p>
+            )}
             <div className="button-row">
               <label htmlFor="estimated-cost">
                 Coste estimado (€), opcional
