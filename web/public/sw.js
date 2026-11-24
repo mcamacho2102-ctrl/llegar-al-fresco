@@ -1,4 +1,4 @@
-const cacheName = "llegar-al-fresco-shell-v9";
+const cacheName = "llegar-al-fresco-shell-v10";
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {

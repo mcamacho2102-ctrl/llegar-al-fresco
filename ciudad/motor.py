@@ -288,9 +288,9 @@ class Madrid:
             chain = self.chain(edge, ())
         self.make_arcs(edge, chain, lambda node, arc: self.adjacency[node].append(arc))
 
-    def prepare_trip(self, origin, destination, scenario):
-        a = self.locate(*origin)
-        b = self.locate(*destination)
+    def prepare_trip(self, origin, destination, scenario, reach=None):
+        a = self.locate(*origin, reach=reach)
+        b = self.locate(*destination, reach=reach)
         if a is None or b is None:
             return None
         changes = defaultdict(list)

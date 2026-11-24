@@ -690,7 +690,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
               <p>Prueba con otro punto de salida o de llegada cercano, o quita alguna opción avanzada.</p>
             </div>
           )}
-          {result && shown && (result.tooFar || (result.relaxed && result.relaxed.length > 0)) && (
+          {result && shown && (result.tooFar || result.farConnectionM || (result.relaxed && result.relaxed.length > 0)) && (
             <div className="aviso-ruta" role="status">
               {result.tooFar && (
                 <p>
@@ -713,6 +713,19 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                 <p>
                   <strong>No hay ningún camino con cuestas de {maxSlope} % o menos.</strong> Te mostramos el mejor camino
                   disponible: revisa las cuestas en la capa «Cuestas».
+                </p>
+              )}
+              {result.farConnectionM && (
+                <p>
+                  <strong>El camino a pie más cercano queda a unos {fmt(Math.round(result.farConnectionM / 10) * 10)} m</strong>{" "}
+                  de una de las direcciones (puede ser una urbanización nueva o un recinto que el mapa aún no recorre). El
+                  recorrido empieza o termina allí.
+                </p>
+              )}
+              {result.relaxed?.includes("stairs") && (
+                <p>
+                  <strong>No hemos encontrado ningún camino sin escaleras hasta aquí.</strong> Te mostramos el mejor camino
+                  disponible, que tiene escaleras. Si no puedes subirlas, elige otro destino o pide ayuda.
                 </p>
               )}
             </div>
@@ -811,7 +824,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                 <span className="chip">
                   {shown.slopePct !== null && shown.slopePct > 8 ? "⛰️ Alguna cuesta fuerte" : "🚶 Sin cuestas fuertes"}
                 </span>
-                {stairs && <span className="chip">🚫 Sin escaleras</span>}
+                {stairs && !result.relaxed?.includes("stairs") && <span className="chip">🚫 Sin escaleras</span>}
                 {minWidth && !result.relaxed?.includes("width") && (
                   <span className="chip">↔️ Aceras de {fmt(minWidth)} m o más</span>
                 )}

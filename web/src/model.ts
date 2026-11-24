@@ -83,10 +83,11 @@ export interface RouteQuery {
 }
 export interface RouteResponse {
   routes: Route[];
-  relaxed?: ("width" | "slope")[];
+  relaxed?: ("width" | "slope" | "stairs")[];
   tooFar?: boolean;
   straightM?: number;
   walkM?: number | null;
+  farConnectionM?: number | null;
   limited: boolean;
   alternativeMaxM: number;
   weather: {

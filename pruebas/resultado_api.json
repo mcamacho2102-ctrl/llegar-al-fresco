@@ -3,7 +3,7 @@
   "area": "Servidor",
   "prueba": "Responde /api/info",
   "estado": "OK",
-  "detalle": "6 ms"
+  "detalle": "7 ms"
  },
  {
   "area": "Servidor",
@@ -189,7 +189,7 @@
   "area": "Rutas",
   "prueba": "Ejemplo de la demo",
   "estado": "OK",
-  "detalle": "[('distance', 238, 238), ('comfort', 316, 169), ('shade', 315, 169)] · 0.21 s"
+  "detalle": "[('distance', 238, 238), ('comfort', 316, 169), ('shade', 315, 169)] · 0.01 s"
  },
  {
   "area": "Rutas",
@@ -207,13 +207,13 @@
   "area": "Rendimiento",
   "prueba": "Barajas → Villaverde (≈17 km)",
   "estado": "OK",
-  "detalle": "1.2 s · [('distance', 20217)]"
+  "detalle": "1.1 s · [('distance', 20217)]"
  },
  {
   "area": "Rendimiento",
   "prueba": "El Pardo → Sol",
   "estado": "OK",
-  "detalle": "0.4 s · [('distance', 14236)]"
+  "detalle": "0.2 s · [('distance', 14236)]"
  },
  {
   "area": "Validación",
@@ -249,13 +249,13 @@
   "area": "Rutas",
   "prueba": "Límite 30 m",
   "estado": "OK",
-  "detalle": "0.01 s · ['distance', 'closest']"
+  "detalle": "0.00 s · ['distance', 'closest']"
  },
  {
   "area": "Rutas",
   "prueba": "Límite 2000 m",
   "estado": "OK",
-  "detalle": "0.01 s · ['distance', 'comfort', 'shade']"
+  "detalle": "0.00 s · ['distance', 'comfort', 'shade']"
  },
  {
   "area": "Rutas",
@@ -273,7 +273,7 @@
   "area": "Opciones",
   "prueba": "Ancho ≥ 1,5 m",
   "estado": "OK",
-  "detalle": "1.10 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
+  "detalle": "1.54 s · [('distance', 238, 4.0), ('comfort', 316, 5.3), ('shade', 327, 5.4)] · sin cumplir: ['width']"
  },
  {
   "area": "Opciones",
@@ -303,25 +303,25 @@
   "area": "Rutas",
   "prueba": "Sin ruta posible → la mejor posible",
   "estado": "OK",
-  "detalle": "['distance', 'closest'] · 1.1 s"
+  "detalle": "['distance', 'closest'] · 0.8 s"
  },
  {
   "area": "Cercanos",
   "prueba": "salud desde Sol",
   "estado": "OK",
-  "detalle": "el más cercano a 408 m · 52 ms"
+  "detalle": "el más cercano a 408 m · 57 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "salud desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 500 m · 180 ms"
+  "detalle": "el más cercano a 500 m · 185 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "salud desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 520 m · 162 ms"
+  "detalle": "el más cercano a 520 m · 180 ms"
  },
  {
   "area": "Cercanos",
@@ -339,43 +339,43 @@
   "area": "Cercanos",
   "prueba": "farmacia desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 521 m · 145 ms"
+  "detalle": "el más cercano a 521 m · 147 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "mayores desde Sol",
   "estado": "OK",
-  "detalle": "el más cercano a 456 m · 41 ms"
+  "detalle": "el más cercano a 456 m · 42 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "mayores desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 176 m · 64 ms"
+  "detalle": "el más cercano a 176 m · 523 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "mayores desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 549 m · 159 ms"
+  "detalle": "el más cercano a 549 m · 162 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "biblioteca desde Sol",
   "estado": "OK",
-  "detalle": "el más cercano a 119 m · 42 ms"
+  "detalle": "el más cercano a 119 m · 40 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "biblioteca desde Barajas",
   "estado": "OK",
-  "detalle": "el más cercano a 1432 m · 183 ms"
+  "detalle": "el más cercano a 1432 m · 184 ms"
  },
  {
   "area": "Cercanos",
   "prueba": "biblioteca desde El Pardo",
   "estado": "OK",
-  "detalle": "el más cercano a 1395 m · 502 ms"
+  "detalle": "el más cercano a 1395 m · 309 ms"
  },
  {
   "area": "Validación",

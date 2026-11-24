@@ -343,6 +343,15 @@ def build_trip(request):
             (request.destination.lon, request.destination.lat),
             request.scenario,
         )
+        if trip is None and all(city.inside(p.lon, p.lat) for p in (request.origin, request.destination)):
+            # Portales de urbanizaciones nuevas a las que el mapa peatonal aún no llega del
+            # todo: se enlaza con el camino más cercano hasta CALLE_CERCA_M y se avisa.
+            trip = city.prepare_trip(
+                (request.origin.lon, request.origin.lat),
+                (request.destination.lon, request.destination.lat),
+                request.scenario,
+                reach=CALLE_CERCA_M,
+            )
     except ValueError as e:
         raise HTTPException(422, str(e)) from e
     if trip is None:
@@ -360,9 +369,9 @@ def unreachable_message(city, request):
                 "solo cubre el municipio de Madrid."
             )
     for name, place in ends:
-        if city.locate(place.lon, place.lat) is None:
+        if city.locate(place.lon, place.lat, reach=CALLE_CERCA_M) is None:
             return (
-                f"{name} está a más de {MAX_CONNECT} m de cualquier calle o camino "
+                f"{name} está a más de {CALLE_CERCA_M} m de cualquier calle o camino "
                 "del mapa (puede ser una urbanización muy nueva o el interior de "
                 "un recinto). Marca en el mapa un punto en la calle más cercana."
             )
@@ -556,10 +565,11 @@ def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=4
     low = criteria.rest
     high = min(r["maxWithoutRest"] for r in routes)
     best = None
-    while high - low > step and probes > 0:
+    stuck = 0  # intentos seguidos que se agotan sin saber si hay ruta
+    while high - low > step and probes > 0 and stuck < 2:
         probes -= 1
         middle = int((low + high) / 2)
-        result, _ = trip.solve(
+        result, paused = trip.solve(
             criteria._replace(rest=middle),
             date,
             pace,
@@ -569,6 +579,7 @@ def closest_route(trip, criteria, date, pace, initial, routes, step=10, budget=4
             max_walk=trip.walk_limit(min(r["meters"] for r in routes)),
             max_checks=budget,
         )
+        stuck = stuck + 1 if paused and not result else 0
         if result:
             best = result
             high = min(middle, result["maxWithoutRest"])
@@ -870,6 +881,14 @@ def routes(request: RouteRequest):
             update={"preferences": p.model_copy(update={"width": None, "slope": None})}
         )
         show, limited = route_set(trip, lenient, True)
+    if not show and not request.live and p.avoidStairs:
+        # Hay sitios a los que solo se llega por escaleras (p. ej. algunas plazas con
+        # accesos en escalinata): se enseña el mejor camino y se avisa de ellas.
+        relaxed = [*relaxed, "stairs"]
+        stairs = request.model_copy(
+            update={"preferences": p.model_copy(update={"width": None, "slope": None, "avoidStairs": False})}
+        )
+        show, limited = route_set(trip, stairs, True)
     app.state.registro.register(request, show)
     walk_m = min((r["meters"] for r in show if r["style"] == "distance"), default=0)
     return {
@@ -878,6 +897,7 @@ def routes(request: RouteRequest):
         "tooFar": trip.straight_m() > TOO_FAR_M or walk_m > TOO_FAR_WALK_M,
         "straightM": round(trip.straight_m()),
         "walkM": walk_m or None,
+        "farConnectionM": round(max(trip.a.offset, trip.b.offset)) if max(trip.a.offset, trip.b.offset) > MAX_CONNECT else None,
         "limited": limited,
         "alternativeMaxM": trip.practical_limit(),
         "weather": air_at(times(request)) if not request.live else None,
