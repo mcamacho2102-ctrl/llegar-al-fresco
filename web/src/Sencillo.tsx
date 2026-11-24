@@ -222,7 +222,14 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     setDestination(to);
     setOtherDestination(true);
     setLimit(max);
-    void search(from, to, max, madridNow(), false);
+    // &t=AAAA-MM-DDTHH:MM fija la hora de salida (por ejemplo, para enseñar un día de calor pasado).
+    const t = params.get("t") || "";
+    const at = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(t) ? t : madridNow();
+    if (at === t) {
+      setWhen("other");
+      setDeparture(t);
+    }
+    void search(from, to, max, at, false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
