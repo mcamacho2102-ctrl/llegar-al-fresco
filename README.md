@@ -1,8 +1,10 @@
 # Llegar al fresco
 
+[![Pruebas](https://github.com/mcamacho2102-ctrl/llegar-al-fresco/actions/workflows/pruebas.yml/badge.svg)](https://github.com/mcamacho2102-ctrl/llegar-al-fresco/actions/workflows/pruebas.yml)
+
 **Rutas a pie para quien necesita sentarse por el camino, y una herramienta para que los ayuntamientos decidan dónde poner el próximo banco.** Proyecto para DATAMAD 2026.
 
-- 🌐 **Demo:** https://llegaralfresco.outofthemark.com (también https://llegaralfresco.95-217-181-34.sslip.io) · plan B local: `scripts/arrancar.sh`
+- 🌐 **Demo:** https://llegaralfresco.outofthemark.com · plan B local: `scripts/arrancar.sh`
 - 📦 **Datos compilados:** [Release v1.0-datamad](https://github.com/mcamacho2102-ctrl/llegar-al-fresco/releases/tag/v1.0-datamad)
 - 📄 Licencia del código: [Apache-2.0](LICENSE) · datos: [DATA-LICENSE.md](DATA-LICENSE.md)
 
@@ -14,14 +16,14 @@ Son 3.102 trayectos calculados en los 21 distritos con una muestra aleatoria rep
 
 **Por qué 200 m es un umbral prudente, no exagerado.** La guía oficial británica de accesibilidad peatonal ([*Inclusive Mobility*, Department for Transport, 2021](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1044542/inclusive-mobility-a-guide-to-best-practice-on-access-to-pedestrian-and-transport-infrastructure.pdf), §3.4 y §4.5) recomienda andar como máximo 50 m sin descansar si se usa bastón, 100 m con movilidad reducida sin bastón y 150 m en silla de ruedas, y pide **un asiento cada 50 m como máximo** en zonas peatonales de uso habitual. Según el estudio que cita, la mitad de las personas con alguna discapacidad que pueden andar no pasan de 200 m sin parar. Con 200 m la cifra se queda corta, si acaso. Metodología, sensibilidad y límites: [resultados/impacto/METODOLOGIA.md](resultados/impacto/METODOLOGIA.md).
 
-En la Comunidad viven **1,34 millones de personas de 65 años o más**. Para muchas de ellas, con artrosis, EPOC, insuficiencia cardiaca o simplemente con muchos años, la pregunta no es «¿cuánto tardo?», sino **«¿dónde me puedo sentar?»**. Y en verano, «¿por dónde hay sombra?».
+En la Comunidad viven **1,34 millones de personas de 65 años o más** (1.342.648 en los 179 municipios, según la *Población censada por edad* de la Comunidad, 2025). Para muchas de ellas, con artrosis, EPOC, insuficiencia cardiaca o simplemente con muchos años, la pregunta no es «¿cuánto tardo?», sino **«¿dónde me puedo sentar?»**. Y en verano, «¿por dónde hay sombra?».
 
 ## Qué hace
 
 | Para quién | Qué ofrece |
 |---|---|
-| **Personas mayores y sus familias** · *Mi recorrido* | Tres pasos grandes. Una ruta que **nunca supera los metros sin descanso que elijas** (de 100 m a 2 km); si no existe, la que **menos metros seguidos** te hace andar sin sentarte. Opciones avanzadas: escaleras, ancho mínimo de acera, cuesta máxima, ritmo y preferencia por sombra, con sombra calculada hora a hora, sin escaleras, con pendiente y ancho de acera, y con fuentes y aseos cerca. Destinos: **centros de salud, centros de día y residencias, farmacias y bibliotecas** de los registros de la Comunidad. Navegación paso a paso; funciona sin conexión una vez instalada. |
-| **Ayuntamientos** · *Informe de uso* | De cada consulta se guarda, de forma anónima, **dónde faltó un banco** en el camino directo (no la dirección de salida). El informe agrupa esos huecos y señala los **bancos estratégicos**: los que evitarían más rodeos o harían posible rutas que hoy no existen. Exportable a CSV. Mientras no hay usuarios, se muestra una simulación etiquetada. |
+| **Personas mayores y sus familias** · *App ciudadana* (pantalla inicial) | Tres pasos grandes. Una ruta que **nunca supera los metros sin descanso que elijas** (de 100 m a 2 km); si no existe, la que **menos metros seguidos** te hace andar sin sentarte. Opciones avanzadas: escaleras, ancho mínimo de acera, cuesta máxima, ritmo y preferencia por sombra, con sombra calculada hora a hora, sin escaleras, con pendiente y ancho de acera, y con fuentes y aseos cerca. Destinos: **centros de salud, centros de día y residencias, farmacias y bibliotecas** de los registros de la Comunidad. Navegación paso a paso con voz. Instalada como app, la ruta en curso sigue disponible sin conexión (la búsqueda de rutas nuevas y el mapa base necesitan internet). |
+| **Ayuntamientos** · *Para ayuntamientos → Informe de uso* | De cada consulta se guarda, de forma anónima, **dónde faltó un banco** en el camino directo (no la dirección de salida). El informe agrupa esos huecos y señala los **bancos estratégicos**: los que evitarían más rodeos o harían posible rutas que hoy no existen. Exportable a CSV. Mientras no hay usuarios, se muestra una simulación etiquetada. |
 | **Ayuntamientos** · *Simulador de mejoras* | **Simula un banco, un rebaje o sombra** y mide sobre una muestra de portales cuántos trayectos nuevos se hacen posibles. **Busca automáticamente las mejores ubicaciones** para nuevos bancos, con mayores residentes y aforos peatonales. Compara coste por ruta habilitada. |
 | **Comunidad de Madrid** · *Mapa regional* | Clasificación de los **179 municipios** según envejecimiento, mayores por centro de salud, mayores por centro para mayores y horas a 35 °C o más. Sirve para decidir dónde desplegar después. **Usa solo datos de la Comunidad.** |
 
@@ -43,8 +45,8 @@ Se combinan con datos del Ayuntamiento de Madrid (callejero, bancos, fuentes, pa
 
 ## Por qué es viable
 
-- **Funciona hoy** sobre Madrid capital completa: 215.542 portales, 701.604 tramos y 54.172 bancos. Calcula una ruta en menos de un segundo. El servidor ocupa unos 930 MB de RAM, así que basta un servidor pequeño (unos 5–30 €/mes).
-- **Es reproducible.** Tres comandos rehacen todos los datos desde las fuentes públicas (`ciudad.fuentes`, `ciudad.preparar`, `ciudad.relieve`), y `ciudad.comprobar` verifica los resultados.
+- **Funciona hoy** sobre Madrid capital completa: 215.542 portales, 701.604 tramos y 54.172 bancos. En un portátil, la mayoría de rutas se calculan en menos de un segundo. En la demo pública, sobre la CPU compartida de un servidor modesto, tardan unos segundos, con un tope de 10 s (`SEGUNDOS_RUTA`). El servicio ocupa unos 850–930 MB de RAM, así que basta un servidor de 2 GB (unos 5–30 €/mes, según la CPU).
+- **Es reproducible.** Los datos se rehacen desde las fuentes públicas con los comandos de [Reconstruir los datos](#reconstruir-los-datos), y `ciudad.comprobar` verifica los resultados. La cifra de impacto se repite byte a byte con la misma semilla.
 - **Se puede llevar a otros municipios** con su callejero, su inventario de bancos y OSM. El mapa regional indica por dónde empezar.
 - **Modelo:** la app ciudadana es gratuita y el núcleo es abierto. Los ayuntamientos pagan la implantación y los estudios de ubicación de mobiliario, y se ofrece integración a teleasistencia, asociaciones de mayores y empresas de información (sector infomediario).
 
@@ -73,7 +75,7 @@ El backend sirve también la interfaz compilada. Para el mapa base (OpenFreeMap)
 
 ### Despliegue público
 
-El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. También hay un `fly.toml` para Fly.io (2 GB). La demo pública corre en un contenedor aislado (ver `despliegue/`). Las llamadas a `/api/` se limitan por IP (`LIMITE_PETICIONES`, 600 por minuto por defecto).
+El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. También hay un `fly.toml` para Fly.io (2 GB). La demo pública corre en un contenedor aislado (ver `despliegue/`). Las llamadas a `/api/` se limitan por IP (`LIMITE_PETICIONES`, 600 por minuto por defecto). El límite vive en memoria, así que asume un solo proceso de uvicorn.
 
 ### Reconstruir los datos
 
@@ -81,8 +83,9 @@ El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. También hay
 .venv/bin/python -m ciudad.fuentes      # descarga las fuentes públicas
 .venv/bin/python -m ciudad.preparar     # red, índices, destinos (incluye ciudad.regional)
 .venv/bin/python -m ciudad.relieve      # cotas del MDT05
+.venv/bin/python -m ciudad.nombres      # nombres de centros sanitarios desde OSM
 .venv/bin/python -m ciudad.municipios   # capa regional de los 179 municipios
-.venv/bin/python -m ciudad.impacto --todos --n 150   # cifra de impacto (36 s)
+.venv/bin/python -m ciudad.impacto --todos --n 150   # cifra de impacto (unos 40 s)
 .venv/bin/python -m ciudad.sdm          # destinos como Smart Data Models · PointOfInterest, validados
 .venv/bin/python -m ciudad.uso_demo     # informe municipal de demostración (3.096 consultas simuladas)
 .venv/bin/python -m ciudad.anchos       # ancho de acera más cercana en una red ya compilada
@@ -96,11 +99,11 @@ El registro de uso vive en `datos/uso/consultas.sqlite` (debe ser escribible en 
 
 ## Demostración
 
-En **Mi recorrido**, pulsa **Cargar ejemplo** y **Comparar rutas**. La Plaza de la Virgen de la Paloma, 1 y la Biblioteca Pedro Salinas están a 238 m por la ruta corta. Con un límite de 200 m sin descanso, la alternativa con banco mide 316 m y su tramo continuo más largo es de 168,7 m. Para reproducir las condiciones históricas, elige el **1 de julio de 2025 a las 14:00**: el resultado muestra la observación regional de 33,6 °C de la estación de Majadahonda.
+**App ciudadana** (la pantalla inicial). Escribe *Plaza de Santa Bárbara 8* como salida, pulsa **Centro de salud** y elige el primero (C. S. Justicia). Pon el límite en **150 m** y, en *¿Cuándo sales?*, elige el **1 de julio de 2025 a las 14:00**. La ruta corta mide 618 m e incluye un tramo de 467 m sin ningún banco. La alternativa mide 794 m y pasa por 6 bancos, sin superar nunca 143 m sin sentarse. El resultado muestra la observación regional de 33,6 °C de la estación de Majadahonda. Debajo del mapa, las capas muestran sol y sombra, cuestas, ancho de acera, y fuentes y aseos.
 
-En **Panel municipal**, vuelve a pulsar **Cargar ejemplo** y **Comparar rutas**. El banco hipotético acorta la alternativa en 77 m, hasta 239 m, con un máximo de 158,3 m sin parar. **Evaluar zona** calcula, sobre portales muestreados, el acceso al mismo destino con y sin la actuación. **Buscar ubicaciones para bancos** propone hasta tres candidatos, ordenados por nuevas rutas compatibles, mejora de los tramos sin descanso y residentes de 65 años o más.
+**Para ayuntamientos →** abre el **Informe de uso** con la simulación de 3.096 consultas (etiquetada como simulada). **Simular este banco →** lleva al **Simulador de mejoras**, donde **Evaluar zona** calcula, sobre portales muestreados, el acceso con y sin la actuación. **Buscar ubicaciones para bancos** propone hasta tres candidatos, ordenados por nuevas rutas compatibles, mejora de los tramos sin descanso y residentes de 65 años o más. Ejemplo: de la Calle de Europa, 8 al C. S. Núñez Morgado hay 341 m seguidos sin banco y ninguna ruta lo evita; con un banco simulado a mitad de camino, nunca más de 184 m.
 
-Para **Evitar escaleras**, busca **Calle de los Mancebos, 3 → Calle de Segovia, 16** con **Sin límite** de descanso: 297 m con escaleras y 387 m evitándolas.
+En **Recorrido detallado**, **Cargar ejemplo** y **Comparar rutas** comparan Plaza de la Virgen de la Paloma, 1 → Biblioteca Pedro Salinas: 238 m por la ruta corta y 316 m con banco, con un máximo de 168,7 m sin parar. Para **evitar escaleras**, busca **Calle de los Mancebos, 3 → Calle de Segovia, 16** con **Sin límite**: 297 m con escaleras y 387 m evitándolas.
 
 En **Mapa regional**, pulsa cualquier municipio o elige el indicador del mapa. La tabla ordena los 15 municipios con más prioridad y la del piloto muestra la cifra de impacto por distrito.
 
@@ -116,7 +119,18 @@ Los aforos horarios corresponden a enero–junio de 2024 ([permanentes](https://
 - **Navegación y privacidad.** La ubicación requiere permiso del navegador. La ruta activa se guarda en el dispositivo y se borra al terminar. La API recibe origen y destino solo para calcular, y el servidor desactiva los registros de acceso.
 - **Estudios municipales.** Hasta 16 portales de cuadrículas de 75 m, con la misma función de coste para ambos recorridos. Las cifras cuentan portales muestreados. Los costes los introduce el analista.
 
+## Limitaciones conocidas
+
+- **Bancos según el inventario municipal.** No sabemos si cada banco está en buen estado, a la sombra o ocupado. Tampoco cuentan muros, marquesinas ni terrazas. La cifra de impacto es la dificultad *según el dato público*.
+- **Sombra aproximada.** Se calcula sobre terreno plano con la altura de los edificios. El arbolado casi no entra, porque solo 21 copas de OSM tienen dimensiones.
+- **Tolerancia de 20 m en la cifra.** Si no se cuenta el paso lateral hasta el banco, el 88,1 % baja al 85,6 %. El 60,5 % sin alternativa no cambia. Detalle en la [metodología](resultados/impacto/METODOLOGIA.md).
+- **El informe municipal de la demo es una simulación** (3.096 consultas generadas con `ciudad.uso_demo`), etiquetada como tal hasta que haya uso real.
+- **Sin validar aún en la calle** con personas mayores. Es el primer paso del piloto.
+- **Centro de salud más cercano en línea recta**, no el asignado por zona básica de salud.
+
 ## Pruebas
+
+Sin datos ni servidor (lo que corre la CI de GitHub): `python -m unittest pruebas.test_unidades`, `npm --prefix web run build` y `node comprobar-rutas.js`.
 
 Con el servidor en marcha: `python3 pruebas/banco_api.py` (75 comprobaciones de la API), `python pruebas/banco_web.py` (recorridos por perfiles en un navegador real y auditoría de accesibilidad axe; necesita Playwright) y `.venv/bin/python -m ciudad.banco_pruebas` (uso adversarial). Ninguna prueba cuenta en el informe de uso.
 

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Si usas este software o sus cifras, cítalo así."
+title: "Llegar al fresco: rutas a pie con descansos y sombra, y planificación de bancos"
+abstract: >-
+  Planificador peatonal para Madrid capital que garantiza un banco cada X metros y
+  prioriza la sombra, con un informe municipal de dónde faltan bancos, un simulador de
+  mejoras y un índice regional de los 179 municipios de la Comunidad de Madrid.
+  Proyecto para DATAMAD 2026.
+type: software
+authors:
+  - given-names: Marcos
+    family-names: Camacho Villardón
+license: Apache-2.0
+repository-code: "https://github.com/mcamacho2102-ctrl/llegar-al-fresco"
+url: "https://llegaralfresco.outofthemark.com"
+version: "1.1"
+date-released: "2026-11-25"
+keywords:
+  - accesibilidad
+  - personas mayores
+  - datos abiertos
+  - Comunidad de Madrid
+  - calor
+  - mobiliario urbano

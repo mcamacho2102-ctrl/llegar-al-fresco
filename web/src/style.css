@@ -1191,7 +1191,7 @@ fieldset {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #c2711f;
+  background: #a8601a;
   color: #fff;
   font-weight: 800;
   flex: none;
@@ -1265,7 +1265,7 @@ fieldset {
 }
 .sw.a { background: #0e5242; }
 .sw.b { background: #8e4320; }
-.sw.r { background: #c2711f; }
+.sw.r { background: #a8601a; }
 .leyenda-simple .ln {
   width: 26px;
   height: 7px;
@@ -1302,7 +1302,7 @@ fieldset {
 }
 .pin-a { background: #0e5242; width: 44px; height: 44px; font-size: 20px; }
 .pin-b { background: #8e4320; width: 44px; height: 44px; font-size: 20px; }
-.pin-rest { background: #c2711f; }
+.pin-rest { background: #a8601a; }
 .ver-todo {
   display: flex;
   gap: 10px;

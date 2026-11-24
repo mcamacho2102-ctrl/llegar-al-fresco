@@ -223,7 +223,7 @@ def section_population():
     return population, older
 
 
-app = FastAPI(title="Llegar al fresco", version="2.0", lifespan=lifespan)
+app = FastAPI(title="Llegar al fresco", version="1.1", lifespan=lifespan)
 
 
 @app.exception_handler(RequestValidationError)
@@ -276,12 +276,17 @@ async def security_headers(request: Request, call_next):
     response.headers.setdefault("Referrer-Policy", "no-referrer")
     response.headers.setdefault("Permissions-Policy", "geolocation=(self), camera=(), microphone=()")
     response.headers.setdefault("Content-Security-Policy", CSP_PITCH if request.url.path.startswith("/pitch") else CSP)
+    if TRUST_PROXY and request.headers.get("x-forwarded-proto") == "https":
+        response.headers.setdefault("Strict-Transport-Security", "max-age=31536000")
     return response
 
 
 # Detrás de Fly.io (o con CONFIAR_PROXY=1) se usa la IP que reenvía el proxy; si no, la
 # de la conexión, para que nadie pueda saltarse el límite con una cabecera falsa.
-TRUST_PROXY = os.environ.get("CONFIAR_PROXY") == "1" or "FLY_APP_NAME" in os.environ
+# Fly-Client-IP solo se cree en Fly.io: detrás de otro proxy (Caddy) llegaría tal cual
+# la mandó el cliente. Caddy reescribe X-Forwarded-For con la IP real.
+ON_FLY = "FLY_APP_NAME" in os.environ
+TRUST_PROXY = os.environ.get("CONFIAR_PROXY") == "1" or ON_FLY
 HEAVY = {"/api/bank-plan", "/api/study"}  # cálculos de varios segundos
 HEAVY_RATE = int(os.environ.get("LIMITE_PETICIONES_PESADAS", "20"))
 _heavy_calls = defaultdict(deque)
@@ -289,7 +294,7 @@ _heavy_calls = defaultdict(deque)
 
 def client_ip(request):
     if TRUST_PROXY:
-        forwarded = request.headers.get("fly-client-ip") or request.headers.get(
+        forwarded = (request.headers.get("fly-client-ip") if ON_FLY else None) or request.headers.get(
             "x-forwarded-for", ""
         ).split(",")[0].strip()
         if forwarded:
