@@ -240,6 +240,10 @@ async def friendly_validation(request: Request, exc: RequestValidationError):
         message = "Revisa los datos de la consulta."
     return JSONResponse({"detail": message, "errors": jsonable_encoder(exc.errors())}, status_code=422)
 front = ROOT / "web" / ".build"
+# Presentación de la final (solo en el portátil: no forma parte del repositorio ni del servidor).
+pitch = Path(os.environ.get("PITCH_DIR", ROOT.parent / "entrega" / "pitch"))
+CSP_PITCH = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
+             "media-src 'self'; font-src 'self'; frame-src 'self' https://llegaralfresco.outofthemark.com; frame-ancestors 'none'")
 
 # Límite sencillo de llamadas a la API por IP para una demo pública.
 # Desactivado si LIMITE_PETICIONES=0. Detrás de un proxy se usa la IP que este reenvía.
@@ -256,7 +260,8 @@ CSP = "; ".join(
         "font-src 'self' data: https://tiles.openfreemap.org",
         "connect-src 'self' https://tiles.openfreemap.org",
         "worker-src 'self' blob:",
-        "frame-ancestors 'none'",
+        # Solo se deja incrustar en sí misma y en la presentación local de la final (/pitch en el portátil).
+        "frame-ancestors 'self' http://127.0.0.1:8768 http://localhost:8768",
         "base-uri 'self'",
         "form-action 'self'",
     ]
@@ -267,10 +272,10 @@ CSP = "; ".join(
 async def security_headers(request: Request, call_next):
     response = await call_next(request)
     response.headers.setdefault("X-Content-Type-Options", "nosniff")
-    response.headers.setdefault("X-Frame-Options", "DENY")
+    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
     response.headers.setdefault("Referrer-Policy", "no-referrer")
     response.headers.setdefault("Permissions-Policy", "geolocation=(self), camera=(), microphone=()")
-    response.headers.setdefault("Content-Security-Policy", CSP)
+    response.headers.setdefault("Content-Security-Policy", CSP_PITCH if request.url.path.startswith("/pitch") else CSP)
     return response
 
 
@@ -1064,5 +1069,7 @@ def bank_plan(request: BankPlanRequest):
     )
 
 
+if pitch.is_dir():
+    app.mount("/pitch", StaticFiles(directory=pitch, html=True), name="pitch")
 if front.is_dir():
     app.mount("/", StaticFiles(directory=front, html=True), name="web")
