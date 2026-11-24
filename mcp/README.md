@@ -28,6 +28,8 @@ Conecta un asistente de IA (Claude Desktop, VS Code, Cursor…) con la aplicaci�
 
 `LLEGAR_URL` puede apuntar a la demo pública. Para probarlo sin cliente: `python3 mcp/probar.py`.
 
+Ejemplo real, el de la presentación: [`ejemplo-santa-barbara.json`](ejemplo-santa-barbara.json). Es la respuesta de `ruta_con_descansos` a «¿Cómo llega mi madre de la Plaza de Santa Bárbara a su centro de salud sin andar más de 150 m sin sentarse?»: 794 m, 6 bancos y nunca más de 143 m sin sentarse, frente a los 618 m del camino corto, que tiene un tramo de 467 m sin ningún banco.
+
 ## Guion de demo (30 segundos)
 
 1. «Mi madre tiene 82 años y no puede andar más de 150 metros sin sentarse. ¿Cómo va de Plaza de la Virgen de la Paloma 1 a la Biblioteca Pedro Salinas el 1 de julio a las 14:00?»

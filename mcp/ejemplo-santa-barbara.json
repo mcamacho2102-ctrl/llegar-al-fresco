@@ -1,0 +1,111 @@
+{
+ "pregunta": "¿Cómo llega mi madre de la Plaza de Santa Bárbara a su centro de salud sin andar más de 150 m sin sentarse?",
+ "herramienta": "ruta_con_descansos",
+ "argumentos": {
+  "origen": "Plaza de Santa Bárbara 8",
+  "destino": "Centro de Salud Justicia",
+  "max_sin_descanso": 150,
+  "salida": "2025-07-01T14:00"
+ },
+ "respuesta": {
+  "origen": "Plaza De Santa Barbara, 8",
+  "destino": "Centro de Salud Justicia — Centro de salud · Calle de Regueros 3",
+  "limite_sin_descanso_m": 150,
+  "rutas": [
+   {
+    "opcion": "Más corta",
+    "metros": 618,
+    "minutos": 10.3,
+    "tramo_mas_largo_sin_banco_m": 618.2,
+    "respeta_el_limite": false,
+    "minutos_al_sol": 9.4,
+    "pendiente_max_pct": 11.7,
+    "paradas": [],
+    "fuentes_y_aseos_cerca": []
+   },
+   {
+    "opcion": "Menos esfuerzo",
+    "metros": 794,
+    "minutos": 13.2,
+    "tramo_mas_largo_sin_banco_m": 143.2,
+    "respeta_el_limite": true,
+    "minutos_al_sol": 11.8,
+    "pendiente_max_pct": 12.7,
+    "paradas": [
+     {
+      "banco": "Calle Almagro 2",
+      "a_los_m": 114
+     },
+     {
+      "banco": "Plaza Santa Barbara 5B",
+      "a_los_m": 223
+     },
+     {
+      "banco": "Plaza Santa Barbara 3",
+      "a_los_m": 299
+     },
+     {
+      "banco": "Calle San Mateo 34",
+      "a_los_m": 416
+     },
+     {
+      "banco": "Calle Hortaleza 77",
+      "a_los_m": 555
+     },
+     {
+      "banco": "Calle Pelayo 70",
+      "a_los_m": 698
+     }
+    ],
+    "fuentes_y_aseos_cerca": [
+     "Fuente para beber"
+    ]
+   },
+   {
+    "opcion": "Prioriza sombra",
+    "metros": 795,
+    "minutos": 13.2,
+    "tramo_mas_largo_sin_banco_m": 143.2,
+    "respeta_el_limite": true,
+    "minutos_al_sol": 11.2,
+    "pendiente_max_pct": 12.7,
+    "paradas": [
+     {
+      "banco": "Calle Almagro 2",
+      "a_los_m": 114
+     },
+     {
+      "banco": "Plaza Santa Barbara 5B",
+      "a_los_m": 223
+     },
+     {
+      "banco": "Plaza Santa Barbara 3",
+      "a_los_m": 299
+     },
+     {
+      "banco": "Calle San Mateo 34",
+      "a_los_m": 416
+     },
+     {
+      "banco": "Calle Hortaleza 77",
+      "a_los_m": 555
+     },
+     {
+      "banco": "Calle Pelayo 70",
+      "a_los_m": 699
+     }
+    ],
+    "fuentes_y_aseos_cerca": [
+     "Fuente para beber"
+    ]
+   }
+  ],
+  "tiempo": {
+   "temperatureC": 33.6,
+   "at": "2025-07-01T14:00",
+   "issued": null,
+   "source": "Comunidad de Madrid · Red de Calidad del Aire · estación de Majadahonda · observado el 2025-07-01 a las 14 h"
+  },
+  "nota": "Bancos municipales operativos del inventario 2026; sombra modelada con edificios y arbolado de OSM. Comprobar sobre el terreno."
+ }
+}
