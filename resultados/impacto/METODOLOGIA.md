@@ -68,7 +68,7 @@ El detalle por trayecto está en `impacto_200m_n150_s2026_todos.csv`, y la sensi
 
 ## Límites (léelos antes de citar las cifras)
 
-- **Solo bancos municipales inventariados.** No cuenta muros, escalones de portal, terrazas, marquesinas de autobús ni bancos de parques que falten en el inventario. La cifra es un límite superior de la dificultad *según el dato público*. Por eso conviene mejorar el inventario (ver MELODA y la validación en calle).
+- **Solo bancos municipales inventariados.** No cuenta muros, escalones de portal, terrazas, marquesinas de autobús ni bancos de parques que falten en el inventario. La cifra es un límite superior de la dificultad *según el dato público*. Por eso conviene mejorar el inventario (ver [CALIDAD-DATOS.md](../../CALIDAD-DATOS.md) y la validación en calle).
 - **El centro más cercano en línea recta** no tiene por qué ser el asignado por tarjeta sanitaria (zona básica de salud).
 - **Muestra por portales, no por personas.** La versión ponderada por mayores de la sección censal da valores parecidos (±4 puntos).
 - **Red OSM.** Parte de la red discurre por el eje de la calle. El acceso del portal a la calle se aproxima en línea recta (hasta 150 m) y cuenta en la distancia.

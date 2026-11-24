@@ -41,6 +41,8 @@ En la Comunidad viven **1,34 millones de personas de 65 años o más** (1.342.64
 | [Centros de servicios sociales por tipo](https://datos.comunidad.madrid/dataset/centros_servicios_sociales_por_tipo) | Centros para mayores por municipio |
 | [Secciones censales](https://datos.comunidad.madrid/dataset/secciones_censales) | Geometría de los 179 municipios |
 
+Qué falla en cada uno y qué pediríamos a la Comunidad: [CALIDAD-DATOS.md](CALIDAD-DATOS.md), una autoevaluación con las dimensiones de MELODA.
+
 Se combinan con datos del Ayuntamiento de Madrid (callejero, bancos, fuentes, padrón, aforos, accesibilidad viaria, alturas de edificios), del IGN (MDT05, CartoCiudad), de AEMET y de OpenStreetMap (red peatonal).
 
 ## Por qué es viable
