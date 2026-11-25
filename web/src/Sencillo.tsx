@@ -1146,7 +1146,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                     <div className="guia-botones">
                       <button type="button" className="grande secundario" disabled={guia === 0} onClick={() => decirPaso(shown, guia - 1)}>⏮️ Anterior</button>
                       <button type="button" className="grande secundario" onClick={() => decirPaso(shown, guia)}>🔁 Repetir</button>
-                      <button type="button" className="grande" disabled={guia >= pasos.length - 1} onClick={() => decirPaso(shown, guia + 1)}>Siguiente ⏭️</button>
+                      <button type="button" className="grande principal" disabled={guia >= pasos.length - 1} onClick={() => decirPaso(shown, guia + 1)}>Siguiente ⏭️</button>
                     </div>
                     <div className="guia-extra">
                       <label>
@@ -1184,7 +1184,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                     <li>Mantén esta pantalla abierta mientras caminas.</li>
                   </ul>
                   <div className="guia-botones">
-                    <button type="button" className="grande" onClick={() => void empezarSeguimiento(shown)}>Empezar a compartir</button>
+                    <button type="button" className="grande principal" onClick={() => void empezarSeguimiento(shown)}>Empezar a compartir</button>
                     <button type="button" className="grande secundario" onClick={() => setSeguimiento(null)}>Ahora no</button>
                   </div>
                 </div>
@@ -1194,7 +1194,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                   <h3>👪 Tu familia puede seguirte</h3>
                   <p>{seguimiento.estado}</p>
                   <div className="guia-botones">
-                    <button type="button" className="grande" onClick={() => void enviarEnlace(seguimiento.url)}>📤 Enviar el enlace</button>
+                    <button type="button" className="grande principal" onClick={() => void enviarEnlace(seguimiento.url)}>📤 Enviar el enlace</button>
                     <button type="button" className="grande secundario" onClick={() => void terminarSeguimiento(false)}>⏹️ Dejar de compartir</button>
                   </div>
                   <p className="nota">Enlace: {seguimiento.url}</p>
