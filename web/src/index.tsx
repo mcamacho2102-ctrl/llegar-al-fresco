@@ -5,6 +5,7 @@ import BankPlanResults from "./BankPlan";
 import Map from "./Map";
 import Region from "./Region";
 import Sencillo from "./Sencillo";
+import Seguir from "./Seguir";
 import Logo from "./Logo";
 import Informe from "./Informe";
 import {
@@ -1750,6 +1751,8 @@ function App() {
     </>
   );
 }
-createRoot(document.getElementById("root")!).render(<App />);
+// Enlace de seguimiento para familiares: /?seguir=ID abre solo la vista de seguimiento.
+const seguir = new URLSearchParams(window.location.search).get("seguir");
+createRoot(document.getElementById("root")!).render(seguir ? <Seguir id={seguir} /> : <App />);
 if ("serviceWorker" in navigator)
   void navigator.serviceWorker.register("/sw.js").catch(() => {});

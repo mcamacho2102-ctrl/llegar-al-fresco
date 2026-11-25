@@ -1371,10 +1371,35 @@ nav .volver {
     padding: 18px 16px 20px;
   }
 }
+.mapa-impreso { display: none; }
 @media print {
-  header, .paso, .buscar, .capas, .ver-todo, .acciones, .profesional, .hero-simple { display: none !important; }
-  .mas { border: 0; }
-  .mas[open] summary, .mas summary { display: none; }
+  @page { size: A4; margin: 12mm; }
+  html, body, main, .sencillo, .resultado { background: #fff !important; }
+  header, .paso, .buscar, .capas, .ver-todo, .acciones, .profesional, .hero-simple, .tecnicos-link { display: none !important; }
+  .cabecera-impresa { font-size: 11pt; line-height: 1.4; margin: 0 0 8pt; padding-bottom: 6pt; border-bottom: 1.5pt solid #0e5242; }
+  .frase { break-inside: avoid; box-shadow: none !important; }
+  /* El mapa interactivo no se imprime: en su lugar va la imagen compuesta, entera y sin cortes. */
+  .mapa-simple { height: auto !important; min-height: 0 !important; break-inside: avoid; border: 0 !important; background: none !important; }
+  .mapa-simple .map-wrap { position: static !important; }
+  .mapa-simple .map, .mapa-simple .maplibregl-control-container { display: none !important; }
+  .mapa-impreso { display: block !important; width: 100%; height: auto; max-height: 150mm; object-fit: contain; border: 1pt solid #cce0d5; border-radius: 8pt; }
+  .leyenda-simple { break-after: avoid; }
+  .mas { border: 0; break-inside: auto; }
+  .mas summary { display: block !important; list-style: none; font-weight: 800; font-size: 13pt; margin: 10pt 0 4pt; }
+  .mas summary::-webkit-details-marker { display: none; }
+  .pasos-ruta li, .detalles li { break-inside: avoid; }
+  /* Más compacto en papel: resumen, leyenda y mapa caben en la primera hoja. */
+  .frase { padding: 10pt 12pt !important; border-width: 1.5pt !important; }
+  .frase h2 { font-size: 17pt !important; margin: 0 0 4pt !important; }
+  .frase p, .frase li { font-size: 10.5pt !important; }
+  .frase ol li, .frase ul li { padding: 2pt 0 !important; min-height: 0 !important; }
+  .frase .sw, .frase .pin-mini { width: 16pt !important; height: 16pt !important; font-size: 8pt !important; }
+  .leyenda-simple { font-size: 9pt; margin-top: 6pt; gap: 8pt !important; }
+  .mapa-impreso { max-height: 112mm; width: auto !important; max-width: 100%; margin: 0 auto; }
+  .mapa-simple .map-wrap, .mapa-simple > * { border: 0 !important; box-shadow: none !important; background: none !important; }
+  .pasos-ruta { columns: 2; column-gap: 14pt; font-size: 9.5pt; }
+  .pasos-ruta li { padding: 1.5pt 0 !important; }
+  .detalles { font-size: 9.5pt; }
 }
 .otra-distancia {
   display: flex;
@@ -1498,3 +1523,34 @@ nav .volver {
   header { padding: 10px 8px; }
   .brand svg { width: 32px; height: 32px; }
 }
+
+/* Indicaciones habladas paso a paso */
+.guia-voz, .seguimiento {
+  margin: 18px 0;
+  padding: 20px 20px 16px;
+  border: 3px solid #0e5242;
+  border-radius: 18px;
+  background: #f4faf7;
+}
+.guia-num { font-weight: 800; color: #466960; margin: 0 0 6px; }
+.guia-texto { font-size: 1.45rem; font-weight: 750; line-height: 1.3; margin: 0 0 14px; color: #0b3b30; }
+.guia-botones { display: flex; flex-wrap: wrap; gap: 10px; }
+.guia-botones .grande { flex: 1 1 140px; }
+.guia-extra { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-top: 14px; font-weight: 650; }
+.guia-extra input { width: 22px; height: 22px; vertical-align: -4px; }
+.pasos-ruta li.paso-actual { background: #fff3d6; border-radius: 10px; font-weight: 750; }
+.seguimiento h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.seguimiento.activo { border-color: #237ac3; background: #f1f7fd; }
+.seguimiento .nota { word-break: break-all; }
+@media print { .guia-voz, .seguimiento { display: none !important; } }
+
+/* Vista del familiar */
+.seguir { max-width: 760px; margin: 0 auto; padding: 16px; }
+.seguir-cabecera { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+.seguir-cabecera img { border-radius: 10px; }
+.seguir-cabecera div { display: flex; flex-direction: column; }
+.seguir-cabecera span { color: #466960; font-size: 0.95rem; }
+.seguir-frase h2 { margin: 0 0 6px; }
+.seguir-datos { margin: 10px 0 0; padding-left: 20px; font-size: 1.1rem; line-height: 1.6; }
+.seguir-hora { color: #466960; margin-top: 8px; }
+.seguir .mapa-simple { margin-top: 14px; }

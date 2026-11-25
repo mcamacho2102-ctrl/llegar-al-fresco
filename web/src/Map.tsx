@@ -71,6 +71,8 @@ export default function Map({
         // Un dedo casi nunca queda quieto al tocar: con la tolerancia por defecto (3 px)
         // el toque se tomaba como arrastre y el punto no se marcaba.
         clickTolerance: placing ? 14 : 6,
+        // En la app ciudadana el lienzo conserva su imagen para poder imprimir el mapa.
+        ...(simple ? { canvasContextAttributes: { preserveDrawingBuffer: true } } : {}),
       });
       map.current = m;
       m.addControl(new NavigationControl({ showCompass: false }), "top-right");
@@ -178,6 +180,8 @@ export default function Map({
               6,
               "footfall",
               7,
+              "position",
+              simple ? 12 : 9,
               9,
             ],
             "circle-color": [
@@ -196,7 +200,7 @@ export default function Map({
               "#0e5242",
             ],
             "circle-stroke-color": "#fff",
-            "circle-stroke-width": 2,
+            "circle-stroke-width": ["match", ["get", "kind"], "position", 4, 2],
           },
         });
         const popup = (event: maplibregl.MapMouseEvent) => {
@@ -389,6 +393,63 @@ export default function Map({
     ];
     return () => markers.forEach((item) => item.remove());
   }, [ready, simple, origin, destination, routes, selected]);
+  // Impresión: el mapa WebGL no se imprime. Justo antes de imprimir se compone una imagen
+  // con el mapa y los marcadores (A, B y bancos numerados) que escala entera en el papel.
+  const printImage = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const current = map.current;
+    if (!ready || !current || !simple) return;
+    const compose = () => {
+      const source = current.getCanvas();
+      const img = printImage.current;
+      if (!img || !source.width) return;
+      const canvas = document.createElement("canvas");
+      canvas.width = source.width;
+      canvas.height = source.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      try {
+        ctx.drawImage(source, 0, 0);
+      } catch {
+        return;
+      }
+      const k = source.width / (source.clientWidth || source.width);
+      const dot = (coordinates: Position, color: string, text: string, r: number) => {
+        const p = current.project(coordinates as [number, number]);
+        ctx.beginPath();
+        ctx.arc(p.x * k, p.y * k, r * k, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.lineWidth = 3 * k;
+        ctx.strokeStyle = "#fff";
+        ctx.stroke();
+        ctx.fillStyle = "#fff";
+        ctx.font = `800 ${Math.round(r * 1.05 * k)}px system-ui, sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, p.x * k, p.y * k + 1 * k);
+      };
+      (routes[selected]?.rests || []).forEach((rest, i) => dot(rest.coordinates, "#a8601a", String(i + 1), 14));
+      if (origin) dot(origin.coordinates, "#0e5242", "A", 18);
+      if (destination) dot(destination.coordinates, "#8e4320", "B", 18);
+      try {
+        img.src = canvas.toDataURL("image/png");
+      } catch {
+        /* lienzo protegido: se imprime sin mapa */
+      }
+    };
+    const media = window.matchMedia("print");
+    const onMedia = (e: MediaQueryListEvent) => e.matches && compose();
+    window.addEventListener("beforeprint", compose);
+    media.addEventListener?.("change", onMedia);
+    current.on("idle", compose);
+    return () => {
+      window.removeEventListener("beforeprint", compose);
+      media.removeEventListener?.("change", onMedia);
+      current.off("idle", compose);
+    };
+  }, [ready, simple, origin, destination, routes, selected]);
+
   useEffect(() => {
     const current = map.current;
     if (!ready || !current) return;
@@ -427,6 +488,7 @@ export default function Map({
           Usar el centro del mapa
         </button>
       )}
+      {simple && <img ref={printImage} className="mapa-impreso" alt="Mapa de la ruta con la salida, la llegada y los bancos" />}
       {failed ? (
         <p>
           El mapa no está disponible. Puedes consultar las rutas en el listado.

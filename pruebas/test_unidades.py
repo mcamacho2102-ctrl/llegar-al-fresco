@@ -58,5 +58,39 @@ class ClasificacionDeConsultas(unittest.TestCase):
         self.assertEqual(self.classify(corta, {"meters": 321}, 200), "rodeo")
 
 
+class SeguimientoEnDirecto(unittest.TestCase):
+    def setUp(self):
+        servicio._seguimientos.clear()
+        self.nuevo = servicio.crear_seguimiento(servicio.SeguimientoNuevo(
+            origen="A", destino="B", geometria=[[-3.61, 40.403], [-3.608, 40.408]],
+            bancos=[{"nombre": "Banco 1", "punto": [-3.609, 40.405], "aM": 200}]))
+
+    def test_ciclo_completo(self):
+        ident, clave = self.nuevo["id"], self.nuevo["clave"]
+        self.assertIsNone(servicio.ver_seguimiento(ident)["posicion"])
+        servicio.mover_seguimiento(ident, servicio.PosicionCompartida(clave=clave, lon=-3.609, lat=40.404, precision=12))
+        visto = servicio.ver_seguimiento(ident)
+        self.assertEqual(visto["posicion"]["punto"], [-3.609, 40.404])
+        self.assertNotIn("clave", visto, "la clave nunca se devuelve a quien sigue")
+        servicio.terminar_seguimiento(ident, servicio.FinSeguimiento(clave=clave, llegado=True))
+        self.assertTrue(servicio.ver_seguimiento(ident)["terminado"]["llegado"])
+
+    def test_sin_clave_no_se_mueve(self):
+        with self.assertRaises(servicio.HTTPException) as e:
+            servicio.mover_seguimiento(self.nuevo["id"], servicio.PosicionCompartida(clave="x" * 20, lon=-3.6, lat=40.4))
+        self.assertEqual(e.exception.status_code, 403)
+
+    def test_caduca(self):
+        from datetime import timedelta
+        servicio._seguimientos[self.nuevo["id"]]["caduca"] -= timedelta(hours=4)
+        with self.assertRaises(servicio.HTTPException) as e:
+            servicio.ver_seguimiento(self.nuevo["id"])
+        self.assertEqual(e.exception.status_code, 404)
+
+    def test_identificador_raro(self):
+        with self.assertRaises(servicio.HTTPException):
+            servicio.ver_seguimiento("../../etc")
+
+
 if __name__ == "__main__":
     unittest.main()

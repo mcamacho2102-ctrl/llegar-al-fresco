@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Address from "./Address";
 import Map from "./Map";
 import {
@@ -61,12 +61,38 @@ const EXAMPLE = {
   departure: "2025-07-01T14:00",
 };
 
+const nombreVia = (label: string) => (/^tramo peatonal$/i.test(label) ? "el tramo peatonal" : label);
 function instruction({ action, label, turn }: Step) {
-  if (turn) return (turn === "left" ? "Gira a la izquierda hacia " : "Gira a la derecha hacia ") + label;
+  const via = nombreVia(label);
+  if (turn) return (turn === "left" ? "Gira a la izquierda hacia " : "Gira a la derecha hacia ") + via;
   if (action === "rest") return "Siéntate en el banco de " + label;
-  if (action === "cross") return "Cruza por " + label;
-  return "Sigue por " + label;
+  if (action === "cross") return "Cruza por " + via;
+  return "Sigue por " + via;
 }
+/** Junta pasos seguidos iguales («Cruza por Calle San Cipriano» cinco veces → una). */
+function compactSteps(steps: Step[]): Step[] {
+  const out: Step[] = [];
+  for (const step of steps) {
+    const prev = out[out.length - 1];
+    if (prev && step.action !== "rest" && !step.turn && prev.action === step.action && prev.label === step.label) {
+      out[out.length - 1] = { ...prev, distanceM: prev.distanceM + step.distanceM };
+    } else out.push({ ...step });
+  }
+  return out;
+}
+/** Texto pensado para el oído: nombres de calle naturales y sin abreviaturas. */
+function hablado(text: string) {
+  return text
+    .replace(/\b(Del|De|La|Las|Los|El|Y)\b(?=\s)/g, (w, _m, i) => (i === 0 ? w : w.toLowerCase()))
+    .replace(/\bS\/N\b/gi, "sin número")
+    .replace(/\bC\. ?S\.(?=\s)/g, "centro de salud")
+    .replace(/\bAvda\.?(?=\s)/gi, "avenida")
+    .replace(/\bPza\.?(?=\s)/gi, "plaza")
+    .replace(/(\d) m\b/g, "$1 metros")
+    .replace(/ · /g, ", ");
+}
+const pasoHablado = (step: Step) =>
+  instruction(step) + (step.action === "walk" && step.distanceM >= 5 ? `, ${Math.round(step.distanceM)} metros.` : ".");
 const minutes = (value: number) => {
   const m = Math.max(1, Math.round(value));
   return m === 1 ? "1 minuto" : `${m} minutos`;
@@ -130,10 +156,64 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     return () => window.cancelAnimationFrame(frame);
   }, [result]);
 
+  useEffect(() => {
+    let closed: HTMLDetailsElement[] = [];
+    const before = () => {
+      closed = Array.from(document.querySelectorAll<HTMLDetailsElement>(".resultado details.mas:not([open])"));
+      closed.forEach((d) => (d.open = true));
+    };
+    const after = () => {
+      closed.forEach((d) => (d.open = false));
+      closed = [];
+    };
+    window.addEventListener("beforeprint", before);
+    window.addEventListener("afterprint", after);
+    return () => {
+      window.removeEventListener("beforeprint", before);
+      window.removeEventListener("afterprint", after);
+    };
+  }, []);
+
   const [speaking, setSpeaking] = useState(false);
+  const [guia, setGuia] = useState<number | null>(null);
+  const [despacio, setDespacio] = useState(() => {
+    try {
+      return localStorage.getItem("voz-despacio") === "1";
+    } catch {
+      return false;
+    }
+  });
+  const turnoVoz = useRef(0);
   const stopSpeaking = () => {
+    turnoVoz.current++;
     window.speechSynthesis?.cancel();
     setSpeaking(false);
+  };
+  /** Lee frase a frase con una pausa breve entre ellas: se entiende mejor y nunca se corta. */
+  const decir = (lines: string[]) => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    synth.cancel();
+    const turno = ++turnoVoz.current;
+    const voice = bestSpanishVoice();
+    const una = (i: number) => {
+      if (turno !== turnoVoz.current) return;
+      if (i >= lines.length) {
+        setSpeaking(false);
+        return;
+      }
+      const u = new SpeechSynthesisUtterance(hablado(lines[i]));
+      u.lang = voice?.lang || "es-ES";
+      if (voice) u.voice = voice;
+      u.rate = despacio ? 0.78 : 0.93;
+      u.pitch = 1;
+      u.volume = 1;
+      u.onend = () => window.setTimeout(() => una(i + 1), 400);
+      u.onerror = () => turno === turnoVoz.current && setSpeaking(false);
+      synth.speak(u);
+    };
+    setSpeaking(true);
+    una(0);
   };
   useEffect(() => {
     // Las voces se cargan tarde en algunos navegadores: pedirlas al montar.
@@ -152,28 +232,128 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     return parts.join(" ");
   };
 
-  const speak = (route: Route) => {
-    const synth = window.speechSynthesis;
-    if (!synth) return;
-    synth.cancel();
-    const lines = [
-      summary(route),
-      ...route.steps.map((step) =>
-        instruction(step) + (step.action === "walk" ? `, ${Math.round(step.distanceM)} metros.` : "."),
-      ),
-      "Has llegado.",
-    ];
-    const voice = bestSpanishVoice();
-    lines.forEach((text, index) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = voice?.lang || "es-ES";
-      utterance.rate = 0.92;
-      utterance.pitch = 1;
-      if (voice) utterance.voice = voice;
-      if (index === lines.length - 1) utterance.onend = () => setSpeaking(false);
-      synth.speak(utterance);
-    });
-    setSpeaking(true);
+  const leerTodo = (route: Route) => decir([summary(route), ...compactSteps(route.steps).map(pasoHablado), "Has llegado."]);
+  const decirPaso = (route: Route, i: number) => {
+    const pasos = compactSteps(route.steps);
+    const j = Math.max(0, Math.min(pasos.length - 1, i));
+    setGuia(j);
+    decir([`Paso ${j + 1} de ${pasos.length}.`, pasoHablado(pasos[j]) + (j === pasos.length - 1 ? " Después, has llegado." : "")]);
+  };
+  const empezarGuia = (route: Route) => {
+    setGuia(0);
+    const pasos = compactSteps(route.steps);
+    decir([summary(route), "Vamos paso a paso. Pulsa Siguiente cuando quieras el próximo.", `Paso 1 de ${pasos.length}.`, pasoHablado(pasos[0])]);
+  };
+
+  // ------------------------------------------------------------------ seguimiento en directo
+  type Seguimiento =
+    | { fase: "explica" }
+    | { fase: "activo"; id: string; clave: string; url: string; estado: string };
+  const [seguimiento, setSeguimiento] = useState<Seguimiento | null>(null);
+  const vigia = useRef<number | null>(null);
+  const ultimoEnvio = useRef<{ t: number; p: Position } | null>(null);
+  const pantalla = useRef<{ release: () => Promise<void> } | null>(null);
+  const distancia = (a: Position, b: Position) =>
+    Math.hypot((a[0] - b[0]) * 84500, (a[1] - b[1]) * 111200);
+  const pararVigia = () => {
+    if (vigia.current !== null) navigator.geolocation?.clearWatch(vigia.current);
+    vigia.current = null;
+    void pantalla.current?.release().catch(() => undefined);
+    pantalla.current = null;
+  };
+  useEffect(() => () => pararVigia(), []);
+  const terminarSeguimiento = async (llegado = false) => {
+    const actual = seguimiento;
+    pararVigia();
+    setSeguimiento(null);
+    if (actual?.fase === "activo")
+      await fetch(`/api/seguimiento/${actual.id}/fin`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clave: actual.clave, llegado }),
+      }).catch(() => undefined);
+  };
+  const enviarEnlace = async (url: string) => {
+    const text = `Sigue mi camino hasta ${destination?.label || "mi destino"} con Llegar al fresco:`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "Sigue mi camino", text, url });
+        return;
+      }
+    } catch {
+      return;
+    }
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + url)}`, "_blank", "noopener");
+  };
+  const empezarSeguimiento = async (route: Route) => {
+    if (!navigator.geolocation || !origin || !destination) {
+      setError("Este navegador no permite compartir la ubicación.");
+      return;
+    }
+    try {
+      const r = await fetch("/api/seguimiento", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          origen: origin.label,
+          destino: destination.label,
+          geometria: route.geometry.coordinates,
+          bancos: route.rests.map((x) => ({ nombre: x.label, punto: x.coordinates, aM: x.atM })),
+        }),
+      });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.detail || "No se ha podido empezar el seguimiento.");
+      const url = `${window.location.origin}/?seguir=${j.id}`;
+      setSeguimiento({ fase: "activo", id: j.id, clave: j.clave, url, estado: "Esperando tu posición…" });
+      try {
+        // Mantener la pantalla encendida: con la pantalla apagada, la web no puede enviar la posición.
+        const wl = (navigator as unknown as { wakeLock?: { request: (t: string) => Promise<{ release: () => Promise<void> }> } }).wakeLock;
+        pantalla.current = wl ? await wl.request("screen") : null;
+      } catch {
+        pantalla.current = null;
+      }
+      ultimoEnvio.current = null;
+      const llegada = destination.coordinates;
+      vigia.current = navigator.geolocation.watchPosition(
+        async (pos) => {
+          const p: Position = [pos.coords.longitude, pos.coords.latitude];
+          const ahora = Date.now();
+          const previo = ultimoEnvio.current;
+          if (previo && ahora - previo.t < 12000 && distancia(previo.p, p) < 25) return;
+          ultimoEnvio.current = { t: ahora, p };
+          const res = await fetch(`/api/seguimiento/${j.id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ clave: j.clave, lon: p[0], lat: p[1], precision: pos.coords.accuracy || 0 }),
+          }).catch(() => null);
+          const hora = new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+          setSeguimiento((s) =>
+            s?.fase === "activo"
+              ? { ...s, estado: res?.ok ? `Compartiendo tu posición · enviada a las ${hora}` : "No se ha podido enviar tu posición; lo intentamos de nuevo." }
+              : s,
+          );
+          if (distancia(p, llegada) < 35) {
+            pararVigia();
+            await fetch(`/api/seguimiento/${j.id}/fin`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ clave: j.clave, llegado: true }),
+            }).catch(() => undefined);
+            setSeguimiento((s) => (s?.fase === "activo" ? { ...s, estado: "✅ Has llegado. Tu familia ya lo ve." } : s));
+          }
+        },
+        (err) =>
+          setSeguimiento((s) =>
+            s?.fase === "activo"
+              ? { ...s, estado: err.code === 1 ? "Sin permiso de ubicación: actívalo para que puedan seguirte." : "Buscando tu ubicación…" }
+              : s,
+          ),
+        { enableHighAccuracy: true, maximumAge: 10000, timeout: 30000 },
+      );
+    } catch (e) {
+      setError((e as Error).message);
+      setSeguimiento(null);
+    }
   };
 
   const shareLink = () => {
@@ -235,6 +415,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
 
   const reset = () => {
     stopSpeaking();
+    setGuia(null);
     setResult(null);
     setLayer("route");
     setError("");
@@ -691,6 +872,14 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
       {/* Resultado */}
       {result && (
         <section id="resultado" className="resultado" aria-live="polite">
+          {result && shown && origin && destination && (
+            <div className="print-only cabecera-impresa">
+              <strong>Llegar al fresco</strong> · {origin.label} → {destination.label}
+              <br />
+              {limit === null ? "Sin límite de descanso" : `Como mucho ${limit} m sin sentarte`} · salida{" "}
+              {(when === "now" ? madridNow() : departure).replace("T", " a las ")} · llegaralfresco.outofthemark.com
+            </div>
+          )}
           {result && !shown && (
             <div className="frase">
               <h2>No hemos encontrado ningún camino</h2>
@@ -907,8 +1096,8 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
               <details className="mas">
                 <summary>Indicaciones paso a paso</summary>
                 <ol className="pasos-ruta">
-                  {shown.steps.map((step, i) => (
-                    <li key={i}>
+                  {compactSteps(shown.steps).map((step, i) => (
+                    <li key={i} className={guia === i ? "paso-actual" : undefined}>
                       {instruction(step)}
                       {step.action === "walk" && <small> · {fmt(Math.round(step.distanceM))} m</small>}
                     </li>
@@ -944,15 +1133,93 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                   lo que necesites.
                 </p>
               </details>
+              {guia !== null && (() => {
+                const pasos = compactSteps(shown.steps);
+                const paso = pasos[Math.min(guia, pasos.length - 1)];
+                return (
+                  <div className="guia-voz" role="region" aria-label="Indicaciones habladas">
+                    <p className="guia-num">Paso {guia + 1} de {pasos.length}</p>
+                    <p className="guia-texto">
+                      {instruction(paso)}
+                      {paso.action === "walk" && paso.distanceM >= 5 && <small> · {fmt(Math.round(paso.distanceM))} m</small>}
+                    </p>
+                    <div className="guia-botones">
+                      <button type="button" className="grande secundario" disabled={guia === 0} onClick={() => decirPaso(shown, guia - 1)}>⏮️ Anterior</button>
+                      <button type="button" className="grande secundario" onClick={() => decirPaso(shown, guia)}>🔁 Repetir</button>
+                      <button type="button" className="grande" disabled={guia >= pasos.length - 1} onClick={() => decirPaso(shown, guia + 1)}>Siguiente ⏭️</button>
+                    </div>
+                    <div className="guia-extra">
+                      <label>
+                        <input
+                          type="checkbox"
+                          checked={despacio}
+                          onChange={(e) => {
+                            setDespacio(e.target.checked);
+                            try {
+                              localStorage.setItem("voz-despacio", e.target.checked ? "1" : "0");
+                            } catch {
+                              /* sin almacenamiento */
+                            }
+                          }}
+                        />{" "}
+                        Hablar más despacio
+                      </label>
+                      <button type="button" className="link-button" onClick={() => (speaking ? stopSpeaking() : leerTodo(shown))}>
+                        {speaking ? "⏹️ Callar" : "Leer toda la ruta seguida"}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })()}
+              {seguimiento?.fase === "explica" && (
+                <div className="seguimiento" role="region" aria-label="Que tu familia te siga">
+                  <h3>👪 Que tu familia te siga</h3>
+                  <p>
+                    Te damos un enlace para enviar por WhatsApp. Quien lo abra verá en un mapa por dónde vas y por qué banco
+                    pasas, hasta que llegues.
+                  </p>
+                  <ul className="detalles">
+                    <li>Solo durante este trayecto: se apaga al llegar o, como mucho, a las 3 horas.</li>
+                    <li>No se guarda en ningún sitio y puedes pararlo cuando quieras.</li>
+                    <li>Mantén esta pantalla abierta mientras caminas.</li>
+                  </ul>
+                  <div className="guia-botones">
+                    <button type="button" className="grande" onClick={() => void empezarSeguimiento(shown)}>Empezar a compartir</button>
+                    <button type="button" className="grande secundario" onClick={() => setSeguimiento(null)}>Ahora no</button>
+                  </div>
+                </div>
+              )}
+              {seguimiento?.fase === "activo" && (
+                <div className="seguimiento activo" role="region" aria-label="Seguimiento en directo" aria-live="polite">
+                  <h3>👪 Tu familia puede seguirte</h3>
+                  <p>{seguimiento.estado}</p>
+                  <div className="guia-botones">
+                    <button type="button" className="grande" onClick={() => void enviarEnlace(seguimiento.url)}>📤 Enviar el enlace</button>
+                    <button type="button" className="grande secundario" onClick={() => void terminarSeguimiento(false)}>⏹️ Dejar de compartir</button>
+                  </div>
+                  <p className="nota">Enlace: {seguimiento.url}</p>
+                </div>
+              )}
               <div className="acciones">
                 {"speechSynthesis" in window && (
                   <button
                     type="button"
                     className="grande secundario"
-                    aria-pressed={speaking}
-                    onClick={() => (speaking ? stopSpeaking() : speak(shown))}
+                    aria-pressed={guia !== null}
+                    onClick={() => {
+                      if (guia === null) empezarGuia(shown);
+                      else {
+                        stopSpeaking();
+                        setGuia(null);
+                      }
+                    }}
                   >
-                    {speaking ? "⏹️ Parar" : "🔊 Escuchar indicaciones"}
+                    {guia === null ? "🔊 Escuchar indicaciones" : "✖️ Cerrar indicaciones habladas"}
+                  </button>
+                )}
+                {!seguimiento && "geolocation" in navigator && (
+                  <button type="button" className="grande secundario" onClick={() => setSeguimiento({ fase: "explica" })}>
+                    👪 Que mi familia me siga
                   </button>
                 )}
                 <button type="button" className="grande secundario" onClick={() => void share(shown)}>

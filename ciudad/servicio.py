@@ -636,6 +636,119 @@ def informe_csv(demo: bool = False, dias: Optional[int] = Query(default=None, ge
     )
 
 
+# --------------------------------------------------------------------------- seguimiento
+# «Que me sigan»: quien camina comparte un enlace y un familiar ve en un mapa por dónde va.
+# Todo vive solo en memoria (nunca en disco ni en el registro de uso), caduca a las 3 horas
+# y desaparece 30 minutos después de terminar. Solo quien tiene la clave puede mover el punto.
+import secrets
+import re as _re
+
+SEGUIMIENTO_MAX_H = 3
+SEGUIMIENTO_MAX = 500
+_seguimientos: dict = {}
+_ID = _re.compile(r"^[A-Za-z0-9_-]{8,40}$")
+
+
+class SeguimientoNuevo(BaseModel):
+    origen: str = Field(max_length=200)
+    destino: str = Field(max_length=200)
+    geometria: list = Field(max_length=6000)
+    bancos: list = Field(default_factory=list, max_length=80)
+
+
+class PosicionCompartida(BaseModel):
+    clave: str = Field(min_length=10, max_length=60)
+    lon: float = Field(ge=-4.2, le=-3.0)
+    lat: float = Field(ge=39.8, le=41.2)
+    precision: float = Field(default=0, ge=0, le=10000)
+
+
+class FinSeguimiento(BaseModel):
+    clave: str = Field(min_length=10, max_length=60)
+    llegado: bool = False
+
+
+def _limpia_seguimientos(ahora):
+    for k in [k for k, v in _seguimientos.items() if v["caduca"] < ahora]:
+        del _seguimientos[k]
+
+
+def _punto(valor):
+    try:
+        lon, lat = float(valor[0]), float(valor[1])
+    except (TypeError, ValueError, IndexError):
+        raise HTTPException(422, "Coordenadas no válidas.")
+    if not (-4.2 <= lon <= -3.0 and 39.8 <= lat <= 41.2):
+        raise HTTPException(422, "Coordenadas fuera de la Comunidad de Madrid.")
+    return [round(lon, 6), round(lat, 6)]
+
+
+@app.post("/api/seguimiento")
+def crear_seguimiento(datos: SeguimientoNuevo):
+    ahora = datetime.now(ZoneInfo("Europe/Madrid"))
+    _limpia_seguimientos(ahora)
+    if len(_seguimientos) >= SEGUIMIENTO_MAX:
+        raise HTTPException(503, "Ahora mismo no se pueden crear más seguimientos. Inténtalo en unos minutos.")
+    if len(datos.geometria) < 2:
+        raise HTTPException(422, "Falta el recorrido.")
+    bancos = []
+    for b in datos.bancos:
+        if isinstance(b, dict):
+            bancos.append({"nombre": str(b.get("nombre", ""))[:120], "punto": _punto(b.get("punto")), "aM": float(b.get("aM", 0))})
+    ident, clave = secrets.token_urlsafe(9), secrets.token_urlsafe(18)
+    _seguimientos[ident] = {
+        "clave": clave,
+        "origen": datos.origen,
+        "destino": datos.destino,
+        "geometria": [_punto(p) for p in datos.geometria],
+        "bancos": bancos,
+        "posicion": None,
+        "terminado": None,
+        "creado": ahora,
+        "caduca": ahora + timedelta(hours=SEGUIMIENTO_MAX_H),
+    }
+    return {"id": ident, "clave": clave, "caduca": _seguimientos[ident]["caduca"].isoformat(timespec="minutes")}
+
+
+def _seguimiento(ident):
+    ahora = datetime.now(ZoneInfo("Europe/Madrid"))
+    _limpia_seguimientos(ahora)
+    s = _seguimientos.get(ident) if _ID.match(ident or "") else None
+    if not s:
+        raise HTTPException(404, "Este seguimiento ya no existe: ha terminado o han pasado más de 3 horas.")
+    return s, ahora
+
+
+@app.put("/api/seguimiento/{ident}")
+def mover_seguimiento(ident: str, datos: PosicionCompartida):
+    s, ahora = _seguimiento(ident)
+    if not secrets.compare_digest(s["clave"], datos.clave):
+        raise HTTPException(403, "Clave no válida.")
+    if s["terminado"]:
+        raise HTTPException(409, "El seguimiento ya ha terminado.")
+    s["posicion"] = {"punto": [round(datos.lon, 6), round(datos.lat, 6)], "precision": round(datos.precision), "hora": ahora.isoformat(timespec="seconds")}
+    return {"ok": True}
+
+
+@app.post("/api/seguimiento/{ident}/fin")
+def terminar_seguimiento(ident: str, datos: FinSeguimiento):
+    s, ahora = _seguimiento(ident)
+    if not secrets.compare_digest(s["clave"], datos.clave):
+        raise HTTPException(403, "Clave no válida.")
+    s["terminado"] = {"llegado": datos.llegado, "hora": ahora.isoformat(timespec="seconds")}
+    s["caduca"] = min(s["caduca"], ahora + timedelta(minutes=30))
+    return {"ok": True}
+
+
+@app.get("/api/seguimiento/{ident}")
+def ver_seguimiento(ident: str):
+    s, ahora = _seguimiento(ident)
+    return {k: s[k] for k in ("origen", "destino", "geometria", "bancos", "posicion", "terminado")} | {
+        "caduca": s["caduca"].isoformat(timespec="minutes"),
+        "ahora": ahora.isoformat(timespec="seconds"),
+    }
+
+
 @app.get("/api/info")
 def info():
     city = app.state.city
