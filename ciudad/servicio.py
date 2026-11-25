@@ -260,8 +260,8 @@ CSP = "; ".join(
         "font-src 'self' data: https://tiles.openfreemap.org",
         "connect-src 'self' https://tiles.openfreemap.org",
         "worker-src 'self' blob:",
-        # Solo se deja incrustar en sí misma y en la presentación local de la final (/pitch en el portátil).
-        "frame-ancestors 'self' http://127.0.0.1:8768 http://localhost:8768",
+        # Solo se deja incrustar en sí misma, en la presentación local de la final (/pitch en el portátil) y en la publicada.
+        "frame-ancestors 'self' http://127.0.0.1:8768 http://localhost:8768 https://presentacion.outofthemark.com",
         "base-uri 'self'",
         "form-action 'self'",
     ]
@@ -272,7 +272,7 @@ CSP = "; ".join(
 async def security_headers(request: Request, call_next):
     response = await call_next(request)
     response.headers.setdefault("X-Content-Type-Options", "nosniff")
-    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    # Sin X-Frame-Options: frame-ancestors (CSP) decide quién puede incrustar la app y la presentación pública debe poder.
     response.headers.setdefault("Referrer-Policy", "no-referrer")
     response.headers.setdefault("Permissions-Policy", "geolocation=(self), camera=(), microphone=()")
     response.headers.setdefault("Content-Security-Policy", CSP_PITCH if request.url.path.startswith("/pitch") else CSP)

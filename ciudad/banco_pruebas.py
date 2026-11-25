@@ -303,7 +303,9 @@ def test_jury_security_and_mcp():
     # 2. HTTP security headers check on /
     code, _, hdrs, dt = http("/")
     lower = {k.lower(): v for k, v in hdrs.items()}
-    missing = [h for h in ("x-content-type-options", "x-frame-options", "content-security-policy") if h not in lower]
+    missing = [h for h in ("x-content-type-options", "content-security-policy") if h not in lower]
+    if "frame-ancestors" not in lower.get("content-security-policy", ""):
+        missing.append("frame-ancestors (CSP)")
     record(G, "Cabeceras seguridad HTTP en /", "WARN" if missing else "PASS",
            f"HTTP {code}, ausentes: {', '.join(missing) or 'ninguna'}", dt)
 
