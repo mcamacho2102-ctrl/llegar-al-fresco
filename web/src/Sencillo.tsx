@@ -689,6 +689,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           <Address
             label="Dirección o lugar de llegada"
             value={destination}
+            near={origin?.coordinates}
             onChange={(p) => {
               reset();
               setDestination(p);

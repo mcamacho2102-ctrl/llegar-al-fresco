@@ -92,5 +92,39 @@ class SeguimientoEnDirecto(unittest.TestCase):
             servicio.ver_seguimiento("../../etc")
 
 
+class Buscador(unittest.TestCase):
+    """Orden de resultados y etiquetas, sin datos ni red."""
+
+    calle = {"label": "Calle Mayor, 1", "kind": "address", "source": "Callejero municipal", "coordinates": [-3.707, 40.416]}
+    centro = {"label": "Centro de Salud Justicia — Centro de salud · Calle de Regueros 3", "kind": "health",
+              "source": "Comunidad de Madrid", "coordinates": [-3.695, 40.425]}
+    negocio = {"label": "Mercadona · Calle de Alcalá, 120", "kind": "address",
+               "source": "Supermercado · a 300 m · OpenStreetMap", "coordinates": [-3.67, 40.42]}
+    lugar = {"label": "Museo Nacional del Prado", "kind": "address", "source": "Lugar · CartoCiudad (IGN)",
+             "coordinates": [-3.6925, 40.4138]}
+
+    def test_con_numero_manda_el_callejero(self):
+        r = servicio.mezclar("calle mayor 1", [self.calle], [self.lugar], [self.negocio])
+        self.assertEqual(r[0]["label"], "Calle Mayor, 1")
+
+    def test_por_nombre_primero_el_destino_propio_y_luego_negocios(self):
+        r = servicio.mezclar("centro de salud justicia", [self.centro], [self.lugar], [self.negocio])
+        self.assertEqual(r[0]["kind"], "health")
+        self.assertIn("OpenStreetMap", r[1]["source"])
+
+    def test_sin_duplicados_cercanos(self):
+        cerca = dict(self.lugar, label="Museo del Prado", source="Museo · OpenStreetMap")
+        r = servicio.mezclar("museo del prado", [], [self.lugar], [cerca])
+        self.assertEqual(len(r), 1)
+
+    def test_etiquetas(self):
+        from ciudad.negocios import categoria, suave
+        self.assertEqual(servicio.bonito("MUSEO NACIONAL DEL PRADO, Madrid"), "Museo Nacional del Prado")
+        self.assertEqual(servicio.bonito("CALLE MAYOR 1 B", True), "Calle Mayor, 1 B")
+        self.assertEqual(suave("Calle Del Butron, 16"), "Calle del Butron, 16")
+        self.assertEqual(categoria({"shop": "supermarket"}), "Supermercado")
+        self.assertIsNone(categoria({"amenity": "bench"}))
+
+
 if __name__ == "__main__":
     unittest.main()

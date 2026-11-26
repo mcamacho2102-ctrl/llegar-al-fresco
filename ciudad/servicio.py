@@ -22,7 +22,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from ciudad.fuentes import AEMET, RAW, ROOT, response
-from ciudad.motor import MAX_CHECKS, MAX_CONNECT, Madrid, Limits, TO_METERS, coordinates, is_primary_care, normal
+from ciudad.motor import MAX_CHECKS, MAX_CONNECT, Madrid, Limits, SEARCH_ALIASES, STREET_KINDS, TO_METERS, coordinates, is_primary_care, normal
 from ciudad.aforos import CAMPAIGN_SOURCE, PERMANENT_SOURCE, read_footfall
 from ciudad.priorizar import SEARCH_BUDGET, compare_banks
 from ciudad.uso import Registro
@@ -838,15 +838,21 @@ def _cerca(a, b, metros=60):
     return hypot((x1 - x2) * 84_400, (y1 - y2) * 111_000) < metros
 
 
-def mezclar(q, propios, externos):
-    """Orden: con número, primero el callejero propio; por nombre, primero los destinos propios
-    que contienen todas las palabras (con horario y tipo), luego CartoCiudad y luego el resto."""
+def mezclar(q, propios, externos, negocios=()):
+    """Orden: con número o tipo de vía, primero el callejero propio; por nombre, primero los
+    destinos propios que contienen todas las palabras (con horario y tipo), luego los negocios
+    (los más cercanos primero), luego CartoCiudad y luego el resto."""
     palabras = [w for w in normal(q).split() if w not in MINUSCULAS]
     numero = any(w.isdigit() for w in palabras)
-    if numero:
+    via = any(SEARCH_ALIASES.get(w, w) in STREET_KINDS for w in palabras)
+    if numero or via:
+        externos = list(externos) + list(negocios)[:3]
+    else:
+        externos = list(negocios)[:6] + list(externos)
+    if numero or via:
         delante = propios
         extra = externos if not any(r.get("kind") == "address" for r in propios) else [
-            e for e in externos if "Lugar" in e["source"]]
+            e for e in externos if "Lugar" in e["source"] or "OpenStreetMap" in e["source"]]
         detras = []
     else:
         nombre = lambda r: normal(str(r.get("label", "")).split(" — ")[0].split(" · ")[0])
@@ -861,7 +867,8 @@ def mezclar(q, propios, externos):
     vistos = delante + detras
     nuevos = []
     for e in extra:
-        if any(_cerca(e["coordinates"], r["coordinates"]) for r in vistos + nuevos if r.get("coordinates")):
+        lejos = 40 if "OpenStreetMap" in e["source"] else 60
+        if any(_cerca(e["coordinates"], r["coordinates"], lejos) for r in vistos + nuevos if r.get("coordinates")):
             continue
         nuevos.append(e)
     final = []
@@ -873,9 +880,28 @@ def mezclar(q, propios, externos):
     return final
 
 
+def negocios_cerca(q, cerca):
+    """Negocios de OpenStreetMap (ciudad/negocios.py) a los que se puede llegar por la red."""
+    from ciudad.negocios import buscar
+
+    try:
+        punto = tuple(float(v) for v in cerca.split(",")) if cerca else None
+        if punto and (len(punto) != 2 or not (-4 <= punto[0] <= -3 and 40 <= punto[1] <= 41)):
+            punto = None
+    except ValueError:
+        punto = None
+    try:
+        hallados = buscar(q, punto)
+    except Exception:
+        return []
+    city = app.state.city
+    return [n for n in hallados if city.locate(*n["coordinates"])][:8]
+
+
 @app.get("/api/addresses")
 def addresses(
-    q: str = Query(min_length=2, max_length=120), at: Optional[datetime] = None
+    q: str = Query(min_length=2, max_length=120), at: Optional[datetime] = None,
+    cerca: Optional[str] = Query(None, max_length=60),
 ):
     global _carto_pool
     city = app.state.city
@@ -885,11 +911,12 @@ def addresses(
         _carto_pool = ThreadPoolExecutor(max_workers=4)
     futuro = _carto_pool.submit(cartociudad, q)
     results = city.search(q)
+    cercanos = negocios_cerca(q, cerca)
     try:
         externos = futuro.result(timeout=CARTO_TIMEOUT + 0.5)
     except Exception:
         externos = []
-    results = mezclar(q, results, externos)
+    results = mezclar(q, results, externos, cercanos)
     if at is None:
         return {"results": results}
     if at.tzinfo is not None:

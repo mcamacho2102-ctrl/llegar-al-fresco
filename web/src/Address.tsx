@@ -1,14 +1,17 @@
 import { useEffect, useId, useState } from "react";
-import { api, Place } from "./model";
+import { api, Place, Position } from "./model";
 export default function Address({
   label,
   value,
   onChange,
   onMap,
   departure,
+  near,
 }: {
   label: string;
   departure?: string;
+  /** Punto desde el que ordenar los negocios por cercanía (la salida, al buscar la llegada). */
+  near?: Position | null;
   value: Place | null;
   onChange: (place: Place | null) => void;
   onMap: () => void;
@@ -19,6 +22,7 @@ export default function Address({
   const [active, setActive] = useState(-1);
   const [opened, setOpened] = useState(false);
   const [status, setStatus] = useState("");
+  const cerca = near ? near.map((v) => v.toFixed(5)).join(",") : "";
   useEffect(() => {
     if (value) {
       setText(value.label);
@@ -39,6 +43,7 @@ export default function Address({
             new URLSearchParams({
               q: text,
               ...(departure ? { at: departure } : {}),
+              ...(cerca ? { cerca } : {}),
             }),
           { signal: controller.signal },
         );
@@ -59,7 +64,7 @@ export default function Address({
       window.clearTimeout(timer);
       controller.abort();
     };
-  }, [text, opened, value, departure]);
+  }, [text, opened, value, departure, cerca]);
   const select = (place: Place) => {
     onChange(place);
     setOpened(false);
@@ -75,7 +80,7 @@ export default function Address({
           id={id}
           role="combobox"
           autoComplete="off"
-          placeholder="Calle y número o lugar"
+          placeholder="Calle y número, lugar o negocio"
           aria-expanded={show && results.length > 0}
           aria-controls={id + "-results"}
           aria-autocomplete="list"

@@ -86,6 +86,7 @@ El `Dockerfile` construye la web y sirve FastAPI en el puerto 8080. También hay
 .venv/bin/python -m ciudad.preparar     # red, índices, destinos (incluye ciudad.regional)
 .venv/bin/python -m ciudad.relieve      # cotas del MDT05
 .venv/bin/python -m ciudad.nombres      # nombres de centros sanitarios desde OSM
+.venv/bin/python -m ciudad.negocios     # negocios y lugares con nombre para el buscador (OSM, unos 2 min)
 .venv/bin/python -m ciudad.municipios   # capa regional de los 179 municipios
 .venv/bin/python -m ciudad.impacto --todos --n 150   # cifra de impacto (unos 40 s)
 .venv/bin/python -m ciudad.sdm          # destinos como Smart Data Models · PointOfInterest, validados
@@ -119,7 +120,7 @@ Los aforos horarios corresponden a enero–junio de 2024 ([permanentes](https://
 - **Sombra y meteorología.** La proyección solar usa sobre todo la altura de los edificios (492.776 polígonos); de los árboles solo entran las pocas copas de OSM con dimensiones (21), así que la sombra del arbolado apenas se modela. Intervalos de 15 minutos sobre terreno plano. AEMET aporta el pronóstico horario y la red regional, la observación histórica.
 - **Equipamientos.** Fuentes y aseos cercanos al trayecto, con acceso por confirmar. CentroCentro y Matadero tienen fichas históricas del verano de 2026. Que un centro esté registrado no significa que esté abierto en ese momento ni que sea un refugio climático.
 - **Seguimiento para familiares.** La posición solo vive en la memoria del servidor: no se escribe en disco ni en el registro de uso, caduca a las 3 horas y se borra 30 minutos después de llegar. Solo quien inició el seguimiento (con su clave) puede mover el punto.
-- **Navegación y privacidad.** La ubicación requiere permiso del navegador. La ruta activa se guarda en el dispositivo y se borra al terminar. La API recibe origen y destino solo para calcular, y el servidor desactiva los registros de acceso. El buscador consulta también CartoCiudad (IGN) para encontrar lugares por su nombre; la consulta la hace el servidor, de modo que al IGN solo le llega el texto buscado, nunca la IP ni la ubicación de quien busca. Se desactiva con `CARTOCIUDAD=0`.
+- **Navegación y privacidad.** La ubicación requiere permiso del navegador. La ruta activa se guarda en el dispositivo y se borra al terminar. La API recibe origen y destino solo para calcular, y el servidor desactiva los registros de acceso. El buscador encuentra también negocios y lugares por su nombre («Mercadona», «farmacia», «Museo del Prado») con un índice propio de OpenStreetMap; en la llegada los ordena por cercanía a la salida, que se usa solo para ordenar y no se guarda. Además consulta CartoCiudad (IGN); la consulta la hace el servidor, de modo que al IGN solo le llega el texto buscado, nunca la IP ni la ubicación de quien busca. Se desactiva con `CARTOCIUDAD=0`.
 - **Estudios municipales.** Hasta 16 portales de cuadrículas de 75 m, con la misma función de coste para ambos recorridos. Las cifras cuentan portales muestreados. Los costes los introduce el analista.
 
 ## Limitaciones conocidas

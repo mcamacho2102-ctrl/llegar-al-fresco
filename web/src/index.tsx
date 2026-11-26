@@ -1009,6 +1009,7 @@ function App() {
                 <Address
                   label="Llegada"
                   departure={departure}
+                  near={origin?.coordinates}
                   value={destination}
                   onChange={(p) => selectPlace("destination", p)}
                   onMap={() => activateMap("destination")}
