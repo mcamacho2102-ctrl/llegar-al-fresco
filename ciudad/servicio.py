@@ -761,12 +761,135 @@ def info():
     }
 
 
+# Búsqueda por nombre con CartoCiudad (IGN), activada por defecto: encuentra lugares
+# («Museo del Prado», «Parque del Oeste») que no están en el callejero ni en los registros.
+# La consulta la hace el servidor, así que el IGN no ve la IP de quien busca. Si falla o
+# no hay internet, se sigue solo con la búsqueda propia y se deja de preguntar un minuto.
+CARTO_ON = os.environ.get("CARTOCIUDAD", "1") != "0"
+CARTO_URL = "https://www.cartociudad.es/geocoder/api/geocoder/candidates"
+CARTO_TIMEOUT = 2.5
+CARTO_TYPES = {"portal", "toponimo", "poi", "ngbe"}
+_carto_pausa = [0.0]
+_carto_pool = None
+MINUSCULAS = {"de", "del", "la", "las", "los", "y", "e", "en", "a", "al", "por", "con"}
+
+
+def bonito(texto, portal=False):
+    """«MUSEO NACIONAL DEL PRADO, Madrid» → «Museo Nacional del Prado»; «CALLE MAYOR 1» → «Calle Mayor, 1»."""
+    import re
+
+    texto = re.sub(r",\s*Madrid\s*$", "", texto.strip())
+    letras = [c for c in texto if c.isalpha()]
+    if letras and sum(c.isupper() for c in letras) / len(letras) > 0.7:
+        palabras = []
+        for i, w in enumerate(texto.lower().split()):
+            if i and w in MINUSCULAS:
+                palabras.append(w)
+                continue
+            k = next((j for j, c in enumerate(w) if c.isalpha()), None)
+            palabras.append(w if k is None else w[:k] + w[k].upper() + w[k + 1:])
+        texto = " ".join(palabras)
+    if portal:
+        texto = re.sub(r"\s+(\d+\s*[A-Za-z]?)$", r", \1", texto)
+    return texto
+
+
+@lru_cache(maxsize=1024)
+def _carto(consulta):
+    import json
+
+    with response(CARTO_URL, {"q": consulta + ", Madrid", "limit": 12}, timeout=CARTO_TIMEOUT, attempts=1) as handle:
+        raw = json.load(handle)
+    return tuple(raw) if isinstance(raw, list) else ()
+
+
+def cartociudad(q):
+    """Lugares y portales de CartoCiudad dentro de Madrid capital; [] si no hay servicio."""
+    if not CARTO_ON or monotonic() < _carto_pausa[0] or len(normal(q)) < 4:
+        return []
+    try:
+        raw = _carto(normal(q))
+    except Exception:
+        _carto_pausa[0] = monotonic() + 60
+        return []
+    city, out = app.state.city, []
+    for place in raw:
+        tipo = place.get("type")
+        lon, lat = place.get("lng"), place.get("lat")
+        if tipo not in CARTO_TYPES or normal(place.get("muni", "")) != "madrid":
+            continue
+        if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)) or not lon or not lat:
+            continue
+        if not city.locate(lon, lat):
+            continue
+        portal = tipo == "portal"
+        out.append({
+            "id": f"carto:{tipo}:{place.get('id', '')}:{round(lon, 6)},{round(lat, 6)}",
+            "label": bonito(place.get("address") or q, portal),
+            "kind": "address",
+            "coordinates": [lon, lat],
+            "source": ("Portal" if portal else "Lugar") + " · CartoCiudad (IGN)",
+        })
+    return out
+
+
+def _cerca(a, b, metros=60):
+    (x1, y1), (x2, y2) = a, b
+    return hypot((x1 - x2) * 84_400, (y1 - y2) * 111_000) < metros
+
+
+def mezclar(q, propios, externos):
+    """Orden: con número, primero el callejero propio; por nombre, primero los destinos propios
+    que contienen todas las palabras (con horario y tipo), luego CartoCiudad y luego el resto."""
+    palabras = [w for w in normal(q).split() if w not in MINUSCULAS]
+    numero = any(w.isdigit() for w in palabras)
+    if numero:
+        delante = propios
+        extra = externos if not any(r.get("kind") == "address" for r in propios) else [
+            e for e in externos if "Lugar" in e["source"]]
+        detras = []
+    else:
+        nombre = lambda r: normal(str(r.get("label", "")).split(" — ")[0].split(" · ")[0])
+        fuerte = lambda r: (r.get("kind") != "address" and len(palabras) >= 2
+                            and all(w in nombre(r) for w in palabras))
+        # Registros sanitarios sin nombre propio («Consulta de otros profesionales sanitarios · …»): al final.
+        generico = lambda r: r.get("kind") == "health" and " — " not in str(r.get("label", ""))
+        delante = [r for r in propios if fuerte(r)]
+        detras = ([r for r in propios if not fuerte(r) and not generico(r)]
+                  + [r for r in propios if not fuerte(r) and generico(r)])
+        extra = externos
+    vistos = delante + detras
+    nuevos = []
+    for e in extra:
+        if any(_cerca(e["coordinates"], r["coordinates"]) for r in vistos + nuevos if r.get("coordinates")):
+            continue
+        nuevos.append(e)
+    final = []
+    for r in (delante + nuevos + detras)[:12]:  # «Calle De La Cava De San Miguel, 1  B» → «Calle de la Cava de San Miguel, 1 B»
+        if r.get("kind") == "address" and str(r.get("source", "")).startswith("Callejero"):
+            w = r["label"].split()
+            r = r | {"label": " ".join(x.lower() if i and x.lower() in MINUSCULAS else x for i, x in enumerate(w))}
+        final.append(r)
+    return final
+
+
 @app.get("/api/addresses")
 def addresses(
     q: str = Query(min_length=2, max_length=120), at: Optional[datetime] = None
 ):
+    global _carto_pool
     city = app.state.city
+    if _carto_pool is None:
+        from concurrent.futures import ThreadPoolExecutor
+
+        _carto_pool = ThreadPoolExecutor(max_workers=4)
+    futuro = _carto_pool.submit(cartociudad, q)
     results = city.search(q)
+    try:
+        externos = futuro.result(timeout=CARTO_TIMEOUT + 0.5)
+    except Exception:
+        externos = []
+    results = mezclar(q, results, externos)
     if at is None:
         return {"results": results}
     if at.tzinfo is not None:
