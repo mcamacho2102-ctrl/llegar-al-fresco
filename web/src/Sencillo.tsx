@@ -144,6 +144,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
   const [maxSlope, setMaxSlope] = useState<number | null>(null);
   const [pace, setPace] = useState(1);
   const [prefer, setPrefer] = useState<"comfort" | "shade">("comfort");
+  const [sentando, setSentando] = useState(false);
   const advancedCount =
     Number(!stairs) + Number(minWidth !== null) + Number(maxSlope !== null) + Number(pace !== 1) + Number(prefer !== "comfort");
 
@@ -441,15 +442,19 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     return () => controller.abort();
   }, [kind, origin]);
 
-  const locate = () => {
+  const locate = () => ubicar();
+  /** Pide la ubicación y la pone como salida; `luego` recibe el sitio (o null si no se pudo). */
+  const ubicar = (luego?: (place: Place | null) => void) => {
     if (!window.isSecureContext) {
       setError(
         "La ubicación solo funciona abriendo la página segura (https://llegaralfresco.outofthemark.com). Mientras, escribe la dirección.",
       );
+      luego?.(null);
       return;
     }
     if (!navigator.geolocation) {
       setError("Este navegador no da la ubicación. Escribe la dirección.");
+      luego?.(null);
       return;
     }
     setError("");
@@ -472,7 +477,9 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           setMessage(
             `El camino a pie más cercano está a unos ${fmt(Math.round(calle.distanceM / 10) * 10)} m de donde estás: saldremos desde allí.`,
           );
-          setOrigin(mapPlace(calle.coordinates, "Mi ubicación (camino más cercano)"));
+          const cerca = mapPlace(calle.coordinates, "Mi ubicación (camino más cercano)");
+          setOrigin(cerca);
+          luego?.(cerca);
           return;
         }
         if (!dentro) {
@@ -480,6 +487,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           setError(
             "Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid: escribe una dirección de Madrid.",
           );
+          luego?.(null);
           return;
         }
         if (red === false) {
@@ -487,12 +495,15 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           setError(
             "Tu ubicación queda lejos de cualquier calle o camino del mapa (puede que estés en un parque grande, un recinto o el campo). Escribe la dirección o márcala en el mapa.",
           );
+          luego?.(null);
           return;
         }
       } catch {
         /* si no se puede comprobar, se intenta igualmente */
       }
-      setOrigin(mapPlace(coords, "Mi ubicación"));
+      const aqui = mapPlace(coords, "Mi ubicación");
+      setOrigin(aqui);
+      luego?.(aqui);
     };
     const fail = (e: GeolocationPositionError) => {
       setMessage("");
@@ -501,6 +512,7 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
           ? "El teléfono no deja ver tu ubicación. En iPhone: Ajustes › Privacidad › Localización › Safari › «Al usar la app». En Android: toca el candado junto a la dirección › Permisos › Ubicación. Mientras, escribe la dirección."
           : "No hemos podido saber dónde estás ahora mismo (poca señal). Vuelve a intentarlo o escribe la dirección.",
       );
+      luego?.(null);
     };
     // Primero una posición rápida (wifi o antena); si no llega a tiempo, se insiste con el GPS.
     navigator.geolocation.getCurrentPosition(
@@ -543,6 +555,42 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
     } finally {
       setBusy(false);
     }
+  };
+
+  // «Necesito sentarme ya»: tu ubicación → banco más cercano → ruta normal hasta él.
+  const sentarmeYa = () => {
+    if (sentando || busy) return;
+    setSentando(true);
+    ubicar(async (aqui) => {
+      if (!aqui) {
+        setSentando(false);
+        return;
+      }
+      try {
+        const [lon, lat] = aqui.coordinates;
+        const { results } = await api<{
+          results: { id: string; label: string; coordinates: Position; straightM: number }[];
+        }>(`/api/banco-cercano?lon=${lon}&lat=${lat}`);
+        const banco = results[0];
+        if (!banco) {
+          setError(
+            "No hay ningún banco a menos de 400 m de donde estás. Busca una sombra o un portal donde apoyarte, o pide ayuda a alguien cercano.",
+          );
+          return;
+        }
+        const llegada = mapPlace(banco.coordinates, banco.label);
+        setKind(null);
+        setOtherDestination(true);
+        setDestination(llegada);
+        setPurpose("direccion");
+        setMessage((m) => m || `Te llevamos al banco más cercano: ${banco.label}.`);
+        await search(aqui, llegada, limit, madridNow(), false);
+      } catch (e) {
+        setError((e as Error).message || "No hemos podido buscar un banco cercano. Vuelve a intentarlo.");
+      } finally {
+        setSentando(false);
+      }
+    });
   };
 
   const example = async () => {
@@ -613,6 +661,22 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
         />
         <button type="button" className="grande secundario" onClick={locate}>
           📍 Usar mi ubicación
+        </button>
+        <button
+          type="button"
+          className="grande secundario sentarme-ya"
+          onClick={sentarmeYa}
+          disabled={sentando || busy}
+          aria-busy={sentando}
+          title="Te llevamos al banco más cercano desde donde estás"
+        >
+          {sentando ? (
+            "Buscando un banco cerca…"
+          ) : (
+            <>
+              <span aria-hidden="true">🪑</span> Necesito sentarme ya
+            </>
+          )}
         </button>
         {message && <p className="aviso">{message}</p>}
       </section>
@@ -1008,6 +1072,35 @@ export default function Sencillo({ onProfessional }: { onProfessional: () => voi
                     cercano o lleva un bastón asiento.
                   </p>
                 </>
+              )}
+              {result.weather && result.weather.temperatureC >= 30 && (
+                <div className={result.weather.temperatureC >= 35 ? "aviso-calor fuerte" : "aviso-calor"}>
+                  {result.weather.temperatureC >= 35 ? (
+                    <p>
+                      <strong>
+                        <span aria-hidden="true">⚠️</span> Calor muy fuerte: {when === "now" ? "hace" : "a esa hora hace"}{" "}
+                        {fmt(result.weather.temperatureC)} °C.
+                      </strong>{" "}
+                      Si puedes, no salgas ahora: mejor antes de las 11:00 o después de las 19:00. Si tienes que ir, lleva
+                      agua, cúbrete la cabeza y para en cada banco con sombra.
+                    </p>
+                  ) : (
+                    <p>
+                      <strong>
+                        <span aria-hidden="true">🔥</span> {when === "now" ? "Hace" : "A esa hora hace"}{" "}
+                        {fmt(result.weather.temperatureC)} °C.
+                      </strong>{" "}
+                      Si puedes, sal antes de las 11:00 o después de las 19:00, lleva agua y para en los bancos con sombra.
+                    </p>
+                  )}
+                  {shown.sunMin !== null && (
+                    <p>
+                      {shown.sunMin < 1
+                        ? "Esta ruta va casi toda por la sombra."
+                        : `Esta ruta va ${about(shown.sunMin)} al sol.`}
+                    </p>
+                  )}
+                </div>
               )}
               <div className="chips">
                 {result.weather && (

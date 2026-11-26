@@ -1554,3 +1554,40 @@ nav .volver {
 .seguir-datos { margin: 10px 0 0; padding-left: 20px; font-size: 1.1rem; line-height: 1.6; }
 .seguir-hora { color: #466960; margin-top: 8px; }
 .seguir .mapa-simple { margin-top: 14px; }
+
+/* === Buscar hablando y Mis sitios === */
+.address-line.con-voz { grid-template-columns: minmax(0, 1fr) auto auto; }
+.boton-voz { min-width: 48px; min-height: 48px; padding: 6px 10px; font-size: 1.25rem; line-height: 1; }
+.sencillo .address .boton-voz { min-width: 56px; }
+.boton-voz.escuchando { background: #0e5242; border-color: #0e5242; color: #fff; animation: voz-latido 1.4s ease-in-out infinite; }
+@keyframes voz-latido { 0%, 100% { box-shadow: 0 0 0 0 #0e524255; } 50% { box-shadow: 0 0 0 6px #0e524222; } }
+@media (prefers-reduced-motion: reduce) { .boton-voz.escuchando { animation: none; } }
+.search-hint.voz-escuchando { font-size: 1rem; font-weight: 700; color: #0b3b30; background: #fff3d6; border-radius: 8px; padding: 8px 10px; }
+.voz-parar, .mis-sitios-abrir, .guardar-abrir { min-height: 48px; font-size: 1rem; }
+.mis-sitios { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 8px; padding: 10px; border: 2px solid #b4cfc2; border-radius: 12px; background: #fff; }
+.mi-sitio { display: grid; grid-template-columns: minmax(0, 1fr) 48px; gap: 6px; }
+.mi-sitio-elegir { min-width: 0; min-height: 56px; padding: 8px 12px; text-align: left; border: 2px solid #b4cfc2; border-radius: 12px; background: #f7faf8; color: #0b3b30; cursor: pointer; }
+.mi-sitio-elegir:hover { background: #e2efe8; }
+.mi-sitio-elegir strong { display: block; font-size: 1.08rem; }
+.mi-sitio-elegir small { display: block; color: #466960; font-size: 0.86rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mi-sitio-borrar { min-width: 48px; min-height: 48px; border: 1px solid #b4cfc2; border-radius: 12px; background: #fff; color: #8a2b1f; font-size: 1.1rem; font-weight: 700; cursor: pointer; }
+.mi-sitio-borrar:hover { background: #fbeeea; }
+.mis-sitios-nota { margin: 2px 0 0; font-size: 0.8rem; color: #466960; }
+.guardar-sitio { margin-top: 4px; }
+.guardar-sitio .search-hint { margin: 6px 0; }
+.guardar-opciones { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.guardar-opciones .place-button { min-height: 48px; font-size: 1rem; }
+
+/* === Sentarme ya y aviso de calor === */
+.sentarme-ya { margin-left: 10px; background: #fbf0e6; border-color: #e5be9e; color: #5c2a12; }
+.sentarme-ya:hover:not(:disabled) { background: #f6e2cf; }
+@media (max-width: 520px) { .sentarme-ya { margin-left: 0; } }
+.aviso-calor { background: #fff3d6; border: 2px solid #e2a93b; border-radius: 16px; padding: 14px 18px; margin: 14px 0; font-size: 1.08rem; color: #4a2e05; }
+.aviso-calor p { margin: 0 0 6px; }
+.aviso-calor p:last-child { margin-bottom: 0; }
+.aviso-calor.fuerte { background: #fbe3dc; border-color: #b3361f; border-width: 3px; color: #5a1409; }
+/* Pantallas muy estrechas o con mucho zoom: el campo y «Mapa» caben; el micrófono se oculta. */
+@media (max-width: 360px) {
+  .address-line.con-voz { grid-template-columns: minmax(0, 1fr) auto; }
+  .address-line.con-voz .boton-voz { display: none; }
+}

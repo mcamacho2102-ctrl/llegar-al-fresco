@@ -126,5 +126,43 @@ class Buscador(unittest.TestCase):
         self.assertIsNone(categoria({"amenity": "bench"}))
 
 
+class NecesitoSentarme(unittest.TestCase):
+    """Banco más cercano con una ciudad de mentira (sin datos)."""
+
+    def test_nombre_del_banco(self):
+        self.assertEqual(
+            servicio.nombre_banco("Calle Riscos De Polanco 5", 58), "Banco en Calle Riscos de Polanco 5 · a 60 m"
+        )
+        self.assertEqual(servicio.nombre_banco("", 3), "Banco · a pocos pasos")
+        self.assertEqual(
+            servicio.nombre_banco("Paseo Paseo Puerta Del Angel 1", 62), "Banco en Paseo Puerta del Angel 1 · a 60 m"
+        )
+
+    def test_tres_mas_cercanos_sin_repetir_grupo_ni_pasar_de_400_m(self):
+        from scipy.spatial import cKDTree
+
+        x, y = servicio.TO_METERS.transform(-3.7038, 40.4168)
+        pois = [
+            {"id": "b1", "label": "Calle Mayor 1", "kind": "bench", "x": x + 50, "y": y},
+            {"id": "b2", "label": "Calle Mayor 1", "kind": "bench", "x": x + 55, "y": y},  # mismo grupo
+            {"id": "f1", "label": "Fuente", "kind": "drinking_water", "x": x + 5, "y": y},
+            {"id": "b3", "label": "Calle Arenal 2", "kind": "bench", "x": x, "y": y + 120},
+            {"id": "b4", "label": "Calle Sal 3", "kind": "bench", "x": x - 200, "y": y},
+            {"id": "b5", "label": "Calle Lejos 4", "kind": "bench", "x": x + 300, "y": y},
+            {"id": "b6", "label": "Calle Fuera 5", "kind": "bench", "x": x + 450, "y": y},
+        ]
+        city = SimpleNamespace(
+            pois=pois,
+            poi_tree=cKDTree([(p["x"], p["y"]) for p in pois]),
+            locate=lambda lon, lat, **_: object(),
+        )
+        r = servicio.bancos_cerca(city, -3.7038, 40.4168)
+        self.assertEqual([b["id"] for b in r], ["b1", "b3", "b4"])
+        self.assertEqual(r[0]["straightM"], 50)
+        self.assertEqual(r[0]["label"], "Banco en Calle Mayor 1 · a 50 m")
+        self.assertAlmostEqual(r[0]["coordinates"][1], 40.4168, places=4)
+        self.assertEqual(servicio.bancos_cerca(city, -3.7038, 40.4168, reach=40), [])
+
+
 if __name__ == "__main__":
     unittest.main()

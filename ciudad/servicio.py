@@ -274,8 +274,12 @@ async def security_headers(request: Request, call_next):
     response.headers.setdefault("X-Content-Type-Options", "nosniff")
     # Sin X-Frame-Options: frame-ancestors (CSP) decide quién puede incrustar la app y la presentación pública debe poder.
     response.headers.setdefault("Referrer-Policy", "no-referrer")
-    response.headers.setdefault("Permissions-Policy", "geolocation=(self), camera=(), microphone=()")
+    # Micrófono solo para la propia app: «Buscar hablando» (Web Speech API).
+    response.headers.setdefault("Permissions-Policy", "geolocation=(self), camera=(), microphone=(self)")
     response.headers.setdefault("Content-Security-Policy", CSP_PITCH if request.url.path.startswith("/pitch") else CSP)
+    # La presentación y la página de la app, siempre la última versión (los recursos con hash sí se guardan).
+    if request.url.path in ("/", "/index.html") or request.url.path.startswith("/pitch") and request.url.path.endswith(("/", ".html")):
+        response.headers.setdefault("Cache-Control", "no-cache")
     if TRUST_PROXY and request.headers.get("x-forwarded-proto") == "https":
         response.headers.setdefault("Strict-Transport-Security", "max-age=31536000")
     return response
@@ -1111,6 +1115,81 @@ def walking_m(origin, destination):
         return None
     result, _ = trip.solve(Limits(), datetime.now(LOCAL).timestamp(), 1.0, "distance", None, 0, max_checks=40000)
     return result["meters"] if result else None
+
+
+BANCO_CERCA_M = 400  # «Necesito sentarme ya»: bancos a menos de esto en línea recta
+BANCO_SEPARACION_M = 15  # bancos juntos (un mismo grupo) cuentan como uno
+
+
+def nombre_banco(calle, metros):
+    """«Calle Riscos De Polanco 5», 58 → «Banco en Calle Riscos de Polanco 5 · a 60 m»."""
+    palabras = []
+    for w in (calle or "").split():
+        if not palabras or w.lower() != palabras[-1].lower():  # «Paseo Paseo …» en el inventario
+            palabras.append(w)
+    calle = " ".join(
+        w.lower() if i and w.lower() in MINUSCULAS else w for i, w in enumerate(palabras)
+    )
+    return ("Banco en " + calle if calle else "Banco") + " · " + a_metros(metros)
+
+
+def a_metros(metros):
+    return "a pocos pasos" if metros < 10 else f"a {int(round(metros / 10.0)) * 10} m"
+
+
+def bancos_cerca(city, lon, lat, n=3, reach=BANCO_CERCA_M):
+    """Los n bancos más cercanos en línea recta (≤ reach m) a los que llega la red peatonal."""
+    x, y = TO_METERS.transform(lon, lat)
+    found = sorted(
+        (hypot(city.pois[i]["x"] - x, city.pois[i]["y"] - y), i)
+        for i in city.poi_tree.query_ball_point((x, y), reach)
+        if city.pois[i]["kind"] == "bench"
+    )
+    out, chosen = [], []
+    for d, i in found:
+        row = city.pois[i]
+        if any(hypot(row["x"] - cx, row["y"] - cy) < BANCO_SEPARACION_M for cx, cy in chosen):
+            continue
+        place = coordinates((row["x"], row["y"]))
+        if city.locate(*place) is None:
+            continue  # sin calle o camino del mapa cerca
+        chosen.append((row["x"], row["y"]))
+        out.append(
+            {
+                "id": row["id"],
+                "label": nombre_banco(row["label"], d),
+                "coordinates": place,
+                "straightM": round(float(d)),
+            }
+        )
+        if len(out) >= n:
+            break
+    return out
+
+
+@app.get("/api/banco-cercano")
+def banco_cercano(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90)):
+    """«Necesito sentarme ya»: de los bancos más cercanos en línea recta (máx. 400 m), los 3
+    más cercanos andando (un banco a 70 m puede quedar a 280 m si hay que rodear una manzana)."""
+    city = app.state.city
+    if not (-4 <= lon <= -3 and 40 <= lat <= 41 and city.inside(lon, lat)):
+        raise HTTPException(
+            422,
+            "Estás fuera de Madrid capital. Por ahora la aplicación solo cubre el municipio de Madrid.",
+        )
+    out = bancos_cerca(city, lon, lat, n=NEARBY_POOL)
+    if out and city.locate(lon, lat) is not None:
+        for banco in out:
+            try:
+                walk = walking_m((lon, lat), banco["coordinates"])
+            except Exception:  # noqa: BLE001 — si falla, se queda la línea recta
+                walk = None
+            if walk:
+                banco["walkM"] = round(float(walk))
+                # La distancia del nombre pasa a ser la andando.
+                banco["label"] = banco["label"].rsplit(" · ", 1)[0] + " · " + a_metros(walk)
+        out.sort(key=lambda b: (b.get("walkM") is None, b.get("walkM") or 0, b["straightM"]))
+    return {"results": out[:3]}
 
 
 @app.get("/api/points")
